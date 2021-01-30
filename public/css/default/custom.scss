@@ -1,0 +1,245 @@
+/****************************************************************************************************
+
+  TABLE OF CONTENTS
+  |
+  |
+  |___ Basic Custom CSS
+  |
+  |___ Special Custom CSS
+
+****************************************************************************************************/
+
+/* ------------------------ Basic Custom CSS ------------------------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: $line-height;
+  font: {
+    family: $font-family;
+    size: $font-size;
+    weight: $font-weight;
+  }
+
+  .theme-light {
+    color: $color-fgl-1;
+    background-color: $color-white;
+
+    h6,
+    p {
+      color: $color-fgl-2;
+    }
+  }
+  .theme-dark {
+    color: $color-fgd-1;
+    background-color: $color-black;
+
+    h6,
+    p {
+      color: $color-fgd-2;
+    }
+  }
+}
+
+h1 {
+  line-height: $line-height-h;
+  font: {
+    size: $h1;
+    weight: 700;
+  }
+}
+h2 {
+  line-height: $line-height-h;
+  font: {
+    size: $h2;
+    weight: 700;
+  }
+}
+h3 {
+  line-height: $line-height-h;
+  font: {
+    size: $h3;
+    weight: 700;
+  }
+}
+h4 {
+  line-height: $line-height-h;
+  font: {
+    size: $h4;
+    weight: 600;
+  }
+}
+h5 {
+  line-height: $line-height-h;
+  font: {
+    size: $h5;
+    weight: 500;
+  }
+}
+h6 {
+  line-height: $line-height-h;
+  font: {
+    size: $h6;
+    weight: 500;
+  }
+}
+
+p {
+  line-height: $line-height-p;
+}
+
+a {
+  display: inline-block;
+  color: inherit;
+}
+
+/* ------------------------ Special Custom CSS ------------------------ */
+
+:focus {
+  outline-color: $color-main;
+}
+
+///////////////////////////////////////////////////////////////////////////
+//                                 TEMP                                  //
+///////////////////////////////////////////////////////////////////////////
+
+
+/* ---------------------------------------- FOREGROUND/BACKGROUND CSS ---------------------------------------- */
+
+.fg-w {
+  color: $color-white;
+}
+.fg-b {
+  color: $color-black;
+}
+
+.fgl-1 {
+  color: $color-fgl-1;
+}
+.fgl-2 {
+  color: $color-fgl-2;
+}
+.fgl-3 {
+  color: $color-fgl-3;
+}
+.fgl-4 {
+  color: $color-fgl-4;
+}
+
+.fgd-1 {
+  color: $color-fgd-1;
+}
+.fgd-2 {
+  color: $color-fgd-2;
+}
+.fgd-3 {
+  color: $color-fgd-3;
+}
+.fgd-4 {
+  color: $color-fgd-4;
+}
+
+.bg-w {
+  background-color: $color-white;
+}
+.bg-b {
+  background-color: $color-black;
+}
+
+.bgl-1 {
+  background-color: $color-bgl-1;
+}
+.bgl-2 {
+  background-color: $color-bgl-2;
+}
+.bgl-3 {
+  background-color: $color-bgl-3;
+}
+.bgl-4 {
+  background-color: $color-bgl-4;
+}
+
+.bgd-1 {
+  background-color: $color-bgd-1;
+}
+.bgd-2 {
+  background-color: $color-bgd-2;
+}
+.bgd-3 {
+  background-color: $color-bgd-3;
+}
+.bgd-4 {
+  background-color: $color-bgd-4;
+}
+
+/* ---------------------------------------- BUTTON CSS ---------------------------------------- */
+
+button {
+  position: relative;
+  padding: 10px 20px;
+  border: 2px solid $color-main;
+  border-radius: $radius-1;
+  color: $color-white;
+  background-color: $color-main;
+  font: {
+    family: $font-family;
+    size: 14px;
+    weight: 500;
+  }
+  transition: $trans-1;
+  cursor: pointer;
+}
+.btn-main {
+  &-fill {
+    border-color: $color-main;
+    color: $color-white;
+    background-color: $color-main;
+    &:hover,
+    &:focus {
+      margin-top: -6px;
+      border-color: $color-main-light;
+      color: $color-white;
+      background-color: $color-main-light;
+    }
+  }
+  &-outline {
+    border-color: $color-main-trans-5;
+    color: $color-main;
+    background-color: $color-main-trans-0;
+    &:hover,
+    &:focus {
+      margin-top: -6px;
+      border-color: $color-main;
+      color: $color-main;
+      background-color: $color-main-trans-1;
+    }
+  }
+}
+.btn-white {
+  &-fill {
+    border-color: $color-white;
+    color: $color-black;
+    background-color: $color-white;
+    &:hover,
+    &:focus {
+      margin-top: -6px;
+      border-color: $color-main;
+      color: $color-white;
+      background-color: $color-main;
+    }
+  }
+  &-outline {
+    border-color: $color-white-trans-5;
+    color: $color-white;
+    background-color: $color-white-trans-0;
+    &:hover,
+    &:focus {
+      margin-top: -6px;
+      border-color: $color-white;
+      color: $color-white;
+      background-color: $color-white-trans-1;
+    }
+  }
+}

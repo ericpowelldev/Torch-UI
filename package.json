@@ -1,0 +1,23 @@
+{
+  "name": "fyrefly-ui",
+  "version": "0.1.0",
+  "author": "Eric Powell",
+  "description": "FyreFly UI - A modern web UI framework made by Eric Powell",
+  "license": "GNU",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "postbuild": "next-on-netlify",
+    "start": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "^10.0.3",
+    "next-on-netlify": "^2.7.2",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0"
+  }
+}

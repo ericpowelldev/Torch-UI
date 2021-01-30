@@ -1,0 +1,62 @@
+/****************************************************************************************************
+
+  TABLE OF CONTENTS
+  |
+  |
+  |___ Container CSS
+
+****************************************************************************************************/
+
+/* ------------------------ Container CSS ------------------------ */
+
+.container {
+  position: relative;
+  max-width: 100%;
+  padding: 0 16px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  transition: $trans-1;
+
+  &.xl {
+    max-width: $container-width-xl;
+  }
+  &.lg {
+    max-width: $container-width-lg;
+  }
+  &.md {
+    max-width: $container-width-md;
+  }
+  &.sm {
+    max-width: $container-width-sm;
+  }
+  &.xs {
+    max-width: $container-width-xs;
+  }
+
+  &.fixed {
+    @media #{$layout-xl-up} {
+      width: $container-width-xl;
+    }
+    @media #{$layout-xl-down} {
+      width: $container-width-lg;
+    }
+    @media #{$layout-lg-down} {
+      width: $container-width-md;
+    }
+    @media #{$layout-md-down} {
+      width: $container-width-sm;
+    }
+    @media #{$layout-sm-down} {
+      width: $container-width-xs;
+    }
+    @media #{$layout-xs-down} {
+      width: 100%;
+    }
+  }
+
+  &.no-pad {
+    padding: 0;
+  }
+}

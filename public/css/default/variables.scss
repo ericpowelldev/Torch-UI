@@ -1,0 +1,168 @@
+/****************************************************************************************************
+
+  TABLE OF CONTENTS
+  |
+  |
+  |___ Colors: Theme
+  |
+  |___ Colors: White/Black
+  |
+  |___ Colors: Foreground/Background
+  |
+  |___ Text
+  |
+  |___ Border
+  |
+  |___ Shadow
+  |
+  |___ Transition
+  |
+  |___ Z-Index
+  |
+  |___ Responsiveness
+
+****************************************************************************************************/
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap");
+
+/* ------------------------ Colors: Theme ------------------------ */
+
+$color-main: #24a0ff;
+$color-main-light: #64c8ff;
+$color-main-trans-0: #24a0ff00;
+$color-main-trans-1: #24a0ff0c;
+$color-main-trans-2: #24a0ff18;
+$color-main-trans-3: #24a0ff24;
+$color-main-trans-4: #24a0ff30;
+$color-main-trans-5: #24a0ff40;
+$color-main-trans-6: #24a0ff60;
+$color-main-trans-7: #24a0ff80;
+$color-alt-1: #ff4080;
+$color-alt-2: #ffc840;
+$color-alt-3: #20dc80;
+$color-info: #2080ff;
+$color-error: #ff2040;
+$color-warning: #ffd420;
+$color-success: #40d420;
+
+/* ------------------------ Colors: White/Black ------------------------ */
+
+$color-white: #ffffff;
+$color-white-trans-0: #ffffff00;
+$color-white-trans-1: #ffffff0c;
+$color-white-trans-2: #ffffff18;
+$color-white-trans-3: #ffffff24;
+$color-white-trans-4: #ffffff30;
+$color-white-trans-5: #ffffff40;
+$color-white-trans-6: #ffffff60;
+$color-white-trans-7: #ffffff80;
+$color-black: #080a0e;
+$color-black-trans-0: #080a0e00;
+$color-black-trans-1: #080a0e0c;
+$color-black-trans-2: #080a0e18;
+$color-black-trans-3: #080a0e24;
+$color-black-trans-4: #080a0e30;
+$color-black-trans-5: #080a0e40;
+$color-black-trans-6: #080a0e60;
+$color-black-trans-7: #080a0e80;
+
+/* ------------------------ Colors: Foreground/Background ------------------------ */
+
+$color-fgl-1: #202430;
+$color-fgl-2: #202430a0;
+$color-fgl-3: #20243080;
+$color-fgl-4: #20243040;
+$color-bgl-1: #fafafa;
+$color-bgl-2: #f5f5f5;
+$color-bgl-3: #f0f0f0;
+$color-bgl-4: #ebebeb;
+
+$color-fgd-1: #ffffff;
+$color-fgd-2: #e8eeffa0;
+$color-fgd-3: #e8eeff80;
+$color-fgd-4: #e8eeff40;
+$color-bgd-1: #101216;
+$color-bgd-2: #181b20;
+$color-bgd-3: #202428;
+$color-bgd-4: #282d32;
+
+/* ------------------------ Text ------------------------ */
+
+$line-height: 1;
+$line-height-h: 1.5;
+$line-height-p: 1.75;
+$font-family: "Poppins", sans-serif;
+$font-family-alt: "Poppins", sans-serif;
+$font-size: 16px;
+$font-weight: 300;
+$h1: 48px;
+$h2: 40px;
+$h3: 32px;
+$h4: 28px;
+$h5: 24px;
+$h6: 20px;
+
+/* ------------------------ Shadow ------------------------ */
+
+$shadow-0: 0 0 0px rgba(0, 0, 0, 0);
+$shadow-1: 0 0 12px rgba(0, 0, 0, 0.125);
+$shadow-2: 0 0 18px rgba(0, 0, 0, 0.115);
+$shadow-3: 0 0 24px rgba(0, 0, 0, 0.11);
+$shadow-4: 0 0 32px rgba(0, 0, 0, 0.1);
+$shadow-txt: 1px 1px 4px rgba(0, 0, 0, 0.2);
+
+/* ------------------------ Transition ------------------------ */
+
+$trans-1: all 0.15s ease-out;
+$trans-2: all 0.3s ease-out;
+$trans-3: all 0.5s ease-out;
+
+/* ------------------------ Border ------------------------ */
+
+$radius-0: 0px;
+$radius-1: 6px;
+$radius-2: 12px;
+$radius-3: 18px;
+
+/* ------------------------ Scale ------------------------ */
+
+$spacing: 4px;
+
+/* ------------------------ Z-Index ------------------------ */
+
+$z-footer: 900;
+$z-header: 1000;
+$z-dropdown: 1100;
+$z-modal: 1500;
+$z-modal-dropdown: 1600;
+$z-tooltip: 2000;
+
+/* ------------------------ Responsiveness ------------------------ */
+
+$break-xl-up: 1600px;
+$break-xl-down: 1600px;
+$break-lg-up: 1280px;
+$break-lg-down: 1280px;
+$break-md-up: 1024px;
+$break-md-down: 1024px;
+$break-sm-up: 768px;
+$break-sm-down: 768px;
+$break-xs-up: 480px;
+$break-xs-down: 480px;
+$break-0: 0px;
+$layout-xl-up: "only screen and (min-width: #{$break-xl-up})";
+$layout-xl-down: "only screen and (max-width: #{$break-xl-down})";
+$layout-lg-up: "only screen and (min-width: #{$break-lg-up})";
+$layout-lg-down: "only screen and (max-width: #{$break-lg-down})";
+$layout-md-up: "only screen and (min-width: #{$break-md-up})";
+$layout-md-down: "only screen and (max-width: #{$break-md-down})";
+$layout-sm-up: "only screen and (min-width: #{$break-sm-up})";
+$layout-sm-down: "only screen and (max-width: #{$break-sm-down})";
+$layout-xs-up: "only screen and (min-width: #{$break-xs-up})";
+$layout-xs-down: "only screen and (max-width: #{$break-xs-down})";
+$layout-0: "only screen and (min-width: #{$break-0})";
+$container-width-xl: 1400px;
+$container-width-lg: 1200px;
+$container-width-md: 960px;
+$container-width-sm: 680px;
+$container-width-xs: 420px;
