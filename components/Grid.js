@@ -1,11 +1,12 @@
 //////////////////////// COMPONENT ////////////////////////
 export default function Grid(props) {
-  const { parent, rows, cols, spacing, child, area, style } = props;
+  const { parent, rows, cols, spacing, child, size, style } = props;
 
   const getClass = () => {
     let cls = ``;
     if (parent) {
       cls += ` grid-parent`;
+      
       if (rows && rows >= 1 && rows <= 12) cls += ` rows-${rows}`;
       if (cols && cols >= 1 && cols <= 12) cls += ` cols-${cols}`;
       if (spacing && spacing >= 1 && spacing <= 12) cls += ` spacing-${spacing}`;
@@ -19,7 +20,7 @@ export default function Grid(props) {
   const getStyle = () => {
     let newStyle = {};
     if (child) {
-      if (area) newStyle.gridArea = area;
+      if (size) newStyle.gridArea = size;
     }
     return { ...newStyle, ...style };
   };

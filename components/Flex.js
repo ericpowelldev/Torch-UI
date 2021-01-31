@@ -1,44 +1,87 @@
+import React from "react";
+import { createUseStyles } from "react-jss";
+import { FyreFlyUI } from "@lib/FyreFlyUI";
+
+const getFlexGrow = (size) => {
+  if (size) {
+    if (size === true) return `1`;
+    else if (size >= 1 && size <= 12) return `${size}`;
+  } else return `0`;
+};
+const getFlexBasis = (size) => {
+  if (size) {
+    if (size === true) return `0`;
+    else if (size >= 1 && size <= 12) return `${(size / 12) * 100}%`;
+  } else return `auto`;
+};
+const getMaxWidth = (size) => {
+  if (size) {
+    if (size === true) return `100%`;
+    else if (size >= 1 && size <= 12) return `${(size / 12) * 100}%`;
+  } else return `none`;
+};
+
 //////////////////////// COMPONENT ////////////////////////
 export default function Flex(props) {
-  const { parent, justify, alignItems, alignContent, direction, wrap, spacing, child, xl, lg, md, sm, xs, style } = props;
+  const { theme } = React.useContext(FyreFlyUI);
+  const cls = useStyles({ ...props, theme });
 
-  const getClass = () => {
-    let cls = ``;
-    if (parent) {
-      cls += ` flex-parent`;
-      if (justify) cls += ` justify-${justify}`;
-      if (alignItems) cls += ` align-items-${alignItems}`;
-      if (alignContent) cls += ` align-content-${alignContent}`;
-      if (direction) cls += ` direction-${direction}`;
-      if (wrap) cls += ` wrap`;
-      if (spacing) cls += ` spacing-${spacing}`;
-    }
-    if (child) {
-      cls += ` flex-child`;
-      if (xl && xl >= 1 && xl <= 12) cls += ` xl-${xl}`;
-      if (lg && lg >= 1 && lg <= 12) cls += ` lg-${lg}`;
-      if (md && md >= 1 && md <= 12) cls += ` md-${md}`;
-      if (sm && sm >= 1 && sm <= 12) cls += ` sm-${sm}`;
-      if (xs && xs >= 1 && xs <= 12) cls += ` xs-${xs}`;
-    }
-    return cls;
+  const getClasses = () => {
+    if (props.parent && props.child) return cls.parent + cls.child;
+    else if (props.parent) return cls.parent;
+    else if (props.child) return cls.child;
+    else return ``;
   };
 
   return (
-    <div className={getClass()} style={style}>
+    <div className={getClasses()} style={props.style}>
       {props.children}
     </div>
   );
 }
 
-/*
-  DOCS
-
-  parent
-    false = Div is not a flex container
-    true = Div is a flex container
-  
-  child
-    false = Div is not a flex container child
-    true = Div is not a flex container child
-*/
+//////////////////////// STYLES ////////////////////////
+const useStyles = createUseStyles({
+  parent: (props) => ({
+    position: `relative`,
+    display: `flex`,
+    alignContent: props.alignContent ? props.alignContent : `stretch`,
+    alignItems: props.alignItems ? props.alignItems : `stretch`,
+    justifyContent: props.justifyContent ? props.justifyContent : `flex-start`,
+    justifyItems: props.justifyItems ? props.justifyItems : `stretch`,
+    flexDirection: props.direction ? props.direction : `row`,
+    flexWrap: props.nowrap ? `nowrap` : `wrap`,
+    gap: props.gap ? props.theme.spacing(props.gap) : `0`,
+    maxWidth: `100%`,
+    transition: props.theme.trans.main,
+  }),
+  child: (props) => ({
+    position: `relative`,
+    transition: props.theme.trans.main,
+    [props.theme.layout.zero]: {
+      flexGrow: getFlexGrow(props.xs),
+      flexBasis: getFlexBasis(props.xs),
+      maxWidth: getMaxWidth(props.xs),
+    },
+    [props.theme.layout.xs.up]: {
+      flexGrow: getFlexGrow(props.sm),
+      flexBasis: getFlexBasis(props.sm),
+      maxWidth: getMaxWidth(props.sm),
+    },
+    [props.theme.layout.sm.up]: {
+      flexGrow: getFlexGrow(props.md),
+      flexBasis: getFlexBasis(props.md),
+      maxWidth: getMaxWidth(props.md),
+    },
+    [props.theme.layout.md.up]: {
+      flexGrow: getFlexGrow(props.lg),
+      flexBasis: getFlexBasis(props.lg),
+      maxWidth: getMaxWidth(props.lg),
+    },
+    [props.theme.layout.lg.up]: {
+      flexGrow: getFlexGrow(props.xl),
+      flexBasis: getFlexBasis(props.xl),
+      maxWidth: getMaxWidth(props.xl),
+    },
+  }),
+});
