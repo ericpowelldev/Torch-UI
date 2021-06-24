@@ -1,11 +1,12 @@
-import Container from "@components/Container";
-import Flex from "@components/Flex";
+import React from "react";
+import Container from "components/layout/container/Container";
+import Flex from "components/layout/container/Flex";
 
 //////////////////////// COMPONENT ////////////////////////
-export default function Home(props) {
+export default function Test(props) {
   return (
-    <Container size="xl" style={{ background: `#555`, height: `100vh` }}>
-      <Flex parent gap="4" style={{ background: `#888`, height: `100vh` }}>
+    <Container size="xl" style={{ background: `#555` }}>
+      <Flex parent justifyContent="center" gap="4" style={{ background: `#888`, height: `100vh` }}>
         <Flex child xs="6">
           <div style={{ padding: `24px`, background: `#bbb`, width: `100%`, height: `100%` }}>xs=6</div>
         </Flex>

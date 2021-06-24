@@ -1,3 +1,5 @@
+import React from "react";
+
 //////////////////////// COMPONENT ////////////////////////
 export default function Grid(props) {
   const { parent, rows, cols, spacing, child, size, style } = props;

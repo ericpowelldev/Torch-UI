@@ -22,32 +22,15 @@ body {
     size: $font-size;
     weight: $font-weight;
   }
-
-  .theme-light {
-    color: $color-fgl-1;
-    background-color: $color-white;
-
-    h6,
-    p {
-      color: $color-fgl-2;
-    }
-  }
-  .theme-dark {
-    color: $color-fgd-1;
-    background-color: $color-black;
-
-    h6,
-    p {
-      color: $color-fgd-2;
-    }
-  }
+  color: $color-fg-1;
+  background-color: $color-white;
 }
 
 h1 {
   line-height: $line-height-h;
   font: {
     size: $h1;
-    weight: 700;
+    weight: 800;
   }
 }
 h2 {
@@ -84,15 +67,20 @@ h6 {
     size: $h6;
     weight: 500;
   }
+  color: $color-fg-2;
 }
 
 p {
   line-height: $line-height-p;
+  color: $color-fg-2;
 }
 
 a {
   display: inline-block;
   color: inherit;
+  &:hover {
+    color: $color-main;
+  }
 }
 
 /* ------------------------ Special Custom CSS ------------------------ */
@@ -104,7 +92,6 @@ a {
 ///////////////////////////////////////////////////////////////////////////
 //                                 TEMP                                  //
 ///////////////////////////////////////////////////////////////////////////
-
 
 /* ---------------------------------------- FOREGROUND/BACKGROUND CSS ---------------------------------------- */
 

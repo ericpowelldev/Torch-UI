@@ -1,24 +1,35 @@
 {
-  "name": "fyrefly-ui",
+  "name": "fyrefly-ui-react",
   "version": "0.1.0",
   "author": "Eric Powell",
-  "description": "FyreFly UI - A modern web UI framework made by Eric Powell",
-  "license": "GNU",
+  "description": "FyreFly UI - A modern ReactJS component library made by Eric Powell",
   "private": true,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "postbuild": "next-on-netlify",
-    "start": "next start",
-    "export": "next export"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
-    "next": "^10.0.3",
-    "next-on-netlify": "^2.7.2",
-    "node-sass": "^5.0.0",
+    "jss-preset-default": "^10.5.1",
+    "node-sass": "4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
-    "react-jss": "^10.5.1"
+    "react-jss": "^10.5.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1"
   }
 }
