@@ -1,0 +1,12 @@
+* Look into global stylesheets that can be applied to the app
+
+* Name each class specific to the element
+
+* createTheme() function that builds a theme with the minimum amount of inputs required
+  * Takes in a partial or full theme object
+  * Can pass in just the main/primary for each color and the theme builder function will fill in the rest
+  * Built properties can be overwritten by the theme input
+
+* Make <Spacer /> component
+  * space - Takes in a theme.space number and creates that distance of space between
+  * vertical - Applies space prop to width instead of height
