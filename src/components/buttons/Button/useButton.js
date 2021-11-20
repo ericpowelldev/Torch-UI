@@ -10,6 +10,15 @@ export function useButton() {
     return `8px 16px`;
   };
 
+  /** Get hover-line height from size prop */
+  const getSolidHoverHeight = (size) => {
+    if (size === `xs` || size === `min`) return 2;
+    if (size === `sm`) return 3;
+    if (size === `lg`) return 5;
+    if (size === `xl` || size === `max`) return 6;
+    return 4;
+  };
+
   /** Get outline padding from size prop */
   const getOutlinePadding = (size) => {
     if (size === `xs` || size === `min`) return `3px 7px`;
@@ -44,5 +53,5 @@ export function useButton() {
   };
 
   // Return hook logic
-  return { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight };
+  return { getRootPadding, getSolidHoverHeight, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight };
 }

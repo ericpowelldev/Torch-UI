@@ -1,6 +1,6 @@
 /****************************************************************************************************
 
-  This files resets the CSS to create a clean palette.
+  This file resets the CSS to create a clean palette.
 
 ****************************************************************************************************/
 
@@ -111,6 +111,10 @@ menu,
 nav,
 section {
   display: block;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

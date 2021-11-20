@@ -3,7 +3,7 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
 
-import { BiCart, BiSave } from "react-icons/bi";
+import { BiCart, BiSave, BiCar } from "react-icons/bi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import Button from "components/buttons/Button";
@@ -92,15 +92,15 @@ export default function Page(props) {
 
       <div className={cls.flexParent}>
         <div className={cls.flexChild}>
-          <Button error color="primary" tint="100">
+          <Button error color="tertiary" tint="100">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button error color="primary" tint="100" variant="outline">
+          <Button error color="tertiary" tint="100" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button error color="primary" tint="100" variant="link">
+          <Button error color="tertiary" tint="100" variant="link">
             Button
           </Button>
         </div>
@@ -108,15 +108,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button color="primary" tint="200">
+          <Button color="tertiary" tint="200">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="200" variant="outline">
+          <Button color="tertiary" tint="200" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="200" variant="link">
+          <Button color="tertiary" tint="200" variant="link">
             Button
           </Button>
         </div>
@@ -124,15 +124,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button color="primary" tint="300">
+          <Button color="tertiary" tint="300">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="300" variant="outline">
+          <Button color="tertiary" tint="300" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="300" variant="link">
+          <Button color="tertiary" tint="300" variant="link">
             Button
           </Button>
         </div>
@@ -140,15 +140,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button color="primary" tint="400">
+          <Button color="tertiary" tint="400">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="400" variant="outline">
+          <Button color="tertiary" tint="400" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="400" variant="link">
+          <Button color="tertiary" tint="400" variant="link">
             Button
           </Button>
         </div>
@@ -156,15 +156,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button warning color="primary" tint="500">
+          <Button warning color="tertiary" tint="500">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button warning color="primary" tint="500" variant="outline">
+          <Button warning color="tertiary" tint="500" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button warning color="primary" tint="500" variant="link">
+          <Button warning color="tertiary" tint="500" variant="link">
             Button
           </Button>
         </div>
@@ -172,15 +172,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button color="primary" tint="600">
+          <Button color="tertiary" tint="600">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="600" variant="outline">
+          <Button color="tertiary" tint="600" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="600" variant="link">
+          <Button color="tertiary" tint="600" variant="link">
             Button
           </Button>
         </div>
@@ -188,15 +188,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button color="primary" tint="700">
+          <Button color="tertiary" tint="700">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="700" variant="outline">
+          <Button color="tertiary" tint="700" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="700" variant="link">
+          <Button color="tertiary" tint="700" variant="link">
             Button
           </Button>
         </div>
@@ -204,15 +204,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button color="primary" tint="800">
+          <Button color="tertiary" tint="800">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="800" variant="outline">
+          <Button color="tertiary" tint="800" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="primary" tint="800" variant="link">
+          <Button color="tertiary" tint="800" variant="link">
             Button
           </Button>
         </div>
@@ -220,15 +220,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button loading color="primary" tint="900">
+          <Button loading color="tertiary" tint="900">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button loading color="primary" tint="900" variant="outline">
+          <Button loading color="tertiary" tint="900" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button loading color="primary" tint="900" variant="link">
+          <Button loading color="tertiary" tint="900" variant="link">
             Button
           </Button>
         </div>
@@ -243,8 +243,12 @@ export default function Page(props) {
           Add To Cart
         </Button>
         <div className={cls.break_h_sm} />
-        <Button icon={<BiSave />} color="secondary">
+        <Button icon={<BiSave />} color="secondary" loading>
           Save
+        </Button>
+        <div className={cls.break_h_sm} />
+        <Button icon={<BiCar />} color="tertiary" error>
+          Drive Now
         </Button>
         <div className={cls.break_h_sm} />
         <Button icon={<AiOutlineCloseCircle />} color="default">

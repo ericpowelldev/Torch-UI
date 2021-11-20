@@ -8,8 +8,8 @@ const beforeTheme = {
 
     // Design Colors
     primary: `#f42460`,
-    secondary: `#20c8f4`,
-    tertiary: `#00d080`,
+    secondary: `#20c0f0`,
+    tertiary: `#20c8a0`,
 
     // Utility Colors
     info: `#2496f4`,

@@ -20,7 +20,7 @@ function Button(props) {
   // HOOKS //
   const { theme } = useFui();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
-  const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
+  const { getRootPadding, getSolidHoverHeight, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
 
   // STYLES //
   const useStyles = createUseStyles(
@@ -50,15 +50,25 @@ function Button(props) {
         padding: getRootPadding(props.size),
         backgroundColor: getColorBg(props.color, props.tint, props.disabled),
         color: getColorFg(props.color, props.tint, props.disabled),
+        "&::after": {
+          content: `""`,
+          position: `absolute`,
+          bottom: 0,
+          left: `50%`,
+          width: 0,
+          height: getSolidHoverHeight(props.size),
+          borderRadius: theme.radius(0.5),
+          backgroundColor: getColorHover(props.color, props.tint, `solid`),
+          transition: theme.trans(0.15),
+        },
         "&:hover": {
-          boxShadow: theme.shadow.btn,
-          // backgroundColor: !props.disableHoverEffect ? getColorHover(props.color, props.tint, `solid`) : getColorBg(props.color, props.tint, props.disabled),
-          "@media (hover: none)": {
-            // backgroundColor: getColorBg(props.color, props.tint, props.disabled),
+          "&::after": {
+            left: 0,
+            width: `100%`,
           },
         },
         "&:active": {
-          // backgroundColor: getColorActive(props.color, props.tint, `solid`),
+          backgroundColor: getColorActive(props.color, props.tint, `solid`),
         },
       }),
       outline: (props) => ({
