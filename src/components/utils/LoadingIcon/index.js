@@ -2,25 +2,21 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { boolValues, colorValues, tintValues } from "utils/standards";
 import { useColors } from "hooks/useColors";
+import { useLoadingIcon } from "./useLoadingIcon";
 import { createUseStyles } from "react-jss";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Spinner(props) {
-  const { children, className, type, color, tint, size, thickness, speed, ...rest } = props;
+function LoadingIcon(props) {
+  const { children, className, classes, type, color, tint, size, thickness, speed, disabled, ...rest } = props;
 
+  // HOOKS //
   const { getColorBg, getColorFg } = useColors();
+  const { getTrackSize } = useLoadingIcon();
 
-  const getTrackSize = (size) => {
-    if (size > 48) return `${size / 8}px`;
-    if (size > 36) return `${size / 6}px`;
-    if (size > 24) return `${size / 5}px`;
-    if (size > 12) return `${size / 4}px`;
-    return `${size / 2}px`;
-  };
-
-  // Create styles
+  // STYLES //
   const useStyles = createUseStyles(
     {
       root: {
@@ -37,10 +33,11 @@ function Spinner(props) {
         width: `${props.size}px`,
         height: `${props.size}px`,
         border: `${props.thickness ? `${props.thickness}px` : getTrackSize(props.size)} solid ${
-          props.type === `bg` ? getColorBg(props.color, props.tint) : getColorFg(props.color, props.tint)
-        }40`,
+          props.type === `bg` ? getColorBg(props.color, props.tint, props.disabled) : getColorFg(props.color, props.tint, props.disabled)
+        }`,
         borderRadius: `50%`,
         backgroundColor: `transparent`,
+        opacity: 0.25,
       }),
       bar: (props) => ({
         position: `absolute`,
@@ -50,7 +47,7 @@ function Spinner(props) {
         height: `${props.size}px`,
         border: `${props.thickness ? `${props.thickness}px` : getTrackSize(props.size)} solid transparent`,
         borderTop: `${props.thickness ? `${props.thickness}px` : getTrackSize(props.size)} solid ${
-          props.type === `bg` ? getColorBg(props.color, props.tint) : getColorFg(props.color, props.tint)
+          props.type === `bg` ? getColorBg(props.color, props.tint, props.disabled) : getColorFg(props.color, props.tint, props.disabled)
         }`,
         borderRadius: `50%`,
         backgroundColor: `transparent`,
@@ -66,42 +63,56 @@ function Spinner(props) {
       },
     },
     {
-      name: `FuiSpinner`,
+      name: `FuiLoadingIcon`,
       index: 2,
     }
   );
   const cls = useStyles(props);
 
-  const getClassNames = () => {
-    let classNames = [cls.root];
-    if (className) classNames.push(className);
+  // CLASS - generic //
+  const getClassNames = (name) => {
+    let classNames = [cls[name]];
+    if (classes && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
+  // CLASS - root //
+  const getClassNames_root = () => {
+    let classNames = [cls.root];
+    if (className) classNames.push(className);
+    if (classes && classes.root) classNames.push(classes.root);
+    return classNames.join(` `);
+  };
+
+  // RETURN //
   return (
-    <div className={getClassNames()} {...rest}>
-      <div className={cls.track} />
-      <div className={cls.bar} />
+    <div className={getClassNames_root()} {...rest}>
+      <div className={getClassNames(`track`)} />
+      <div className={getClassNames(`bar`)} />
     </div>
   );
 }
 
 //////////////////////// PROPS ////////////////////////
 
-Spinner.propTypes = {
+LoadingIcon.propTypes = {
   className: PropTypes.string,
+  classes: PropTypes.object,
   style: PropTypes.object,
 
   type: PropTypes.oneOf([`bg`, `fg`]),
-  color: PropTypes.oneOf([`default`, `primary`, `secondary`, `tertiary`, `info`, `error`, `warning`, `success`]),
-  tint: PropTypes.oneOf([`100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`]),
+  color: PropTypes.oneOf(colorValues),
+  tint: PropTypes.oneOf(tintValues),
   size: PropTypes.number,
   thickness: PropTypes.number,
   speed: PropTypes.number,
+
+  disabled: PropTypes.oneOf(boolValues),
 };
 
-Spinner.defaultProps = {
+LoadingIcon.defaultProps = {
   className: null,
+  classes: null,
   style: null,
 
   type: `bg`,
@@ -110,8 +121,10 @@ Spinner.defaultProps = {
   size: 40,
   thickness: 0,
   speed: 500,
+
+  disabled: false,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Spinner;
+export default LoadingIcon;

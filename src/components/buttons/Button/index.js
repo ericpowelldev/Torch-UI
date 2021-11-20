@@ -2,23 +2,27 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { boolValues, colorValues, tintValues, sizeValues } from "utils/standards";
 import { useFui } from "providers/Fui";
 import { useColors } from "hooks/useColors";
 import { useButton } from "./useButton";
 import { createUseStyles } from "react-jss";
 
-import Spinner from "components/utils/Spinner";
+import ErrorIcon from "components/utils/ErrorIcon";
+import WarningIcon from "components/utils/WarningIcon";
+import LoadingIcon from "components/utils/LoadingIcon";
 
 //////////////////////// COMPONENT ////////////////////////
 
 function Button(props) {
-  const { children, className, color, tint, size, variant, loading, disabled, uppercase, ...rest } = props;
+  const { children, className, classes, color, tint, size, variant, tooltip, icon, fullWidth, uppercase, disabled, loading, warning, error, ...rest } = props;
 
+  // HOOKS //
   const { theme } = useFui();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
   const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
 
-  // Create styles
+  // STYLES //
   const useStyles = createUseStyles(
     {
       root: {
@@ -26,6 +30,7 @@ function Button(props) {
         overflow: `hidden`,
         display: `inline-flex`,
         alignItems: `center`,
+        justifyContent: `center`,
         padding: 0,
         border: 0,
         borderRadius: theme.radius(1),
@@ -38,23 +43,26 @@ function Button(props) {
         color: `inherit`,
         cursor: `pointer`,
         transition: theme.trans(0.15),
+        userSelect: `none`,
       },
       solid: (props) => ({
+        width: props.fullWidth ? `100%` : `inherit`,
         padding: getRootPadding(props.size),
         backgroundColor: getColorBg(props.color, props.tint, props.disabled),
         color: getColorFg(props.color, props.tint, props.disabled),
-        // boxShadow: `0 0 0 0 ${Color(getColorBg(props.color, props.tint, props.disabled)).alpha(0.7)}`,
         "&:hover": {
-          backgroundColor: !props.disableHoverEffect ? getColorHover(props.color, props.tint, `solid`) : getColorBg(props.color, props.tint, props.disabled),
+          boxShadow: theme.shadow.btn,
+          // backgroundColor: !props.disableHoverEffect ? getColorHover(props.color, props.tint, `solid`) : getColorBg(props.color, props.tint, props.disabled),
           "@media (hover: none)": {
-            backgroundColor: getColorBg(props.color, props.tint, props.disabled),
+            // backgroundColor: getColorBg(props.color, props.tint, props.disabled),
           },
         },
         "&:active": {
-          backgroundColor: getColorActive(props.color, props.tint, `solid`),
+          // backgroundColor: getColorActive(props.color, props.tint, `solid`),
         },
       }),
       outline: (props) => ({
+        width: props.fullWidth ? `100%` : `inherit`,
         padding: getOutlinePadding(props.size),
         border: `1px solid ${getColorBg(props.color, props.tint, props.disabled)}`,
         backgroundColor: `transparent`,
@@ -70,6 +78,7 @@ function Button(props) {
         },
       }),
       link: (props) => ({
+        width: props.fullWidth ? `100%` : `inherit`,
         padding: getRootPadding(props.size),
         backgroundColor: `transparent`,
         color: getColorBg(props.color, props.tint, props.disabled),
@@ -84,6 +93,7 @@ function Button(props) {
         },
       }),
       disabled: {
+        cursor: `not-allowed`,
         userSelect: `none`,
         pointerEvents: `none`,
       },
@@ -97,16 +107,20 @@ function Button(props) {
       }),
       startIcon: (props) => ({
         marginRight: theme.space(2),
+        "& svg": {
+          display: `block`,
+          width: getIconSize(props.size),
+          height: getIconSize(props.size),
+        },
       }),
-      // "@keyframes pulse": {
-      //   "0%": {},
-      //   "100%": {
-      //     boxShadow: `0 0 0 ${theme.space(2)} #00000000`,
-      //   },
-      // },
-      // pulse: {
-      //   animation: `$pulse 0.35s ease-out`,
-      // },
+      endIcon: (props) => ({
+        marginLeft: theme.space(2),
+        "& svg": {
+          display: `block`,
+          width: getIconSize(props.size),
+          height: getIconSize(props.size),
+        },
+      }),
     },
     {
       name: `FuiButton`,
@@ -115,39 +129,64 @@ function Button(props) {
   );
   const cls = useStyles(props);
 
-  // let pulsar;
+  // CLASS - generic //
+  const getClassNames = (name) => {
+    let classNames = [cls[name]];
+    if (classes && classes[name]) classNames.push(classes[name]);
+    return classNames.join(` `);
+  };
 
-  // const handleClick = (event) => {
-  //   if (!disableEffects && variant === `solid`) {
-  //     const el = event.target;
-  //     el.classList.add(cls.pulse);
-  //     clearTimeout(pulsar);
-  //     pulsar = setTimeout(() => {
-  //       el.classList.remove(cls.pulse);
-  //       clearTimeout(pulsar);
-  //     }, 500);
-  //   }
-  //   if (onClick) onClick();
-  // };
-
-  const getClassNames = () => {
+  // CLASS - root //
+  const getClassNames_root = () => {
     let classNames = [cls.root];
     if (variant === `solid`) classNames.push(cls.solid);
     if (variant === `outline`) classNames.push(cls.outline);
     if (variant === `link`) classNames.push(cls.link);
     if (disabled) classNames.push(cls.disabled);
     if (className) classNames.push(className);
+    if (classes && classes.root) classNames.push(classes.root);
     return classNames.join(` `);
   };
 
+  // RETURN //
   return (
-    <button className={getClassNames()} {...rest}>
-      {loading ? (
-        <span className={cls.startIcon}>
-          <Spinner type={props.variant === `solid` ? `fg` : `bg`} color={props.color} tint={props.tint} size={getIconSize(props.size)} />
+    <button className={getClassNames_root()} {...rest}>
+      {icon ? <span className={cls.startIcon}>{icon}</span> : null}
+      <span className={getClassNames(`label`)}>{children}</span>
+      {error ? (
+        <span className={cls.endIcon}>
+          <ErrorIcon
+            className={getClassNames(`errorIcon`)}
+            type={props.variant === `solid` ? `fg` : `bg`}
+            color={props.color}
+            tint={props.tint}
+            size={getIconSize(props.size)}
+            disabled={props.disabled}
+          />
+        </span>
+      ) : warning ? (
+        <span className={cls.endIcon}>
+          <WarningIcon
+            className={getClassNames(`warningIcon`)}
+            type={props.variant === `solid` ? `fg` : `bg`}
+            color={props.color}
+            tint={props.tint}
+            size={getIconSize(props.size)}
+            disabled={props.disabled}
+          />
+        </span>
+      ) : loading ? (
+        <span className={cls.endIcon}>
+          <LoadingIcon
+            className={getClassNames(`loadingIcon`)}
+            type={props.variant === `solid` ? `fg` : `bg`}
+            color={props.color}
+            tint={props.tint}
+            size={getIconSize(props.size)}
+            disabled={props.disabled}
+          />
         </span>
       ) : null}
-      <span className={cls.label}>{children}</span>
     </button>
   );
 }
@@ -156,21 +195,29 @@ function Button(props) {
 
 Button.propTypes = {
   className: PropTypes.string,
+  classes: PropTypes.object,
   style: PropTypes.object,
 
-  color: PropTypes.oneOf([`default`, `primary`, `secondary`, `tertiary`, `info`, `error`, `warning`, `success`]),
-  tint: PropTypes.oneOf([`100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`]),
-  size: PropTypes.oneOf([`xs`, `sm`, `md`, `lg`, `xl`]),
+  color: PropTypes.oneOf(colorValues),
+  tint: PropTypes.oneOf(tintValues),
+  size: PropTypes.oneOf(sizeValues),
   variant: PropTypes.oneOf([`solid`, `outline`, `link`]),
 
-  uppercase: PropTypes.oneOf([null, undefined, false, true]),
+  tooltip: PropTypes.node,
+  icon: PropTypes.node,
 
-  loading: PropTypes.oneOf([null, undefined, false, true]),
-  disabled: PropTypes.oneOf([null, undefined, false, true]),
+  fullWidth: PropTypes.oneOf(boolValues),
+  uppercase: PropTypes.oneOf(boolValues),
+
+  disabled: PropTypes.oneOf(boolValues),
+  loading: PropTypes.oneOf(boolValues),
+  warning: PropTypes.oneOf(boolValues),
+  error: PropTypes.oneOf(boolValues),
 };
 
 Button.defaultProps = {
   className: null,
+  classes: null,
   style: null,
 
   color: `default`,
@@ -178,10 +225,16 @@ Button.defaultProps = {
   size: `md`,
   variant: `solid`,
 
+  tooltip: null,
+  icon: null,
+
+  fullWidth: false,
   uppercase: true,
 
-  loading: false,
   disabled: false,
+  loading: false,
+  warning: false,
+  error: false,
 };
 
 //////////////////////// EXPORT ////////////////////////

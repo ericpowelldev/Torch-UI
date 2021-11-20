@@ -7,13 +7,13 @@ const beforeTheme = {
     default: `#303640`,
 
     // Design Colors
-    primary: `#f42448`,
+    primary: `#f42460`,
     secondary: `#20c8f4`,
-    tertiary: `#c0c010`,
+    tertiary: `#00d080`,
 
     // Utility Colors
     info: `#2496f4`,
-    error: `#ff0000`,
+    error: `#ff2400`,
     warning: `#f4c800`,
     success: `#20d840`,
 
@@ -96,26 +96,26 @@ const beforeTheme = {
   },
 
   // Pixel Spacing
-  space: (num1 = 2, num2 = null, num3 = null, num4 = null) => {
+  space: (top = 2, right = null, bottom = null, left = null) => {
     const pix = (num) => `${4 * num}px`;
 
     let pixSpace = [];
-    if (num1 && typeof num1 === `number`) pixSpace.push(pix(num1));
-    if (num2 && typeof num2 === `number`) pixSpace.push(pix(num2));
-    if (num3 && typeof num3 === `number`) pixSpace.push(pix(num3));
-    if (num4 && typeof num4 === `number`) pixSpace.push(pix(num4));
+    if (top && typeof top === `number`) pixSpace.push(pix(top));
+    if (right && typeof right === `number`) pixSpace.push(pix(right));
+    if (bottom && typeof bottom === `number`) pixSpace.push(pix(bottom));
+    if (left && typeof left === `number`) pixSpace.push(pix(left));
     return pixSpace.join(` `);
   },
 
-  // Pixel Spacing
-  radius: (num1 = 2, num2 = null, num3 = null, num4 = null) => {
+  // Border Radius
+  radius: (topLeft = 1, topRight = null, bottomRight = null, bottomLeft = null) => {
     const pix = (num) => `${4 * num}px`;
 
     let pixRadius = [];
-    if (num1 && typeof num1 === `number`) pixRadius.push(pix(num1));
-    if (num2 && typeof num2 === `number`) pixRadius.push(pix(num2));
-    if (num3 && typeof num3 === `number`) pixRadius.push(pix(num3));
-    if (num4 && typeof num4 === `number`) pixRadius.push(pix(num4));
+    if (topLeft && typeof topLeft === `number`) pixRadius.push(pix(topLeft));
+    if (topRight && typeof topRight === `number`) pixRadius.push(pix(topRight));
+    if (bottomRight && typeof bottomRight === `number`) pixRadius.push(pix(bottomRight));
+    if (bottomLeft && typeof bottomLeft === `number`) pixRadius.push(pix(bottomLeft));
     return pixRadius.join(` `);
   },
 
@@ -128,6 +128,7 @@ const beforeTheme = {
     soft: `0 0 16px #00000016`,
     medium: `0 0 16px #00000024`,
     harsh: `0 0 16px #00000040`,
+    btn: `0 4px 4px #00000040`,
   },
 
   // Z-Index Options
@@ -180,23 +181,23 @@ const beforeTheme = {
   },
 };
 
-const buildContrastColor = (color) => {
-  const fgLight = beforeTheme.color.fgContrast;
-  const fgDark = beforeTheme.color.fg;
-  let isLight = false;
+// const buildContrastColor = (color) => {
+//   const fgLight = beforeTheme.color.fgContrast;
+//   const fgDark = beforeTheme.color.fg;
+//   let isLight = false;
 
-  if (Color(color).luminosity() > 0.75) isLight = true;
+//   if (Color(color).luminosity() > 0.75) isLight = true;
 
-  return isLight ? fgDark : fgLight;
-};
+//   return isLight ? fgDark : fgLight;
+// };
 
-const buildHoverColor = (color) => {
-  const lumin = Color(color).luminosity();
-  const isLight = lumin > 0.4 ? true : false;
+// const buildHoverColor = (color) => {
+//   const lumin = Color(color).luminosity();
+//   const isLight = lumin > 0.4 ? true : false;
 
-  if (!isLight) Color(color).lighten(0.25).hex();
-  return Color(color).darken(0.2).hex();
-};
+//   if (!isLight) Color(color).lighten(0.25).hex();
+//   return Color(color).darken(0.2).hex();
+// };
 
 const buildAlphaColors = (color) => {
   const alphas = [`00`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `A0`, `B0`, `C0`, `D0`, `E0`, `F0`];

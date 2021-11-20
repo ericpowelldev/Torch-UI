@@ -2,46 +2,42 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { useFui } from "providers/Fui";
+import { boolValues, colorValues, tintValues } from "utils/standards";
+import { useColors } from "hooks/useColors";
 import { createUseStyles } from "react-jss";
+
+import { AiOutlineWarning } from "react-icons/ai";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function ButtonBase(props) {
-  const { children, classes, className, ...rest } = props;
+function WarningIcon(props) {
+  const { children, className, classes, type, color, tint, size, disabled, ...rest } = props;
 
   // HOOKS //
-  const { theme } = useFui();
+  const { getColorBg, getColorFg } = useColors();
 
   // STYLES //
   const useStyles = createUseStyles(
     {
-      root: {
+      root: (props) => ({
         position: `relative`,
-        overflow: `hidden`,
-        display: `inline-flex`,
-        alignItems: `center`,
+        display: `block`,
+        width: props.size,
+        height: props.size,
         padding: 0,
         border: 0,
-        borderRadius: theme.radius(1),
         margin: 0,
-        lineHeight: theme.txt.fontHeight,
-        fontFamily: theme.txt.fontFamily,
-        fontSize: 14,
-        fontWeight: 600,
-        background: `inherit`,
-        color: `inherit`,
-        cursor: `pointer`,
-        transition: theme.trans(0.2),
+        lineHeight: 1,
         userSelect: `none`,
-      },
+        color: props.type === `bg` ? getColorBg(props.color, props.tint, props.disabled) : getColorFg(props.color, props.tint, props.disabled),
+      }),
     },
     {
-      name: `FuiButtonBase`,
-      index: 0,
+      name: `FuiWarningIcon`,
+      index: 3,
     }
   );
-  const cls = useStyles();
+  const cls = useStyles(props);
 
   // CLASS - generic //
   const getClassNames = (name) => {
@@ -59,27 +55,37 @@ function ButtonBase(props) {
   };
 
   // RETURN //
-  return (
-    <button className={getClassNames_root()} {...rest}>
-      <span className={getClassNames(`label`)}>{children}</span>
-    </button>
-  );
+  return <AiOutlineWarning className={getClassNames_root()} {...rest} />;
 }
 
 //////////////////////// PROPS ////////////////////////
 
-ButtonBase.propTypes = {
+WarningIcon.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object,
   style: PropTypes.object,
+
+  type: PropTypes.oneOf([`bg`, `fg`]),
+  color: PropTypes.oneOf(colorValues),
+  tint: PropTypes.oneOf(tintValues),
+  size: PropTypes.number,
+
+  disabled: PropTypes.oneOf(boolValues),
 };
 
-ButtonBase.defaultProps = {
+WarningIcon.defaultProps = {
   className: null,
   classes: null,
   style: null,
+
+  type: `bg`,
+  color: `default`,
+  tint: `500`,
+  size: 40,
+
+  disabled: false,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default ButtonBase;
+export default WarningIcon;
