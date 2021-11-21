@@ -22,9 +22,10 @@ function ButtonBase(props) {
         overflow: `hidden`,
         display: `inline-flex`,
         alignItems: `center`,
+        justifyContent: `center`,
         padding: 0,
         border: 0,
-        borderRadius: theme.radius(1),
+        borderRadius: theme.space(1),
         margin: 0,
         lineHeight: theme.txt.fontHeight,
         fontFamily: theme.txt.fontFamily,
@@ -33,7 +34,7 @@ function ButtonBase(props) {
         background: `inherit`,
         color: `inherit`,
         cursor: `pointer`,
-        transition: theme.trans(0.2),
+        transition: theme.trans(0.15),
         userSelect: `none`,
       },
     },
@@ -44,14 +45,14 @@ function ButtonBase(props) {
   );
   const cls = useStyles();
 
-  // CLASS - generic //
+  // CLASSNAMES //
   const getClassNames = (name) => {
     let classNames = [cls[name]];
     if (classes && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
-  // CLASS - root //
+  // CLASSNAMES - root //
   const getClassNames_root = () => {
     let classNames = [cls.root];
     if (className) classNames.push(className);

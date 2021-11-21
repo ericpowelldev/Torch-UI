@@ -40,14 +40,14 @@ function WarningIcon(props) {
   );
   const cls = useStyles(props);
 
-  // CLASS - generic //
+  // CLASSNAMES //
   const getClassNames = (name) => {
     let classNames = [cls[name]];
     if (classes && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
-  // CLASS - root //
+  // CLASSNAMES - root //
   const getClassNames_root = () => {
     let classNames = [cls.root];
     if (className) classNames.push(className);
