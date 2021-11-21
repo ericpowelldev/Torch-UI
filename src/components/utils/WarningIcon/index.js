@@ -2,9 +2,10 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { createUseStyles } from "react-jss";
+
 import { boolValues, colorValues, tintValues } from "utils/standards";
 import { useColors } from "hooks/useColors";
-import { createUseStyles } from "react-jss";
 
 import { AiOutlineWarning } from "react-icons/ai";
 

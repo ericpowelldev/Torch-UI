@@ -2,8 +2,9 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { useFui } from "providers/Fui";
 import { createUseStyles } from "react-jss";
+
+import { useFui } from "providers/Fui";
 
 //////////////////////// COMPONENT ////////////////////////
 

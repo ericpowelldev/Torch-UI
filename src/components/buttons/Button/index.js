@@ -2,11 +2,12 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { createUseStyles } from "react-jss";
+
 import { boolValues, colorValues, tintValues, sizeValues } from "utils/standards";
 import { useFui } from "providers/Fui";
 import { useColors } from "hooks/useColors";
 import { useButton } from "./useButton";
-import { createUseStyles } from "react-jss";
 
 import ErrorIcon from "components/utils/ErrorIcon";
 import WarningIcon from "components/utils/WarningIcon";
@@ -20,7 +21,7 @@ function Button(props) {
   // HOOKS //
   const { theme } = useFui();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
-  const { getRootPadding, getSolidHoverHeight, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
+  const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
 
   // STYLES //
   const useStyles = createUseStyles(
@@ -33,7 +34,7 @@ function Button(props) {
         justifyContent: `center`,
         padding: 0,
         border: 0,
-        borderRadius: theme.radius(1),
+        borderRadius: theme.space(1),
         margin: 0,
         lineHeight: theme.txt.fontHeight,
         fontFamily: theme.txt.fontFamily,
@@ -53,22 +54,28 @@ function Button(props) {
         "&::after": {
           content: `""`,
           position: `absolute`,
-          bottom: 0,
-          left: `50%`,
-          width: 0,
-          height: getSolidHoverHeight(props.size),
-          borderRadius: theme.radius(0.5),
-          backgroundColor: getColorHover(props.color, props.tint, `solid`),
+          top: 0,
+          left: 0,
+          width: `100%`,
+          height: `100%`,
+          backgroundColor: theme.color.white.alpha[0],
           transition: theme.trans(0.15),
         },
         "&:hover": {
           "&::after": {
-            left: 0,
-            width: `100%`,
+            backgroundColor: theme.color.white.alpha[4],
+          },
+          "@media (hover: none)": {
+            "&::after": {
+              backgroundColor: theme.color.white.alpha[0],
+            },
           },
         },
         "&:active": {
-          backgroundColor: getColorActive(props.color, props.tint, `solid`),
+          "&::after": {
+            backgroundColor: theme.color.white.alpha[6],
+            transition: theme.trans(0),
+          },
         },
       }),
       outline: (props) => ({
@@ -85,6 +92,7 @@ function Button(props) {
         },
         "&:active": {
           backgroundColor: getColorActive(props.color, props.tint, `outline`),
+          transition: theme.trans(0),
         },
       }),
       link: (props) => ({
@@ -100,6 +108,7 @@ function Button(props) {
         },
         "&:active": {
           backgroundColor: getColorActive(props.color, props.tint, `link`),
+          transition: theme.trans(0),
         },
       }),
       disabled: {

@@ -30,7 +30,6 @@ export function useColors() {
 
   /** Get color hover from background color prop */
   const getColorHover = (color, tint, variant) => {
-    if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return `#ffffff80`;
     if (variant !== `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint] + `20`;
     return `inherit`;
   };

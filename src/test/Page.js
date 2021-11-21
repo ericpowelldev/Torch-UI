@@ -52,6 +52,11 @@ export default function Page(props) {
   );
   const cls = useStyles();
 
+  const handleClick = (event) => {
+    const val = event.target.value;
+    console.log(`VALUE:`, val);
+  };
+
   return (
     <div className={cls.root}>
       <LoadingIcon style={{ display: `inline-block` }} />
@@ -243,7 +248,7 @@ export default function Page(props) {
           Add To Cart
         </Button>
         <div className={cls.break_h_sm} />
-        <Button icon={<BiSave />} color="secondary" loading>
+        <Button onClick={handleClick} icon={<BiSave />} color="secondary" loading>
           Save
         </Button>
         <div className={cls.break_h_sm} />

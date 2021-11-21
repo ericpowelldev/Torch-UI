@@ -96,27 +96,15 @@ const beforeTheme = {
   },
 
   // Pixel Spacing
-  space: (top = 2, right = null, bottom = null, left = null) => {
+  space: (num1 = 2, num2 = null, num3 = null, num4 = null) => {
     const pix = (num) => `${4 * num}px`;
 
     let pixSpace = [];
-    if (top && typeof top === `number`) pixSpace.push(pix(top));
-    if (right && typeof right === `number`) pixSpace.push(pix(right));
-    if (bottom && typeof bottom === `number`) pixSpace.push(pix(bottom));
-    if (left && typeof left === `number`) pixSpace.push(pix(left));
+    if (num1 && typeof num1 === `number`) pixSpace.push(pix(num1));
+    if (num2 && typeof num2 === `number`) pixSpace.push(pix(num2));
+    if (num3 && typeof num3 === `number`) pixSpace.push(pix(num3));
+    if (num4 && typeof num4 === `number`) pixSpace.push(pix(num4));
     return pixSpace.join(` `);
-  },
-
-  // Border Radius
-  radius: (topLeft = 1, topRight = null, bottomRight = null, bottomLeft = null) => {
-    const pix = (num) => `${4 * num}px`;
-
-    let pixRadius = [];
-    if (topLeft && typeof topLeft === `number`) pixRadius.push(pix(topLeft));
-    if (topRight && typeof topRight === `number`) pixRadius.push(pix(topRight));
-    if (bottomRight && typeof bottomRight === `number`) pixRadius.push(pix(bottomRight));
-    if (bottomLeft && typeof bottomLeft === `number`) pixRadius.push(pix(bottomLeft));
-    return pixRadius.join(` `);
   },
 
   // Transition Options
@@ -219,9 +207,9 @@ const buildDisabledColors = (color) => {
 };
 
 const buildDividerColors = (color) => {
-  const light = `${color}18`;
+  const light = `${color}12`;
   const main = `${color}18`;
-  const dark = `${color}18`;
+  const dark = `${color}20`;
   return { light, main, dark };
 };
 
@@ -248,19 +236,8 @@ const buildColors = (color) => {
     [`800`]: main[`400`],
     [`900`]: main[`500`],
   };
-  const hover = {
-    [`100`]: main[`200`],
-    [`200`]: main[`300`],
-    [`300`]: main[`400`],
-    [`400`]: main[`500`],
-    [`500`]: main[`600`],
-    [`600`]: main[`500`],
-    [`700`]: main[`600`],
-    [`800`]: main[`700`],
-    [`900`]: main[`800`],
-  };
   const alpha = buildAlphaColors(Color(color).hex());
-  return { main, contrast, hover, alpha };
+  return { main, contrast, alpha };
 };
 
 const theme = {

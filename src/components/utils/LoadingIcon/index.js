@@ -2,10 +2,11 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { createUseStyles } from "react-jss";
+
 import { boolValues, colorValues, tintValues } from "utils/standards";
 import { useColors } from "hooks/useColors";
 import { useLoadingIcon } from "./useLoadingIcon";
-import { createUseStyles } from "react-jss";
 
 //////////////////////// COMPONENT ////////////////////////
 
