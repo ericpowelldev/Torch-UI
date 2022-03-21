@@ -6,10 +6,11 @@ import { createUseStyles } from "react-jss";
 import { BiCart, BiSave, BiCar } from "react-icons/bi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import Button from "components/buttons/Button";
-import LoadingIcon from "components/utils/LoadingIcon";
-import WarningIcon from "components/utils/WarningIcon";
+import Button from "sc-components/buttons/Button";
 import ErrorIcon from "components/utils/ErrorIcon";
+import WarningIcon from "components/utils/WarningIcon";
+import LoadingIcon from "components/utils/LoadingIcon";
+import SuccessIcon from "components/utils/SuccessIcon";
 
 //////////////////////// COMPONENT ////////////////////////
 
@@ -59,15 +60,15 @@ export default function Page(props) {
 
   return (
     <div className={cls.root}>
-      <LoadingIcon style={{ display: `inline-block` }} />
-      <LoadingIcon style={{ display: `inline-block` }} disabled />
-      <LoadingIcon style={{ display: `inline-block` }} color="primary" />
-      <LoadingIcon style={{ display: `inline-block` }} color="secondary" />
-      <LoadingIcon style={{ display: `inline-block` }} color="tertiary" />
-      <LoadingIcon style={{ display: `inline-block` }} color="info" />
-      <LoadingIcon style={{ display: `inline-block` }} color="error" />
-      <LoadingIcon style={{ display: `inline-block` }} color="warning" />
-      <LoadingIcon style={{ display: `inline-block` }} color="success" />
+      <ErrorIcon style={{ display: `inline-block` }} />
+      <ErrorIcon style={{ display: `inline-block` }} disabled />
+      <ErrorIcon style={{ display: `inline-block` }} color="primary" />
+      <ErrorIcon style={{ display: `inline-block` }} color="secondary" />
+      <ErrorIcon style={{ display: `inline-block` }} color="tertiary" />
+      <ErrorIcon style={{ display: `inline-block` }} color="info" />
+      <ErrorIcon style={{ display: `inline-block` }} color="error" />
+      <ErrorIcon style={{ display: `inline-block` }} color="warning" />
+      <ErrorIcon style={{ display: `inline-block` }} color="success" />
 
       <div className={cls.break_v} />
 
@@ -83,15 +84,27 @@ export default function Page(props) {
 
       <div className={cls.break_v} />
 
-      <ErrorIcon style={{ display: `inline-block` }} />
-      <ErrorIcon style={{ display: `inline-block` }} disabled />
-      <ErrorIcon style={{ display: `inline-block` }} color="primary" />
-      <ErrorIcon style={{ display: `inline-block` }} color="secondary" />
-      <ErrorIcon style={{ display: `inline-block` }} color="tertiary" />
-      <ErrorIcon style={{ display: `inline-block` }} color="info" />
-      <ErrorIcon style={{ display: `inline-block` }} color="error" />
-      <ErrorIcon style={{ display: `inline-block` }} color="warning" />
-      <ErrorIcon style={{ display: `inline-block` }} color="success" />
+      <LoadingIcon style={{ display: `inline-block` }} />
+      <LoadingIcon style={{ display: `inline-block` }} disabled />
+      <LoadingIcon style={{ display: `inline-block` }} color="primary" />
+      <LoadingIcon style={{ display: `inline-block` }} color="secondary" />
+      <LoadingIcon style={{ display: `inline-block` }} color="tertiary" />
+      <LoadingIcon style={{ display: `inline-block` }} color="info" />
+      <LoadingIcon style={{ display: `inline-block` }} color="error" />
+      <LoadingIcon style={{ display: `inline-block` }} color="warning" />
+      <LoadingIcon style={{ display: `inline-block` }} color="success" />
+
+      <div className={cls.break_v} />
+
+      <SuccessIcon style={{ display: `inline-block` }} />
+      <SuccessIcon style={{ display: `inline-block` }} disabled />
+      <SuccessIcon style={{ display: `inline-block` }} color="primary" />
+      <SuccessIcon style={{ display: `inline-block` }} color="secondary" />
+      <SuccessIcon style={{ display: `inline-block` }} color="tertiary" />
+      <SuccessIcon style={{ display: `inline-block` }} color="info" />
+      <SuccessIcon style={{ display: `inline-block` }} color="error" />
+      <SuccessIcon style={{ display: `inline-block` }} color="warning" />
+      <SuccessIcon style={{ display: `inline-block` }} color="success" />
 
       <div className={cls.break_v} />
 
@@ -129,15 +142,15 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button color="tertiary" tint="300">
+          <Button success color="tertiary" tint="300">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="tertiary" tint="300" variant="outline">
+          <Button success color="tertiary" tint="300" variant="outline">
             Button
           </Button>
           <div className={cls.break_v} />
-          <Button color="tertiary" tint="300" variant="link">
+          <Button success color="tertiary" tint="300" variant="link">
             Button
           </Button>
         </div>
@@ -161,7 +174,7 @@ export default function Page(props) {
         <div className={cls.break_h} />
 
         <div className={cls.flexChild}>
-          <Button warning color="tertiary" tint="500">
+          <Button warning color="tertiary" tint="500" shadow>
             Button
           </Button>
           <div className={cls.break_v} />
@@ -244,7 +257,7 @@ export default function Page(props) {
       <div className={cls.break_v} />
 
       <div className={cls.flexParent}>
-        <Button icon={<BiCart />} color="primary">
+        <Button icon={<BiCart />} color="primary" success>
           Add To Cart
         </Button>
         <div className={cls.break_h_sm} />
@@ -256,7 +269,7 @@ export default function Page(props) {
           Drive Now
         </Button>
         <div className={cls.break_h_sm} />
-        <Button icon={<AiOutlineCloseCircle />} color="default">
+        <Button icon={<AiOutlineCloseCircle />} color="default" warning>
           Cancel
         </Button>
       </div>

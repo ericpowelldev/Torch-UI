@@ -12,7 +12,7 @@ import { AiOutlineWarning } from "react-icons/ai";
 //////////////////////// COMPONENT ////////////////////////
 
 function WarningIcon(props) {
-  const { children, className, classes, type, color, tint, size, disabled, ...rest } = props;
+  const { children, className, classes, type, color, tint, size, speed, blink, disabled, ...rest } = props;
 
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
@@ -30,8 +30,20 @@ function WarningIcon(props) {
         margin: 0,
         lineHeight: 1,
         userSelect: `none`,
+        animation: props.blink ? `$blink ${props.speed}ms infinite` : `none`,
         color: props.type === `bg` ? getColorBg(props.color, props.tint, props.disabled) : getColorFg(props.color, props.tint, props.disabled),
       }),
+      "@keyframes blink": {
+        "0%": {
+          opacity: 1,
+        },
+        "50%": {
+          opacity: 0.5,
+        },
+        "100%": {
+          opacity: 1,
+        },
+      },
     },
     {
       name: `FuiWarningIcon`,
@@ -70,6 +82,9 @@ WarningIcon.propTypes = {
   color: PropTypes.oneOf(colorValues),
   tint: PropTypes.oneOf(tintValues),
   size: PropTypes.number,
+  speed: PropTypes.number,
+
+  blink: PropTypes.oneOf(boolValues),
 
   disabled: PropTypes.oneOf(boolValues),
 };
@@ -83,6 +98,9 @@ WarningIcon.defaultProps = {
   color: `default`,
   tint: `500`,
   size: 40,
+  speed: 1600,
+
+  blink: true,
 
   disabled: false,
 };

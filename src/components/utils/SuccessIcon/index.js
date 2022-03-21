@@ -7,11 +7,11 @@ import { createUseStyles } from "react-jss";
 import { boolValues, colorValues, tintValues } from "utils/standards";
 import { useColors } from "hooks/useColors";
 
-import { MdReport } from "react-icons/md";
+import { MdCheckCircle } from "react-icons/md";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function ErrorIcon(props) {
+function SuccessIcon(props) {
   const { children, className, classes, type, color, tint, size, speed, blink, disabled, ...rest } = props;
 
   // HOOKS //
@@ -46,7 +46,7 @@ function ErrorIcon(props) {
       },
     },
     {
-      name: `FuiErrorIcon`,
+      name: `FuiSuccessIcon`,
       index: 4,
     }
   );
@@ -68,12 +68,12 @@ function ErrorIcon(props) {
   };
 
   // RETURN //
-  return <MdReport className={getClassNames_root()} {...rest} />;
+  return <MdCheckCircle className={getClassNames_root()} {...rest} />;
 }
 
 //////////////////////// PROPS ////////////////////////
 
-ErrorIcon.propTypes = {
+SuccessIcon.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object,
   style: PropTypes.object,
@@ -89,7 +89,7 @@ ErrorIcon.propTypes = {
   disabled: PropTypes.oneOf(boolValues),
 };
 
-ErrorIcon.defaultProps = {
+SuccessIcon.defaultProps = {
   className: null,
   classes: null,
   style: null,
@@ -98,13 +98,13 @@ ErrorIcon.defaultProps = {
   color: `default`,
   tint: `500`,
   size: 40,
-  speed: 800,
+  speed: 2400,
 
-  blink: true,
+  blink: false,
 
   disabled: false,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default ErrorIcon;
+export default SuccessIcon;
