@@ -15,8 +15,8 @@ const Root = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
-  /* background-color: #323640; */
+  background-color: #f5f5f5;
+  /* background-color: #202428; */
 `;
 
 //////////////////////// COMPONENT ////////////////////////

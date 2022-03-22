@@ -15,8 +15,11 @@ export function useColors() {
   };
 
   /** Get color background from color and tint prop */
-  const getColorBg = (color, tint, disabled) => {
+  const getColorBg = (color, tint, disabled, override) => {
+    if (disabled && override === `fg`) return theme.color.disabled.fg;
     if (disabled) return theme.color.disabled.bg;
+    if (color === `black`) return theme.color.black.main;
+    if (color === `white`) return theme.color.white.main;
     if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint];
     return theme.color.default.main[`500`];
   };
@@ -24,6 +27,8 @@ export function useColors() {
   /** Get color foreground from color prop */
   const getColorFg = (color, tint, disabled) => {
     if (disabled) return theme.color.disabled.fg;
+    if (color === `black`) return theme.color.fgContrast.primary;
+    if (color === `white`) return theme.color.fg.primary;
     if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].contrast[tint];
     return theme.color.fgContrast.primary;
   };

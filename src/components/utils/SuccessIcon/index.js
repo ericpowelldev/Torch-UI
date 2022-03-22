@@ -54,7 +54,7 @@ function SuccessIcon({ children, className, classes, type, color, tint, size, sp
     line-height: 1;
     user-select: none;
     animation: ${blinkKeyframes} ${blink ? speed : 0}ms infinite;
-    color: ${type === `bg` ? getColorBg(color, tint, disabled) : getColorFg(color, tint, disabled)};
+    color: ${type === `bg` ? getColorBg(color, tint, disabled, `fg`) : getColorFg(color, tint, disabled)};
   `;
 
   // RETURN //
@@ -69,7 +69,7 @@ SuccessIcon.propTypes = {
   style: PropTypes.object,
 
   type: PropTypes.oneOf([`bg`, `fg`]),
-  color: PropTypes.oneOf(colorValues),
+  color: PropTypes.oneOf([`black`, `white`, ...colorValues]),
   tint: PropTypes.oneOf(tintValues),
   size: PropTypes.number,
   speed: PropTypes.number,

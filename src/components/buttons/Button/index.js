@@ -67,7 +67,7 @@ function Button({
     border: 0;
     border-radius: ${theme.space(1)};
     margin: 0;
-    line-height: ${theme.txt.fontHeight};
+    line-height: ${theme.txt.fontHeightReset};
     font-family: ${theme.txt.fontFamily};
     font-size: 14;
     font-weight: 600;
@@ -118,9 +118,9 @@ function Button({
     css`
       width: ${fullWidth ? `100%` : `inherit`};
       padding: ${getOutlinePadding(size)};
-      border: 1px solid ${getColorBg(color, tint, disabled)};
+      border: 1px solid ${getColorBg(color, tint, disabled, `fg`)};
       background-color: transparent;
-      color: ${getColorBg(color, tint, disabled)};
+      color: ${getColorBg(color, tint, disabled, `fg`)};
 
       &:hover {
         background-color: ${getColorHover(color, tint, `outline`)};
@@ -139,13 +139,13 @@ function Button({
     css`
       width: ${fullWidth ? `100%` : `inherit`};
       padding: ${getRootPadding(size)};
-      background-color: ${getColorBg(color, tint, disabled)}20;
-      color: ${getColorBg(color, tint, disabled)};
+      background-color: ${getColorBg(color, tint, disabled, `fg`)}20;
+      color: ${getColorBg(color, tint, disabled, `fg`)};
 
       &:hover {
         background-color: ${getColorHover(color, tint, `transparent`)};
         @media (hover: none) {
-          background-color: ${getColorBg(color, tint, disabled)}20;
+          background-color: ${getColorBg(color, tint, disabled, `fg`)}20;
         }
       }
 
@@ -160,7 +160,7 @@ function Button({
       width: ${fullWidth ? `100%` : `inherit`};
       padding: ${getRootPadding(size)};
       background-color: transparent;
-      color: ${getColorBg(color, tint, disabled)};
+      color: ${getColorBg(color, tint, disabled, `fg`)};
 
       &:hover {
         background-color: ${getColorHover(color, tint, `link`)};
@@ -184,7 +184,7 @@ function Button({
   `;
 
   const MyLabel = styled.span`
-    line-height: ${theme.txt.fontHeightBtn};
+    line-height: ${theme.txt.fontHeight};
     font-size: ${getLabelSize(size)};
     font-weight: ${getLabelWeight(variant)};
     text-transform: ${!uppercase ? `inherit` : `uppercase`};

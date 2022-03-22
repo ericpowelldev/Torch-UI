@@ -39,7 +39,7 @@ function Button({ children, className, classes, ...rest }) {
     border: 0;
     border-radius: ${theme.space(1)};
     margin: 0;
-    line-height: ${theme.txt.fontHeight};
+    line-height: ${theme.txt.fontHeightReset};
     font-family: ${theme.txt.fontFamily};
     font-size: 14;
     font-weight: 600;
@@ -51,7 +51,7 @@ function Button({ children, className, classes, ...rest }) {
   `;
 
   const MyLabel = styled.span`
-    line-height: ${theme.txt.fontHeightBtn};
+    line-height: ${theme.txt.fontHeight};
     user-select: none;
     pointer-events: none;
   `;

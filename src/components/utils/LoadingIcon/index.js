@@ -42,7 +42,7 @@ function LoadingIcon({ children, className, classes, type, color, tint, size, th
     width: ${size}px;
     height: ${size}px;
     border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
-      ${type === `bg` ? getColorBg(color, tint, disabled) : getColorFg(color, tint, disabled)};
+      ${type === `bg` ? getColorBg(color, tint, disabled, `fg`) : getColorFg(color, tint, disabled)};
     border-radius: 50%;
     background-color: transparent;
     opacity: 25%;
@@ -56,7 +56,7 @@ function LoadingIcon({ children, className, classes, type, color, tint, size, th
     height: ${size}px;
     border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid transparent;
     border-top: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
-      ${type === `bg` ? getColorBg(color, tint, disabled) : getColorFg(color, tint, disabled)};
+      ${type === `bg` ? getColorBg(color, tint, disabled, `fg`) : getColorFg(color, tint, disabled)};
     border-radius: 50%;
     background-color: transparent;
     animation: ${spinKeyframes} ${speed}ms linear infinite;
@@ -95,7 +95,7 @@ LoadingIcon.propTypes = {
   style: PropTypes.object,
 
   type: PropTypes.oneOf([`bg`, `fg`]),
-  color: PropTypes.oneOf(colorValues),
+  color: PropTypes.oneOf([`black`, `white`, ...colorValues]),
   tint: PropTypes.oneOf(tintValues),
   size: PropTypes.number,
   thickness: PropTypes.number,
