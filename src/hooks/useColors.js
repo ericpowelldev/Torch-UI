@@ -30,14 +30,16 @@ export function useColors() {
 
   /** Get color hover from background color prop */
   const getColorHover = (color, tint, variant) => {
-    if (variant !== `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint] + `20`;
+    if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint] + `40`;
+    if ((variant === `outline` || variant === `link`) && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint] + `20`;
     return `inherit`;
   };
-  
+
   /** Get color active from background color prop */
   const getColorActive = (color, tint, variant) => {
     if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].hover[tint];
-    if (variant !== `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint] + `40`;
+    if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint] + `60`;
+    if ((variant === `outline` || variant === `link`) && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint] + `40`;
     return `inherit`;
   };
 

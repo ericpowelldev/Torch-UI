@@ -2,95 +2,88 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { createUseStyles } from "react-jss";
+import styled, { keyframes } from "styled-components";
 
 import { boolValues, colorValues, tintValues } from "utils/standards";
 import { useColors } from "hooks/useColors";
 import { useLoadingIcon } from "./useLoadingIcon";
 
+//////////////////////// STYLED-COMPONENTS ////////////////////////
+
+const spinKeyframes = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const MyBase = styled.div`
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  line-height: 1;
+  user-select: none;
+`;
+
 //////////////////////// COMPONENT ////////////////////////
 
-function LoadingIcon(props) {
-  const { children, className, classes, type, color, tint, size, thickness, speed, disabled, ...rest } = props;
-
+function LoadingIcon({ children, className, classes, type, color, tint, size, thickness, speed, disabled, ...rest }) {
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
   const { getTrackSize } = useLoadingIcon();
 
-  // STYLES //
-  const useStyles = createUseStyles(
-    {
-      root: {
-        position: `relative`,
-        overflow: `hidden`,
-        padding: 0,
-        border: 0,
-        margin: 0,
-        lineHeight: 1,
-        userSelect: `none`,
-      },
-      track: (props) => ({
-        position: `relative`,
-        width: `${props.size}px`,
-        height: `${props.size}px`,
-        border: `${props.thickness ? `${props.thickness}px` : getTrackSize(props.size)} solid ${
-          props.type === `bg` ? getColorBg(props.color, props.tint, props.disabled) : getColorFg(props.color, props.tint, props.disabled)
-        }`,
-        borderRadius: `50%`,
-        backgroundColor: `transparent`,
-        opacity: 0.25,
-      }),
-      bar: (props) => ({
-        position: `absolute`,
-        top: 0,
-        left: 0,
-        width: `${props.size}px`,
-        height: `${props.size}px`,
-        border: `${props.thickness ? `${props.thickness}px` : getTrackSize(props.size)} solid transparent`,
-        borderTop: `${props.thickness ? `${props.thickness}px` : getTrackSize(props.size)} solid ${
-          props.type === `bg` ? getColorBg(props.color, props.tint, props.disabled) : getColorFg(props.color, props.tint, props.disabled)
-        }`,
-        borderRadius: `50%`,
-        backgroundColor: `transparent`,
-        animation: `$spin ${props.speed}ms linear infinite`,
-      }),
-      "@keyframes spin": {
-        from: {
-          transform: `rotate(0deg)`,
-        },
-        to: {
-          transform: `rotate(360deg)`,
-        },
-      },
-    },
-    {
-      name: `FuiLoadingIcon`,
-      index: 2,
-    }
-  );
-  const cls = useStyles(props);
+  // DYNAMIC STYLED-COMPONENTS //
+  const MyTrack = styled.div`
+    position: relative;
+    width: ${size}px;
+    height: ${size}px;
+    border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
+      ${type === `bg` ? getColorBg(color, tint, disabled) : getColorFg(color, tint, disabled)};
+    border-radius: 50%;
+    background-color: transparent;
+    opacity: 25%;
+  `;
 
-  // CLASSNAMES //
-  const getClassNames = (name) => {
-    let classNames = [cls[name]];
-    if (classes && classes[name]) classNames.push(classes[name]);
+  const MyBar = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: ${size}px;
+    height: ${size}px;
+    border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid transparent;
+    border-top: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
+      ${type === `bg` ? getColorBg(color, tint, disabled) : getColorFg(color, tint, disabled)};
+    border-radius: 50%;
+    background-color: transparent;
+    animation: ${spinKeyframes} ${speed}ms linear infinite;
+  `;
+
+  // CLASSNAMES ROOT //
+  const getClassNames_root = (name) => {
+    let classNames = [];
+    if (className) classNames.push(className);
+    if (classes && classes.root) classNames.push(classes.root);
+    if (classes && name && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
-  // CLASSNAMES - root //
-  const getClassNames_root = () => {
-    let classNames = [cls.root];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
+  // CLASSNAMES //
+  const getClassNames = (name) => {
+    let classNames = [];
+    if (classes && name && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
   // RETURN //
   return (
-    <div className={getClassNames_root()} {...rest}>
-      <div className={getClassNames(`track`)} />
-      <div className={getClassNames(`bar`)} />
-    </div>
+    <MyBase className={getClassNames_root(`base`)} {...rest}>
+      <MyTrack className={getClassNames(`track`)} />
+      <MyBar className={getClassNames(`bar`)} />
+    </MyBase>
   );
 }
 

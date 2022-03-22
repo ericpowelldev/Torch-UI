@@ -10,11 +10,6 @@ import 'styles/scrollbar.css';
 import defaultTheme from "utils/defaultTheme";
 import { boolValues } from "utils/standards";
 
-import { jss, JssProvider } from "react-jss";
-import jssPreset from "jss-preset-default";
-
-jss.setup(jssPreset());
-
 //////////////////////// CONTEXT/HOOK ////////////////////////
 
 const FuiContext = React.createContext();
@@ -31,7 +26,7 @@ function FuiProvider({ children, theme, resetCss, customScrollbar }) {
     <FuiContext.Provider value={ctx}>
       {/* {resetCss ? <ResetCss /> : null} */}
       {/* {customScrollbar ? <ScrollbarCss /> : null} */}
-      <JssProvider jss={jss}>{children}</JssProvider>
+      {children}
     </FuiContext.Provider>
   );
 }

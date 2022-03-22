@@ -2,81 +2,77 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { createUseStyles } from "react-jss";
+import styled from "styled-components";
 
 import { useFui } from "providers/Fui";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function ButtonBase(props) {
-  const { children, classes, className, ...rest } = props;
-
+function Button({ children, className, classes, ...rest }) {
   // HOOKS //
   const { theme } = useFui();
 
-  // STYLES //
-  const useStyles = createUseStyles(
-    {
-      root: {
-        position: `relative`,
-        overflow: `hidden`,
-        display: `inline-flex`,
-        alignItems: `center`,
-        justifyContent: `center`,
-        padding: 0,
-        border: 0,
-        borderRadius: theme.space(1),
-        margin: 0,
-        lineHeight: theme.txt.fontHeight,
-        fontFamily: theme.txt.fontFamily,
-        fontSize: 14,
-        fontWeight: 600,
-        background: `inherit`,
-        color: `inherit`,
-        cursor: `pointer`,
-        transition: theme.trans(0.15),
-        userSelect: `none`,
-      },
-    },
-    {
-      name: `FuiButtonBase`,
-      index: 0,
-    }
-  );
-  const cls = useStyles();
+  // CLASSNAMES ROOT //
+  const getClassNames_root = (name) => {
+    let classNames = [];
+    if (className) classNames.push(className);
+    if (classes && classes.root) classNames.push(classes.root);
+    if (classes && name && classes[name]) classNames.push(classes[name]);
+    return classNames.join(` `);
+  };
 
   // CLASSNAMES //
   const getClassNames = (name) => {
-    let classNames = [cls[name]];
-    if (classes && classes[name]) classNames.push(classes[name]);
+    let classNames = [];
+    if (classes && name && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
-  // CLASSNAMES - root //
-  const getClassNames_root = () => {
-    let classNames = [cls.root];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    return classNames.join(` `);
-  };
+  // STYLED-COMPONENTS //
+  const MyButton = styled.button`
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: ${theme.space(1)};
+    margin: 0;
+    line-height: ${theme.txt.fontHeight};
+    font-family: ${theme.txt.fontFamily};
+    font-size: 14;
+    font-weight: 600;
+    background: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: ${theme.trans(0.15)};
+    user-select: none;
+  `;
+
+  const MyLabel = styled.span`
+    line-height: ${theme.txt.fontHeightBtn};
+    user-select: none;
+    pointer-events: none;
+  `;
 
   // RETURN //
   return (
-    <button className={getClassNames_root()} {...rest}>
-      <span className={getClassNames(`label`)}>{children}</span>
-    </button>
+    <MyButton className={getClassNames_root(`button`)} {...rest}>
+      <MyLabel className={getClassNames(`label`)}>{children}</MyLabel>
+    </MyButton>
   );
 }
 
 //////////////////////// PROPS ////////////////////////
 
-ButtonBase.propTypes = {
+Button.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object,
   style: PropTypes.object,
 };
 
-ButtonBase.defaultProps = {
+Button.defaultProps = {
   className: null,
   classes: null,
   style: null,
@@ -84,4 +80,4 @@ ButtonBase.defaultProps = {
 
 //////////////////////// EXPORT ////////////////////////
 
-export default ButtonBase;
+export default Button;

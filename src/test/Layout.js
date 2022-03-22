@@ -1,6 +1,7 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
+import styled from "styled-components";
 
 import Header from "components/layout/Header";
 import Main from "components/layout/Main";
@@ -8,11 +9,21 @@ import Footer from "components/layout/Footer";
 
 import Sidebar from "components/layout/Sidebar";
 
+//////////////////////// STYLED-COMPONENTS ////////////////////////
+
+const Root = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  /* background-color: #323640; */
+`;
+
 //////////////////////// COMPONENT ////////////////////////
 
 function Layout(props) {
   return (
-    <>
+    <Root>
       <Header />
       <Main>{props.children}</Main>
       <Footer />
@@ -20,7 +31,7 @@ function Layout(props) {
       <Sidebar />
 
       {/* <ScrollToTop /> */}
-    </>
+    </Root>
   );
 }
 

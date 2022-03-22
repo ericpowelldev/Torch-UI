@@ -1,65 +1,65 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import { createUseStyles } from "react-jss";
+import styled from "styled-components";
 
 import { BiCart, BiSave, BiCar } from "react-icons/bi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { MdOutlineBlock } from "react-icons/md";
 
-import Button from "sc-components/buttons/Button";
+import Button from "components/buttons/Button";
 import ErrorIcon from "components/utils/ErrorIcon";
 import WarningIcon from "components/utils/WarningIcon";
 import LoadingIcon from "components/utils/LoadingIcon";
 import SuccessIcon from "components/utils/SuccessIcon";
 
+//////////////////////// STYLED-COMPONENTS ////////////////////////
+
+const Root = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const FlexParent = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const FlexChild = styled.div`
+  position: relative;
+`;
+
+const BreakV = styled.div`
+  width: 100%;
+  height: 16px;
+`;
+
+const BreakH = styled.div`
+  width: 24px;
+  height: auto;
+`;
+
+const BreakHSm = styled.div`
+  width: 8px;
+  height: auto;
+`;
+
 //////////////////////// COMPONENT ////////////////////////
 
 export default function Page(props) {
-  const useStyles = createUseStyles(
-    {
-      root: {
-        position: `fixed`,
-        top: `50%`,
-        left: `50%`,
-        transform: `translate(-50%, -50%)`,
-      },
-      flexParent: {
-        display: `flex`,
-        alignItems: `center`,
-        width: `fit-content`,
-        marginLeft: `auto`,
-        marginRight: `auto`,
-      },
-      break_v: {
-        width: `100%`,
-        height: `16px`,
-      },
-      break_h: {
-        width: `24px`,
-        height: `auto`,
-      },
-      break_h_sm: {
-        width: `8px`,
-        height: `auto`,
-      },
-      test: {
-        padding: 0,
-        fontSize: 9,
-      },
-    },
-    {
-      index: 100,
-    }
-  );
-  const cls = useStyles();
-
   const handleClick = (event) => {
     const val = event.target.value;
     console.log(`VALUE:`, val);
   };
 
   return (
-    <div className={cls.root}>
+    <Root>
       <ErrorIcon style={{ display: `inline-block` }} />
       <ErrorIcon style={{ display: `inline-block` }} disabled />
       <ErrorIcon style={{ display: `inline-block` }} color="primary" />
@@ -70,7 +70,7 @@ export default function Page(props) {
       <ErrorIcon style={{ display: `inline-block` }} color="warning" />
       <ErrorIcon style={{ display: `inline-block` }} color="success" />
 
-      <div className={cls.break_v} />
+      <BreakV />
 
       <WarningIcon style={{ display: `inline-block` }} />
       <WarningIcon style={{ display: `inline-block` }} disabled />
@@ -82,7 +82,7 @@ export default function Page(props) {
       <WarningIcon style={{ display: `inline-block` }} color="warning" />
       <WarningIcon style={{ display: `inline-block` }} color="success" />
 
-      <div className={cls.break_v} />
+      <BreakV />
 
       <LoadingIcon style={{ display: `inline-block` }} />
       <LoadingIcon style={{ display: `inline-block` }} disabled />
@@ -94,7 +94,7 @@ export default function Page(props) {
       <LoadingIcon style={{ display: `inline-block` }} color="warning" />
       <LoadingIcon style={{ display: `inline-block` }} color="success" />
 
-      <div className={cls.break_v} />
+      <BreakV />
 
       <SuccessIcon style={{ display: `inline-block` }} />
       <SuccessIcon style={{ display: `inline-block` }} disabled />
@@ -106,173 +106,215 @@ export default function Page(props) {
       <SuccessIcon style={{ display: `inline-block` }} color="warning" />
       <SuccessIcon style={{ display: `inline-block` }} color="success" />
 
-      <div className={cls.break_v} />
+      <BreakV />
+      <BreakV />
+      <BreakV />
 
-      <div className={cls.flexParent}>
-        <div className={cls.flexChild}>
-          <Button error color="tertiary" tint="100">
+      <FlexParent>
+        <FlexChild>
+          <Button error color="primary" tint="100">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button error color="tertiary" tint="100" variant="outline">
+          <BreakV />
+          <Button error color="primary" tint="100" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button error color="tertiary" tint="100" variant="link">
+          <BreakV />
+          <Button error color="primary" tint="100" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button error color="primary" tint="100" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button color="tertiary" tint="200">
+        <FlexChild>
+          <Button color="primary" tint="200">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="200" variant="outline">
+          <BreakV />
+          <Button color="primary" tint="200" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="200" variant="link">
+          <BreakV />
+          <Button color="primary" tint="200" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button color="primary" tint="200" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button success color="tertiary" tint="300">
+        <FlexChild>
+          <Button warning color="primary" tint="300">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button success color="tertiary" tint="300" variant="outline">
+          <BreakV />
+          <Button warning color="primary" tint="300" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button success color="tertiary" tint="300" variant="link">
+          <BreakV />
+          <Button warning color="primary" tint="300" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button warning color="primary" tint="300" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button color="tertiary" tint="400">
+        <FlexChild>
+          <Button color="primary" tint="400">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="400" variant="outline">
+          <BreakV />
+          <Button color="primary" tint="400" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="400" variant="link">
+          <BreakV />
+          <Button color="primary" tint="400" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button color="primary" tint="400" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button warning color="tertiary" tint="500" shadow>
+        <FlexChild>
+          <Button success color="primary" tint="500" shadow>
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button warning color="tertiary" tint="500" variant="outline">
+          <BreakV />
+          <Button success color="primary" tint="500" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button warning color="tertiary" tint="500" variant="link">
+          <BreakV />
+          <Button success color="primary" tint="500" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button success color="primary" tint="500" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button color="tertiary" tint="600">
+        <FlexChild>
+          <Button color="primary" tint="600">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="600" variant="outline">
+          <BreakV />
+          <Button color="primary" tint="600" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="600" variant="link">
+          <BreakV />
+          <Button color="primary" tint="600" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button color="primary" tint="600" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button color="tertiary" tint="700">
+        <FlexChild>
+          <Button color="primary" tint="700">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="700" variant="outline">
+          <BreakV />
+          <Button color="primary" tint="700" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="700" variant="link">
+          <BreakV />
+          <Button color="primary" tint="700" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button color="primary" tint="700" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button color="tertiary" tint="800">
+        <FlexChild>
+          <Button color="primary" tint="800">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="800" variant="outline">
+          <BreakV />
+          <Button color="primary" tint="800" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button color="tertiary" tint="800" variant="link">
+          <BreakV />
+          <Button color="primary" tint="800" variant="transparent">
             Button
           </Button>
-        </div>
+          <BreakV />
+          <Button color="primary" tint="800" variant="link">
+            Button
+          </Button>
+        </FlexChild>
 
-        <div className={cls.break_h} />
+        <BreakH />
 
-        <div className={cls.flexChild}>
-          <Button loading color="tertiary" tint="900">
+        <FlexChild>
+          <Button loading color="primary" tint="900">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button loading color="tertiary" tint="900" variant="outline">
+          <BreakV />
+          <Button loading color="primary" tint="900" variant="outline">
             Button
           </Button>
-          <div className={cls.break_v} />
-          <Button loading color="tertiary" tint="900" variant="link">
+          <BreakV />
+          <Button loading color="primary" tint="900" variant="transparent">
             Button
           </Button>
-        </div>
-      </div>
+          <BreakV />
+          <Button loading color="primary" tint="900" variant="link">
+            Button
+          </Button>
+        </FlexChild>
+      </FlexParent>
 
-      <div className={cls.break_v} />
-      <div className={cls.break_v} />
-      <div className={cls.break_v} />
+      <BreakV />
+      <BreakV />
+      <BreakV />
 
-      <div className={cls.flexParent}>
+      <FlexParent>
         <Button icon={<BiCart />} color="primary" success>
           Add To Cart
         </Button>
-        <div className={cls.break_h_sm} />
+        <BreakHSm />
         <Button onClick={handleClick} icon={<BiSave />} color="secondary" loading>
           Save
         </Button>
-        <div className={cls.break_h_sm} />
+        <BreakHSm />
         <Button icon={<BiCar />} color="tertiary" error>
           Drive Now
         </Button>
-        <div className={cls.break_h_sm} />
+        <BreakHSm />
         <Button icon={<AiOutlineCloseCircle />} color="default" warning>
           Cancel
         </Button>
-      </div>
-    </div>
+        <BreakHSm />
+        <Button icon={<MdOutlineBlock />} color="primary" disabled>
+          Disabled
+        </Button>
+      </FlexParent>
+    </Root>
   );
 }

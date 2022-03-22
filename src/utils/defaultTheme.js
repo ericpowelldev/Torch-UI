@@ -200,7 +200,7 @@ const buildForegroundColors = (color) => {
 };
 
 const buildDisabledColors = (color) => {
-  const fg = `${color}32`;
+  const fg = `${color}48`;
   const bg = `${color}32`;
   return { fg, bg };
 };

@@ -2,7 +2,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { createUseStyles } from "react-jss";
+import styled, { css } from "styled-components";
 
 import { boolValues, colorValues, tintValues, sizeValues } from "utils/standards";
 import { useFui } from "providers/Fui";
@@ -12,201 +12,255 @@ import { useButton } from "./useButton";
 import ErrorIcon from "components/utils/ErrorIcon";
 import WarningIcon from "components/utils/WarningIcon";
 import LoadingIcon from "components/utils/LoadingIcon";
+import SuccessIcon from "components/utils/SuccessIcon";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Button(props) {
-  const { children, className, classes, color, tint, size, variant, tooltip, icon, fullWidth, uppercase, disabled, loading, warning, error, ...rest } = props;
-
+function Button({
+  children,
+  className,
+  classes,
+  color,
+  tint,
+  size,
+  variant,
+  tooltip,
+  icon,
+  fullWidth,
+  uppercase,
+  disabled,
+  error,
+  warning,
+  loading,
+  success,
+  ...rest
+}) {
   // HOOKS //
   const { theme } = useFui();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
   const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
 
-  // STYLES //
-  const useStyles = createUseStyles(
-    {
-      root: {
-        position: `relative`,
-        overflow: `hidden`,
-        display: `inline-flex`,
-        alignItems: `center`,
-        justifyContent: `center`,
-        padding: 0,
-        border: 0,
-        borderRadius: theme.space(1),
-        margin: 0,
-        lineHeight: theme.txt.fontHeight,
-        fontFamily: theme.txt.fontFamily,
-        fontSize: 14,
-        fontWeight: 600,
-        background: `inherit`,
-        color: `inherit`,
-        cursor: `pointer`,
-        transition: theme.trans(0.15),
-        userSelect: `none`,
-      },
-      solid: (props) => ({
-        width: props.fullWidth ? `100%` : `inherit`,
-        padding: getRootPadding(props.size),
-        backgroundColor: getColorBg(props.color, props.tint, props.disabled),
-        color: getColorFg(props.color, props.tint, props.disabled),
-        "&::after": {
-          content: `""`,
-          position: `absolute`,
-          top: 0,
-          left: 0,
-          width: `100%`,
-          height: `100%`,
-          backgroundColor: theme.color.white.alpha[0],
-          transition: theme.trans(0.15),
-        },
-        "&:hover": {
-          "&::after": {
-            backgroundColor: theme.color.white.alpha[4],
-          },
-          "@media (hover: none)": {
-            "&::after": {
-              backgroundColor: theme.color.white.alpha[0],
-            },
-          },
-        },
-        "&:active": {
-          "&::after": {
-            backgroundColor: theme.color.white.alpha[6],
-            transition: theme.trans(0),
-          },
-        },
-      }),
-      outline: (props) => ({
-        width: props.fullWidth ? `100%` : `inherit`,
-        padding: getOutlinePadding(props.size),
-        border: `1px solid ${getColorBg(props.color, props.tint, props.disabled)}`,
-        backgroundColor: `transparent`,
-        color: getColorBg(props.color, props.tint, props.disabled),
-        "&:hover": {
-          backgroundColor: getColorHover(props.color, props.tint, `outline`),
-          "@media (hover: none)": {
-            backgroundColor: `transparent`,
-          },
-        },
-        "&:active": {
-          backgroundColor: getColorActive(props.color, props.tint, `outline`),
-          transition: theme.trans(0),
-        },
-      }),
-      link: (props) => ({
-        width: props.fullWidth ? `100%` : `inherit`,
-        padding: getRootPadding(props.size),
-        backgroundColor: `transparent`,
-        color: getColorBg(props.color, props.tint, props.disabled),
-        "&:hover": {
-          backgroundColor: getColorHover(props.color, props.tint, `link`),
-          "@media (hover: none)": {
-            backgroundColor: `transparent`,
-          },
-        },
-        "&:active": {
-          backgroundColor: getColorActive(props.color, props.tint, `link`),
-          transition: theme.trans(0),
-        },
-      }),
-      disabled: {
-        cursor: `not-allowed`,
-        userSelect: `none`,
-        pointerEvents: `none`,
-      },
-      label: (props) => ({
-        lineHeight: theme.txt.fontHeightBtn,
-        fontSize: getLabelSize(props.size),
-        fontWeight: getLabelWeight(props.variant),
-        textTransform: !uppercase ? `inherit` : `uppercase`,
-        userSelect: `none`,
-        pointerEvents: `none`,
-      }),
-      startIcon: (props) => ({
-        marginRight: theme.space(2),
-        "& svg": {
-          display: `block`,
-          width: getIconSize(props.size),
-          height: getIconSize(props.size),
-        },
-      }),
-      endIcon: (props) => ({
-        marginLeft: theme.space(2),
-        "& svg": {
-          display: `block`,
-          width: getIconSize(props.size),
-          height: getIconSize(props.size),
-        },
-      }),
-    },
-    {
-      name: `FuiButton`,
-      index: 1,
-    }
-  );
-  const cls = useStyles(props);
+  // CLASSNAMES ROOT //
+  const getClassNames_root = (name) => {
+    let classNames = [];
+    if (className) classNames.push(className);
+    if (classes && classes.root) classNames.push(classes.root);
+    if (classes && name && classes[name]) classNames.push(classes[name]);
+    return classNames.join(` `);
+  };
 
   // CLASSNAMES //
   const getClassNames = (name) => {
-    let classNames = [cls[name]];
-    if (classes && classes[name]) classNames.push(classes[name]);
+    let classNames = [];
+    if (classes && name && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
-  // CLASSNAMES - root //
-  const getClassNames_root = () => {
-    let classNames = [cls.root];
-    if (variant === `solid`) classNames.push(cls.solid);
-    if (variant === `outline`) classNames.push(cls.outline);
-    if (variant === `link`) classNames.push(cls.link);
-    if (disabled) classNames.push(cls.disabled);
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    return classNames.join(` `);
-  };
+  // DYNAMIC STYLED-COMPONENTS //
+  const MyButton = styled.button`
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: ${theme.space(1)};
+    margin: 0;
+    line-height: ${theme.txt.fontHeight};
+    font-family: ${theme.txt.fontFamily};
+    font-size: 14;
+    font-weight: 600;
+    background: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: ${theme.trans(0.15)};
+    user-select: none;
+
+    ${variant === `solid` &&
+    css`
+      width: ${fullWidth ? `100%` : `inherit`};
+      padding: ${getRootPadding(size)};
+      background-color: ${getColorBg(color, tint, disabled)};
+      color: ${getColorFg(color, tint, disabled)};
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: ${theme.color.white.alpha[0]};
+        transition: ${theme.trans(0.15)};
+      }
+
+      &:hover {
+        &::after {
+          background-color: ${theme.color.white.alpha[4]};
+        }
+        @media (hover: none) {
+          &::after {
+            background-color: ${theme.color.white.alpha[0]};
+          }
+        }
+      }
+
+      &:active {
+        &::after {
+          background-color: ${theme.color.white.alpha[6]};
+          transition: ${theme.trans(0)};
+        }
+      }
+    `}
+
+    ${variant === `outline` &&
+    css`
+      width: ${fullWidth ? `100%` : `inherit`};
+      padding: ${getOutlinePadding(size)};
+      border: 1px solid ${getColorBg(color, tint, disabled)};
+      background-color: transparent;
+      color: ${getColorBg(color, tint, disabled)};
+
+      &:hover {
+        background-color: ${getColorHover(color, tint, `outline`)};
+        @media (hover: none) {
+          background-color: transparent;
+        }
+      }
+
+      &:active {
+        background-color: ${getColorActive(color, tint, `outline`)};
+        transition: ${theme.trans(0)};
+      }
+    `}
+
+    ${variant === `transparent` &&
+    css`
+      width: ${fullWidth ? `100%` : `inherit`};
+      padding: ${getRootPadding(size)};
+      background-color: ${getColorBg(color, tint, disabled)}20;
+      color: ${getColorBg(color, tint, disabled)};
+
+      &:hover {
+        background-color: ${getColorHover(color, tint, `transparent`)};
+        @media (hover: none) {
+          background-color: ${getColorBg(color, tint, disabled)}20;
+        }
+      }
+
+      &:active {
+        background-color: ${getColorActive(color, tint, `transparent`)};
+        transition: ${theme.trans(0)};
+      }
+    `}
+
+    ${variant === `link` &&
+    css`
+      width: ${fullWidth ? `100%` : `inherit`};
+      padding: ${getRootPadding(size)};
+      background-color: transparent;
+      color: ${getColorBg(color, tint, disabled)};
+
+      &:hover {
+        background-color: ${getColorHover(color, tint, `link`)};
+        @media (hover: none) {
+          background-color: transparent;
+        }
+      }
+
+      &:active {
+        background-color: ${getColorActive(color, tint, `link`)};
+        transition: ${theme.trans(0)};
+      }
+    `}
+
+    ${disabled &&
+    css`
+      cursor: not-allowed;
+      user-select: none;
+      pointer-events: none;
+    `}
+  `;
+
+  const MyLabel = styled.span`
+    line-height: ${theme.txt.fontHeightBtn};
+    font-size: ${getLabelSize(size)};
+    font-weight: ${getLabelWeight(variant)};
+    text-transform: ${!uppercase ? `inherit` : `uppercase`};
+    user-select: none;
+    pointer-events: none;
+  `;
+
+  const MyStartIcon = styled.span`
+    margin-right: ${theme.space(2)};
+    & svg {
+      display: block;
+      width: ${getIconSize(size)}px;
+      height: ${getIconSize(size)}px;
+    }
+  `;
+
+  const MyEndIcon = styled.span`
+    margin-left: ${theme.space(2)};
+    & svg {
+      display: block;
+      width: ${getIconSize(size)}px;
+      height: ${getIconSize(size)}px;
+    }
+  `;
 
   // RETURN //
   return (
-    <button className={getClassNames_root()} {...rest}>
-      {icon ? <span className={cls.startIcon}>{icon}</span> : null}
-      <span className={getClassNames(`label`)}>{children}</span>
+    <MyButton className={getClassNames_root(`button`)} {...rest}>
+      {icon ? <MyStartIcon className={getClassNames(`icon`)}>{icon}</MyStartIcon> : null}
+      <MyLabel className={getClassNames(`label`)}>{children}</MyLabel>
       {error ? (
-        <span className={cls.endIcon}>
+        <MyEndIcon>
           <ErrorIcon
             className={getClassNames(`errorIcon`)}
-            type={props.variant === `solid` ? `fg` : `bg`}
-            color={props.color}
-            tint={props.tint}
-            size={getIconSize(props.size)}
-            disabled={props.disabled}
+            type={variant === `solid` ? `fg` : `bg`}
+            color={color}
+            tint={tint}
+            size={getIconSize(size)}
+            disabled={disabled}
           />
-        </span>
+        </MyEndIcon>
       ) : warning ? (
-        <span className={cls.endIcon}>
+        <MyEndIcon>
           <WarningIcon
             className={getClassNames(`warningIcon`)}
-            type={props.variant === `solid` ? `fg` : `bg`}
-            color={props.color}
-            tint={props.tint}
-            size={getIconSize(props.size)}
-            disabled={props.disabled}
+            type={variant === `solid` ? `fg` : `bg`}
+            color={color}
+            tint={tint}
+            size={getIconSize(size)}
+            disabled={disabled}
           />
-        </span>
+        </MyEndIcon>
       ) : loading ? (
-        <span className={cls.endIcon}>
+        <MyEndIcon>
           <LoadingIcon
             className={getClassNames(`loadingIcon`)}
-            type={props.variant === `solid` ? `fg` : `bg`}
-            color={props.color}
-            tint={props.tint}
-            size={getIconSize(props.size)}
-            disabled={props.disabled}
+            type={variant === `solid` ? `fg` : `bg`}
+            color={color}
+            tint={tint}
+            size={getIconSize(size)}
+            disabled={disabled}
           />
-        </span>
+        </MyEndIcon>
+      ) : success ? (
+        <MyEndIcon>
+          <SuccessIcon
+            className={getClassNames(`successIcon`)}
+            type={variant === `solid` ? `fg` : `bg`}
+            color={color}
+            tint={tint}
+            size={getIconSize(size)}
+            disabled={disabled}
+          />
+        </MyEndIcon>
       ) : null}
-    </button>
+    </MyButton>
   );
 }
 
@@ -220,7 +274,7 @@ Button.propTypes = {
   color: PropTypes.oneOf(colorValues),
   tint: PropTypes.oneOf(tintValues),
   size: PropTypes.oneOf(sizeValues),
-  variant: PropTypes.oneOf([`solid`, `outline`, `link`]),
+  variant: PropTypes.oneOf([`solid`, `outline`, `transparent`, `link`]),
 
   tooltip: PropTypes.node,
   icon: PropTypes.node,
@@ -229,9 +283,10 @@ Button.propTypes = {
   uppercase: PropTypes.oneOf(boolValues),
 
   disabled: PropTypes.oneOf(boolValues),
-  loading: PropTypes.oneOf(boolValues),
-  warning: PropTypes.oneOf(boolValues),
   error: PropTypes.oneOf(boolValues),
+  warning: PropTypes.oneOf(boolValues),
+  loading: PropTypes.oneOf(boolValues),
+  success: PropTypes.oneOf(boolValues),
 };
 
 Button.defaultProps = {
@@ -251,9 +306,10 @@ Button.defaultProps = {
   uppercase: true,
 
   disabled: false,
-  loading: false,
-  warning: false,
   error: false,
+  warning: false,
+  loading: false,
+  success: false,
 };
 
 //////////////////////// EXPORT ////////////////////////

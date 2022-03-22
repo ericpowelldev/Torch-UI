@@ -2,73 +2,63 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { createUseStyles } from "react-jss";
+import styled, { keyframes } from "styled-components";
 
 import { boolValues, colorValues, tintValues } from "utils/standards";
 import { useColors } from "hooks/useColors";
 
 import { MdCheckCircle } from "react-icons/md";
 
+//////////////////////// STYLED-COMPONENTS ////////////////////////
+
+const blinkKeyframes = keyframes`
+  0% {
+    opacity: 0.5;
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+`;
+
 //////////////////////// COMPONENT ////////////////////////
 
-function SuccessIcon(props) {
-  const { children, className, classes, type, color, tint, size, speed, blink, disabled, ...rest } = props;
-
+function SuccessIcon({ children, className, classes, type, color, tint, size, speed, blink, disabled, ...rest }) {
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
 
-  // STYLES //
-  const useStyles = createUseStyles(
-    {
-      root: (props) => ({
-        position: `relative`,
-        display: `block`,
-        width: props.size,
-        height: props.size,
-        padding: 0,
-        border: 0,
-        margin: 0,
-        lineHeight: 1,
-        userSelect: `none`,
-        animation: props.blink ? `$blink ${props.speed}ms infinite` : `none`,
-        color: props.type === `bg` ? getColorBg(props.color, props.tint, props.disabled) : getColorFg(props.color, props.tint, props.disabled),
-      }),
-      "@keyframes blink": {
-        "0%": {
-          opacity: 1,
-        },
-        "50%": {
-          opacity: 0.5,
-        },
-        "100%": {
-          opacity: 1,
-        },
-      },
-    },
-    {
-      name: `FuiSuccessIcon`,
-      index: 4,
-    }
-  );
-  const cls = useStyles(props);
-
-  // CLASSNAMES //
-  const getClassNames = (name) => {
-    let classNames = [cls[name]];
-    if (classes && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
-  // CLASSNAMES - root //
-  const getClassNames_root = () => {
-    let classNames = [cls.root];
+  // CLASSNAMES ROOT //
+  const getClassNames_root = (name) => {
+    let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
+    if (classes && name && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
   };
 
+  // BASE COMPONENT //
+  const Icon = ({ className }) => <MdCheckCircle className={className + ` ` + getClassNames_root(`icon`)} {...rest} />;
+
+  // DYNAMIC STYLED-COMPONENTS //
+  const MyIcon = styled(Icon)`
+    position: relative;
+    display: block;
+    width: ${size}px;
+    height: ${size}px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    margin: 0;
+    line-height: 1;
+    user-select: none;
+    animation: ${blinkKeyframes} ${blink ? speed : 0}ms infinite;
+    color: ${type === `bg` ? getColorBg(color, tint, disabled) : getColorFg(color, tint, disabled)};
+  `;
+
   // RETURN //
-  return <MdCheckCircle className={getClassNames_root()} {...rest} />;
+  return <MyIcon {...rest} />;
 }
 
 //////////////////////// PROPS ////////////////////////
