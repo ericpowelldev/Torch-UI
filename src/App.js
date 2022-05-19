@@ -1,11 +1,11 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { FuiProvider } from "providers/Fui";
 
-import theme from "utils/defaultTheme";
+import theme from "utils/_theme";
 
 import Layout from "_test/Layout";
 import Page from "_test/Page";
@@ -17,9 +17,9 @@ function App(props) {
     <Router>
       <FuiProvider theme={theme}>
         <Layout>
-          <Switch>
-            <Route exact path="/" component={() => <Page />} />
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<Page />} />
+          </Routes>
         </Layout>
       </FuiProvider>
     </Router>

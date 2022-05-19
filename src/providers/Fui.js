@@ -7,7 +7,7 @@ import "static/styles/reset.css";
 import "static/styles/custom.css";
 import "static/styles/scrollbar.css";
 
-import defaultTheme from "utils/defaultTheme";
+import _theme from "utils/_theme";
 import { boolValues } from "utils/standards";
 
 //////////////////////// CONTEXT/HOOK ////////////////////////
@@ -41,7 +41,7 @@ FuiProvider.propTypes = {
 };
 
 FuiProvider.defaultProps = {
-  theme: defaultTheme,
+  theme: _theme,
 
   resetCss: true,
   customScrollbar: true,
