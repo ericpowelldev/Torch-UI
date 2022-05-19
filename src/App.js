@@ -7,8 +7,8 @@ import { FuiProvider } from "providers/Fui";
 
 import theme from "utils/defaultTheme";
 
-import Layout from "test/Layout";
-import Page from "test/Page";
+import Layout from "_test/Layout";
+import Page from "_test/Page";
 
 //////////////////////// COMPONENT ////////////////////////
 
