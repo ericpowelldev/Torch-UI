@@ -1,13 +1,13 @@
 //////////////////////// HOOK ////////////////////////
 
-export function useLoadingIcon() {
+export default function useLoadingIcon() {
   /** Get the size of the spinner track */
   const getTrackSize = (size) => {
-    if (size > 48) return `${size / 8}px`;
-    if (size > 36) return `${size / 6}px`;
-    if (size > 24) return `${size / 5}px`;
-    if (size > 12) return `${size / 4}px`;
-    return `${size / 2}px`;
+    if (size > 48) return size / 8;
+    if (size > 36) return size / 6;
+    if (size > 24) return size / 5;
+    if (size > 12) return size / 4;
+    return size / 2;
   };
 
   // Return hook logic

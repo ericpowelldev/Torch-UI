@@ -2,10 +2,21 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+
+import { useFui } from "providers/Fui";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Header({ children, className, classes, ...rest }) {
+function FlexChild({ children, className, classes, ...rest }) {
+  // HOOKS //
+  const { theme } = useFui();
+
+  // DYNAMIC STYLED-COMPONENTS //
+  const MyFlexChild = styled.div`
+    position: relative;
+  `;
+
   // CLASSNAMES ROOT //
   const getClassNames_root = (name) => {
     let classNames = [];
@@ -17,21 +28,21 @@ function Header({ children, className, classes, ...rest }) {
 
   // RETURN //
   return (
-    <header id="header" className={getClassNames_root(`header`)} {...rest}>
+    <MyFlexChild className={getClassNames_root(`child`)} {...rest}>
       {children}
-    </header>
+    </MyFlexChild>
   );
 }
 
 //////////////////////// PROPS ////////////////////////
 
-Header.propTypes = {
+FlexChild.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object,
   style: PropTypes.object,
 };
 
-Header.defaultProps = {
+FlexChild.defaultProps = {
   className: null,
   classes: null,
   style: null,
@@ -39,4 +50,4 @@ Header.defaultProps = {
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Header;
+export default FlexChild;

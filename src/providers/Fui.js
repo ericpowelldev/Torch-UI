@@ -3,17 +3,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import 'styles/reset.css';
-import 'styles/custom.css';
-import 'styles/scrollbar.css';
+import "static/styles/reset.css";
+import "static/styles/custom.css";
+import "static/styles/scrollbar.css";
 
-import defaultTheme from "utils/defaultTheme";
+import _theme from "utils/_theme";
 import { boolValues } from "utils/standards";
-
-import { jss, JssProvider } from "react-jss";
-import jssPreset from "jss-preset-default";
-
-jss.setup(jssPreset());
 
 //////////////////////// CONTEXT/HOOK ////////////////////////
 
@@ -26,12 +21,12 @@ function FuiProvider({ children, theme, resetCss, customScrollbar }) {
   const ctx = {
     theme: theme,
   };
-  
+
   return (
     <FuiContext.Provider value={ctx}>
       {/* {resetCss ? <ResetCss /> : null} */}
       {/* {customScrollbar ? <ScrollbarCss /> : null} */}
-      <JssProvider jss={jss}>{children}</JssProvider>
+      {children}
     </FuiContext.Provider>
   );
 }
@@ -46,7 +41,7 @@ FuiProvider.propTypes = {
 };
 
 FuiProvider.defaultProps = {
-  theme: defaultTheme,
+  theme: _theme,
 
   resetCss: true,
   customScrollbar: true,

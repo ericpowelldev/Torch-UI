@@ -1,5 +1,5 @@
 /** Array of accepted bool values */
-const boolValues = [false, null, undefined, NaN, 0, -0, 0n, "", "", ``, true, 1];
+const boolValues = [false, null, undefined, NaN, 0, -0, 0n, ``, true, 1];
 
 /** Array of accepted color values */
 const colorValues = [`default`, `primary`, `secondary`, `tertiary`, `info`, `error`, `warning`, `success`];

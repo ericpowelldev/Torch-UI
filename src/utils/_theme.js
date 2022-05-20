@@ -13,13 +13,13 @@ const beforeTheme = {
 
     // Utility Colors
     info: `#2496f4`,
-    error: `#ff2400`,
-    warning: `#f4c800`,
+    error: `#ff0000`,
+    warning: `#ffb400`,
     success: `#20d840`,
 
     // Black & White Colors
-    white: `#ffffff`,
     black: `#000000`,
+    white: `#ffffff`,
 
     // Foreground Colors
     fg: `#303640`,
@@ -40,8 +40,9 @@ const beforeTheme = {
     },
 
     // Disabled Colors
-    disabled: {},
-    disabledContrast: {},
+    disabled: `#d4d8de`,
+    // disabled: `#404650`,
+    disabledContrast: `#404650`,
 
     // Divider Colors
     divider: {},
@@ -52,19 +53,20 @@ const beforeTheme = {
   txt: {
     fontFamily: `"Poppins", "Roboto", "Helvetica", "Arial", sans-serif`,
     fontSize: 16,
-    fontHeight: 1,
-    fontHeightBtn: 1.333,
+    fontHeight: 1.333,
+    fontHeightReset: 1,
+    fontWeightVeryLight: 100,
     fontWeightLight: 300,
     fontWeightRegular: 500,
     fontWeightMedium: 700,
     fontWeightBold: 900,
     h1: {
-      size: 48,
+      size: 64,
       weight: 900,
       height: 1.333,
     },
     h2: {
-      size: 40,
+      size: 48,
       weight: 700,
       height: 1.333,
     },
@@ -74,24 +76,49 @@ const beforeTheme = {
       height: 1.333,
     },
     h4: {
-      size: 28,
-      weight: 500,
-      height: 1.333,
-    },
-    h5: {
       size: 24,
       weight: 500,
       height: 1.333,
     },
-    h6: {
-      size: 20,
+    h5: {
+      size: 21,
       weight: 500,
       height: 1.333,
     },
-    p: {
+    h6: {
+      size: 18,
+      weight: 500,
+      height: 1.333,
+    },
+    p1: {
       size: 16,
       weight: 300,
-      height: 1.5,
+      height: 1.333,
+    },
+    p2: {
+      size: 14,
+      weight: 300,
+      height: 1.333,
+    },
+    p3: {
+      size: 12,
+      weight: 300,
+      height: 1.333,
+    },
+    p4: {
+      size: 10,
+      weight: 300,
+      height: 1.333,
+    },
+    p5: {
+      size: 9,
+      weight: 300,
+      height: 1.333,
+    },
+    p6: {
+      size: 8,
+      weight: 300,
+      height: 1.333,
     },
   },
 
@@ -113,10 +140,9 @@ const beforeTheme = {
   // Shadow Options
   shadow: {
     none: `none`,
-    soft: `0 0 16px #00000016`,
-    medium: `0 0 16px #00000024`,
-    harsh: `0 0 16px #00000040`,
-    btn: `0 4px 4px #00000040`,
+    soft: `0 0 12px #00000016`,
+    medium: `0 0 12px #00000024`,
+    harsh: `0 0 12px #00000040`,
   },
 
   // Z-Index Options
@@ -201,8 +227,14 @@ const buildForegroundColors = (color) => {
 };
 
 const buildDisabledColors = (color) => {
-  const fg = `${color}32`;
-  const bg = `${color}32`;
+  const fg = Color(color).darken(0.25).hex();
+  const bg = color;
+  return { fg, bg };
+};
+
+const buildDisabledContrastColors = (color) => {
+  const fg = Color(color).lighten(0.4).hex();
+  const bg = color;
   return { fg, bg };
 };
 
@@ -228,11 +260,11 @@ const buildColors = (color) => {
   const contrast = {
     [`100`]: main[`500`],
     [`200`]: main[`700`],
-    [`300`]: main[`700`],
+    [`300`]: main[`800`],
     [`400`]: main[`900`],
     [`500`]: Color(beforeTheme.color.fgContrast).hex(),
-    [`600`]: main[`300`],
-    [`700`]: main[`400`],
+    [`600`]: main[`200`],
+    [`700`]: main[`300`],
     [`800`]: main[`400`],
     [`900`]: main[`500`],
   };
@@ -268,13 +300,13 @@ const theme = {
     success: {
       ...buildColors(beforeTheme.color.success),
     },
-    white: {
-      main: beforeTheme.color.white,
-      alpha: buildAlphaColors(beforeTheme.color.white),
-    },
     black: {
       main: beforeTheme.color.black,
       alpha: buildAlphaColors(beforeTheme.color.black),
+    },
+    white: {
+      main: beforeTheme.color.white,
+      alpha: buildAlphaColors(beforeTheme.color.white),
     },
     fg: {
       ...buildForegroundColors(beforeTheme.color.fg),
@@ -283,10 +315,10 @@ const theme = {
       ...buildForegroundColors(beforeTheme.color.fgContrast),
     },
     disabled: {
-      ...buildDisabledColors(beforeTheme.color.fg),
+      ...buildDisabledColors(beforeTheme.color.disabled),
     },
     disabledContrast: {
-      ...buildDisabledColors(beforeTheme.color.fgContrast),
+      ...buildDisabledContrastColors(beforeTheme.color.disabledContrast),
     },
     divider: {
       ...buildDividerColors(beforeTheme.color.fg),

@@ -8,7 +8,7 @@ import { boolValues, colorValues, tintValues } from "utils/standards";
 
 import useColors from "hooks/useColors";
 
-import { MdReport } from "react-icons/md";
+import { MdCheckCircle } from "react-icons/md";
 
 //////////////////////// STYLED-COMPONENTS ////////////////////////
 
@@ -26,7 +26,7 @@ const blinkKeyframes = keyframes`
 
 //////////////////////// COMPONENT ////////////////////////
 
-function ErrorIcon({ children, className, classes, type, color, tint, size, speed, blink, disabled, ...rest }) {
+function SuccessIcon({ children, className, classes, type, color, tint, size, speed, blink, disabled, ...rest }) {
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
 
@@ -40,7 +40,7 @@ function ErrorIcon({ children, className, classes, type, color, tint, size, spee
   };
 
   // BASE COMPONENT //
-  const Icon = ({ className }) => <MdReport className={className + ` ` + getClassNames_root(`icon`)} {...rest} />;
+  const Icon = ({ className }) => <MdCheckCircle className={className + ` ` + getClassNames_root(`icon`)} {...rest} />;
 
   // DYNAMIC STYLED-COMPONENTS //
   const MyIcon = styled(Icon)`
@@ -64,7 +64,7 @@ function ErrorIcon({ children, className, classes, type, color, tint, size, spee
 
 //////////////////////// PROPS ////////////////////////
 
-ErrorIcon.propTypes = {
+SuccessIcon.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object,
   style: PropTypes.object,
@@ -80,7 +80,7 @@ ErrorIcon.propTypes = {
   disabled: PropTypes.oneOf(boolValues),
 };
 
-ErrorIcon.defaultProps = {
+SuccessIcon.defaultProps = {
   className: null,
   classes: null,
   style: null,
@@ -89,13 +89,13 @@ ErrorIcon.defaultProps = {
   color: `default`,
   tint: `500`,
   size: 40,
-  speed: 800,
+  speed: 2400,
 
-  blink: true,
+  blink: false,
 
   disabled: false,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default ErrorIcon;
+export default SuccessIcon;
