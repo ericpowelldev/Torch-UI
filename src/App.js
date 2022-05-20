@@ -1,34 +1,31 @@
+//////////////////////// DEPENDENCIES ////////////////////////
+
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { jss, JssProvider } from "react-jss";
-import jssPreset from "jss-preset-default";
+import { FuiProvider } from "providers/Fui";
 
-import Wrapper from "components/_Wrapper";
-import Test from "pages/Test";
+import theme from "utils/_theme";
 
-jss.setup(jssPreset());
+import Layout from "_test/Layout";
+import Page from "_test/Page";
 
 //////////////////////// COMPONENT ////////////////////////
-export default function App() {
+
+function App(props) {
   return (
     <Router>
-      <JssProvider jss={jss}>
-        <Wrapper>
-          <Switch>
-            <Route exact path="/" component={() => <Test />} />
-          </Switch>
-        </Wrapper>
-      </JssProvider>
+      <FuiProvider theme={theme}>
+        <Layout>
+          <Routes>
+            <Route exact path="/" element={<Page />} />
+          </Routes>
+        </Layout>
+      </FuiProvider>
     </Router>
   );
 }
 
-//////////////////////// STYLES ////////////////////////
-const styles = {
-  "@global": {
-    body: {
-      background: `blue`,
-    },
-  },
-};
+//////////////////////// EXPORT ////////////////////////
+
+export default App;

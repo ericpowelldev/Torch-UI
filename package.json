@@ -1,9 +1,16 @@
 {
-  "name": "fyrefly-ui-react",
+  "name": "@fyrefly/ui",
   "version": "0.1.0",
   "author": "Eric Powell",
-  "description": "FyreFly UI - A modern ReactJS component library made by Eric Powell",
-  "private": true,
+  "description": "FyreFlyUI - A modern ReactJS component library made by Eric Powell",
+  "license": "ISC",
+  "sideEffects": false,
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -23,13 +30,13 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "jss-preset-default": "^10.5.1",
-    "node-sass": "4.14.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-icons": "^4.1.0",
-    "react-jss": "^10.5.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1"
+    "color": "^4.2.3",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-icons": "^4.3.1",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^5.3.5",
+    "tools" : "git://github.com/ericpowelldev/Tools.git#main"
   }
 }

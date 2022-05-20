@@ -1,6 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from 'App';
-import 'styles/index.scss';
+//////////////////////// DEPENDENCIES ////////////////////////
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "App";
+
+//////////////////////// RENDER ////////////////////////
+
+const root = document.getElementById("root");
+const app = ReactDOM.createRoot(root);
+app.render(<App />);
