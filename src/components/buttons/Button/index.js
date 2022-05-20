@@ -5,9 +5,10 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import { boolValues, colorValues, tintValues, sizeValues } from "utils/standards";
+
 import { useFui } from "providers/Fui";
-import { useColors } from "hooks/useColors";
-import { useButton } from "./useButton";
+import useColors from "hooks/useColors";
+import useButton from "./useButton";
 
 import ErrorIcon from "components/utils/ErrorIcon";
 import WarningIcon from "components/utils/WarningIcon";

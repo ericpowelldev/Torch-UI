@@ -2,31 +2,40 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-
-import { boolValues } from "utils/standards";
+import styled, { css } from "styled-components";
 
 import { useFui } from "providers/Fui";
-import useSpacer from "hooks/useSpace";
+import useSpace from "hooks/useSpace";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Spacer({ children, className, classes, size, vertical, ...rest }) {
+function FlexParent({ children, className, classes, space, direction, alignContent, alignItems, justifyContent, justifyItems, ...rest }) {
   // HOOKS //
   const { theme } = useFui();
-  const { getSpaceSize } = useSpacer();
+  const { getSpaceSize } = useSpace();
 
   // DYNAMIC STYLED-COMPONENTS //
-  const MyHorizontalSpacer = styled.div`
+  const MyFlexParent = styled.div`
     position: relative;
+    display: flex;
     width: 100%;
-    height: ${theme.space(getSpaceSize(size))};
-  `;
 
-  const MyVerticalSpacer = styled.div`
-    position: relative;
-    width: ${theme.space(getSpaceSize(size))};
-    height: auto;
+    ${alignContent &&
+    css`
+      align-content: ${alignContent};
+    `}
+    ${alignItems &&
+    css`
+      align-items: ${alignItems};
+    `}
+    ${justifyContent &&
+    css`
+      justify-content: ${justifyContent};
+    `}
+    ${justifyItems &&
+    css`
+      justify-items: ${justifyItems};
+    `}
   `;
 
   // CLASSNAMES ROOT //
@@ -40,38 +49,26 @@ function Spacer({ children, className, classes, size, vertical, ...rest }) {
 
   // RETURN //
   return (
-    <>
-      {!vertical ? (
-        <MyHorizontalSpacer className={getClassNames_root(`spacer`)} {...rest} />
-      ) : (
-        <MyVerticalSpacer className={getClassNames_root(`spacer`)} {...rest} />
-      )}
-    </>
+    <MyFlexParent className={getClassNames_root(`parent`)} {...rest}>
+      {children}
+    </MyFlexParent>
   );
 }
 
 //////////////////////// PROPS ////////////////////////
 
-Spacer.propTypes = {
+FlexParent.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object,
   style: PropTypes.object,
-
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  vertical: PropTypes.oneOf(boolValues),
 };
 
-Spacer.defaultProps = {
+FlexParent.defaultProps = {
   className: null,
   classes: null,
   style: null,
-
-  size: 4,
-
-  vertical: false,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Spacer;
+export default FlexParent;

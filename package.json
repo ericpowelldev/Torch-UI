@@ -36,6 +36,7 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "tools" : "git://github.com/ericpowelldev/Tools.git#main"
   }
 }

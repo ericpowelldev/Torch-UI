@@ -5,8 +5,9 @@ import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 
 import { boolValues, colorValues, tintValues } from "utils/standards";
-import { useColors } from "hooks/useColors";
-import { useLoadingIcon } from "./useLoadingIcon";
+
+import useColors from "hooks/useColors";
+import useLoadingIcon from "./useLoadingIcon";
 
 //////////////////////// STYLED-COMPONENTS ////////////////////////
 

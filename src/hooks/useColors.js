@@ -5,7 +5,7 @@ import { colorValues, tintValues } from "utils/standards";
 
 //////////////////////// HOOK ////////////////////////
 
-export function useColors() {
+export default function useColors() {
   const { theme } = useFui();
 
   /** Get color tint from tint prop */

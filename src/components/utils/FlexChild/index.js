@@ -2,31 +2,19 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-
-import { boolValues } from "utils/standards";
+import styled, { css } from "styled-components";
 
 import { useFui } from "providers/Fui";
-import useSpacer from "hooks/useSpace";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Spacer({ children, className, classes, size, vertical, ...rest }) {
+function FlexChild({ children, className, classes, ...rest }) {
   // HOOKS //
   const { theme } = useFui();
-  const { getSpaceSize } = useSpacer();
 
   // DYNAMIC STYLED-COMPONENTS //
-  const MyHorizontalSpacer = styled.div`
+  const MyFlexChild = styled.div`
     position: relative;
-    width: 100%;
-    height: ${theme.space(getSpaceSize(size))};
-  `;
-
-  const MyVerticalSpacer = styled.div`
-    position: relative;
-    width: ${theme.space(getSpaceSize(size))};
-    height: auto;
   `;
 
   // CLASSNAMES ROOT //
@@ -40,38 +28,26 @@ function Spacer({ children, className, classes, size, vertical, ...rest }) {
 
   // RETURN //
   return (
-    <>
-      {!vertical ? (
-        <MyHorizontalSpacer className={getClassNames_root(`spacer`)} {...rest} />
-      ) : (
-        <MyVerticalSpacer className={getClassNames_root(`spacer`)} {...rest} />
-      )}
-    </>
+    <MyFlexChild className={getClassNames_root(`child`)} {...rest}>
+      {children}
+    </MyFlexChild>
   );
 }
 
 //////////////////////// PROPS ////////////////////////
 
-Spacer.propTypes = {
+FlexChild.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object,
   style: PropTypes.object,
-
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  vertical: PropTypes.oneOf(boolValues),
 };
 
-Spacer.defaultProps = {
+FlexChild.defaultProps = {
   className: null,
   classes: null,
   style: null,
-
-  size: 4,
-
-  vertical: false,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Spacer;
+export default FlexChild;

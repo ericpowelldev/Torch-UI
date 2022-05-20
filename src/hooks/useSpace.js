@@ -1,8 +1,8 @@
 //////////////////////// HOOK ////////////////////////
 
-export function useSpacer() {
-  /** Get the size of the spacer */
-  const getSpacerSize = (size) => {
+export default function useSpace() {
+  /** Get the size of a space */
+  const getSpaceSize = (size) => {
     let sizeNum = 4;
     if (Number(size)) {
       sizeNum = size;
@@ -21,5 +21,5 @@ export function useSpacer() {
   };
 
   // Return hook logic
-  return { getSpacerSize };
+  return { getSpaceSize };
 }

@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 
 import { boolValues, colorValues, tintValues } from "utils/standards";
-import { useColors } from "hooks/useColors";
+
+import useColors from "hooks/useColors";
 
 import { MdCheckCircle } from "react-icons/md";
 

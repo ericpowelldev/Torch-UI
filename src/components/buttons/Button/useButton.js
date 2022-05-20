@@ -1,6 +1,6 @@
 //////////////////////// HOOK ////////////////////////
 
-export function useButton() {
+export default function useButton() {
   /** Get solid and link padding from size prop */
   const getRootPadding = (size) => {
     if (size === `xs` || size === `min`) return `4px 6px`;
