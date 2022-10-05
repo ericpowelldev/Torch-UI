@@ -1,6 +1,6 @@
 import Color from "color";
 
-const beforeTheme = {
+const defaultTheme = {
   // Colors
   color: {
     // Default Colors
@@ -262,7 +262,7 @@ const buildColors = (color) => {
     [`200`]: main[`700`],
     [`300`]: main[`800`],
     [`400`]: main[`900`],
-    [`500`]: Color(beforeTheme.color.fgContrast).hex(),
+    [`500`]: Color(defaultTheme.color.fgContrast).hex(),
     [`600`]: main[`200`],
     [`700`]: main[`300`],
     [`800`]: main[`400`],
@@ -273,58 +273,58 @@ const buildColors = (color) => {
 };
 
 const theme = {
-  ...beforeTheme,
+  ...defaultTheme,
   color: {
-    ...beforeTheme.color,
+    ...defaultTheme.color,
     default: {
-      ...buildColors(beforeTheme.color.default),
+      ...buildColors(defaultTheme.color.default),
     },
     primary: {
-      ...buildColors(beforeTheme.color.primary),
+      ...buildColors(defaultTheme.color.primary),
     },
     secondary: {
-      ...buildColors(beforeTheme.color.secondary),
+      ...buildColors(defaultTheme.color.secondary),
     },
     tertiary: {
-      ...buildColors(beforeTheme.color.tertiary),
+      ...buildColors(defaultTheme.color.tertiary),
     },
     info: {
-      ...buildColors(beforeTheme.color.info),
+      ...buildColors(defaultTheme.color.info),
     },
     error: {
-      ...buildColors(beforeTheme.color.error),
+      ...buildColors(defaultTheme.color.error),
     },
     warning: {
-      ...buildColors(beforeTheme.color.warning),
+      ...buildColors(defaultTheme.color.warning),
     },
     success: {
-      ...buildColors(beforeTheme.color.success),
+      ...buildColors(defaultTheme.color.success),
     },
     black: {
-      main: beforeTheme.color.black,
-      alpha: buildAlphaColors(beforeTheme.color.black),
+      main: defaultTheme.color.black,
+      alpha: buildAlphaColors(defaultTheme.color.black),
     },
     white: {
-      main: beforeTheme.color.white,
-      alpha: buildAlphaColors(beforeTheme.color.white),
+      main: defaultTheme.color.white,
+      alpha: buildAlphaColors(defaultTheme.color.white),
     },
     fg: {
-      ...buildForegroundColors(beforeTheme.color.fg),
+      ...buildForegroundColors(defaultTheme.color.fg),
     },
     fgContrast: {
-      ...buildForegroundColors(beforeTheme.color.fgContrast),
+      ...buildForegroundColors(defaultTheme.color.fgContrast),
     },
     disabled: {
-      ...buildDisabledColors(beforeTheme.color.disabled),
+      ...buildDisabledColors(defaultTheme.color.disabled),
     },
     disabledContrast: {
-      ...buildDisabledContrastColors(beforeTheme.color.disabledContrast),
+      ...buildDisabledContrastColors(defaultTheme.color.disabledContrast),
     },
     divider: {
-      ...buildDividerColors(beforeTheme.color.fg),
+      ...buildDividerColors(defaultTheme.color.fg),
     },
     dividerContrast: {
-      ...buildDividerColors(beforeTheme.color.fgContrast),
+      ...buildDividerColors(defaultTheme.color.fgContrast),
     },
   },
 };

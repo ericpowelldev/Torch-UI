@@ -216,7 +216,18 @@ function Button({
     <MyButton className={getClassNames_root(`button`)} {...rest}>
       {icon ? <MyStartIcon className={getClassNames(`icon`)}>{icon}</MyStartIcon> : null}
       <MyLabel className={getClassNames(`label`)}>{children}</MyLabel>
-      {error ? (
+      {loading ? (
+        <MyEndIcon>
+          <LoadingIcon
+            className={getClassNames(`loadingIcon`)}
+            type={variant === `solid` ? `fg` : `bg`}
+            color={color}
+            tint={tint}
+            size={getIconSize(size)}
+            disabled={disabled}
+          />
+        </MyEndIcon>
+      ) : error ? (
         <MyEndIcon>
           <ErrorIcon
             className={getClassNames(`errorIcon`)}
@@ -231,17 +242,6 @@ function Button({
         <MyEndIcon>
           <WarningIcon
             className={getClassNames(`warningIcon`)}
-            type={variant === `solid` ? `fg` : `bg`}
-            color={color}
-            tint={tint}
-            size={getIconSize(size)}
-            disabled={disabled}
-          />
-        </MyEndIcon>
-      ) : loading ? (
-        <MyEndIcon>
-          <LoadingIcon
-            className={getClassNames(`loadingIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
