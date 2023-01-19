@@ -6,14 +6,14 @@ import styled from "styled-components";
 
 import { boolValues } from "utils/standards";
 
-import { useFui } from "providers/Fui";
+import { useTUI } from "providers/TUI";
 import useSpacer from "hooks/useSpace";
 
 //////////////////////// COMPONENT ////////////////////////
 
 function Spacer({ children, className, classes, size, vertical, ...rest }) {
   // HOOKS //
-  const { theme } = useFui();
+  const { theme } = useTUI();
   const { getSpaceSize } = useSpacer();
 
   // DYNAMIC STYLED-COMPONENTS //

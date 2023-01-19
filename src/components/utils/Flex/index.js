@@ -4,14 +4,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-import { useFui } from "providers/Fui";
+import { useTUI } from "providers/TUI";
 import useSpace from "hooks/useSpace";
 
 //////////////////////// COMPONENT ////////////////////////
 
 function Flex({ children, className, classes, space, direction, alignContent, alignItems, justifyContent, justifyItems, ...rest }) {
   // HOOKS //
-  const { theme } = useFui();
+  const { theme } = useTUI();
   const { getSpaceSize } = useSpace();
 
   // DYNAMIC STYLED-COMPONENTS //

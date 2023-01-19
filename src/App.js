@@ -3,7 +3,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { FuiProvider } from "providers/Fui";
+import { TUIProvider } from "providers/TUI";
 
 import theme from "utils/_theme";
 
@@ -15,13 +15,13 @@ import Page from "_test/Page";
 function App(props) {
   return (
     <Router>
-      <FuiProvider theme={theme}>
+      <TUIProvider theme={theme}>
         <Layout>
           <Routes>
             <Route exact path="/" element={<Page />} />
           </Routes>
         </Layout>
-      </FuiProvider>
+      </TUIProvider>
     </Router>
   );
 }

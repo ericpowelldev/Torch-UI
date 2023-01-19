@@ -1,8 +1,8 @@
 {
-  "name": "@fyrefly/ui",
+  "name": "@fyrefly/tui",
   "version": "0.1.0",
   "author": "Eric Powell",
-  "description": "FyreFlyUI - A modern ReactJS component library made by Eric Powell",
+  "description": "Torch UI - A custom TSX component library made by Eric Powell",
   "license": "ISC",
   "sideEffects": false,
   "eslintConfig": {

@@ -1,12 +1,12 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
-import { useFui } from "providers/Fui";
+import { useTUI } from "providers/TUI";
 import { colorValues, tintValues } from "utils/standards";
 
 //////////////////////// HOOK ////////////////////////
 
 export default function useColors() {
-  const { theme } = useFui();
+  const { theme } = useTUI();
 
   /** Get color tint from tint prop */
   const getColorTint = (tint) => {

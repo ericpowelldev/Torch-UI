@@ -1,3 +1,3 @@
-# FyreFly-UI
+# Torch UI
 
-A custom React UI framework made by Eric Powell.
+A custom TSX component library made by Eric Powell.

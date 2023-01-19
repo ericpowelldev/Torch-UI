@@ -6,7 +6,7 @@ import styled, { css } from "styled-components";
 
 import { boolValues, colorValues, tintValues, sizeValues } from "utils/standards";
 
-import { useFui } from "providers/Fui";
+import { useTUI } from "providers/TUI";
 import useColors from "hooks/useColors";
 import useButton from "./useButton";
 
@@ -37,7 +37,7 @@ function Button({
   ...rest
 }) {
   // HOOKS //
-  const { theme } = useFui();
+  const { theme } = useTUI();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
   const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
 

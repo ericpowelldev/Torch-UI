@@ -4,13 +4,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { useFui } from "providers/Fui";
+import { useTUI } from "providers/TUI";
 
 //////////////////////// COMPONENT ////////////////////////
 
 function Button({ children, className, classes, ...rest }) {
   // HOOKS //
-  const { theme } = useFui();
+  const { theme } = useTUI();
 
   // CLASSNAMES ROOT //
   const getClassNames_root = (name) => {

@@ -4,13 +4,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-import { useFui } from "providers/Fui";
+import { useTUI } from "providers/TUI";
 
 //////////////////////// COMPONENT ////////////////////////
 
 function FlexChild({ children, className, classes, ...rest }) {
   // HOOKS //
-  const { theme } = useFui();
+  const { theme } = useTUI();
 
   // DYNAMIC STYLED-COMPONENTS //
   const MyFlexChild = styled.div`

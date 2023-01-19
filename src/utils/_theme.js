@@ -51,7 +51,7 @@ const defaultTheme = {
 
   // Text Options
   txt: {
-    fontFamily: `"Poppins", "Roboto", "Helvetica", "Arial", sans-serif`,
+    fontFamily: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
     fontSize: 16,
     fontHeight: 1.333,
     fontHeightReset: 1,
