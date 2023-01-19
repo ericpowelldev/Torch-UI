@@ -5,7 +5,7 @@ import ErrorIcon from "components/utils/ErrorIcon";
 
 //////////////////////// COMPONENT ////////////////////////
 
-export default function ErrorIcons(props) {
+const ErrorIcons = () => {
   return (
     <>
       <ErrorIcon style={{ display: `inline-block` }} />
@@ -21,4 +21,8 @@ export default function ErrorIcons(props) {
       <ErrorIcon style={{ display: `inline-block` }} color="success" />
     </>
   );
-}
+};
+
+//////////////////////// EXPORT ////////////////////////
+
+export default ErrorIcons;

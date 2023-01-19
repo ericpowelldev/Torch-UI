@@ -1,32 +1,31 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
+
+import { joinClassNames } from "utils/helpers";
 
 import { useTUI } from "providers/TUI";
 
+//////////////////////// PROPS ////////////////////////
+
+interface ButtonBaseProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    label: string;
+  };
+  style?: React.CSSProperties;
+
+  [x:string]: any; // Handle default HTML props
+}
+
 //////////////////////// COMPONENT ////////////////////////
 
-function Button({ children, className, classes, ...rest }) {
+const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) => {
   // HOOKS //
   const { theme } = useTUI();
-
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
-  // CLASSNAMES //
-  const getClassNames = (name) => {
-    let classNames = [];
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
 
   // STYLED-COMPONENTS //
   const MyButton = styled.button`
@@ -58,26 +57,12 @@ function Button({ children, className, classes, ...rest }) {
 
   // RETURN //
   return (
-    <MyButton className={getClassNames_root(`button`)} {...rest}>
-      <MyLabel className={getClassNames(`label`)}>{children}</MyLabel>
+    <MyButton className={joinClassNames(classes, `root`, className)} {...rest}>
+      <MyLabel className={joinClassNames(classes, `label`)}>{children}</MyLabel>
     </MyButton>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Button.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-Button.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Button;
+export default ButtonBase;

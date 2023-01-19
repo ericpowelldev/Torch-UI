@@ -1,15 +1,45 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+
+import { joinClassNames } from "utils/helpers";
 
 import { useTUI } from "providers/TUI";
 import useSpace from "hooks/useSpace";
 
+//////////////////////// PROPS ////////////////////////
+
+interface FlexParentProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+  };
+  style?: React.CSSProperties;
+
+  direction?: string;
+  alignContent?: string;
+  alignItems?: string;
+  justifyContent?: string;
+  justifyItems?: string;
+
+  [x: string]: any; // Handle default HTML props
+}
+
 //////////////////////// COMPONENT ////////////////////////
 
-function FlexParent({ children, className, classes, space, direction, alignContent, alignItems, justifyContent, justifyItems, ...rest }) {
+const FlexParent = ({
+  children,
+  className,
+  classes,
+  direction,
+  alignContent,
+  alignItems,
+  justifyContent,
+  justifyItems,
+  ...rest
+}: FlexParentProps) => {
   // HOOKS //
   const { theme } = useTUI();
   const { getSpaceSize } = useSpace();
@@ -20,6 +50,10 @@ function FlexParent({ children, className, classes, space, direction, alignConte
     display: flex;
     width: 100%;
 
+    ${direction &&
+    css`
+      flex-direction: ${direction};
+    `}
     ${alignContent &&
     css`
       align-content: ${alignContent};
@@ -38,35 +72,12 @@ function FlexParent({ children, className, classes, space, direction, alignConte
     `}
   `;
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
-    <MyFlexParent className={getClassNames_root(`parent`)} {...rest}>
+    <MyFlexParent className={joinClassNames(classes, `root`, className)} {...rest}>
       {children}
     </MyFlexParent>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-FlexParent.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-FlexParent.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////

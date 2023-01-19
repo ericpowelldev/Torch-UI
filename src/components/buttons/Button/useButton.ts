@@ -2,7 +2,7 @@
 
 export default function useButton() {
   /** Get solid and link padding from size prop */
-  const getRootPadding = (size) => {
+  const getRootPadding = (size: string) => {
     if (size === `xs` || size === `min`) return `4px 6px`;
     if (size === `sm`) return `6px 9px`;
     if (size === `md`) return `8px 12px`;
@@ -12,7 +12,7 @@ export default function useButton() {
   };
 
   /** Get outline padding from size prop */
-  const getOutlinePadding = (size) => {
+  const getOutlinePadding = (size: string) => {
     if (size === `xs` || size === `min`) return `3px 5px`;
     if (size === `sm`) return `5px 8px`;
     if (size === `md`) return `7px 11px`;
@@ -22,7 +22,7 @@ export default function useButton() {
   };
 
   /** Get label size from size prop */
-  const getLabelSize = (size) => {
+  const getLabelSize = (size: string) => {
     if (size === `xs` || size === `min`) return 12;
     if (size === `sm`) return 13;
     if (size === `md`) return 14;
@@ -32,7 +32,7 @@ export default function useButton() {
   };
 
   /** Get icon size from size prop */
-  const getIconSize = (size) => {
+  const getIconSize = (size: string) => {
     if (size === `xs` || size === `min`) return 15;
     if (size === `sm`) return 17;
     if (size === `md`) return 18;
@@ -42,7 +42,7 @@ export default function useButton() {
   };
 
   /** Get label weight from variant prop */
-  const getLabelWeight = (variant) => {
+  const getLabelWeight = (variant: string) => {
     if (variant === `outline`) return 500;
     return 600;
   };

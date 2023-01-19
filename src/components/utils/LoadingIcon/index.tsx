@@ -1,13 +1,35 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 
-import { boolValues, colorValues, tintValues } from "utils/standards";
+import { joinClassNames } from "utils/helpers";
+import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
 import useLoadingIcon from "./useLoadingIcon";
+
+//////////////////////// PROPS ////////////////////////
+
+interface LoadingIconProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+  };
+  style?: React.CSSProperties;
+
+  type?: `bg` | `fg`;
+  color?: ExtendedColorValues;
+  tint?: TintValues;
+  size?: number;
+  thickness?: number;
+  speed?: number;
+
+  disabled?: BoolValues;
+
+  [x: string]: any; // Handle default HTML props
+}
 
 //////////////////////// STYLED-COMPONENTS ////////////////////////
 
@@ -32,7 +54,19 @@ const MyBase = styled.div`
 
 //////////////////////// COMPONENT ////////////////////////
 
-function LoadingIcon({ children, className, classes, type, color, tint, size, thickness, speed, disabled, ...rest }) {
+const LoadingIcon = ({
+  children,
+  className,
+  classes,
+  type = `bg`,
+  color = `utility`,
+  tint = `500`,
+  size = 40,
+  thickness = 0,
+  speed = 500,
+  disabled,
+  ...rest
+}: LoadingIconProps) => {
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
   const { getTrackSize } = useLoadingIcon();
@@ -63,61 +97,13 @@ function LoadingIcon({ children, className, classes, type, color, tint, size, th
     animation: ${spinKeyframes} ${speed}ms linear infinite;
   `;
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
-  // CLASSNAMES //
-  const getClassNames = (name) => {
-    let classNames = [];
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
-    <MyBase className={getClassNames_root(`base`)} {...rest}>
-      <MyTrack className={getClassNames(`track`)} />
-      <MyBar className={getClassNames(`bar`)} />
+    <MyBase className={joinClassNames(classes, `root`, className)} {...rest}>
+      <MyTrack className={joinClassNames(classes, `track`)} />
+      <MyBar className={joinClassNames(classes, `bar`)} />
     </MyBase>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-LoadingIcon.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-
-  type: PropTypes.oneOf([`bg`, `fg`]),
-  color: PropTypes.oneOf([`black`, `white`, ...colorValues]),
-  tint: PropTypes.oneOf(tintValues),
-  size: PropTypes.number,
-  thickness: PropTypes.number,
-  speed: PropTypes.number,
-
-  disabled: PropTypes.oneOf(boolValues),
-};
-
-LoadingIcon.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
-
-  type: `bg`,
-  color: `default`,
-  tint: `500`,
-  size: 40,
-  thickness: 0,
-  speed: 500,
-
-  disabled: false,
 };
 
 //////////////////////// EXPORT ////////////////////////

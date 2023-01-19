@@ -2,11 +2,11 @@
 
 export default function useSpace() {
   /** Get the size of a space */
-  const getSpaceSize = (size) => {
+  const getSpaceSize = (size: number | string) => {
     let sizeNum = 4;
-    if (Number(size)) {
+    if (typeof size === `number`) {
       sizeNum = size;
-    } else if (isNaN(size) && typeof size === `string`) {
+    } else if (typeof size === `string`) {
       if (size === `xxxs`) sizeNum = 0.5;
       if (size === `xxs`) sizeNum = 1;
       if (size === `xs`) sizeNum = 2;

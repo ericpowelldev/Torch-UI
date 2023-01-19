@@ -2,7 +2,7 @@
 
 export default function useLoadingIcon() {
   /** Get the size of the spinner track */
-  const getTrackSize = (size) => {
+  const getTrackSize = (size: number) => {
     if (size > 48) return size / 8;
     if (size > 36) return size / 6;
     if (size > 24) return size / 5;

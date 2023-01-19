@@ -1,23 +1,33 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 
 import "static/styles/reset.css";
 import "static/styles/custom.css";
 import "static/styles/scrollbar.css";
 
 import _theme from "utils/_theme";
-import { boolValues } from "utils/standards";
+import { BoolValues } from "utils/types";
+
+//////////////////////// PROPS ////////////////////////
+
+interface TUIProviderProps {
+  children?: React.ReactNode;
+
+  theme?: any;
+
+  resetCss?: BoolValues;
+  customScrollbar?: BoolValues;
+}
 
 //////////////////////// CONTEXT/HOOK ////////////////////////
 
-const TUIContext = React.createContext();
+const TUIContext = React.createContext({ theme: _theme });
 const useTUI = () => React.useContext(TUIContext);
 
 //////////////////////// PROVIDER ////////////////////////
 
-function TUIProvider({ children, theme, resetCss, customScrollbar }) {
+const TUIProvider = ({ children, theme = _theme, resetCss = true, customScrollbar = true }: TUIProviderProps) => {
   const ctx = {
     theme: theme,
   };
@@ -29,22 +39,6 @@ function TUIProvider({ children, theme, resetCss, customScrollbar }) {
       {children}
     </TUIContext.Provider>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-TUIProvider.propTypes = {
-  theme: PropTypes.object,
-
-  resetCss: PropTypes.oneOf(boolValues),
-  customScrollbar: PropTypes.oneOf(boolValues),
-};
-
-TUIProvider.defaultProps = {
-  theme: _theme,
-
-  resetCss: true,
-  customScrollbar: true,
 };
 
 //////////////////////// EXPORT ////////////////////////

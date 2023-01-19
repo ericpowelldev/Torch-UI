@@ -12,19 +12,19 @@ import Page from "_test/Page";
 
 //////////////////////// COMPONENT ////////////////////////
 
-function App(props) {
+const App = () => {
   return (
     <Router>
       <TUIProvider theme={theme}>
         <Layout>
           <Routes>
-            <Route exact path="/" element={<Page />} />
+            <Route path="/" element={<Page />} />
           </Routes>
         </Layout>
       </TUIProvider>
     </Router>
   );
-}
+};
 
 //////////////////////// EXPORT ////////////////////////
 

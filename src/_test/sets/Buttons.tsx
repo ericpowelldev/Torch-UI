@@ -27,8 +27,8 @@ const FlexChild = styled.div`
 
 //////////////////////// COMPONENT ////////////////////////
 
-export default function Buttons(props) {
-  const handleClick = (event) => {
+const Buttons = () => {
+  const handleClick = (event: any) => {
     const val = event.target.value;
     console.log(`VALUE:`, val);
   };
@@ -117,7 +117,7 @@ export default function Buttons(props) {
         <Spacer vertical />
 
         <FlexChild>
-          <Button success color="tertiary" tint="500" shadow>
+          <Button loading color="tertiary" tint="500">
             Button
           </Button>
           <Spacer />
@@ -157,19 +157,19 @@ export default function Buttons(props) {
         <Spacer vertical />
 
         <FlexChild>
-          <Button disabled color="tertiary" tint="700">
+          <Button color="tertiary" tint="700">
             Button
           </Button>
           <Spacer />
-          <Button disabled color="tertiary" tint="700" variant="outline">
+          <Button color="tertiary" tint="700" variant="outline">
             Button
           </Button>
           <Spacer />
-          <Button disabled color="tertiary" tint="700" variant="transparent">
+          <Button color="tertiary" tint="700" variant="transparent">
             Button
           </Button>
           <Spacer />
-          <Button disabled color="tertiary" tint="700" variant="link">
+          <Button color="tertiary" tint="700" variant="link">
             Button
           </Button>
         </FlexChild>
@@ -230,7 +230,7 @@ export default function Buttons(props) {
           Drive Now
         </Button>
         <Spacer vertical size="xs" />
-        <Button icon={<AiOutlineCloseCircle />} color="default" warning>
+        <Button icon={<AiOutlineCloseCircle />} color="utility" warning>
           Cancel
         </Button>
         <Spacer vertical size="xs" />
@@ -240,4 +240,8 @@ export default function Buttons(props) {
       </FlexParent>
     </>
   );
-}
+};
+
+//////////////////////// EXPORT ////////////////////////
+
+export default Buttons;

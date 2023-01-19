@@ -21,7 +21,7 @@ const Root = styled.div`
 
 //////////////////////// COMPONENT ////////////////////////
 
-export default function Page(props) {
+const Page = () => {
   return (
     <Root>
       <ErrorIcons />
@@ -43,4 +43,8 @@ export default function Page(props) {
       <Buttons />
     </Root>
   );
-}
+};
+
+//////////////////////// EXPORT ////////////////////////
+
+export default Page;

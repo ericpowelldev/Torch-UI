@@ -9,23 +9,29 @@ import Footer from "components/layout/Footer";
 
 import Sidebar from "components/layout/Sidebar";
 
+//////////////////////// PROPS ////////////////////////
+
+interface LayoutProps {
+  children?: React.ReactNode;
+}
+
 //////////////////////// STYLED-COMPONENTS ////////////////////////
 
 const Root = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #f5f5f5;
-  /* background-color: #202428; */
+  /* background-color: #f5f5f5; */
+  background-color: #202428;
 `;
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Layout(props) {
+const Layout = ({ children }: LayoutProps) => {
   return (
     <Root>
       <Header />
-      <Main>{props.children}</Main>
+      <Main>{children}</Main>
       <Footer />
 
       <Sidebar />
@@ -33,7 +39,7 @@ function Layout(props) {
       {/* <ScrollToTop /> */}
     </Root>
   );
-}
+};
 
 //////////////////////// EXPORT ////////////////////////
 
