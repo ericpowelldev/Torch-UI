@@ -1,13 +1,24 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
+
+//////////////////////// PROPS ////////////////////////
+
+interface MainProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    header: string;
+  };
+  style?: React.CSSProperties;
+}
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Footer({ children, className, classes, ...rest }) {
+const Main = ({ children, className, classes, ...rest }: MainProps) => {
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -17,26 +28,12 @@ function Footer({ children, className, classes, ...rest }) {
 
   // RETURN //
   return (
-    <footer id="footer" className={getClassNames_root(`footer`)} {...rest}>
+    <main id="main" className={getClassNames_root(`main`)} {...rest}>
       {children}
-    </footer>
+    </main>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Footer.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-Footer.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Footer;
+export default Main;

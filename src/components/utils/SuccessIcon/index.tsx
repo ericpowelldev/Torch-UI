@@ -1,14 +1,35 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 
-import { boolValues, colorValues, tintValues } from "utils/standards";
+import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
 
 import { MdCheckCircle } from "react-icons/md";
+
+//////////////////////// PROPS ////////////////////////
+
+interface SuccessIconProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    icon: string;
+  };
+  style?: React.CSSProperties;
+
+  type?: `bg` | `fg`;
+  color?: ExtendedColorValues;
+  tint?: TintValues;
+  size?: number;
+  speed?: number;
+
+  blink?: BoolValues;
+
+  disabled?: BoolValues;
+}
 
 //////////////////////// STYLED-COMPONENTS ////////////////////////
 
@@ -26,12 +47,24 @@ const blinkKeyframes = keyframes`
 
 //////////////////////// COMPONENT ////////////////////////
 
-function SuccessIcon({ children, className, classes, type, color, tint, size, speed, blink, disabled, ...rest }) {
+const SuccessIcon = ({
+  children,
+  className,
+  classes,
+  type = `bg`,
+  color = `default`,
+  tint = `500`,
+  size = 40,
+  speed = 800,
+  blink,
+  disabled,
+  ...rest
+}: SuccessIconProps) => {
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
 
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -60,40 +93,6 @@ function SuccessIcon({ children, className, classes, type, color, tint, size, sp
 
   // RETURN //
   return <MyIcon {...rest} />;
-}
-
-//////////////////////// PROPS ////////////////////////
-
-SuccessIcon.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-
-  type: PropTypes.oneOf([`bg`, `fg`]),
-  color: PropTypes.oneOf([`black`, `white`, ...colorValues]),
-  tint: PropTypes.oneOf(tintValues),
-  size: PropTypes.number,
-  speed: PropTypes.number,
-
-  blink: PropTypes.oneOf(boolValues),
-
-  disabled: PropTypes.oneOf(boolValues),
-};
-
-SuccessIcon.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
-
-  type: `bg`,
-  color: `default`,
-  tint: `500`,
-  size: 40,
-  speed: 2400,
-
-  blink: false,
-
-  disabled: false,
 };
 
 //////////////////////// EXPORT ////////////////////////

@@ -124,7 +124,7 @@ const defaultTheme = {
 
   // Pixel Spacing
   space: (num1 = 2, num2 = null, num3 = null, num4 = null) => {
-    const pix = (num) => `${4 * num}px`;
+    const pix = (num: number) => `${4 * num}px`;
 
     let pixSpace = [];
     if (num1 && typeof num1 === `number`) pixSpace.push(pix(num1));

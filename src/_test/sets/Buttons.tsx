@@ -27,8 +27,8 @@ const FlexChild = styled.div`
 
 //////////////////////// COMPONENT ////////////////////////
 
-export default function Buttons(props) {
-  const handleClick = (event) => {
+const Buttons = () => {
+  const handleClick = (event: any) => {
     const val = event.target.value;
     console.log(`VALUE:`, val);
   };
@@ -117,7 +117,7 @@ export default function Buttons(props) {
         <Spacer vertical />
 
         <FlexChild>
-          <Button success color="tertiary" tint="500" shadow>
+          <Button success color="tertiary" tint="500">
             Button
           </Button>
           <Spacer />
@@ -240,4 +240,8 @@ export default function Buttons(props) {
       </FlexParent>
     </>
   );
-}
+};
+
+//////////////////////// EXPORT ////////////////////////
+
+export default Buttons;

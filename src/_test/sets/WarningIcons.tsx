@@ -5,7 +5,7 @@ import WarningIcon from "components/utils/WarningIcon";
 
 //////////////////////// COMPONENT ////////////////////////
 
-export default function WarningIcons(props) {
+const WarningIcons = () => {
   return (
     <>
       <WarningIcon style={{ display: `inline-block` }} />
@@ -21,4 +21,8 @@ export default function WarningIcons(props) {
       <WarningIcon style={{ display: `inline-block` }} color="success" />
     </>
   );
-}
+};
+
+//////////////////////// EXPORT ////////////////////////
+
+export default WarningIcons;

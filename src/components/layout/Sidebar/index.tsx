@@ -1,13 +1,24 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
+
+//////////////////////// PROPS ////////////////////////
+
+interface SidebarProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    header: string;
+  };
+  style?: React.CSSProperties;
+}
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Sidebar({ children, className, classes, ...rest }) {
+const Sidebar = ({ children, className, classes, ...rest }: SidebarProps) => {
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -21,20 +32,6 @@ function Sidebar({ children, className, classes, ...rest }) {
       {children}
     </aside>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Sidebar.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-Sidebar.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////

@@ -1,14 +1,25 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import { useTUI } from "providers/TUI";
 
+//////////////////////// PROPS ////////////////////////
+
+interface FlexChildProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    child: string;
+  };
+  style?: React.CSSProperties;
+}
+
 //////////////////////// COMPONENT ////////////////////////
 
-function FlexChild({ children, className, classes, ...rest }) {
+const FlexChild = ({ children, className, classes, ...rest }: FlexChildProps) => {
   // HOOKS //
   const { theme } = useTUI();
 
@@ -18,7 +29,7 @@ function FlexChild({ children, className, classes, ...rest }) {
   `;
 
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -32,20 +43,6 @@ function FlexChild({ children, className, classes, ...rest }) {
       {children}
     </MyFlexChild>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-FlexChild.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-FlexChild.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////

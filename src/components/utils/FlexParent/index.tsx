@@ -1,25 +1,56 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import { useTUI } from "providers/TUI";
 import useSpace from "hooks/useSpace";
 
+//////////////////////// PROPS ////////////////////////
+
+interface FlexParentProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string,
+    parent: string,
+  };
+  style?: React.CSSProperties;
+
+  direction?: string;
+  alignContent?: string;
+  alignItems?: string;
+  justifyContent?: string;
+  justifyItems?: string;
+}
+
 //////////////////////// COMPONENT ////////////////////////
 
-function Flex({ children, className, classes, space, direction, alignContent, alignItems, justifyContent, justifyItems, ...rest }) {
+const FlexParent = ({
+  children,
+  className,
+  classes,
+  direction,
+  alignContent,
+  alignItems,
+  justifyContent,
+  justifyItems,
+  ...rest
+}: FlexParentProps) => {
   // HOOKS //
   const { theme } = useTUI();
   const { getSpaceSize } = useSpace();
 
   // DYNAMIC STYLED-COMPONENTS //
-  const MyFlex = styled.div`
+  const MyFlexParent = styled.div`
     position: relative;
     display: flex;
     width: 100%;
 
+    ${direction &&
+    css`
+      flex-direction: ${direction};
+    `}
     ${alignContent &&
     css`
       align-content: ${alignContent};
@@ -39,7 +70,7 @@ function Flex({ children, className, classes, space, direction, alignContent, al
   `;
 
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -49,26 +80,12 @@ function Flex({ children, className, classes, space, direction, alignContent, al
 
   // RETURN //
   return (
-    <MyFlex className={getClassNames_root(`parent`)} {...rest}>
+    <MyFlexParent className={getClassNames_root(`parent`)} {...rest}>
       {children}
-    </MyFlex>
+    </MyFlexParent>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Flex.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-Flex.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Flex;
+export default FlexParent;

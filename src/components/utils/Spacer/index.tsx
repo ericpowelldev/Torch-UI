@@ -1,17 +1,32 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { boolValues } from "utils/standards";
+import { BoolValues } from "utils/types";
 
 import { useTUI } from "providers/TUI";
 import useSpacer from "hooks/useSpace";
 
+//////////////////////// PROPS ////////////////////////
+
+interface SpacerProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    spacer: string;
+  };
+  style?: React.CSSProperties;
+
+  size?: number | string;
+
+  vertical?: BoolValues;
+}
+
 //////////////////////// COMPONENT ////////////////////////
 
-function Spacer({ children, className, classes, size, vertical, ...rest }) {
+const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: SpacerProps) => {
   // HOOKS //
   const { theme } = useTUI();
   const { getSpaceSize } = useSpacer();
@@ -30,7 +45,7 @@ function Spacer({ children, className, classes, size, vertical, ...rest }) {
   `;
 
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -48,28 +63,6 @@ function Spacer({ children, className, classes, size, vertical, ...rest }) {
       )}
     </>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Spacer.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  vertical: PropTypes.oneOf(boolValues),
-};
-
-Spacer.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
-
-  size: 4,
-
-  vertical: false,
 };
 
 //////////////////////// EXPORT ////////////////////////

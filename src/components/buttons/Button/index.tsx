@@ -1,10 +1,10 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-import { boolValues, colorValues, tintValues, sizeValues } from "utils/standards";
+import { joinClassNames_root, joinClassNames } from "utils/classNames";
+import { BoolValues, ButtonVariants, ColorValues, SizeValues, TintValues } from "utils/types";
 
 import { useTUI } from "providers/TUI";
 import useColors from "hooks/useColors";
@@ -15,47 +15,70 @@ import WarningIcon from "components/utils/WarningIcon";
 import LoadingIcon from "components/utils/LoadingIcon";
 import SuccessIcon from "components/utils/SuccessIcon";
 
+//////////////////////// PROPS ////////////////////////
+
+interface ButtonProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    button: string;
+    label: string;
+    icon: string;
+    loadingIcon: string;
+    warningIcon: string;
+    errorIcon: string;
+    successIcon: string;
+  };
+  style?: React.CSSProperties;
+
+  color?: ColorValues;
+  tint?: TintValues;
+  size?: SizeValues;
+  variant?: ButtonVariants;
+
+  tooltip?: React.ReactNode;
+  icon?: React.ReactNode;
+
+  fullWidth?: BoolValues;
+  uppercase?: BoolValues;
+
+  disabled?: BoolValues;
+  error?: BoolValues;
+  warning?: BoolValues;
+  loading?: BoolValues;
+  success?: BoolValues;
+}
+
 //////////////////////// COMPONENT ////////////////////////
 
-function Button({
+const Button = ({
   children,
   className,
   classes,
-  color,
-  tint,
-  size,
-  variant,
+  color = `default`,
+  tint = `500`,
+  size = `md`,
+  variant = `solid`,
   tooltip,
   icon,
   fullWidth,
-  uppercase,
+  uppercase = true,
   disabled,
   error,
   warning,
   loading,
   success,
   ...rest
-}) {
+}: ButtonProps) => {
   // HOOKS //
   const { theme } = useTUI();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
   const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // CLASSNAMES //
-  const getClassNames = (name) => {
-    let classNames = [];
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
+  const getClassNames_root = (name: string) => joinClassNames_root(classes, name, className);
+  const getClassNames = (name: string) => joinClassNames(classes, name);
 
   // DYNAMIC STYLED-COMPONENTS //
   const MyButton = styled.button`
@@ -263,54 +286,6 @@ function Button({
       ) : null}
     </MyButton>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Button.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-
-  color: PropTypes.oneOf(colorValues),
-  tint: PropTypes.oneOf(tintValues),
-  size: PropTypes.oneOf(sizeValues),
-  variant: PropTypes.oneOf([`solid`, `outline`, `transparent`, `link`]),
-
-  tooltip: PropTypes.node,
-  icon: PropTypes.node,
-
-  fullWidth: PropTypes.oneOf(boolValues),
-  uppercase: PropTypes.oneOf(boolValues),
-
-  disabled: PropTypes.oneOf(boolValues),
-  error: PropTypes.oneOf(boolValues),
-  warning: PropTypes.oneOf(boolValues),
-  loading: PropTypes.oneOf(boolValues),
-  success: PropTypes.oneOf(boolValues),
-};
-
-Button.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
-
-  color: `default`,
-  tint: `500`,
-  size: `md`,
-  variant: `solid`,
-
-  tooltip: null,
-  icon: null,
-
-  fullWidth: false,
-  uppercase: true,
-
-  disabled: false,
-  error: false,
-  warning: false,
-  loading: false,
-  success: false,
 };
 
 //////////////////////// EXPORT ////////////////////////

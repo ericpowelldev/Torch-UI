@@ -1,19 +1,31 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { useTUI } from "providers/TUI";
 
+//////////////////////// PROPS ////////////////////////
+
+interface ButtonBaseProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    button: string;
+    label: string;
+  };
+  style?: React.CSSProperties;
+}
+
 //////////////////////// COMPONENT ////////////////////////
 
-function Button({ children, className, classes, ...rest }) {
+const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) => {
   // HOOKS //
   const { theme } = useTUI();
 
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -22,7 +34,7 @@ function Button({ children, className, classes, ...rest }) {
   };
 
   // CLASSNAMES //
-  const getClassNames = (name) => {
+  const getClassNames = (name: string) => {
     let classNames = [];
     if (classes && name && classes[name]) classNames.push(classes[name]);
     return classNames.join(` `);
@@ -62,22 +74,8 @@ function Button({ children, className, classes, ...rest }) {
       <MyLabel className={getClassNames(`label`)}>{children}</MyLabel>
     </MyButton>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Button.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-Button.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////
 
-export default Button;
+export default ButtonBase;

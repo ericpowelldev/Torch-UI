@@ -5,7 +5,7 @@ import LoadingIcon from "components/utils/LoadingIcon";
 
 //////////////////////// COMPONENT ////////////////////////
 
-export default function LoadingIcons(props) {
+const LoadingIcons = () => {
   return (
     <>
       <LoadingIcon style={{ display: `inline-block` }} />
@@ -21,4 +21,8 @@ export default function LoadingIcons(props) {
       <LoadingIcon style={{ display: `inline-block` }} color="success" />
     </>
   );
-}
+};
+
+//////////////////////// EXPORT ////////////////////////
+
+export default LoadingIcons;

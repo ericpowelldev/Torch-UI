@@ -5,7 +5,7 @@ import SuccessIcon from "components/utils/SuccessIcon";
 
 //////////////////////// COMPONENT ////////////////////////
 
-export default function SuccessIcons(props) {
+const SuccessIcons = () => {
   return (
     <>
       <SuccessIcon style={{ display: `inline-block` }} />
@@ -21,4 +21,8 @@ export default function SuccessIcons(props) {
       <SuccessIcon style={{ display: `inline-block` }} color="success" />
     </>
   );
-}
+};
+
+//////////////////////// EXPORT ////////////////////////
+
+export default SuccessIcons;

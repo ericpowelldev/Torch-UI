@@ -1,13 +1,24 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
-import PropTypes from "prop-types";
+
+//////////////////////// PROPS ////////////////////////
+
+interface HeaderProps {
+  children?: React.ReactNode;
+  className?: string;
+  classes?: {
+    root: string;
+    header: string;
+  };
+  style?: React.CSSProperties;
+}
 
 //////////////////////// COMPONENT ////////////////////////
 
-function Header({ children, className, classes, ...rest }) {
+const Header = ({ children, className, classes, ...rest }: HeaderProps) => {
   // CLASSNAMES ROOT //
-  const getClassNames_root = (name) => {
+  const getClassNames_root = (name: string) => {
     let classNames = [];
     if (className) classNames.push(className);
     if (classes && classes.root) classNames.push(classes.root);
@@ -21,20 +32,6 @@ function Header({ children, className, classes, ...rest }) {
       {children}
     </header>
   );
-}
-
-//////////////////////// PROPS ////////////////////////
-
-Header.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object,
-  style: PropTypes.object,
-};
-
-Header.defaultProps = {
-  className: null,
-  classes: null,
-  style: null,
 };
 
 //////////////////////// EXPORT ////////////////////////
