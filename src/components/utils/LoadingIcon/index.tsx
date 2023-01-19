@@ -61,7 +61,7 @@ const LoadingIcon = ({
   tint = `500`,
   size = 40,
   thickness = 0,
-  speed = 800,
+  speed = 500,
   disabled,
   ...rest
 }: LoadingIconProps) => {
