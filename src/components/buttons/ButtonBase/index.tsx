@@ -3,6 +3,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { joinClassNames } from "utils/helpers";
+
 import { useTUI } from "providers/TUI";
 
 //////////////////////// PROPS ////////////////////////
@@ -12,10 +14,11 @@ interface ButtonBaseProps {
   className?: string;
   classes?: {
     root: string;
-    button: string;
     label: string;
   };
   style?: React.CSSProperties;
+
+  [x:string]: any; // Handle default HTML props
 }
 
 //////////////////////// COMPONENT ////////////////////////
@@ -23,22 +26,6 @@ interface ButtonBaseProps {
 const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) => {
   // HOOKS //
   const { theme } = useTUI();
-
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
-  // CLASSNAMES //
-  const getClassNames = (name: string) => {
-    let classNames = [];
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
 
   // STYLED-COMPONENTS //
   const MyButton = styled.button`
@@ -70,8 +57,8 @@ const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) 
 
   // RETURN //
   return (
-    <MyButton className={getClassNames_root(`button`)} {...rest}>
-      <MyLabel className={getClassNames(`label`)}>{children}</MyLabel>
+    <MyButton className={joinClassNames(classes, `root`, className)} {...rest}>
+      <MyLabel className={joinClassNames(classes, `label`)}>{children}</MyLabel>
     </MyButton>
   );
 };

@@ -2,6 +2,8 @@
 
 import React from "react";
 
+import { joinClassNames } from "utils/helpers";
+
 //////////////////////// PROPS ////////////////////////
 
 interface HeaderProps {
@@ -9,26 +11,18 @@ interface HeaderProps {
   className?: string;
   classes?: {
     root: string;
-    header: string;
   };
   style?: React.CSSProperties;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// COMPONENT ////////////////////////
 
 const Header = ({ children, className, classes, ...rest }: HeaderProps) => {
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
-    <header id="header" className={getClassNames_root(`header`)} {...rest}>
+    <header id="header" className={joinClassNames(classes, `root`, className)} {...rest}>
       {children}
     </header>
   );

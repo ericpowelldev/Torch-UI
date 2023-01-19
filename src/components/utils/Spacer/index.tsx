@@ -3,6 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { joinClassNames } from "utils/helpers";
 import { BoolValues } from "utils/types";
 
 import { useTUI } from "providers/TUI";
@@ -15,13 +16,14 @@ interface SpacerProps {
   className?: string;
   classes?: {
     root: string;
-    spacer: string;
   };
   style?: React.CSSProperties;
 
   size?: number | string;
 
   vertical?: BoolValues;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// COMPONENT ////////////////////////
@@ -44,22 +46,13 @@ const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: S
     height: auto;
   `;
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
     <>
       {!vertical ? (
-        <MyHorizontalSpacer className={getClassNames_root(`spacer`)} {...rest} />
+        <MyHorizontalSpacer className={joinClassNames(classes, `root`, className)} {...rest} />
       ) : (
-        <MyVerticalSpacer className={getClassNames_root(`spacer`)} {...rest} />
+        <MyVerticalSpacer className={joinClassNames(classes, `root`, className)} {...rest} />
       )}
     </>
   );

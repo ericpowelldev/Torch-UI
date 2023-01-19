@@ -3,6 +3,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+import { joinClassNames } from "utils/helpers";
+
 import { useTUI } from "providers/TUI";
 import useSpace from "hooks/useSpace";
 
@@ -13,7 +15,6 @@ interface FlexProps {
   className?: string;
   classes?: {
     root: string;
-    parent: string;
   };
   style?: React.CSSProperties;
 
@@ -22,6 +23,8 @@ interface FlexProps {
   alignItems?: string;
   justifyContent?: string;
   justifyItems?: string;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// COMPONENT ////////////////////////
@@ -69,18 +72,9 @@ const Flex = ({
     `}
   `;
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
-    <MyFlex className={getClassNames_root(`parent`)} {...rest}>
+    <MyFlex className={joinClassNames(classes, `root`, className)} {...rest}>
       {children}
     </MyFlex>
   );

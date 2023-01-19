@@ -2,6 +2,8 @@
 
 import React from "react";
 
+import { joinClassNames } from "utils/helpers";
+
 //////////////////////// PROPS ////////////////////////
 
 interface FooterProps {
@@ -9,26 +11,18 @@ interface FooterProps {
   className?: string;
   classes?: {
     root: string;
-    footer: string;
   };
   style?: React.CSSProperties;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// COMPONENT ////////////////////////
 
 const Footer = ({ children, className, classes, ...rest }: FooterProps) => {
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
-    <footer id="footer" className={getClassNames_root(`footer`)} {...rest}>
+    <footer id="footer" className={joinClassNames(classes, `root`, className)} {...rest}>
       {children}
     </footer>
   );

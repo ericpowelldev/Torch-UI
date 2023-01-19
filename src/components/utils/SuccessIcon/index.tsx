@@ -3,6 +3,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
+import { joinClassNames } from "utils/helpers";
 import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
@@ -16,7 +17,6 @@ interface SuccessIconProps {
   className?: string;
   classes?: {
     root: string;
-    icon: string;
   };
   style?: React.CSSProperties;
 
@@ -29,6 +29,14 @@ interface SuccessIconProps {
   blink?: BoolValues;
 
   disabled?: BoolValues;
+
+  [x: string]: any; // Handle default HTML props
+}
+
+interface ComponentIconProps {
+  className?: string;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// STYLED-COMPONENTS ////////////////////////
@@ -52,7 +60,7 @@ const SuccessIcon = ({
   className,
   classes,
   type = `bg`,
-  color = `default`,
+  color = `utility`,
   tint = `500`,
   size = 40,
   speed = 800,
@@ -63,17 +71,10 @@ const SuccessIcon = ({
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // BASE COMPONENT //
-  const Icon = ({ className }) => <MdCheckCircle className={className + ` ` + getClassNames_root(`icon`)} {...rest} />;
+  const Icon = ({ className }: ComponentIconProps) => (
+    <MdCheckCircle className={joinClassNames(classes, `root`, className)} {...rest} />
+  );
 
   // DYNAMIC STYLED-COMPONENTS //
   const MyIcon = styled(Icon)`

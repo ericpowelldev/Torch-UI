@@ -3,6 +3,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+import { joinClassNames } from "utils/helpers";
+
 import { useTUI } from "providers/TUI";
 import useSpace from "hooks/useSpace";
 
@@ -12,8 +14,7 @@ interface FlexParentProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root: string,
-    parent: string,
+    root: string;
   };
   style?: React.CSSProperties;
 
@@ -22,6 +23,8 @@ interface FlexParentProps {
   alignItems?: string;
   justifyContent?: string;
   justifyItems?: string;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// COMPONENT ////////////////////////
@@ -69,18 +72,9 @@ const FlexParent = ({
     `}
   `;
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
-    <MyFlexParent className={getClassNames_root(`parent`)} {...rest}>
+    <MyFlexParent className={joinClassNames(classes, `root`, className)} {...rest}>
       {children}
     </MyFlexParent>
   );

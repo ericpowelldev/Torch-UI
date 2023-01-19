@@ -3,29 +3,27 @@ import Color from "color";
 const defaultTheme = {
   // Colors
   color: {
-    // Default Colors
-    default: `#303640`,
-
-    // Design Colors
+    // Brand colors
     primary: `#f42460`,
     secondary: `#20c0f0`,
     tertiary: `#20c8a0`,
-
-    // Utility Colors
+    
+    // Utility colors
+    utility: `#303640`,
     info: `#2496f4`,
     error: `#ff0000`,
     warning: `#ffb400`,
     success: `#20d840`,
 
-    // Black & White Colors
+    // Black & White colors
     black: `#000000`,
     white: `#ffffff`,
 
-    // Foreground Colors
+    // Foreground/Text colors
     fg: `#303640`,
     fgContrast: `#ffffff`,
 
-    // Background Colors
+    // Background/Wall colors
     bg: {
       body: `#ffffff`,
       light: `#fafafa`,
@@ -39,27 +37,39 @@ const defaultTheme = {
       dark: `#282d32`,
     },
 
-    // Disabled Colors
+    // Disabled colors
     disabled: `#d4d8de`,
     // disabled: `#404650`,
     disabledContrast: `#404650`,
 
-    // Divider Colors
+    // Divider colors
     divider: {},
     dividerContrast: {},
   },
 
   // Text Options
   txt: {
+    // Font families
     fontFamily: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
+    fontFamilyBtn: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
+
+    // Font sizes
     fontSize: 16,
+    
+    // Font heights
     fontHeight: 1.333,
     fontHeightReset: 1,
-    fontWeightVeryLight: 100,
-    fontWeightLight: 300,
-    fontWeightRegular: 500,
-    fontWeightMedium: 700,
-    fontWeightBold: 900,
+    
+    // Font weights
+    fontWeight: 300,
+    fontWeightReset: 300,
+    fontWeightThin: 100,
+    fontWeightLight: 200,
+    fontWeightRegular: 300,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+
+    // Headers and paragraph text
     h1: {
       size: 64,
       weight: 900,
@@ -147,14 +157,15 @@ const defaultTheme = {
 
   // Z-Index Options
   zIndex: {
+    base: `0`,
     footer: `1000`,
     header: `1100`,
     menu: `1200`,
     dropdown: `1300`,
-    modal: `1500`,
-    modalDropdown: `1600`,
-    tooltip: `2000`,
-    notification: `2500`,
+    modal: `2000`,
+    modalDropdown: `2100`,
+    tooltip: `3000`,
+    notification: `5000`,
   },
 
   // Breakpoint Options
@@ -195,7 +206,7 @@ const defaultTheme = {
   },
 };
 
-// const buildContrastColor = (color) => {
+// const buildContrastColor = (color: string) => {
 //   const fgLight = beforeTheme.color.fgContrast;
 //   const fgDark = beforeTheme.color.fg;
 //   let isLight = false;
@@ -205,7 +216,7 @@ const defaultTheme = {
 //   return isLight ? fgDark : fgLight;
 // };
 
-// const buildHoverColor = (color) => {
+// const buildHoverColor = (color: string) => {
 //   const lumin = Color(color).luminosity();
 //   const isLight = lumin > 0.4 ? true : false;
 
@@ -213,39 +224,39 @@ const defaultTheme = {
 //   return Color(color).darken(0.2).hex();
 // };
 
-const buildAlphaColors = (color) => {
+const buildAlphaColors = (color: string) => {
   const alphas = [`00`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `A0`, `B0`, `C0`, `D0`, `E0`, `F0`];
   const alpha = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
   return alpha;
 };
 
-const buildForegroundColors = (color) => {
+const buildForegroundColors = (color: string) => {
   const primary = Color(color).hex();
   const secondary = Color(color).hex() + `96`;
   const tertiary = Color(color).hex() + `72`;
   return { primary, secondary, tertiary };
 };
 
-const buildDisabledColors = (color) => {
+const buildDisabledColors = (color: string) => {
   const fg = Color(color).darken(0.25).hex();
   const bg = color;
   return { fg, bg };
 };
 
-const buildDisabledContrastColors = (color) => {
+const buildDisabledContrastColors = (color: string) => {
   const fg = Color(color).lighten(0.4).hex();
   const bg = color;
   return { fg, bg };
 };
 
-const buildDividerColors = (color) => {
+const buildDividerColors = (color: string) => {
   const light = `${color}12`;
   const main = `${color}18`;
   const dark = `${color}20`;
   return { light, main, dark };
 };
 
-const buildColors = (color) => {
+const buildColors = (color: string) => {
   const main = {
     [`100`]: Color(color).darken(0.6).hex(),
     [`200`]: Color(color).darken(0.45).hex(),
@@ -276,9 +287,6 @@ const theme = {
   ...defaultTheme,
   color: {
     ...defaultTheme.color,
-    default: {
-      ...buildColors(defaultTheme.color.default),
-    },
     primary: {
       ...buildColors(defaultTheme.color.primary),
     },
@@ -287,6 +295,9 @@ const theme = {
     },
     tertiary: {
       ...buildColors(defaultTheme.color.tertiary),
+    },
+    utility: {
+      ...buildColors(defaultTheme.color.utility),
     },
     info: {
       ...buildColors(defaultTheme.color.info),

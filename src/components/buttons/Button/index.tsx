@@ -3,7 +3,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-import { joinClassNames_root, joinClassNames } from "utils/classNames";
+import { joinClassNames } from "utils/helpers";
 import { BoolValues, ButtonVariants, ColorValues, SizeValues, TintValues } from "utils/types";
 
 import { useTUI } from "providers/TUI";
@@ -22,7 +22,6 @@ interface ButtonProps {
   className?: string;
   classes?: {
     root: string;
-    button: string;
     label: string;
     icon: string;
     loadingIcon: string;
@@ -48,6 +47,8 @@ interface ButtonProps {
   warning?: BoolValues;
   loading?: BoolValues;
   success?: BoolValues;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// COMPONENT ////////////////////////
@@ -56,7 +57,7 @@ const Button = ({
   children,
   className,
   classes,
-  color = `default`,
+  color = `utility`,
   tint = `500`,
   size = `md`,
   variant = `solid`,
@@ -75,10 +76,6 @@ const Button = ({
   const { theme } = useTUI();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
   const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
-
-  // CLASSNAMES //
-  const getClassNames_root = (name: string) => joinClassNames_root(classes, name, className);
-  const getClassNames = (name: string) => joinClassNames(classes, name);
 
   // DYNAMIC STYLED-COMPONENTS //
   const MyButton = styled.button`
@@ -236,13 +233,13 @@ const Button = ({
 
   // RETURN //
   return (
-    <MyButton className={getClassNames_root(`button`)} {...rest}>
-      {icon ? <MyStartIcon className={getClassNames(`icon`)}>{icon}</MyStartIcon> : null}
-      <MyLabel className={getClassNames(`label`)}>{children}</MyLabel>
+    <MyButton className={joinClassNames(classes, `root`, className)} {...rest}>
+      {icon ? <MyStartIcon className={joinClassNames(classes, `icon`)}>{icon}</MyStartIcon> : null}
+      <MyLabel className={joinClassNames(classes, `label`)}>{children}</MyLabel>
       {loading ? (
         <MyEndIcon>
           <LoadingIcon
-            className={getClassNames(`loadingIcon`)}
+            className={joinClassNames(classes, `loadingIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
@@ -253,7 +250,7 @@ const Button = ({
       ) : error ? (
         <MyEndIcon>
           <ErrorIcon
-            className={getClassNames(`errorIcon`)}
+            className={joinClassNames(classes, `errorIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
@@ -264,7 +261,7 @@ const Button = ({
       ) : warning ? (
         <MyEndIcon>
           <WarningIcon
-            className={getClassNames(`warningIcon`)}
+            className={joinClassNames(classes, `warningIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
@@ -275,7 +272,7 @@ const Button = ({
       ) : success ? (
         <MyEndIcon>
           <SuccessIcon
-            className={getClassNames(`successIcon`)}
+            className={joinClassNames(classes, `successIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}

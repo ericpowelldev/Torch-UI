@@ -9,15 +9,15 @@ const buttonVariants = [`solid`, `outline`, `transparent`, `link`];
 type ButtonVariants = `solid` | `outline` | `transparent` | `link`;
 
 /** Array of accepted color values */
-const colorValues = [`default`, `primary`, `secondary`, `tertiary`, `info`, `error`, `warning`, `success`];
-type ColorValues = `default` | `primary` | `secondary` | `tertiary` | `info` | `error` | `warning` | `success`;
+const colorValues = [`primary`, `secondary`, `tertiary`, `utility`, `info`, `error`, `warning`, `success`];
+type ColorValues = `primary` | `secondary` | `tertiary` | `utility` | `info` | `error` | `warning` | `success`;
 
 /** Array of accepted color values, including black and white */
 const extendedColorValues = [
-  `default`,
   `primary`,
   `secondary`,
   `tertiary`,
+  `utility`,
   `info`,
   `error`,
   `warning`,
@@ -26,10 +26,10 @@ const extendedColorValues = [
   `white`,
 ];
 type ExtendedColorValues =
-  | `default`
   | `primary`
   | `secondary`
   | `tertiary`
+  | `utility`
   | `info`
   | `error`
   | `warning`

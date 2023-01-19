@@ -117,7 +117,7 @@ const Buttons = () => {
         <Spacer vertical />
 
         <FlexChild>
-          <Button success color="tertiary" tint="500">
+          <Button loading color="tertiary" tint="500">
             Button
           </Button>
           <Spacer />
@@ -157,19 +157,19 @@ const Buttons = () => {
         <Spacer vertical />
 
         <FlexChild>
-          <Button disabled color="tertiary" tint="700">
+          <Button color="tertiary" tint="700">
             Button
           </Button>
           <Spacer />
-          <Button disabled color="tertiary" tint="700" variant="outline">
+          <Button color="tertiary" tint="700" variant="outline">
             Button
           </Button>
           <Spacer />
-          <Button disabled color="tertiary" tint="700" variant="transparent">
+          <Button color="tertiary" tint="700" variant="transparent">
             Button
           </Button>
           <Spacer />
-          <Button disabled color="tertiary" tint="700" variant="link">
+          <Button color="tertiary" tint="700" variant="link">
             Button
           </Button>
         </FlexChild>
@@ -230,7 +230,7 @@ const Buttons = () => {
           Drive Now
         </Button>
         <Spacer vertical size="xs" />
-        <Button icon={<AiOutlineCloseCircle />} color="default" warning>
+        <Button icon={<AiOutlineCloseCircle />} color="utility" warning>
           Cancel
         </Button>
         <Spacer vertical size="xs" />

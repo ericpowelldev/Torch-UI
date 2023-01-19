@@ -21,7 +21,7 @@ export default function useColors() {
     if (color === `black`) return theme.color.black.main;
     if (color === `white`) return theme.color.white.main;
     if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint];
-    return theme.color.default.main[`500`];
+    return theme.color.utility.main[`500`];
   };
 
   /** Get color foreground from color prop */
@@ -44,7 +44,7 @@ export default function useColors() {
 
   /** Get color active from background color prop */
   const getColorActive = (color?: ExtendedColorValues, tint?: TintValues, variant?: ButtonVariants) => {
-    if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].hover[tint];
+    // if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].hover[tint];
     if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
       return theme.color[color].main[tint] + `60`;
     if ((variant === `outline` || variant === `link`) && colorValues.includes(color) && tintValues.includes(tint))

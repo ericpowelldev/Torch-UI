@@ -3,6 +3,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
+import { joinClassNames } from "utils/helpers";
 import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
@@ -15,7 +16,6 @@ interface LoadingIconProps {
   className?: string;
   classes?: {
     root: string;
-    icon: string;
   };
   style?: React.CSSProperties;
 
@@ -27,6 +27,8 @@ interface LoadingIconProps {
   speed?: number;
 
   disabled?: BoolValues;
+
+  [x: string]: any; // Handle default HTML props
 }
 
 //////////////////////// STYLED-COMPONENTS ////////////////////////
@@ -57,7 +59,7 @@ const LoadingIcon = ({
   className,
   classes,
   type = `bg`,
-  color = `default`,
+  color = `utility`,
   tint = `500`,
   size = 40,
   thickness = 0,
@@ -95,27 +97,11 @@ const LoadingIcon = ({
     animation: ${spinKeyframes} ${speed}ms linear infinite;
   `;
 
-  // CLASSNAMES ROOT //
-  const getClassNames_root = (name: string) => {
-    let classNames = [];
-    if (className) classNames.push(className);
-    if (classes && classes.root) classNames.push(classes.root);
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
-  // CLASSNAMES //
-  const getClassNames = (name: string) => {
-    let classNames = [];
-    if (classes && name && classes[name]) classNames.push(classes[name]);
-    return classNames.join(` `);
-  };
-
   // RETURN //
   return (
-    <MyBase className={getClassNames_root(`base`)} {...rest}>
-      <MyTrack className={getClassNames(`track`)} />
-      <MyBar className={getClassNames(`bar`)} />
+    <MyBase className={joinClassNames(classes, `root`, className)} {...rest}>
+      <MyTrack className={joinClassNames(classes, `track`)} />
+      <MyBar className={joinClassNames(classes, `bar`)} />
     </MyBase>
   );
 };
