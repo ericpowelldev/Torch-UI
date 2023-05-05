@@ -1,7 +1,6 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
-import styled from "styled-components";
 
 import Header from "components/layout/Header";
 import Main from "components/layout/Main";
@@ -9,27 +8,17 @@ import Footer from "components/layout/Footer";
 
 import Sidebar from "components/layout/Sidebar";
 
-//////////////////////// PROPS ////////////////////////
+// PROPS -------------------------------------------------- //
 
 interface LayoutProps {
   children?: React.ReactNode;
 }
 
-//////////////////////// STYLED-COMPONENTS ////////////////////////
-
-const Root = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  /* background-color: #f5f5f5; */
-  background-color: #202428;
-`;
-
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Root>
+    <div className="relative w-screen h-screen bg-zinc-900">
       <Header />
       <Main>{children}</Main>
       <Footer />
@@ -37,10 +26,10 @@ const Layout = ({ children }: LayoutProps) => {
       <Sidebar />
 
       {/* <ScrollToTop /> */}
-    </Root>
+    </div>
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default Layout;

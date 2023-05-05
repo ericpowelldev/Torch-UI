@@ -1,7 +1,6 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
-import styled from "styled-components";
 
 import Buttons from "./sets/Buttons";
 import ErrorIcons from "./sets/ErrorIcons";
@@ -10,20 +9,11 @@ import LoadingIcons from "./sets/LoadingIcons";
 import SuccessIcons from "./sets/SuccessIcons";
 import Spacer from "components/utils/Spacer";
 
-//////////////////////// STYLED-COMPONENTS ////////////////////////
-
-const Root = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const Page = () => {
   return (
-    <Root>
+    <div className="fixed w-screen h-screen">
       <ErrorIcons />
 
       <Spacer />
@@ -41,10 +31,10 @@ const Page = () => {
       <Spacer size={12} />
 
       <Buttons />
-    </Root>
+    </div>
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default Page;

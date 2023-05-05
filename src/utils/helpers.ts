@@ -1,14 +1,14 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import clsx from "clsx";
 
-//////////////////////// HELPER FUNCTIONS ////////////////////////
+// HELPER FUNCTIONS -------------------------------------------------- //
 
 /** Join classNames */
 const joinClassNames = (classes?: any, name?: string, rootClassName?: string) => {
   return clsx(classes?.[name], rootClassName);
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export { joinClassNames };

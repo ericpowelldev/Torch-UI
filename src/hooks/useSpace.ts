@@ -1,4 +1,4 @@
-//////////////////////// HOOK ////////////////////////
+// HOOK -------------------------------------------------- //
 
 export default function useSpace() {
   /** Get the size of a space */

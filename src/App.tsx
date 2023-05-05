@@ -1,4 +1,4 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -10,7 +10,7 @@ import theme from "utils/_theme";
 import Layout from "_test/Layout";
 import Page from "_test/Page";
 
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const App = () => {
   return (
@@ -26,6 +26,6 @@ const App = () => {
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default App;

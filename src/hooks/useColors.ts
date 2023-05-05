@@ -1,9 +1,9 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import { useTUI } from "providers/TUI";
 import { colorValues, tintValues, BoolValues, ButtonVariants, ExtendedColorValues, TintValues } from "utils/types";
 
-//////////////////////// HOOK ////////////////////////
+// HOOK -------------------------------------------------- //
 
 export default function useColors() {
   const { theme } = useTUI();

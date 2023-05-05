@@ -6,6 +6,12 @@
 
 ****************************************************************************************************/
 
+/* TAILWINDCSS */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* SCROLLBAR */
 
 ::-webkit-scrollbar {

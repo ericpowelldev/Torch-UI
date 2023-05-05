@@ -1,5 +1,5 @@
 {
-  "name": "@fyrefly/tui",
+  "name": "@fyrefly/torch-ui",
   "version": "0.1.0",
   "author": "Eric Powell",
   "description": "Torch UI - A custom TSX component library made by Eric Powell",
@@ -47,6 +47,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",
+    "tailwindcss": "^3.3.2",
     "typescript": "^4.9.4"
   }
 }

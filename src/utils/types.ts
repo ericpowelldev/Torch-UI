@@ -1,4 +1,4 @@
-//////////////////////// TYPES ////////////////////////
+// TYPES -------------------------------------------------- //
 
 /** Array of accepted bool values */
 const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
@@ -42,10 +42,10 @@ const sizeValues = [`min`, `xs`, `sm`, `md`, `lg`, `xl`, `max`];
 type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
 
 /** Array of accepted color tint values */
-const tintValues = [`100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`];
-type TintValues = `100` | `200` | `300` | `400` | `500` | `600` | `700` | `800` | `900`;
+const tintValues = [`50`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`];
+type TintValues = `50` | `100` | `200` | `300` | `400` | `500` | `600` | `700` | `800` | `900`;
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 export {
   boolValues,
   buttonVariants,
