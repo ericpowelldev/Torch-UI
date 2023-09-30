@@ -3,7 +3,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import { joinClassNames } from "utils/helpers";
+import { cls } from "utils/helpers";
 import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
@@ -99,9 +99,9 @@ const LoadingIcon = ({
 
   // RETURN //
   return (
-    <MyBase className={joinClassNames(classes, `root`, className)} {...rest}>
-      <MyTrack className={joinClassNames(classes, `track`)} />
-      <MyBar className={joinClassNames(classes, `bar`)} />
+    <MyBase className={cls(classes, `root`, className)} {...rest}>
+      <MyTrack className={cls(classes, `track`)} />
+      <MyBar className={cls(classes, `bar`)} />
     </MyBase>
   );
 };

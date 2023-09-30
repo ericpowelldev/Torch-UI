@@ -1,33 +1,35 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
+import clsx from "clsx";
 import styled from "styled-components";
-
-import { joinClassNames } from "utils/helpers";
 
 import { useTUI } from "providers/TUI";
 
-//////////////////////// PROPS ////////////////////////
+// PROPS -------------------------------------------------- //
 
 interface ButtonBaseProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
     root: string;
+    button: string;
     label: string;
   };
   style?: React.CSSProperties;
 
-  [x:string]: any; // Handle default HTML props
+  [x: string]: any; // Handle default HTML props
 }
 
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) => {
   // HOOKS //
+
   const { theme } = useTUI();
 
   // STYLED-COMPONENTS //
+
   const MyButton = styled.button`
     position: relative;
     overflow: hidden;
@@ -38,10 +40,10 @@ const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) 
     border: 0;
     border-radius: ${theme.space(1)};
     margin: 0;
-    line-height: ${theme.txt.fontHeightReset};
-    font-family: ${theme.txt.fontFamily};
-    font-size: 14;
-    font-weight: 600;
+    line-height: ${theme.txt.fontHeightButton};
+    font-family: ${theme.txt.fontFamilyButton};
+    font-size: ${theme.txt.fontSizeButton};
+    font-weight: ${theme.txt.fontWeightButton};
     background: inherit;
     color: inherit;
     cursor: pointer;
@@ -50,19 +52,25 @@ const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) 
   `;
 
   const MyLabel = styled.span`
-    line-height: ${theme.txt.fontHeight};
+    line-height: ${theme.txt.fontHeightButton};
     user-select: none;
     pointer-events: none;
   `;
 
-  // RETURN //
+  // CLASSNAMES //
+
+  const clsxButton = clsx(classes?.root, classes?.button, className) || undefined;
+  const clsxLabel = clsx(classes?.label) || undefined;
+
+  // RENDER //
+
   return (
-    <MyButton className={joinClassNames(classes, `root`, className)} {...rest}>
-      <MyLabel className={joinClassNames(classes, `label`)}>{children}</MyLabel>
-    </MyButton>
+    <button className={clsxButton} {...rest}>
+      <span className={clsxLabel}>{children}</span>
+    </button>
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default ButtonBase;

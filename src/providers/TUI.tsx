@@ -2,12 +2,13 @@
 
 import React from "react";
 
-import "static/styles/reset.css";
 import "static/styles/index.css";
-import "static/styles/custom.css";
 
 import defaultTheme from "utils/_theme";
 import { BoolValues } from "utils/types";
+
+import Reset from "utils/OptionalComponents/Reset";
+import Scrollbar from "utils/OptionalComponents/Scrollbar";
 
 // PROPS -------------------------------------------------- //
 
@@ -16,8 +17,8 @@ interface TUIProviderProps {
 
   theme?: any;
 
-  resetCss?: BoolValues;
-  customScrollbar?: BoolValues;
+  cssReset?: BoolValues;
+  cssScrollbar?: BoolValues;
 }
 
 // CONTEXT/HOOK -------------------------------------------------- //
@@ -27,15 +28,15 @@ const useTUI = () => React.useContext(TUIContext);
 
 // PROVIDER -------------------------------------------------- //
 
-const TUIProvider = ({ children, theme = {}, resetCss = true, customScrollbar = true }: TUIProviderProps) => {
+const TUIProvider = ({ children, theme = {}, cssReset = true, cssScrollbar = false }: TUIProviderProps) => {
   const ctx = {
     theme: { ...defaultTheme, ...theme },
   };
 
   return (
     <TUIContext.Provider value={ctx}>
-      {/* {resetCss ? <ResetCss /> : null} */}
-      {/* {customScrollbar ? <ScrollbarCss /> : null} */}
+      {cssReset ? <Reset /> : null}
+      {cssScrollbar ? <Scrollbar /> : null}
       {children}
     </TUIContext.Provider>
   );

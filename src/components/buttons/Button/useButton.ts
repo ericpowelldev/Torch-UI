@@ -1,4 +1,4 @@
-//////////////////////// HOOK ////////////////////////
+// HOOK -------------------------------------------------- //
 
 export default function useButton() {
   /** Get solid and link padding from size prop */

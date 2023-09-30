@@ -1,9 +1,9 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
 import styled, { css } from "styled-components";
 
-import { joinClassNames } from "utils/helpers";
+import { cls } from "utils/helpers";
 import { BoolValues, ButtonVariants, ColorValues, SizeValues, TintValues } from "utils/types";
 
 import { useTUI } from "providers/TUI";
@@ -15,7 +15,7 @@ import WarningIcon from "components/utils/WarningIcon";
 import LoadingIcon from "components/utils/LoadingIcon";
 import SuccessIcon from "components/utils/SuccessIcon";
 
-//////////////////////// PROPS ////////////////////////
+// PROPS -------------------------------------------------- //
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -51,7 +51,7 @@ interface ButtonProps {
   [x: string]: any; // Handle default HTML props
 }
 
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const Button = ({
   children,
@@ -73,11 +73,13 @@ const Button = ({
   ...rest
 }: ButtonProps) => {
   // HOOKS //
+
   const { theme } = useTUI();
   const { getColorBg, getColorFg, getColorHover, getColorActive } = useColors();
   const { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight } = useButton();
 
   // DYNAMIC STYLED-COMPONENTS //
+
   const MyButton = styled.button`
     position: relative;
     overflow: hidden;
@@ -88,10 +90,10 @@ const Button = ({
     border: 0;
     border-radius: ${theme.space(1)};
     margin: 0;
-    line-height: ${theme.txt.fontHeightReset};
-    font-family: ${theme.txt.fontFamily};
-    font-size: 14;
-    font-weight: 600;
+    line-height: ${theme.txt.fontHeightButton};
+    font-family: ${theme.txt.fontFamilyButton};
+    font-size: ${theme.txt.fontSizeButton};
+    font-weight: ${theme.txt.fontWeightButton};
     background: inherit;
     color: inherit;
     cursor: pointer;
@@ -231,15 +233,16 @@ const Button = ({
     }
   `;
 
-  // RETURN //
+  // RENDER //
+
   return (
-    <MyButton className={joinClassNames(classes, `root`, className)} {...rest}>
-      {icon ? <MyStartIcon className={joinClassNames(classes, `icon`)}>{icon}</MyStartIcon> : null}
-      <MyLabel className={joinClassNames(classes, `label`)}>{children}</MyLabel>
+    <MyButton className={cls(classes, `root`, className)} {...rest}>
+      {icon ? <MyStartIcon className={cls(classes, `icon`)}>{icon}</MyStartIcon> : null}
+      <MyLabel className={cls(classes, `label`)}>{children}</MyLabel>
       {loading ? (
         <MyEndIcon>
           <LoadingIcon
-            className={joinClassNames(classes, `loadingIcon`)}
+            className={cls(classes, `loadingIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
@@ -250,7 +253,7 @@ const Button = ({
       ) : error ? (
         <MyEndIcon>
           <ErrorIcon
-            className={joinClassNames(classes, `errorIcon`)}
+            className={cls(classes, `errorIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
@@ -261,7 +264,7 @@ const Button = ({
       ) : warning ? (
         <MyEndIcon>
           <WarningIcon
-            className={joinClassNames(classes, `warningIcon`)}
+            className={cls(classes, `warningIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
@@ -272,7 +275,7 @@ const Button = ({
       ) : success ? (
         <MyEndIcon>
           <SuccessIcon
-            className={joinClassNames(classes, `successIcon`)}
+            className={cls(classes, `successIcon`)}
             type={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
@@ -285,6 +288,6 @@ const Button = ({
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default Button;

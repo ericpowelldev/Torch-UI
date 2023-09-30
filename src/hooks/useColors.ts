@@ -16,8 +16,8 @@ export default function useColors() {
 
   /** Get color background from color and tint prop */
   const getColorBg = (color?: ExtendedColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
-    if (disabled && override === `fg`) return theme.color.disabled.fg;
-    if (disabled) return theme.color.disabled.bg;
+    if (disabled && override === `fg`) return theme.color.fgDisabled;
+    if (disabled) return theme.color.bgDisabled;
     if (color === `black`) return theme.color.black.main;
     if (color === `white`) return theme.color.white.main;
     if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint];
@@ -26,11 +26,11 @@ export default function useColors() {
 
   /** Get color foreground from color prop */
   const getColorFg = (color?: ExtendedColorValues, tint?: TintValues, disabled?: BoolValues) => {
-    if (disabled) return theme.color.disabled.fg;
-    if (color === `black`) return theme.color.fgContrast.primary;
-    if (color === `white`) return theme.color.fg.primary;
+    if (disabled) return theme.color.fgDisabled;
+    if (color === `black`) return theme.color.fg[0];
+    if (color === `white`) return theme.color.fgContrast[0];
     if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].contrast[tint];
-    return theme.color.fgContrast.primary;
+    return theme.color.fg[0];
   };
 
   /** Get color hover from background color prop */

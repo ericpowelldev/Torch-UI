@@ -3,7 +3,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import { joinClassNames } from "utils/helpers";
+import { cls } from "utils/helpers";
 import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
@@ -73,7 +73,7 @@ const WarningIcon = ({
 
   // BASE COMPONENT //
   const Icon = ({ className }: ComponentIconProps) => (
-    <AiOutlineWarning className={joinClassNames(classes, `root`, className)} {...rest} />
+    <AiOutlineWarning className={cls(classes, `root`, className)} {...rest} />
   );
 
   // DYNAMIC STYLED-COMPONENTS //

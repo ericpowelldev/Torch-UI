@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { joinClassNames } from "utils/helpers";
+import { cls } from "utils/helpers";
 import { BoolValues } from "utils/types";
 
 import { useTUI } from "providers/TUI";
@@ -50,9 +50,9 @@ const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: S
   return (
     <>
       {!vertical ? (
-        <MyHorizontalSpacer className={joinClassNames(classes, `root`, className)} {...rest} />
+        <MyHorizontalSpacer className={cls(classes, `root`, className)} {...rest} />
       ) : (
-        <MyVerticalSpacer className={joinClassNames(classes, `root`, className)} {...rest} />
+        <MyVerticalSpacer className={cls(classes, `root`, className)} {...rest} />
       )}
     </>
   );

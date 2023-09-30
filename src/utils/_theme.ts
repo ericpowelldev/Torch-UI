@@ -7,7 +7,7 @@ const defaultTheme = {
     primary: `#f42460`,
     secondary: `#20c0f0`,
     tertiary: `#20c8a0`,
-    
+
     // Utility colors
     utility: `#303640`,
     info: `#2496f4`,
@@ -20,56 +20,77 @@ const defaultTheme = {
     white: `#ffffff`,
 
     // Foreground/Text colors
-    fg: `#303640`,
-    fgContrast: `#ffffff`,
-
+    fg: [
+      `#ffffff`,
+      `#ffffff96`,
+      `#ffffff72`,
+      `#ffffff50`,
+    ],
+    fgContrast: [
+      `#303640`,
+      `#30364096`,
+      `#30364072`,
+      `#30364050`,
+    ],
+    fgDisabled: `#5a6270`,
+    fgDisabledContrast: `#97a0af`,
+    
     // Background/Wall colors
-    bg: {
-      body: `#ffffff`,
-      light: `#fafafa`,
-      main: `#f5f5f5`,
-      dark: `#f0f0f0`,
-    },
-    bgContrast: {
-      body: `#101216`,
-      light: `#181b20`,
-      main: `#202428`,
-      dark: `#282d32`,
-    },
-
-    // Disabled colors
-    disabled: `#d4d8de`,
-    // disabled: `#404650`,
-    disabledContrast: `#404650`,
+    bg: [
+      `#101216`,
+      `#181b20`,
+      `#202428`,
+      `#282d32`,
+    ],
+    bgContrast: [
+      `#ffffff`,
+      `#fafafa`,
+      `#f5f5f5`,
+      `#f0f0f0`,
+    ],
+    bgDisabled: `#404650`,
+    bgDisabledContrast: `#d4d8de`,
 
     // Divider colors
-    divider: {},
-    dividerContrast: {},
+    divider: [
+      `#ffffff24`,
+      `#ffffff2e`,
+      `#ffffff18`,
+      `#ffffff12`,
+    ],
+    dividerContrast: [
+      `#30364024`,
+      `#3036402e`,
+      `#30364018`,
+      `#30364012`,
+    ],
   },
 
   // Text Options
   txt: {
     // Font families
     fontFamily: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
-    fontFamilyBtn: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
+    fontFamilyButton: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
 
     // Font sizes
     fontSize: 16,
-    
-    // Font heights
-    fontHeight: 1.333,
-    fontHeightReset: 1,
-    
+    fontSizeButton: 14,
+
     // Font weights
     fontWeight: 300,
-    fontWeightReset: 300,
+    fontWeightButton: 600,
     fontWeightThin: 100,
     fontWeightLight: 200,
     fontWeightRegular: 300,
     fontWeightMedium: 500,
     fontWeightBold: 700,
+    fontWeightBlack: 900,
 
-    // Headers and paragraph text
+    // Font heights
+    fontHeight: 1.333,
+    fontHeightButton: 1.25,
+
+    // Header text
     h1: {
       size: 64,
       weight: 900,
@@ -100,6 +121,8 @@ const defaultTheme = {
       weight: 500,
       height: 1.333,
     },
+
+    // Paragraph text
     p1: {
       size: 16,
       weight: 300,
@@ -206,54 +229,10 @@ const defaultTheme = {
   },
 };
 
-// const buildContrastColor = (color: string) => {
-//   const fgLight = beforeTheme.color.fgContrast;
-//   const fgDark = beforeTheme.color.fg;
-//   let isLight = false;
-
-//   if (Color(color).luminosity() > 0.75) isLight = true;
-
-//   return isLight ? fgDark : fgLight;
-// };
-
-// const buildHoverColor = (color: string) => {
-//   const lumin = Color(color).luminosity();
-//   const isLight = lumin > 0.4 ? true : false;
-
-//   if (!isLight) Color(color).lighten(0.25).hex();
-//   return Color(color).darken(0.2).hex();
-// };
-
 const buildAlphaColors = (color: string) => {
   const alphas = [`00`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `A0`, `B0`, `C0`, `D0`, `E0`, `F0`];
   const alpha = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
   return alpha;
-};
-
-const buildForegroundColors = (color: string) => {
-  const primary = Color(color).hex();
-  const secondary = Color(color).hex() + `96`;
-  const tertiary = Color(color).hex() + `72`;
-  return { primary, secondary, tertiary };
-};
-
-const buildDisabledColors = (color: string) => {
-  const fg = Color(color).darken(0.25).hex();
-  const bg = color;
-  return { fg, bg };
-};
-
-const buildDisabledContrastColors = (color: string) => {
-  const fg = Color(color).lighten(0.4).hex();
-  const bg = color;
-  return { fg, bg };
-};
-
-const buildDividerColors = (color: string) => {
-  const light = `${color}12`;
-  const main = `${color}18`;
-  const dark = `${color}20`;
-  return { light, main, dark };
 };
 
 const buildColors = (color: string) => {
@@ -273,7 +252,7 @@ const buildColors = (color: string) => {
     [`200`]: main[`700`],
     [`300`]: main[`800`],
     [`400`]: main[`900`],
-    [`500`]: Color(defaultTheme.color.fgContrast).hex(),
+    [`500`]: Color(defaultTheme.color.fg[0]).hex(),
     [`600`]: main[`200`],
     [`700`]: main[`300`],
     [`800`]: main[`400`],
@@ -318,24 +297,6 @@ const theme = {
     white: {
       main: defaultTheme.color.white,
       alpha: buildAlphaColors(defaultTheme.color.white),
-    },
-    fg: {
-      ...buildForegroundColors(defaultTheme.color.fg),
-    },
-    fgContrast: {
-      ...buildForegroundColors(defaultTheme.color.fgContrast),
-    },
-    disabled: {
-      ...buildDisabledColors(defaultTheme.color.disabled),
-    },
-    disabledContrast: {
-      ...buildDisabledContrastColors(defaultTheme.color.disabledContrast),
-    },
-    divider: {
-      ...buildDividerColors(defaultTheme.color.fg),
-    },
-    dividerContrast: {
-      ...buildDividerColors(defaultTheme.color.fgContrast),
     },
   },
 };

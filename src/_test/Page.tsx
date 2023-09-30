@@ -1,36 +1,23 @@
 // DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
-
-import Buttons from "./sets/Buttons";
-import ErrorIcons from "./sets/ErrorIcons";
-import WarningIcons from "./sets/WarningIcons";
-import LoadingIcons from "./sets/LoadingIcons";
-import SuccessIcons from "./sets/SuccessIcons";
+import ButtonBase from "components/buttons/ButtonBase";
+import Button from "components/buttons/Button";
 import Spacer from "components/utils/Spacer";
+import { useTUI } from "providers/TUI";
 
 // COMPONENT -------------------------------------------------- //
 
 const Page = () => {
+  const { theme } = useTUI();
+
   return (
-    <div className="fixed w-screen h-screen">
-      <ErrorIcons />
+    <div style={{ width: `100vw`, height: `100vh`, background: theme.color.bg[0] }}>
+      <ButtonBase>ButtonBase</ButtonBase>
 
       <Spacer />
 
-      <WarningIcons />
-
-      <Spacer />
-
-      <SuccessIcons />
-
-      <Spacer />
-
-      <LoadingIcons />
-
-      <Spacer size={12} />
-
-      <Buttons />
+      <Button>Button</Button>
     </div>
   );
 };

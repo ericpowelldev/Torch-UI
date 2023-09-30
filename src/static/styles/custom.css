@@ -1,12 +1,6 @@
-/****************************************************************************************************
+/* Torch UI */
 
-  Torch UI
-  by Eric Powell
-  Copyright ©2023
-
-****************************************************************************************************/
-
-/* SCROLL TO TOP */
+/* Scroll To Top */
 
 .scroll-to-top {
   z-index: 1000;
@@ -27,13 +21,13 @@
 
 .scroll-to-top.show {
   color: #fff;
-  background-color: #303640;
+  background-color: #000;
   cursor: pointer;
 }
 .scroll-to-top.show:hover {
   bottom: 16px;
-  color: #fff;
-  background-color: #ff2448;
+  color: #000;
+  background-color: #fff;
 }
 .scroll-to-top.hide {
   user-select: none;
