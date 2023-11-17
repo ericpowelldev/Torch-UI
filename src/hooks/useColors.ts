@@ -1,7 +1,7 @@
 // DEPENDENCIES -------------------------------------------------- //
 
 import { useTUI } from "providers/TUI";
-import { colorValues, tintValues, BoolValues, ButtonVariants, ExtendedColorValues, TintValues } from "utils/types";
+import { colorValues, tintValues, BoolValues, ButtonVariants, ColorValues, TintValues } from "utils/types";
 
 // HOOK -------------------------------------------------- //
 
@@ -15,40 +15,39 @@ export default function useColors() {
   };
 
   /** Get color background from color and tint prop */
-  const getColorBg = (color?: ExtendedColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
+  const getColorBg = (color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
     if (disabled && override === `fg`) return theme.color.fgDisabled;
     if (disabled) return theme.color.bgDisabled;
-    if (color === `black`) return theme.color.black.main;
-    if (color === `white`) return theme.color.white.main;
-    if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].main[tint];
-    return theme.color.utility.main[`500`];
+    if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
+    return theme.color.utility[`500`];
   };
 
   /** Get color foreground from color prop */
-  const getColorFg = (color?: ExtendedColorValues, tint?: TintValues, disabled?: BoolValues) => {
+  const getColorFg = (color?: ColorValues, tint?: TintValues, disabled?: BoolValues) => {
     if (disabled) return theme.color.fgDisabled;
-    if (color === `black`) return theme.color.fg[0];
-    if (color === `white`) return theme.color.fgContrast[0];
-    if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].contrast[tint];
+    if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`c${tint}`];
     return theme.color.fg[0];
   };
 
   /** Get color hover from background color prop */
-  const getColorHover = (color?: ExtendedColorValues, tint?: TintValues, variant?: ButtonVariants) => {
+  const getColorHover = (color?: ColorValues, tint?: TintValues, variant?: ButtonVariants) => {
+    if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint))
+      return theme.color[color][tint] + `d4`;
     if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
-      return theme.color[color].main[tint] + `40`;
+      return theme.color[color][tint] + `48`;
     if ((variant === `outline` || variant === `link`) && colorValues.includes(color) && tintValues.includes(tint))
-      return theme.color[color].main[tint] + `20`;
+      return theme.color[color][tint] + `24`;
     return `inherit`;
   };
 
   /** Get color active from background color prop */
-  const getColorActive = (color?: ExtendedColorValues, tint?: TintValues, variant?: ButtonVariants) => {
-    // if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color].hover[tint];
+  const getColorActive = (color?: ColorValues, tint?: TintValues, variant?: ButtonVariants) => {
+    if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint))
+      return theme.color[color][tint] + `a0`;
     if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
-      return theme.color[color].main[tint] + `60`;
+      return theme.color[color][tint] + `64`;
     if ((variant === `outline` || variant === `link`) && colorValues.includes(color) && tintValues.includes(tint))
-      return theme.color[color].main[tint] + `40`;
+      return theme.color[color][tint] + `48`;
     return `inherit`;
   };
 

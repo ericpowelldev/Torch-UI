@@ -11,16 +11,6 @@ export default function useButton() {
     return `8px 12px`;
   };
 
-  /** Get outline padding from size prop */
-  const getOutlinePadding = (size: string) => {
-    if (size === `xs` || size === `min`) return `3px 5px`;
-    if (size === `sm`) return `5px 8px`;
-    if (size === `md`) return `7px 11px`;
-    if (size === `lg`) return `9px 14px`;
-    if (size === `xl` || size === `max`) return `11px 17px`;
-    return `7px 11px`;
-  };
-
   /** Get label size from size prop */
   const getLabelSize = (size: string) => {
     if (size === `xs` || size === `min`) return 12;
@@ -41,12 +31,6 @@ export default function useButton() {
     return 18;
   };
 
-  /** Get label weight from variant prop */
-  const getLabelWeight = (variant: string) => {
-    if (variant === `outline`) return 500;
-    return 600;
-  };
-
   // Return hook logic
-  return { getRootPadding, getOutlinePadding, getLabelSize, getIconSize, getLabelWeight };
+  return { getRootPadding, getLabelSize, getIconSize };
 }

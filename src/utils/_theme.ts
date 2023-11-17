@@ -1,12 +1,16 @@
+// DEPENDENCIES -------------------------------------------------- //
+
 import Color from "color";
+
+// THEME -------------------------------------------------- //
 
 const defaultTheme = {
   // Colors
   color: {
     // Brand colors
     primary: `#f42460`,
-    secondary: `#20c0f0`,
-    tertiary: `#20c8a0`,
+    secondary: `#10c0f0`,
+    tertiary: `#40c8a0`,
 
     // Utility colors
     utility: `#303640`,
@@ -15,80 +19,41 @@ const defaultTheme = {
     warning: `#ffb400`,
     success: `#20d840`,
 
-    // Black & White colors
-    black: `#000000`,
-    white: `#ffffff`,
+    // Grayscale colors
+    grayscale: `#808890`,
 
     // Foreground/Text colors
-    fg: [
-      `#ffffff`,
-      `#ffffff96`,
-      `#ffffff72`,
-      `#ffffff50`,
-    ],
-    fgContrast: [
-      `#303640`,
-      `#30364096`,
-      `#30364072`,
-      `#30364050`,
-    ],
-    fgDisabled: `#5a6270`,
-    fgDisabledContrast: `#97a0af`,
-    
-    // Background/Wall colors
-    bg: [
-      `#101216`,
-      `#181b20`,
-      `#202428`,
-      `#282d32`,
-    ],
-    bgContrast: [
-      `#ffffff`,
-      `#fafafa`,
-      `#f5f5f5`,
-      `#f0f0f0`,
-    ],
-    bgDisabled: `#404650`,
-    bgDisabledContrast: `#d4d8de`,
+    fg: `#ffffff`,
+    fgContrast: `#303640`,
 
-    // Divider colors
-    divider: [
-      `#ffffff24`,
-      `#ffffff2e`,
-      `#ffffff18`,
-      `#ffffff12`,
-    ],
-    dividerContrast: [
-      `#30364024`,
-      `#3036402e`,
-      `#30364018`,
-      `#30364012`,
-    ],
+    // Background/Wall colors
+    bg: [`#101216`, `#181b20`, `#202428`, `#282d32`],
+    bgContrast: [`#ffffff`, `#fafafa`, `#f5f5f5`, `#f0f0f0`],
   },
 
   // Text Options
-  txt: {
+  text: {
     // Font families
-    fontFamily: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
-    fontFamilyButton: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
+    family: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
+    familyButton: `"Saira Semi Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
 
     // Font sizes
-    fontSize: 16,
-    fontSizeButton: 14,
+    size: 16,
+    sizeButton: 14,
 
     // Font weights
-    fontWeight: 300,
-    fontWeightButton: 600,
-    fontWeightThin: 100,
-    fontWeightLight: 200,
-    fontWeightRegular: 300,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-    fontWeightBlack: 900,
+    weight: 300,
+    weightButton: 600,
+    weightThin: 100,
+    weightLight: 200,
+    weightRegular: 300,
+    weightMedium: 500,
+    weightBold: 700,
+    weightBlack: 900,
 
     // Font heights
-    fontHeight: 1.333,
-    fontHeightButton: 1.25,
+    height: 1.333,
+    heightButton: 1.25,
 
     // Header text
     h1: {
@@ -167,8 +132,17 @@ const defaultTheme = {
     return pixSpace.join(` `);
   },
 
+  // Radius Options
+  radius: {
+    button: 4,
+    card: 8,
+  },
+
   // Transition Options
-  trans: (sec = 0.2) => `all ${sec}s ease-in-out`,
+  transition: {
+    button: `all 0.15s ease-in-out`,
+    none: `none`,
+  },
 
   // Shadow Options
   shadow: {
@@ -229,78 +203,144 @@ const defaultTheme = {
   },
 };
 
-const buildAlphaColors = (color: string) => {
-  const alphas = [`00`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `A0`, `B0`, `C0`, `D0`, `E0`, `F0`];
-  const alpha = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
-  return alpha;
+// HELPERS -------------------------------------------------- //
+
+const buildForegroundColors = (color) => {
+  const alphas = [`ff`, `96`, `72`, `48`];
+  const foregroundColors = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
+  return foregroundColors;
 };
 
-const buildColors = (color: string) => {
+const buildFgDisabledColor = (color) => {
+  return Color(color).lightness(60).hex();
+};
+const buildFgDisabledContrastColor = (color) => {
+  return Color(color).lightness(30).hex();
+};
+
+const buildBgDisabledColor = (color) => {
+  return Color(color).lightness(30).hex();
+};
+const buildBgDisabledContrastColor = (color) => {
+  return Color(color).lightness(60).hex();
+};
+
+const buildColors = (color) => {
+  // Normalize the main color
+  const normalizedColor = Color(color).lightness(50).hex();
+
+  // Generate the main hexes
   const main = {
-    [`100`]: Color(color).darken(0.6).hex(),
-    [`200`]: Color(color).darken(0.45).hex(),
-    [`300`]: Color(color).darken(0.3).hex(),
-    [`400`]: Color(color).darken(0.15).hex(),
-    [`500`]: Color(color).hex(),
-    [`600`]: Color(color).lighten(0.15).hex(),
-    [`700`]: Color(color).lighten(0.3).hex(),
-    [`800`]: Color(color).lighten(0.45).hex(),
-    [`900`]: Color(color).lighten(0.6).hex(),
+    [`0`]: Color(normalizedColor).lightness(100).hex(),
+    [`50`]: Color(normalizedColor).lightness(95).hex(),
+    [`100`]: Color(normalizedColor).lightness(90).hex(),
+    [`200`]: Color(normalizedColor).lightness(80).hex(),
+    [`300`]: Color(normalizedColor).lightness(70).hex(),
+    [`400`]: Color(normalizedColor).lightness(60).hex(),
+    [`500`]: normalizedColor,
+    [`600`]: Color(normalizedColor).lightness(40).hex(),
+    [`700`]: Color(normalizedColor).lightness(30).hex(),
+    [`800`]: Color(normalizedColor).lightness(20).hex(),
+    [`900`]: Color(normalizedColor).lightness(10).hex(),
+    [`950`]: Color(normalizedColor).lightness(5).hex(),
+    [`1000`]: Color(normalizedColor).lightness(0).hex(),
   };
+
+  // Generate the contrasted hexes
   const contrast = {
-    [`100`]: main[`500`],
-    [`200`]: main[`700`],
-    [`300`]: main[`800`],
-    [`400`]: main[`900`],
-    [`500`]: Color(defaultTheme.color.fg[0]).hex(),
-    [`600`]: main[`200`],
-    [`700`]: main[`300`],
-    [`800`]: main[`400`],
-    [`900`]: main[`500`],
+    [`c0`]: `#000000`,
+    [`c50`]: main[`500`],
+    [`c100`]: main[`500`],
+    [`c200`]: main[`600`],
+    [`c300`]: main[`600`],
+    [`c400`]: main[`700`],
+    [`c500`]: `#ffffff`,
+    [`c600`]: main[`50`],
+    [`c700`]: main[`100`],
+    [`c800`]: main[`200`],
+    [`c900`]: main[`300`],
+    [`c950`]: main[`400`],
+    [`c1000`]: `#ffffff`,
   };
-  const alpha = buildAlphaColors(Color(color).hex());
-  return { main, contrast, alpha };
+
+  // Generate the alpha hexes
+  const alpha = {
+    [`a0`]: Color(normalizedColor).fade(1).hexa(),
+    [`a50`]: Color(normalizedColor).fade(0.95).hexa(),
+    [`a100`]: Color(normalizedColor).fade(0.9).hexa(),
+    [`a200`]: Color(normalizedColor).fade(0.8).hexa(),
+    [`a300`]: Color(normalizedColor).fade(0.7).hexa(),
+    [`a400`]: Color(normalizedColor).fade(0.6).hexa(),
+    [`a500`]: Color(normalizedColor).fade(0.5).hexa(),
+    [`a600`]: Color(normalizedColor).fade(0.4).hexa(),
+    [`a700`]: Color(normalizedColor).fade(0.3).hexa(),
+    [`a800`]: Color(normalizedColor).fade(0.2).hexa(),
+    [`a900`]: Color(normalizedColor).fade(0.1).hexa(),
+    [`a950`]: Color(normalizedColor).fade(0.05).hexa(),
+    [`a1000`]: normalizedColor,
+  };
+
+  // Return all the hexes
+  return { ...main, ...contrast, ...alpha };
 };
 
-const theme = {
-  ...defaultTheme,
-  color: {
-    ...defaultTheme.color,
-    primary: {
-      ...buildColors(defaultTheme.color.primary),
+// ORCHESTRATION -------------------------------------------------- //
+
+const extendTheme = (theme) => {
+  // Create a copy of the theme object to edit
+  let themeEdit = {
+    ...theme,
+
+    color: {
+      ...theme.color,
+
+      primary: {
+        ...buildColors(theme.color.primary),
+      },
+      secondary: {
+        ...buildColors(theme.color.secondary),
+      },
+      tertiary: {
+        ...buildColors(theme.color.tertiary),
+      },
+
+      utility: {
+        ...buildColors(theme.color.utility),
+      },
+      info: {
+        ...buildColors(theme.color.info),
+      },
+      error: {
+        ...buildColors(theme.color.error),
+      },
+      warning: {
+        ...buildColors(theme.color.warning),
+      },
+      success: {
+        ...buildColors(theme.color.success),
+      },
+
+      grayscale: {
+        ...buildColors(theme.color.grayscale),
+      },
+
+      fg: buildForegroundColors(theme.color.fg),
+      fgContrast: buildForegroundColors(theme.color.fgContrast),
+
+      fgDisabled: buildFgDisabledColor(theme.color.grayscale),
+      fgDisabledContrast: buildFgDisabledContrastColor(theme.color.grayscale),
+
+      bgDisabled: buildBgDisabledColor(theme.color.grayscale),
+      bgDisabledContrast: buildBgDisabledContrastColor(theme.color.grayscale),
     },
-    secondary: {
-      ...buildColors(defaultTheme.color.secondary),
-    },
-    tertiary: {
-      ...buildColors(defaultTheme.color.tertiary),
-    },
-    utility: {
-      ...buildColors(defaultTheme.color.utility),
-    },
-    info: {
-      ...buildColors(defaultTheme.color.info),
-    },
-    error: {
-      ...buildColors(defaultTheme.color.error),
-    },
-    warning: {
-      ...buildColors(defaultTheme.color.warning),
-    },
-    success: {
-      ...buildColors(defaultTheme.color.success),
-    },
-    black: {
-      main: defaultTheme.color.black,
-      alpha: buildAlphaColors(defaultTheme.color.black),
-    },
-    white: {
-      main: defaultTheme.color.white,
-      alpha: buildAlphaColors(defaultTheme.color.white),
-    },
-  },
+  };
+
+  // Return the edited theme object
+  return themeEdit;
 };
 
+// EXPORT -------------------------------------------------- //
+
+const theme = extendTheme(defaultTheme);
 console.log(`Theme:`, theme);
-
 export default theme;

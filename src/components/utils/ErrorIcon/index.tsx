@@ -4,7 +4,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 import { cls } from "utils/helpers";
-import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
+import { BoolValues, ColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
 
@@ -21,7 +21,7 @@ interface ErrorIconProps {
   style?: React.CSSProperties;
 
   type?: `bg` | `fg`;
-  color?: ExtendedColorValues;
+  color?: ColorValues;
   tint?: TintValues;
   size?: number;
   speed?: number;
@@ -72,9 +72,7 @@ const ErrorIcon = ({
   const { getColorBg, getColorFg } = useColors();
 
   // BASE COMPONENT //
-  const Icon = ({ className }: ComponentIconProps) => (
-    <MdReport className={cls(classes, `root`, className)} {...rest} />
-  );
+  const Icon = ({ className }: ComponentIconProps) => <MdReport className={cls(classes, `root`, className)} {...rest} />;
 
   // DYNAMIC STYLED-COMPONENTS //
   const MyIcon = styled(Icon)`

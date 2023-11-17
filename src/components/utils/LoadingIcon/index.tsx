@@ -4,7 +4,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 import { cls } from "utils/helpers";
-import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
+import { BoolValues, ColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
 import useLoadingIcon from "./useLoadingIcon";
@@ -20,7 +20,7 @@ interface LoadingIconProps {
   style?: React.CSSProperties;
 
   type?: `bg` | `fg`;
-  color?: ExtendedColorValues;
+  color?: ColorValues;
   tint?: TintValues;
   size?: number;
   thickness?: number;

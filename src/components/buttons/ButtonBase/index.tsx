@@ -40,19 +40,19 @@ const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) 
     border: 0;
     border-radius: ${theme.space(1)};
     margin: 0;
-    line-height: ${theme.txt.fontHeightButton};
-    font-family: ${theme.txt.fontFamilyButton};
-    font-size: ${theme.txt.fontSizeButton};
-    font-weight: ${theme.txt.fontWeightButton};
+    line-height: ${theme.text.heightButton};
+    font-family: ${theme.text.familyButton};
+    font-size: ${theme.text.sizeButton};
+    font-weight: ${theme.text.weightButton};
     background: inherit;
     color: inherit;
     cursor: pointer;
-    transition: ${theme.trans(0.15)};
+    transition: ${theme.transition.button};
     user-select: none;
   `;
 
   const MyLabel = styled.span`
-    line-height: ${theme.txt.fontHeightButton};
+    line-height: ${theme.text.heightButton};
     user-select: none;
     pointer-events: none;
   `;
