@@ -2,22 +2,20 @@
 
 import React from "react";
 
+import "static/styles/preset.css";
+
 // PROPS -------------------------------------------------- //
 
-interface LayoutProps {
+interface PresetProps {
   children?: React.ReactNode;
 }
 
 // COMPONENT -------------------------------------------------- //
 
-const Layout = ({ children }: LayoutProps) => {
-  return (
-    <div>
-      {children}
-    </div>
-  );
+const Preset = ({ children }: PresetProps) => {
+  return <React.Fragment>{children}</React.Fragment>;
 };
 
 // EXPORT -------------------------------------------------- //
 
-export default Layout;
+export default Preset;

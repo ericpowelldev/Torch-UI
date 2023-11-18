@@ -1,46 +1,54 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
+import deepmerge from "deepmerge";
 
-import "static/styles/reset.css";
-import "static/styles/custom.css";
-import "static/styles/scrollbar.css";
+import "static/styles/index.css";
 
-import _theme from "utils/_theme";
+import defaultTheme from "utils/theme/defaultTheme";
+import extendTheme from "utils/theme/extendTheme";
 import { BoolValues } from "utils/types";
 
-//////////////////////// PROPS ////////////////////////
+import CssPreset from "components/_app/CssPreset";
+
+const extendedDefaultTheme = extendTheme(defaultTheme);
+
+// PROPS -------------------------------------------------- //
 
 interface TUIProviderProps {
   children?: React.ReactNode;
 
   theme?: any;
 
-  resetCss?: BoolValues;
-  customScrollbar?: BoolValues;
+  cssPreset?: BoolValues;
 }
 
-//////////////////////// CONTEXT/HOOK ////////////////////////
+// CONTEXT/HOOK -------------------------------------------------- //
 
-const TUIContext = React.createContext({ theme: _theme });
+const TUIContext = React.createContext({ theme: extendedDefaultTheme, mode: `dark` });
 const useTUI = () => React.useContext(TUIContext);
 
-//////////////////////// PROVIDER ////////////////////////
+// PROVIDER -------------------------------------------------- //
 
-const TUIProvider = ({ children, theme = _theme, resetCss = true, customScrollbar = true }: TUIProviderProps) => {
+const TUIProvider = ({ children, theme = {}, cssPreset = true }: TUIProviderProps) => {
+  let extendedTheme = deepmerge(defaultTheme, theme);
+  extendedTheme = extendTheme(extendedTheme);
+
   const ctx = {
-    theme: theme,
+    theme: extendedTheme,
+    mode: `dark`,
   };
+
+  console.log(`Extended Theme:`, extendedTheme);
 
   return (
     <TUIContext.Provider value={ctx}>
-      {/* {resetCss ? <ResetCss /> : null} */}
-      {/* {customScrollbar ? <ScrollbarCss /> : null} */}
+      {cssPreset && <CssPreset />}
       {children}
     </TUIContext.Provider>
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export { TUIProvider, useTUI };

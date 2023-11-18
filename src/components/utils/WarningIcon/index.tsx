@@ -1,27 +1,81 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import clsx from "clsx";
+import { css, keyframes } from "@emotion/css";
 
-import { joinClassNames } from "utils/helpers";
-import { BoolValues, ExtendedColorValues, TintValues } from "utils/types";
+import { colorValues, tintValues, BoolValues, ColorValues, TintValues } from "utils/types";
 
-import useColors from "hooks/useColors";
+import { useTUI } from "providers/TUI";
 
 import { AiOutlineWarning } from "react-icons/ai";
 
-//////////////////////// PROPS ////////////////////////
+// HELPERS -------------------------------------------------- //
+
+/** Get color background from color and tint prop */
+const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
+  if (disabled && override === `fg`) return theme.color.fgd;
+  if (disabled) return theme.color.bgd;
+  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
+  return theme.color.utility[`500`];
+};
+
+/** Get color foreground from color prop */
+const getColorFg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues) => {
+  if (disabled) return theme.color.fgd;
+  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
+  return theme.color.fg[0];
+};
+
+// CLASSES -------------------------------------------------- //
+
+const useIconClasses = (theme: any, props: any) => {
+  const { type, color, tint, size, speed, blink, disabled } = props;
+
+  const blinkKeyframes = keyframes`
+    0% {
+      opacity: 0.5;
+    }
+    45% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  `;
+
+  const cls: any = {
+    icon_base: css`
+      position: relative;
+      display: block;
+      width: ${size}px;
+      height: ${size}px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      margin: 0;
+      line-height: 1;
+      user-select: none;
+      animation: ${blinkKeyframes} ${blink ? speed : 0}ms infinite;
+      color: ${type === `bg` ? getColorBg(theme, color, tint, disabled, `fg`) : getColorFg(theme, color, tint, disabled)};
+    `,
+  };
+
+  return cls.icon_base;
+};
+
+// PROPS -------------------------------------------------- //
 
 interface WarningIconProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root: string;
+    icon?: string;
   };
   style?: React.CSSProperties;
 
   type?: `bg` | `fg`;
-  color?: ExtendedColorValues;
+  color?: ColorValues;
   tint?: TintValues;
   size?: number;
   speed?: number;
@@ -33,27 +87,7 @@ interface WarningIconProps {
   [x: string]: any; // Handle default HTML props
 }
 
-interface ComponentIconProps {
-  className?: string;
-
-  [x: string]: any; // Handle default HTML props
-}
-
-//////////////////////// STYLED-COMPONENTS ////////////////////////
-
-const blinkKeyframes = keyframes`
-  0% {
-    opacity: 0.5;
-  }
-  45% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-`;
-
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const WarningIcon = ({
   children,
@@ -69,33 +103,22 @@ const WarningIcon = ({
   ...rest
 }: WarningIconProps) => {
   // HOOKS //
-  const { getColorBg, getColorFg } = useColors();
 
-  // BASE COMPONENT //
-  const Icon = ({ className }: ComponentIconProps) => (
-    <AiOutlineWarning className={joinClassNames(classes, `root`, className)} {...rest} />
-  );
+  const { theme } = useTUI();
 
-  // DYNAMIC STYLED-COMPONENTS //
-  const MyIcon = styled(Icon)`
-    position: relative;
-    display: block;
-    width: ${size}px;
-    height: ${size}px;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    margin: 0;
-    line-height: 1;
-    user-select: none;
-    animation: ${blinkKeyframes} ${blink ? speed : 0}ms infinite;
-    color: ${type === `bg` ? getColorBg(color, tint, disabled, `fg`) : getColorFg(color, tint, disabled)};
-  `;
+  // CLASSES //
 
-  // RETURN //
-  return <MyIcon {...rest} />;
+  const iconClasses = useIconClasses(theme, { type, color, tint, size, speed, blink, disabled });
+
+  // CLASSNAMES //
+
+  const clsxIcon = clsx(iconClasses, classes?.icon, className) || undefined;
+
+  // RENDER //
+
+  return <AiOutlineWarning className={clsxIcon} {...rest} />;
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default WarningIcon;

@@ -1,8 +1,8 @@
 {
-  "name": "@fyrefly/tui",
+  "name": "@ericpowelldev/torch-ui",
   "version": "0.1.0",
   "author": "Eric Powell",
-  "description": "Torch UI - A custom TSX component library made by Eric Powell",
+  "description": "Torch UI - A custom TSX component library with minimal dependencies.",
   "license": "ISC",
   "sideEffects": false,
   "eslintConfig": {
@@ -25,28 +25,28 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build"
   },
   "dependencies": {
-    "clsx": "^1.2.1",
+    "@emotion/css": "^11.11.2",
+    "clsx": "^2.0.0",
     "color": "^4.2.3",
+    "deepmerge": "^4.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.4.2",
-    "react-scripts": "^5.0.1",
-    "styled-components": "^5.3.6",
-    "tools": "git://github.com/ericpowelldev/Tools.git#main"
+    "react-icons": "^4.11.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "@types/color": "^3.0.3",
-    "@types/jest": "^29.2.6",
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@types/styled-components": "^5.1.26",
-    "typescript": "^4.9.4"
+    "@types/color": "^3.0.4",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.7.2",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "typescript": "^5.2.2"
+  },
+  "overrides": {
+    "typescript": "^5.2.2"
   }
 }

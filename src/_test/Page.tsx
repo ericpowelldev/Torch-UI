@@ -1,50 +1,27 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
-import styled from "styled-components";
 
+import { useTUI } from "providers/TUI";
+
+import ButtonBases from "./sets/ButtonBases";
 import Buttons from "./sets/Buttons";
-import ErrorIcons from "./sets/ErrorIcons";
-import WarningIcons from "./sets/WarningIcons";
-import LoadingIcons from "./sets/LoadingIcons";
-import SuccessIcons from "./sets/SuccessIcons";
 import Spacer from "components/utils/Spacer";
 
-//////////////////////// STYLED-COMPONENTS ////////////////////////
-
-const Root = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const Page = () => {
+  const { theme } = useTUI();
+
   return (
-    <Root>
-      <ErrorIcons />
-
-      <Spacer />
-
-      <WarningIcons />
-
-      <Spacer />
-
-      <SuccessIcons />
-
-      <Spacer />
-
-      <LoadingIcons />
-
-      <Spacer size={12} />
-
+    <div style={{ width: `100vw`, height: `100vh`, padding: 24, background: theme.color.bg[1] }}>
+      <ButtonBases />
+      <Spacer size='xl' />
       <Buttons />
-    </Root>
+    </div>
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default Page;

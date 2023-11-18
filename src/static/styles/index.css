@@ -1,12 +1,26 @@
-/****************************************************************************************************
+/* Torch UI - Custom CSS */
 
-  Torch UI
-  by Eric Powell
-  Copyright ©2023
+/* Scrollbar */
 
-****************************************************************************************************/
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-thumb {
+  border: 4px solid #00000000;
+  border-radius: 8px;
+  background: #ccc;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #aaa;
+  background-clip: padding-box;
+}
 
-/* SCROLL TO TOP */
+/* Scroll to Top */
 
 .scroll-to-top {
   z-index: 1000;
@@ -27,13 +41,13 @@
 
 .scroll-to-top.show {
   color: #fff;
-  background-color: #303640;
+  background-color: #000;
   cursor: pointer;
 }
 .scroll-to-top.show:hover {
   bottom: 16px;
-  color: #fff;
-  background-color: #ff2448;
+  color: #000;
+  background-color: #fff;
 }
 .scroll-to-top.hide {
   user-select: none;

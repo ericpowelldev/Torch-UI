@@ -1,3 +1,3 @@
 # Torch UI
 
-A custom TSX component library made by Eric Powell.
+- Torch UI - A dynamic, lightweight TSX component library.
