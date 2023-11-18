@@ -6,11 +6,10 @@ import deepmerge from "deepmerge";
 import "static/styles/index.css";
 
 import defaultTheme from "utils/theme/defaultTheme";
+import extendTheme from "utils/theme/extendTheme";
 import { BoolValues } from "utils/types";
 
-import Reset from "components/_app/Reset";
-import Scrollbar from "components/_app/Scrollbar";
-import extendTheme from "utils/theme/extendTheme";
+import CssPreset from "components/_app/CssPreset";
 
 const extendedDefaultTheme = extendTheme(defaultTheme);
 
@@ -21,8 +20,7 @@ interface TUIProviderProps {
 
   theme?: any;
 
-  cssReset?: BoolValues;
-  cssScrollbar?: BoolValues;
+  cssPreset?: BoolValues;
 }
 
 // CONTEXT/HOOK -------------------------------------------------- //
@@ -32,7 +30,7 @@ const useTUI = () => React.useContext(TUIContext);
 
 // PROVIDER -------------------------------------------------- //
 
-const TUIProvider = ({ children, theme = {}, cssReset = true, cssScrollbar = false }: TUIProviderProps) => {
+const TUIProvider = ({ children, theme = {}, cssPreset = true }: TUIProviderProps) => {
   let extendedTheme = deepmerge(defaultTheme, theme);
   extendedTheme = extendTheme(extendedTheme);
 
@@ -45,8 +43,7 @@ const TUIProvider = ({ children, theme = {}, cssReset = true, cssScrollbar = fal
 
   return (
     <TUIContext.Provider value={ctx}>
-      {cssReset ? <Reset /> : null}
-      {cssScrollbar ? <Scrollbar /> : null}
+      {cssPreset && <CssPreset />}
       {children}
     </TUIContext.Provider>
   );

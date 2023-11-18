@@ -26,67 +26,27 @@ const Buttons = () => {
           Tertiary
         </Button>
         <Spacer vertical />
-        <Button color="utility" tint={tint} size='xs' icon={<IoMdSettings />}>
+        <Button color="utility" tint={tint} size="xs" icon={<IoMdSettings />}>
           Utility
         </Button>
         <Spacer vertical />
-        <Button color="info" tint={tint} size='sm' loading>
+        <Button color="info" tint={tint} size="sm" loading>
           Info
         </Button>
         <Spacer vertical />
-        <Button color="warning" tint={tint} size='md' warning>
+        <Button color="warning" tint={tint} size="md" warning>
           Warning
         </Button>
         <Spacer vertical />
-        <Button color="error" tint={tint} size='lg' error>
+        <Button color="error" tint={tint} size="lg" error>
           Error
         </Button>
         <Spacer vertical />
-        <Button color="success" tint={tint} size='xl' success>
+        <Button color="success" tint={tint} size="xl" success>
           Success
         </Button>
         <Spacer vertical />
         <Button disabled>Disabled</Button>
-      </div>
-
-      <Spacer />
-
-      <div style={{ display: `flex`, alignItems: `center` }}>
-        <Button variant="outline" color="primary" tint={tint}>
-          Primary
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" color="secondary" tint={tint}>
-          Secondary
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" color="tertiary" tint={tint}>
-          Tertiary
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" color="utility" tint={tint} icon={<IoMdSettings />}>
-          Utility
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" color="info" tint={tint} loading>
-          Info
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" color="warning" tint={tint} warning>
-          Warning
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" color="error" tint={tint} error>
-          Error
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" color="success" tint={tint} success>
-          Success
-        </Button>
-        <Spacer vertical />
-        <Button variant="outline" disabled>
-          Disabled
-        </Button>
       </div>
 
       <Spacer />
@@ -132,39 +92,79 @@ const Buttons = () => {
       <Spacer />
 
       <div style={{ display: `flex`, alignItems: `center` }}>
-        <Button variant="link" color="primary" tint={tint}>
+        <Button variant="simple" color="primary" tint={tint}>
           Primary
         </Button>
         <Spacer vertical />
-        <Button variant="link" color="secondary" tint={tint}>
+        <Button variant="simple" color="secondary" tint={tint}>
           Secondary
         </Button>
         <Spacer vertical />
-        <Button variant="link" color="tertiary" tint={tint}>
+        <Button variant="simple" color="tertiary" tint={tint}>
           Tertiary
         </Button>
         <Spacer vertical />
-        <Button variant="link" color="utility" tint={tint} icon={<IoMdSettings />}>
+        <Button variant="simple" color="utility" tint={tint} icon={<IoMdSettings />}>
           Utility
         </Button>
         <Spacer vertical />
-        <Button variant="link" color="info" tint={tint} loading>
+        <Button variant="simple" color="info" tint={tint} loading>
           Info
         </Button>
         <Spacer vertical />
-        <Button variant="link" color="warning" tint={tint} warning>
+        <Button variant="simple" color="warning" tint={tint} warning>
           Warning
         </Button>
         <Spacer vertical />
-        <Button variant="link" color="error" tint={tint} error>
+        <Button variant="simple" color="error" tint={tint} error>
           Error
         </Button>
         <Spacer vertical />
-        <Button variant="link" color="success" tint={tint} success>
+        <Button variant="simple" color="success" tint={tint} success>
           Success
         </Button>
         <Spacer vertical />
-        <Button variant="link" disabled>
+        <Button variant="simple" disabled>
+          Disabled
+        </Button>
+      </div>
+
+      <Spacer />
+
+      <div style={{ display: `flex`, alignItems: `center` }}>
+        <Button variant="outline" color="primary" tint={tint}>
+          Primary
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" color="secondary" tint={tint}>
+          Secondary
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" color="tertiary" tint={tint}>
+          Tertiary
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" color="utility" tint={tint} icon={<IoMdSettings />}>
+          Utility
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" color="info" tint={tint} loading>
+          Info
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" color="warning" tint={tint} warning>
+          Warning
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" color="error" tint={tint} error>
+          Error
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" color="success" tint={tint} success>
+          Success
+        </Button>
+        <Spacer vertical />
+        <Button variant="outline" disabled>
           Disabled
         </Button>
       </div>

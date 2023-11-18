@@ -2,9 +2,54 @@
 
 import React from "react";
 import clsx from "clsx";
-import styled from "styled-components";
+import { css } from "@emotion/css";
 
 import { useTUI } from "providers/TUI";
+
+// CLASSES -------------------------------------------------- //
+
+const useButtonClasses = (theme: any) => {
+  const cls: any = {
+    button_base: css`
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 0;
+      border: 0;
+      border-radius: ${theme.radius.button};
+      margin: 0;
+      line-height: ${theme.text.heightButton};
+      font-family: ${theme.text.familyButton};
+      font-size: ${theme.text.sizeButton};
+      font-weight: ${theme.text.weightButton};
+      background: inherit;
+      color: inherit;
+      cursor: pointer;
+      transition: ${theme.transition.button};
+      user-select: none;
+    `,
+  };
+
+  return cls.button_base;
+};
+
+const useLabelClasses = (theme: any) => {
+  const cls: any = {
+    label_base: css`
+      line-height: ${theme.text.heightButton};
+      font-family: ${theme.text.familyButton};
+      font-size: ${theme.text.sizeButton};
+      font-weight: ${theme.text.weightButton};
+      user-select: none;
+      pointer-events: none;
+    `,
+  };
+
+  return cls.label_base;
+};
 
 // PROPS -------------------------------------------------- //
 
@@ -12,7 +57,6 @@ interface ButtonBaseProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root?: string;
     button?: string;
     label?: string;
   };
@@ -28,39 +72,15 @@ const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) 
 
   const { theme } = useTUI();
 
-  // STYLED-COMPONENTS //
+  // CLASSES //
 
-  const MyButton = styled.button`
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: 0;
-    border-radius: ${theme.space(1)};
-    margin: 0;
-    line-height: ${theme.text.heightButton};
-    font-family: ${theme.text.familyButton};
-    font-size: ${theme.text.sizeButton};
-    font-weight: ${theme.text.weightButton};
-    background: inherit;
-    color: inherit;
-    cursor: pointer;
-    transition: ${theme.transition.button};
-    user-select: none;
-  `;
-
-  const MyLabel = styled.span`
-    line-height: ${theme.text.heightButton};
-    user-select: none;
-    pointer-events: none;
-  `;
+  const buttonClasses = useButtonClasses(theme);
+  const labelClasses = useLabelClasses(theme);
 
   // CLASSNAMES //
 
-  const clsxButton = clsx(classes?.root, classes?.button, className) || undefined;
-  const clsxLabel = clsx(classes?.label) || undefined;
+  const clsxButton = clsx(buttonClasses, classes?.button, className) || undefined;
+  const clsxLabel = clsx(labelClasses, classes?.label) || undefined;
 
   // RENDER //
 

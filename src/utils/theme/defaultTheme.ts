@@ -199,4 +199,4 @@ const theme = {
 
 // EXPORT -------------------------------------------------- //
 
-module.exports = theme;
+export default theme;

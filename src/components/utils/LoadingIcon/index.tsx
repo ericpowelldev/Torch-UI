@@ -1,21 +1,113 @@
-//////////////////////// DEPENDENCIES ////////////////////////
+// DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
-import styled, { keyframes } from "styled-components";
+import { css, keyframes } from "@emotion/css";
 
-import { BoolValues, ColorValues, TintValues } from "utils/types";
+import { colorValues, tintValues, BoolValues, ColorValues, TintValues } from "utils/types";
 
-import useColors from "hooks/useColors";
-import useLoadingIcon from "./useLoadingIcon";
+import { useTUI } from "providers/TUI";
 
-//////////////////////// PROPS ////////////////////////
+// HELPERS -------------------------------------------------- //
+
+/** Get color background from color and tint prop */
+const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
+  if (disabled && override === `fg`) return theme.color.fgd;
+  if (disabled) return theme.color.bgd;
+  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
+  return theme.color.utility[`500`];
+};
+
+/** Get color foreground from color prop */
+const getColorFg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues) => {
+  if (disabled) return theme.color.fgd;
+  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
+  return theme.color.fg[0];
+};
+
+/** Get the size of the spinner track */
+const getTrackSize = (size: number) => {
+  if (size > 48) return size / 8;
+  if (size > 36) return size / 6;
+  if (size > 24) return size / 5;
+  if (size > 12) return size / 4;
+  return size / 2;
+};
+
+// CLASSES -------------------------------------------------- //
+
+const useBaseClasses = (theme: any) => {
+  const cls: any = {
+    base: css`
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      line-height: 1;
+      user-select: none;
+    `,
+  };
+
+  return cls.base;
+};
+
+const useTrackClasses = (theme: any, props: any) => {
+  const { type, color, tint, size, thickness, disabled } = props;
+
+  const cls: any = {
+    track: css`
+      position: relative;
+      width: ${size}px;
+      height: ${size}px;
+      border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
+        ${type === `bg` ? getColorBg(theme, color, tint, disabled, `fg`) : getColorFg(theme, color, tint, disabled)};
+      border-radius: 50%;
+      background-color: transparent;
+      opacity: 25%;
+    `,
+  };
+
+  return cls.track;
+};
+
+const useBarClasses = (theme: any, props: any) => {
+  const { type, color, tint, size, thickness, speed, disabled } = props;
+
+  const spinKeyframes = keyframes`
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  `;
+
+  const cls: any = {
+    bar: css`
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: ${size}px;
+      height: ${size}px;
+      border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid transparent;
+      border-top: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
+        ${type === `bg` ? getColorBg(theme, color, tint, disabled, `fg`) : getColorFg(theme, color, tint, disabled)};
+      border-radius: 50%;
+      background-color: transparent;
+      animation: ${spinKeyframes} ${speed}ms linear infinite;
+    `,
+  };
+
+  return cls.bar;
+};
+
+// PROPS -------------------------------------------------- //
 
 interface LoadingIconProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root?: string;
     base?: string;
     track?: string;
     bar?: string;
@@ -34,28 +126,7 @@ interface LoadingIconProps {
   [x: string]: any; // Handle default HTML props
 }
 
-//////////////////////// STYLED-COMPONENTS ////////////////////////
-
-const spinKeyframes = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const MyBase = styled.div`
-  position: relative;
-  overflow: hidden;
-  padding: 0;
-  border: 0;
-  margin: 0;
-  line-height: 1;
-  user-select: none;
-`;
-
-//////////////////////// COMPONENT ////////////////////////
+// COMPONENT -------------------------------------------------- //
 
 const LoadingIcon = ({
   children,
@@ -71,50 +142,31 @@ const LoadingIcon = ({
   ...rest
 }: LoadingIconProps) => {
   // HOOKS //
-  const { getColorBg, getColorFg } = useColors();
-  const { getTrackSize } = useLoadingIcon();
 
-  // DYNAMIC STYLED-COMPONENTS //
-  const MyTrack = styled.div`
-    position: relative;
-    width: ${size}px;
-    height: ${size}px;
-    border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
-      ${type === `bg` ? getColorBg(color, tint, disabled, `fg`) : getColorFg(color, tint, disabled)};
-    border-radius: 50%;
-    background-color: transparent;
-    opacity: 25%;
-  `;
+  const { theme } = useTUI();
 
-  const MyBar = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: ${size}px;
-    height: ${size}px;
-    border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid transparent;
-    border-top: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
-      ${type === `bg` ? getColorBg(color, tint, disabled, `fg`) : getColorFg(color, tint, disabled)};
-    border-radius: 50%;
-    background-color: transparent;
-    animation: ${spinKeyframes} ${speed}ms linear infinite;
-  `;
+  // CLASSES //
+
+  const baseClasses = useBaseClasses(theme);
+  const trackClasses = useTrackClasses(theme, { type, color, tint, size, thickness, disabled });
+  const barClasses = useBarClasses(theme, { type, color, tint, size, thickness, speed, disabled });
 
   // CLASSNAMES //
 
-  const clsxBase = clsx(classes?.root, classes?.base, className) || undefined;
-  const clsxTrack = clsx(classes?.track) || undefined;
-  const clsxBar = clsx(classes?.bar) || undefined;
+  const clsxBase = clsx(baseClasses, classes?.base, className) || undefined;
+  const clsxTrack = clsx(trackClasses, classes?.track) || undefined;
+  const clsxBar = clsx(barClasses, classes?.bar) || undefined;
 
-  // RETURN //
+  // RENDER //
+
   return (
-    <MyBase className={clsxBase} {...rest}>
-      <MyTrack className={clsxTrack} />
-      <MyBar className={clsxBar} />
-    </MyBase>
+    <div className={clsxBase} {...rest}>
+      <div className={clsxTrack} />
+      <div className={clsxBar} />
+    </div>
   );
 };
 
-//////////////////////// EXPORT ////////////////////////
+// EXPORT -------------------------------------------------- //
 
 export default LoadingIcon;

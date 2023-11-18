@@ -2,20 +2,20 @@
 
 import React from "react";
 
-import "static/styles/scrollbar.css";
+import "static/styles/preset.css";
 
 // PROPS -------------------------------------------------- //
 
-interface ScrollbarProps {
+interface PresetProps {
   children?: React.ReactNode;
 }
 
 // COMPONENT -------------------------------------------------- //
 
-const Scrollbar = ({ children }: ScrollbarProps) => {
+const Preset = ({ children }: PresetProps) => {
   return <React.Fragment>{children}</React.Fragment>;
 };
 
 // EXPORT -------------------------------------------------- //
 
-export default Scrollbar;
+export default Preset;

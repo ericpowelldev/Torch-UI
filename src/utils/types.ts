@@ -52,8 +52,8 @@ const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
 type BoolValues = false | null | undefined | typeof NaN | 0 | -0 | `` | true | 1;
 
 /** Array of accepted button variants */
-const buttonVariants = [`solid`, `outline`, `transparent`, `link`];
-type ButtonVariants = `solid` | `outline` | `transparent` | `link`;
+const buttonVariantValues = [`solid`, `transparent`, `simple`, `outline`];
+type ButtonVariantValues = `solid` | `transparent` | `simple` | `outline`;
 
 /** Array of accepted color values */
 const colorValues = [`primary`, `secondary`, `tertiary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
@@ -204,14 +204,14 @@ type TintValues =
 export {
   alphaTintValues,
   boolValues,
-  buttonVariants,
+  buttonVariantValues,
   colorValues,
   contrastTintValues,
   sizeValues,
   tintValues,
   AlphaTintValues,
   BoolValues,
-  ButtonVariants,
+  ButtonVariantValues,
   ColorValues,
   ContrastTintValues,
   SizeValues,

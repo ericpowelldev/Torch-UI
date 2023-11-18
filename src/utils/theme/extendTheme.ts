@@ -233,4 +233,4 @@ const extendTheme = (theme) => {
 
 // EXPORT -------------------------------------------------- //
 
-module.exports = extendTheme;
+export default extendTheme;
