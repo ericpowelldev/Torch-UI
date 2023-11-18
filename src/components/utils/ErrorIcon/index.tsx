@@ -1,9 +1,9 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
+import clsx from "clsx";
 import styled, { keyframes } from "styled-components";
 
-import { cls } from "utils/helpers";
 import { BoolValues, ColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
@@ -16,7 +16,8 @@ interface ErrorIconProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root: string;
+    root?: string;
+    icon?: string;
   };
   style?: React.CSSProperties;
 
@@ -71,8 +72,12 @@ const ErrorIcon = ({
   // HOOKS //
   const { getColorBg, getColorFg } = useColors();
 
+  // CLASSNAMES //
+
+  const clsxIcon = clsx(classes?.root, classes?.icon, className) || undefined;
+
   // BASE COMPONENT //
-  const Icon = ({ className }: ComponentIconProps) => <MdReport className={cls(classes, `root`, className)} {...rest} />;
+  const Icon = ({ className }: ComponentIconProps) => <MdReport className={clsxIcon} {...rest} />;
 
   // DYNAMIC STYLED-COMPONENTS //
   const MyIcon = styled(Icon)`

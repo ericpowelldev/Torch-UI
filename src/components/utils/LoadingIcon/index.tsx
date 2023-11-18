@@ -1,9 +1,9 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
+import clsx from "clsx";
 import styled, { keyframes } from "styled-components";
 
-import { cls } from "utils/helpers";
 import { BoolValues, ColorValues, TintValues } from "utils/types";
 
 import useColors from "hooks/useColors";
@@ -15,7 +15,10 @@ interface LoadingIconProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root: string;
+    root?: string;
+    base?: string;
+    track?: string;
+    bar?: string;
   };
   style?: React.CSSProperties;
 
@@ -97,11 +100,17 @@ const LoadingIcon = ({
     animation: ${spinKeyframes} ${speed}ms linear infinite;
   `;
 
+  // CLASSNAMES //
+
+  const clsxBase = clsx(classes?.root, classes?.base, className) || undefined;
+  const clsxTrack = clsx(classes?.track) || undefined;
+  const clsxBar = clsx(classes?.bar) || undefined;
+
   // RETURN //
   return (
-    <MyBase className={cls(classes, `root`, className)} {...rest}>
-      <MyTrack className={cls(classes, `track`)} />
-      <MyBar className={cls(classes, `bar`)} />
+    <MyBase className={clsxBase} {...rest}>
+      <MyTrack className={clsxTrack} />
+      <MyBar className={clsxBar} />
     </MyBase>
   );
 };

@@ -12,9 +12,9 @@ interface ButtonBaseProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root: string;
-    button: string;
-    label: string;
+    root?: string;
+    button?: string;
+    label?: string;
   };
   style?: React.CSSProperties;
 

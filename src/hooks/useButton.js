@@ -1,8 +1,8 @@
 // HOOK -------------------------------------------------- //
 
 export default function useButton() {
-  /** Get solid and link padding from size prop */
-  const getRootPadding = (size: string) => {
+  /** Get button padding from size prop */
+  const getRootPadding = (size) => {
     if (size === `xs` || size === `min`) return `4px 6px`;
     if (size === `sm`) return `6px 9px`;
     if (size === `md`) return `8px 12px`;
@@ -11,8 +11,8 @@ export default function useButton() {
     return `8px 12px`;
   };
 
-  /** Get label size from size prop */
-  const getLabelSize = (size: string) => {
+  /** Get button label size from size prop */
+  const getLabelSize = (size) => {
     if (size === `xs` || size === `min`) return 12;
     if (size === `sm`) return 13;
     if (size === `md`) return 14;
@@ -21,8 +21,8 @@ export default function useButton() {
     return 14;
   };
 
-  /** Get icon size from size prop */
-  const getIconSize = (size: string) => {
+  /** Get button icon size from size prop */
+  const getIconSize = (size) => {
     if (size === `xs` || size === `min`) return 15;
     if (size === `sm`) return 17;
     if (size === `md`) return 18;

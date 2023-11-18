@@ -16,16 +16,16 @@ export default function useColors() {
 
   /** Get color background from color and tint prop */
   const getColorBg = (color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
-    if (disabled && override === `fg`) return theme.color.fgDisabled;
-    if (disabled) return theme.color.bgDisabled;
+    if (disabled && override === `fg`) return theme.color.fgd;
+    if (disabled) return theme.color.bgd;
     if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
     return theme.color.utility[`500`];
   };
 
   /** Get color foreground from color prop */
   const getColorFg = (color?: ColorValues, tint?: TintValues, disabled?: BoolValues) => {
-    if (disabled) return theme.color.fgDisabled;
-    if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`c${tint}`];
+    if (disabled) return theme.color.fgd;
+    if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
     return theme.color.fg[0];
   };
 

@@ -1,9 +1,9 @@
 //////////////////////// DEPENDENCIES ////////////////////////
 
 import React from "react";
+import clsx from "clsx";
 import styled from "styled-components";
 
-import { cls } from "utils/helpers";
 import { BoolValues } from "utils/types";
 
 import { useTUI } from "providers/TUI";
@@ -15,7 +15,8 @@ interface SpacerProps {
   children?: React.ReactNode;
   className?: string;
   classes?: {
-    root: string;
+    root?: string;
+    spacer?: string;
   };
   style?: React.CSSProperties;
 
@@ -46,13 +47,17 @@ const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: S
     height: auto;
   `;
 
+  // CLASSNAMES //
+
+  const clsxSpacer = clsx(classes?.root, classes?.spacer, className) || undefined;
+
   // RETURN //
   return (
     <>
       {!vertical ? (
-        <MyHorizontalSpacer className={cls(classes, `root`, className)} {...rest} />
+        <MyHorizontalSpacer className={clsxSpacer} {...rest} />
       ) : (
-        <MyVerticalSpacer className={cls(classes, `root`, className)} {...rest} />
+        <MyVerticalSpacer className={clsxSpacer} {...rest} />
       )}
     </>
   );
