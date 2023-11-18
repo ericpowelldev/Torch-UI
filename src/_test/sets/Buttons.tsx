@@ -4,7 +4,7 @@ import React from "react";
 import { IoMdSettings } from "react-icons/io";
 
 import Button from "components/buttons/Button";
-import Spacer from "components/utils/Spacer";
+import Spacer from "components/layout/Spacer";
 
 const tint = 500;
 

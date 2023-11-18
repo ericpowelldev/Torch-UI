@@ -110,6 +110,10 @@ type ContrastTintValues =
 const sizeValues = [`min`, `xs`, `sm`, `md`, `lg`, `xl`, `max`];
 type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
 
+/** Array of accepted extended size values */
+const sizeValuesExtended = [`4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`];
+type SizeValuesExtended = `4xs` | `3xs` | `2xs` | `xs` | `sm` | `md` | `lg` | `xl` | `2xl` | `3xl` | `4xl`;
+
 /** Array of accepted main color tint values */
 const tintValues = [
   `0`,
@@ -208,6 +212,7 @@ export {
   colorValues,
   contrastTintValues,
   sizeValues,
+  sizeValuesExtended,
   tintValues,
   AlphaTintValues,
   BoolValues,
@@ -215,5 +220,6 @@ export {
   ColorValues,
   ContrastTintValues,
   SizeValues,
+  SizeValuesExtended,
   TintValues,
 };

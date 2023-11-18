@@ -6,7 +6,7 @@ import { useTUI } from "providers/TUI";
 
 import ButtonBases from "./sets/ButtonBases";
 import Buttons from "./sets/Buttons";
-import Spacer from "components/utils/Spacer";
+import Spacer from "components/layout/Spacer";
 
 // COMPONENT -------------------------------------------------- //
 
