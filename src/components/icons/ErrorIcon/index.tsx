@@ -42,7 +42,7 @@ const ErrorIcon = ({
   classes,
   type = `bg`,
   color = `utility`,
-  tint = `500`,
+  tint = 500,
   size = 40,
   speed = 800,
   blink = true,

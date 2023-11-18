@@ -28,23 +28,23 @@ const theme = {
   // Text Options
   text: {
     // Font families
-    family: `"Saira", "Roboto", "Helvetica", "Arial", sans-serif`,
-    familyButton: `"Saira", "Roboto", "Helvetica", "Arial", sans-serif`,
+    family: `"Roboto", "Helvetica", "Arial", sans-serif`,
+    familyButton: `"Roboto Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
 
     // Font sizes
     size: `16px`,
     sizeButton: `14px`,
 
     // Font weights
-    weight: 300,
-    weightButton: 600,
-    weightThin: 100,
-    weightLight: 200,
-    weightRegular: 300,
+    weight: 400,
+    weightThin: 200,
+    weightLight: 300,
+    weightRegular: 400,
     weightMedium: 500,
     weightBold: 700,
     weightBlack: 900,
-
+    weightButton: 600,
+    
     // Font heights
     height: 1.333,
     heightButton: 1.25,
@@ -84,32 +84,32 @@ const theme = {
     // Paragraph text
     p1: {
       size: `16px`,
-      weight: 300,
+      weight: 400,
       height: 1.333,
     },
     p2: {
       size: `14px`,
-      weight: 300,
+      weight: 400,
       height: 1.333,
     },
     p3: {
       size: `12px`,
-      weight: 300,
+      weight: 400,
       height: 1.333,
     },
     p4: {
       size: `10px`,
-      weight: 300,
+      weight: 400,
       height: 1.333,
     },
     p5: {
       size: `9px`,
-      weight: 300,
+      weight: 400,
       height: 1.333,
     },
     p6: {
       size: `8px`,
-      weight: 300,
+      weight: 400,
       height: 1.333,
     },
   },
@@ -128,14 +128,15 @@ const theme = {
 
   // Radius Options
   radius: {
+    none: 0,
     button: `4px`,
     card: `8px`,
   },
 
   // Transition Options
   transition: {
-    button: `all 0.15s ease-in-out`,
     none: `none`,
+    button: `all 0.15s ease-in-out`,
   },
 
   // Shadow Options

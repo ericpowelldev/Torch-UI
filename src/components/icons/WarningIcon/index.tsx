@@ -42,7 +42,7 @@ const WarningIcon = ({
   classes,
   type = `bg`,
   color = `utility`,
-  tint = `500`,
+  tint = 500,
   size = 40,
   speed = 1600,
   blink = true,

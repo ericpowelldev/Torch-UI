@@ -4,7 +4,7 @@ import { css } from "@emotion/css";
 
 // STYLES -------------------------------------------------- //
 
-const useButtonStyles = (theme: any) => {
+export const useButtonStyles = (theme: any) => {
   const stylesheet: any = {
     button: css`
       position: relative;
@@ -15,16 +15,16 @@ const useButtonStyles = (theme: any) => {
       width: fit-content;
       padding: 0;
       border: 0;
-      border-radius: ${theme.radius.button};
+      border-radius: ${theme.radius.button || theme.radius.none};
       margin: 0;
-      line-height: ${theme.text.heightButton};
-      font-family: ${theme.text.familyButton};
-      font-size: ${theme.text.sizeButton};
-      font-weight: ${theme.text.weightButton};
+      line-height: ${theme.text.heightButton || theme.text.height};
+      font-family: ${theme.text.familyButton || theme.text.family};
+      font-size: ${theme.text.sizeButton || theme.text.size};
+      font-weight: ${theme.text.weightButton || theme.text.weight};
       background: inherit;
       color: inherit;
       cursor: pointer;
-      transition: ${theme.transition.button};
+      transition: ${theme.transition.button || theme.transition.none};
       user-select: none;
     `,
   };
@@ -32,13 +32,13 @@ const useButtonStyles = (theme: any) => {
   return stylesheet.button;
 };
 
-const useLabelStyles = (theme: any) => {
+export const useLabelStyles = (theme: any) => {
   const stylesheet: any = {
     label: css`
-      line-height: ${theme.text.heightButton};
-      font-family: ${theme.text.familyButton};
-      font-size: ${theme.text.sizeButton};
-      font-weight: ${theme.text.weightButton};
+      line-height: ${theme.text.heightButton || theme.text.height};
+      font-family: ${theme.text.familyButton || theme.text.family};
+      font-size: ${theme.text.sizeButton || theme.text.size};
+      font-weight: ${theme.text.weightButton || theme.text.weight};
       user-select: none;
       pointer-events: none;
     `,
@@ -46,7 +46,3 @@ const useLabelStyles = (theme: any) => {
 
   return stylesheet.label;
 };
-
-// EXPORT -------------------------------------------------- //
-
-export { useButtonStyles, useLabelStyles };

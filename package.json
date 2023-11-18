@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.1",
     "clsx": "^2.0.0",
     "color": "^4.2.3",
     "deepmerge": "^4.3.1",

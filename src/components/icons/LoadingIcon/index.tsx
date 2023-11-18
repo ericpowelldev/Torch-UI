@@ -41,7 +41,7 @@ const LoadingIcon = ({
   classes,
   type = `bg`,
   color = `utility`,
-  tint = `500`,
+  tint = 500,
   size = 40,
   thickness = 0,
   speed = 500,

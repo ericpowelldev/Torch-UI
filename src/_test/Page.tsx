@@ -1,12 +1,15 @@
 // DEPENDENCIES -------------------------------------------------- //
 
 import React from "react";
+import { css } from "@emotion/css";
 
 import { useTUI } from "providers/TUI";
 
+import Spacer from "components/layout/Spacer";
+
 import ButtonBases from "./sets/ButtonBases";
 import Buttons from "./sets/Buttons";
-import Spacer from "components/layout/Spacer";
+import Typography from "./sets/Typography";
 
 // COMPONENT -------------------------------------------------- //
 
@@ -14,9 +17,16 @@ const Page = () => {
   const { theme } = useTUI();
 
   return (
-    <div style={{ width: `100vw`, height: `100vh`, padding: 24, background: theme.color.bg[1] }}>
+    <div
+      className={css`
+        width: 100vw;
+        height: 100vh;
+        padding: 24px;
+      `}>
+      <Typography />
+      <Spacer size="xl" />
       <ButtonBases />
-      <Spacer size='xl' />
+      <Spacer size="xl" />
       <Buttons />
     </div>
   );

@@ -6,7 +6,7 @@ import { getColorFg, getColorBg, getTrackSize } from "utils/helpers";
 
 // STYLES -------------------------------------------------- //
 
-const useBaseStyles = (theme: any) => {
+export const useBaseStyles = (theme: any) => {
   const stylesheet: any = {
     base: css`
       position: relative;
@@ -22,7 +22,7 @@ const useBaseStyles = (theme: any) => {
   return stylesheet.base;
 };
 
-const useTrackStyles = (theme: any, props: any) => {
+export const useTrackStyles = (theme: any, props: any) => {
   const { type, color, tint, size, thickness, disabled } = props;
 
   const stylesheet: any = {
@@ -41,7 +41,7 @@ const useTrackStyles = (theme: any, props: any) => {
   return stylesheet.track;
 };
 
-const useBarStyles = (theme: any, props: any) => {
+export const useBarStyles = (theme: any, props: any) => {
   const { type, color, tint, size, thickness, speed, disabled } = props;
 
   const spinKeyframes = keyframes`
@@ -71,7 +71,3 @@ const useBarStyles = (theme: any, props: any) => {
 
   return stylesheet.bar;
 };
-
-// EXPORT -------------------------------------------------- //
-
-export { useBaseStyles, useTrackStyles, useBarStyles };

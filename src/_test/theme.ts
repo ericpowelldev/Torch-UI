@@ -9,9 +9,6 @@ const theme = {
   },
 
   text: {
-    // family: `"Roboto", "Helvetica", "Arial", sans-serif`,
-    // familyButton: `"Roboto", "Helvetica", "Arial", sans-serif`,
-
     // family: `"Poppins", "Roboto", "Helvetica", "Arial", sans-serif`,
     // familyButton: `"Poppins", "Roboto", "Helvetica", "Arial", sans-serif`,
   },

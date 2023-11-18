@@ -14,7 +14,7 @@ import {
 
 // STYLES -------------------------------------------------- //
 
-const useButtonStyles = (theme: any, props: any) => {
+export const useButtonStyles = (theme: any, props: any) => {
   const { variant, color, tint, size, fullWidth, disabled } = props;
 
   const stylesheet: any = {
@@ -27,16 +27,16 @@ const useButtonStyles = (theme: any, props: any) => {
       width: fit-content;
       padding: 0;
       border: 0;
-      border-radius: ${theme.radius.button};
+      border-radius: ${theme.radius.button || theme.radius.none};
       margin: 0;
-      line-height: ${theme.text.heightButton};
-      font-family: ${theme.text.familyButton};
-      font-size: ${theme.text.sizeButton};
-      font-weight: ${theme.text.weightButton};
+      line-height: ${theme.text.heightButton || theme.text.height};
+      font-family: ${theme.text.familyButton || theme.text.family};
+      font-size: ${theme.text.sizeButton || theme.text.size};
+      font-weight: ${theme.text.weightButton || theme.text.weight};
       background: inherit;
       color: inherit;
       cursor: pointer;
-      transition: ${theme.transition.button};
+      transition: ${theme.transition.button || theme.transition.none};
       user-select: none;
     `,
     solid: css`
@@ -129,7 +129,7 @@ const useButtonStyles = (theme: any, props: any) => {
   return styles;
 };
 
-const useLabelStyles = (theme: any, props: any) => {
+export const useLabelStyles = (theme: any, props: any) => {
   const { size, uppercase } = props;
 
   const stylesheet: any = {
@@ -155,7 +155,7 @@ const useLabelStyles = (theme: any, props: any) => {
   return styles;
 };
 
-const useStartIconStyles = (theme: any, props: any) => {
+export const useStartIconStyles = (theme: any, props: any) => {
   const { size } = props;
 
   const stylesheet: any = {
@@ -173,7 +173,7 @@ const useStartIconStyles = (theme: any, props: any) => {
   return styles;
 };
 
-const useEndIconStyles = (theme: any, props: any) => {
+export const useEndIconStyles = (theme: any, props: any) => {
   const { size } = props;
 
   const stylesheet: any = {
@@ -190,7 +190,3 @@ const useEndIconStyles = (theme: any, props: any) => {
   let styles: any = [stylesheet.endIcon];
   return styles;
 };
-
-// EXPORT -------------------------------------------------- //
-
-export { useButtonStyles, useLabelStyles, useStartIconStyles, useEndIconStyles };

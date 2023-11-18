@@ -6,7 +6,7 @@ import { getSpacerSize } from "utils/helpers";
 
 // STYLES -------------------------------------------------- //
 
-const useSpacerStyles = (theme: any, props: any) => {
+export const useSpacerStyles = (theme: any, props: any) => {
   const { size, vertical } = props;
 
   const stylesheet: any = {
@@ -25,7 +25,3 @@ const useSpacerStyles = (theme: any, props: any) => {
   if (vertical) return stylesheet.vertical;
   return stylesheet.horizontal;
 };
-
-// EXPORT -------------------------------------------------- //
-
-export { useSpacerStyles };

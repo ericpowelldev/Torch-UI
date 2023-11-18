@@ -6,7 +6,7 @@ import { getColorFg, getColorBg } from "utils/helpers";
 
 // STYLES -------------------------------------------------- //
 
-const useIconStyles = (theme: any, props: any) => {
+export const useIconStyles = (theme: any, props: any) => {
   const { type, color, tint, size, speed, blink, disabled } = props;
 
   const blinkKeyframes = keyframes`
@@ -40,7 +40,3 @@ const useIconStyles = (theme: any, props: any) => {
 
   return stylesheet.icon;
 };
-
-// EXPORT -------------------------------------------------- //
-
-export { useIconStyles };

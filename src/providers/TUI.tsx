@@ -43,7 +43,7 @@ const TUIProvider = ({ children, theme = {}, cssPreset = true }: TUIProviderProp
 
   return (
     <TUIContext.Provider value={ctx}>
-      {cssPreset && <CssPreset />}
+      {cssPreset && <CssPreset theme={extendedTheme} />}
       {children}
     </TUIContext.Provider>
   );

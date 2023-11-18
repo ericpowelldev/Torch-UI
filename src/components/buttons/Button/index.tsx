@@ -59,7 +59,7 @@ const Button = ({
   className,
   classes,
   color = `utility`,
-  tint = `500`,
+  tint = 500,
   size = `md`,
   variant = `solid`,
   tooltip,

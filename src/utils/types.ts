@@ -1,121 +1,40 @@
-// TYPES -------------------------------------------------- //
-
-/** Array of accepted alpha color tint values */
-const alphaTintValues = [
-  `a0`,
-  `a50`,
-  `a100`,
-  `a150`,
-  `a200`,
-  `a250`,
-  `a300`,
-  `a350`,
-  `a400`,
-  `a450`,
-  `a500`,
-  `a550`,
-  `a600`,
-  `a650`,
-  `a700`,
-  `a750`,
-  `a800`,
-  `a850`,
-  `a900`,
-  `a950`,
-  `a1000`,
-];
-type AlphaTintValues =
-  | `a0`
-  | `a50`
-  | `a100`
-  | `a150`
-  | `a200`
-  | `a250`
-  | `a300`
-  | `a350`
-  | `a400`
-  | `a450`
-  | `a500`
-  | `a550`
-  | `a600`
-  | `a650`
-  | `a700`
-  | `a750`
-  | `a800`
-  | `a850`
-  | `a900`
-  | `a950`
-  | `a1000`;
+// GENERAL TYPES -------------------------------------------------- //
 
 /** Array of accepted bool values */
-const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
-type BoolValues = false | null | undefined | typeof NaN | 0 | -0 | `` | true | 1;
-
-/** Array of accepted button variants */
-const buttonVariantValues = [`solid`, `transparent`, `simple`, `outline`];
-type ButtonVariantValues = `solid` | `transparent` | `simple` | `outline`;
-
-/** Array of accepted color values */
-const colorValues = [`primary`, `secondary`, `tertiary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
-type ColorValues = `primary` | `secondary` | `tertiary` | `utility` | `info` | `error` | `warning` | `success` | `grayscale`;
-
-/** Array of accepted contrast color tint values */
-const contrastTintValues = [
-  `i0`,
-  `i50`,
-  `i100`,
-  `i150`,
-  `i200`,
-  `i250`,
-  `i300`,
-  `i350`,
-  `i400`,
-  `i450`,
-  `i500`,
-  `i550`,
-  `i600`,
-  `i650`,
-  `i700`,
-  `i750`,
-  `i800`,
-  `i850`,
-  `i900`,
-  `i950`,
-  `i1000`,
-];
-type ContrastTintValues =
-  | `i0`
-  | `i50`
-  | `i100`
-  | `i150`
-  | `i200`
-  | `i250`
-  | `i300`
-  | `i350`
-  | `i400`
-  | `i450`
-  | `i500`
-  | `i550`
-  | `i600`
-  | `i650`
-  | `i700`
-  | `i750`
-  | `i800`
-  | `i850`
-  | `i900`
-  | `i950`
-  | `i1000`;
+export const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
+export type BoolValues = false | null | undefined | typeof NaN | 0 | -0 | `` | true | 1;
 
 /** Array of accepted size values */
-const sizeValues = [`min`, `xs`, `sm`, `md`, `lg`, `xl`, `max`];
-type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
+export const sizeValues = [`min`, `xs`, `sm`, `md`, `lg`, `xl`, `max`];
+export type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
 
 /** Array of accepted extended size values */
-const sizeValuesExtended = [`4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`];
-type SizeValuesExtended = `4xs` | `3xs` | `2xs` | `xs` | `sm` | `md` | `lg` | `xl` | `2xl` | `3xl` | `4xl`;
+export const sizeValuesExtended = [`4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`];
+export type SizeValuesExtended = `4xs` | `3xs` | `2xs` | `xs` | `sm` | `md` | `lg` | `xl` | `2xl` | `3xl` | `4xl`;
+
+// BUTTON TYPES -------------------------------------------------- //
+
+/** Array of accepted button variants */
+export const buttonVariantValues = [`solid`, `transparent`, `simple`, `outline`];
+export type ButtonVariantValues = `solid` | `transparent` | `simple` | `outline`;
+
+// COLOR TYPES -------------------------------------------------- //
+
+/** Array of accepted color values */
+export const colorValues = [`primary`, `secondary`, `tertiary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
+export type ColorValues =
+  | `primary`
+  | `secondary`
+  | `tertiary`
+  | `utility`
+  | `info`
+  | `error`
+  | `warning`
+  | `success`
+  | `grayscale`;
 
 /** Array of accepted main color tint values */
-const tintValues = [
+export const tintValues = [
   `0`,
   `50`,
   `100`,
@@ -159,7 +78,7 @@ const tintValues = [
   950,
   1000,
 ];
-type TintValues =
+export type TintValues =
   | `0`
   | `50`
   | `100`
@@ -203,23 +122,114 @@ type TintValues =
   | 950
   | 1000;
 
-// EXPORT -------------------------------------------------- //
+/** Array of accepted inverse color tint values */
+export const inverseTintValues = [
+  `i0`,
+  `i50`,
+  `i100`,
+  `i150`,
+  `i200`,
+  `i250`,
+  `i300`,
+  `i350`,
+  `i400`,
+  `i450`,
+  `i500`,
+  `i550`,
+  `i600`,
+  `i650`,
+  `i700`,
+  `i750`,
+  `i800`,
+  `i850`,
+  `i900`,
+  `i950`,
+  `i1000`,
+];
+export type InverseTintValues =
+  | `i0`
+  | `i50`
+  | `i100`
+  | `i150`
+  | `i200`
+  | `i250`
+  | `i300`
+  | `i350`
+  | `i400`
+  | `i450`
+  | `i500`
+  | `i550`
+  | `i600`
+  | `i650`
+  | `i700`
+  | `i750`
+  | `i800`
+  | `i850`
+  | `i900`
+  | `i950`
+  | `i1000`;
 
-export {
-  alphaTintValues,
-  boolValues,
-  buttonVariantValues,
-  colorValues,
-  contrastTintValues,
-  sizeValues,
-  sizeValuesExtended,
-  tintValues,
-  AlphaTintValues,
-  BoolValues,
-  ButtonVariantValues,
-  ColorValues,
-  ContrastTintValues,
-  SizeValues,
-  SizeValuesExtended,
-  TintValues,
-};
+/** Array of accepted alpha color tint values */
+export const alphaTintValues = [
+  `a0`,
+  `a50`,
+  `a100`,
+  `a150`,
+  `a200`,
+  `a250`,
+  `a300`,
+  `a350`,
+  `a400`,
+  `a450`,
+  `a500`,
+  `a550`,
+  `a600`,
+  `a650`,
+  `a700`,
+  `a750`,
+  `a800`,
+  `a850`,
+  `a900`,
+  `a950`,
+  `a1000`,
+];
+export type AlphaTintValues =
+  | `a0`
+  | `a50`
+  | `a100`
+  | `a150`
+  | `a200`
+  | `a250`
+  | `a300`
+  | `a350`
+  | `a400`
+  | `a450`
+  | `a500`
+  | `a550`
+  | `a600`
+  | `a650`
+  | `a700`
+  | `a750`
+  | `a800`
+  | `a850`
+  | `a900`
+  | `a950`
+  | `a1000`;
+
+// TEXT TYPES -------------------------------------------------- //
+
+/** Array of accepted text variants */
+export const textAlignValues = [`inherit`, `left`, `center`, `right`, `justify`];
+export type TextAlignValues = `inherit` | `left` | `center` | `right` | `justify`;
+
+/** Array of accepted text variants */
+export const textColorValues = [`inherit`, `fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
+export type TextColorValues = `inherit` | `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
+
+/** Array of accepted text variants */
+export const textComponentValues = [`div`, `span`];
+export type TextComponentValues = `div` | `span`;
+
+/** Array of accepted text variants */
+export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`];
+export type TextVariantValues = `h1` | `h2` | `h3` | `h4` | `h5` | `h6` | `p1` | `p2` | `p3` | `p4` | `p5` | `p6`;
