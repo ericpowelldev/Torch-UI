@@ -2,7 +2,7 @@
   "name": "@ericpowelldev/torch-ui",
   "version": "0.1.0",
   "author": "Eric Powell",
-  "description": "Torch UI - A custom TSX component library with minimal dependencies.",
+  "description": "Torch UI - A dynamic, lightweight TSX component library.",
   "license": "ISC",
   "sideEffects": false,
   "eslintConfig": {
