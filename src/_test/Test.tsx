@@ -22,12 +22,14 @@ const Page = () => {
         width: 100vw;
         height: 100vh;
         padding: 24px;
+        background-color: ${theme.color.bgi[2]};
       `}>
       <Typography />
       <Spacer size="xl" />
       <ButtonBases />
       <Spacer size="xl" />
       <Buttons />
+      <Spacer size="xl" />
     </div>
   );
 };

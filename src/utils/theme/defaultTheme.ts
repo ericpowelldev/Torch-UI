@@ -4,16 +4,16 @@ const theme = {
   // Colors
   color: {
     // Brand colors
-    primary: `#802408`,
-    secondary: `#163280`,
-    tertiary: `#087080`,
+    primary: `#802808`,
+    secondary: `#084080`,
+    tertiary: `#248060`,
 
     // Utility colors
     utility: `#607080`,
-    info: `#104080`,
+    info: `#106080`,
     error: `#800820`,
-    warning: `#805000`,
-    success: `#208030`,
+    warning: `#805004`,
+    success: `#248030`,
 
     // General colors
     grayscale: `#707880`,
@@ -47,7 +47,7 @@ const theme = {
     
     // Font heights
     height: 1.333,
-    heightButton: 1.25,
+    heightButton: 1,
 
     // Header text
     h1: {
@@ -131,6 +131,7 @@ const theme = {
     none: 0,
     button: `4px`,
     card: `8px`,
+    pill: `24px`,
   },
 
   // Transition Options
@@ -144,7 +145,9 @@ const theme = {
     none: `none`,
     soft: `0 0 12px #00000016`,
     medium: `0 0 12px #00000024`,
-    harsh: `0 0 12px #00000040`,
+    harsh: `0 0 12px #00000048`,
+    button: `0px 4px 12px #00000048`,
+    text: `1px 1px 2px #00000056`,
   },
 
   // Z-Index Options

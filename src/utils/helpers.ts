@@ -17,32 +17,42 @@ import {
 
 /** Get button padding from size prop */
 export const getButtonPadding = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return `4px 6px`;
-  if (size === `sm`) return `6px 9px`;
+  if (size === `xs` || size === `min`) return `4px 8px`;
+  if (size === `sm`) return `6px 10px`;
   if (size === `md`) return `8px 12px`;
-  if (size === `lg`) return `10px 15px`;
-  if (size === `xl` || size === `max`) return `12px 18px`;
+  if (size === `lg`) return `10px 14px`;
+  if (size === `xl` || size === `max`) return `12px 16px`;
   return `8px 12px`;
 };
 
 /** Get button label size from size prop */
 export const getButtonLabelSize = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return `12px`;
-  if (size === `sm`) return `13px`;
-  if (size === `md`) return `14px`;
-  if (size === `lg`) return `15px`;
-  if (size === `xl` || size === `max`) return `16px`;
-  return `14px`;
+  if (size === `xs` || size === `min`) return 10;
+  if (size === `sm`) return 12;
+  if (size === `md`) return 14;
+  if (size === `lg`) return 16;
+  if (size === `xl` || size === `max`) return 18;
+  return 14;
 };
 
 /** Get button icon size from size prop */
 export const getButtonIconSize = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return 15;
-  if (size === `sm`) return 17;
-  if (size === `md`) return 18;
-  if (size === `lg`) return 19;
-  if (size === `xl` || size === `max`) return 21;
-  return 18;
+  if (size === `xs` || size === `min`) return 12;
+  if (size === `sm`) return 14;
+  if (size === `md`) return 16;
+  if (size === `lg`) return 18;
+  if (size === `xl` || size === `max`) return 20;
+  return 16;
+};
+
+/** Get button icon margin from size prop */
+export const getButtonIconMargin = (size: SizeValues) => {
+  if (size === `xs` || size === `min`) return 6;
+  if (size === `sm`) return 7;
+  if (size === `md`) return 8;
+  if (size === `lg`) return 9;
+  if (size === `xl` || size === `max`) return 10;
+  return 8;
 };
 
 // COLORS -------------------------------------------------- //

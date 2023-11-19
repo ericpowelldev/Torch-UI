@@ -25,7 +25,7 @@ const Preset = ({ children, theme }: PresetProps) => {
             fontFamily: theme.text.family,
             fontSize: theme.text.size,
             fontWeight: theme.text.weight,
-            backgroundColor: theme.color.bg[0],
+            backgroundColor: theme.color.bg[2],
             color: theme.color.fg[0],
           },
           h1: {

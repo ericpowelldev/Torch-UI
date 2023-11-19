@@ -10,12 +10,13 @@ import {
   getButtonPadding,
   getButtonLabelSize,
   getButtonIconSize,
+  getButtonIconMargin,
 } from "utils/helpers";
 
 // STYLES -------------------------------------------------- //
 
 export const useButtonStyles = (theme: any, props: any) => {
-  const { variant, color, tint, size, fullWidth, disabled } = props;
+  const { variant, color, tint, size, pill, buttonShadow, textShadow, fullWidth, disabled } = props;
 
   const stylesheet: any = {
     button: css`
@@ -27,37 +28,52 @@ export const useButtonStyles = (theme: any, props: any) => {
       width: fit-content;
       padding: 0;
       border: 0;
-      border-radius: ${theme.radius.button || theme.radius.none};
+      border-radius: ${pill ? theme.radius.pill : theme.radius.button || theme.radius.none};
       margin: 0;
       line-height: ${theme.text.heightButton || theme.text.height};
       font-family: ${theme.text.familyButton || theme.text.family};
       font-size: ${theme.text.sizeButton || theme.text.size};
       font-weight: ${theme.text.weightButton || theme.text.weight};
-      background: inherit;
+      text-align: center;
+      background-color: transparent;
       color: inherit;
       cursor: pointer;
       transition: ${theme.transition.button || theme.transition.none};
       user-select: none;
+
+      &:hover {
+        transform: translateY(-2px);
+        @media (hover: none) {
+          transform: none;
+        }
+      }
+
+      &:active {
+        transition: ${theme.transition.none};
+      }
     `,
     solid: css`
       background-color: ${getColorBg(theme, color, tint, disabled)};
       color: ${getColorFg(theme, color, tint, disabled)};
+      backdrop-filter: blur(12px);
 
       &:hover {
         background-color: ${getColorHover(theme, `solid`, color, tint)};
+        box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}64;
         @media (hover: none) {
           background-color: ${getColorBg(theme, color, tint, disabled)};
+          box-shadow: ${theme.shadow.none};
         }
       }
 
       &:active {
         background-color: ${getColorActive(theme, `solid`, color, tint)};
-        transition: ${theme.transition.none};
       }
     `,
     transparent: css`
       background-color: ${getColorBg(theme, color, tint, disabled, `fg`)}24;
       color: ${getColorBg(theme, color, tint, disabled, `fg`)};
+      backdrop-filter: blur(12px);
 
       &:hover {
         background-color: ${getColorHover(theme, `transparent`, color, tint)};
@@ -68,7 +84,6 @@ export const useButtonStyles = (theme: any, props: any) => {
 
       &:active {
         background-color: ${getColorActive(theme, `transparent`, color, tint)};
-        transition: ${theme.transition.none};
       }
     `,
     simple: css`
@@ -84,7 +99,6 @@ export const useButtonStyles = (theme: any, props: any) => {
 
       &:active {
         background-color: ${getColorActive(theme, `simple`, color, tint)};
-        transition: ${theme.transition.none};
       }
     `,
     outline: css`
@@ -92,17 +106,19 @@ export const useButtonStyles = (theme: any, props: any) => {
       outline-offset: -1px;
       background-color: transparent;
       color: ${getColorBg(theme, color, tint, disabled, `fg`)};
+      backdrop-filter: blur(12px);
 
       &:hover {
         background-color: ${getColorHover(theme, `outline`, color, tint)};
+        box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}64;
         @media (hover: none) {
           background-color: transparent;
+          box-shadow: ${theme.shadow.none};
         }
       }
 
       &:active {
         background-color: ${getColorActive(theme, `outline`, color, tint)};
-        transition: ${theme.transition.none};
       }
     `,
     size: css`
@@ -110,6 +126,12 @@ export const useButtonStyles = (theme: any, props: any) => {
     `,
     fullWidth: css`
       width: 100%;
+    `,
+    buttonShadow: css`
+      box-shadow: ${theme.shadow.button || theme.shadow.none};
+    `,
+    textShadow: css`
+      text-shadow: ${theme.shadow.text || theme.shadow.none};
     `,
     disabled: css`
       cursor: not-allowed;
@@ -125,6 +147,8 @@ export const useButtonStyles = (theme: any, props: any) => {
   if (variant === `outline`) styles.push(stylesheet.outline);
   if (size) styles.push(stylesheet.size);
   if (fullWidth) styles.push(stylesheet.fullWidth);
+  if (buttonShadow && variant === `solid` && !disabled) styles.push(stylesheet.buttonShadow);
+  if (textShadow && variant === `solid` && !disabled) styles.push(stylesheet.textShadow);
   if (disabled) styles.push(stylesheet.disabled);
   return styles;
 };
@@ -142,7 +166,7 @@ export const useLabelStyles = (theme: any, props: any) => {
       pointer-events: none;
     `,
     size: css`
-      font-size: ${getButtonLabelSize(size)};
+      font-size: ${getButtonLabelSize(size)}px;
     `,
     uppercase: css`
       text-transform: uppercase;
@@ -160,7 +184,8 @@ export const useStartIconStyles = (theme: any, props: any) => {
 
   const stylesheet: any = {
     startIcon: css`
-      margin-right: ${theme.space(2)};
+      margin-left: -2px;
+      margin-right: ${getButtonIconMargin(size)}px;
       & svg {
         display: block;
         width: ${getButtonIconSize(size)}px;
@@ -178,7 +203,8 @@ export const useEndIconStyles = (theme: any, props: any) => {
 
   const stylesheet: any = {
     endIcon: css`
-      margin-left: ${theme.space(2)};
+      margin-left: ${getButtonIconMargin(size)}px;
+      margin-right: -2px;
       & svg {
         display: block;
         width: ${getButtonIconSize(size)}px;

@@ -26,23 +26,23 @@ const Buttons = () => {
           Tertiary
         </Button>
         <Spacer vertical />
-        <Button color="utility" tint={tint} size="xs" icon={<IoMdSettings />}>
+        <Button color="utility" tint={tint} icon={<IoMdSettings />}>
           Utility
         </Button>
         <Spacer vertical />
-        <Button color="info" tint={tint} size="sm" loading>
+        <Button color="info" tint={tint} loading>
           Info
         </Button>
         <Spacer vertical />
-        <Button color="warning" tint={tint} size="md" warning>
+        <Button color="warning" tint={tint} warning>
           Warning
         </Button>
         <Spacer vertical />
-        <Button color="error" tint={tint} size="lg" error>
+        <Button color="error" tint={tint} error>
           Error
         </Button>
         <Spacer vertical />
-        <Button color="success" tint={tint} size="xl" success>
+        <Button color="success" tint={tint} success>
           Success
         </Button>
         <Spacer vertical />
@@ -166,6 +166,30 @@ const Buttons = () => {
         <Spacer vertical />
         <Button variant="outline" disabled>
           Disabled
+        </Button>
+      </div>
+
+      <Spacer size="xl" />
+
+      <div style={{ display: `flex`, alignItems: `center` }}>
+        <Button color="primary" tint={tint} size="xs" icon={<IoMdSettings />}>
+          Extra Small
+        </Button>
+        <Spacer vertical />
+        <Button color="primary" tint={tint} size="sm" icon={<IoMdSettings />}>
+          Small
+        </Button>
+        <Spacer vertical />
+        <Button color="primary" tint={tint} size="md" icon={<IoMdSettings />}>
+          Medium
+        </Button>
+        <Spacer vertical />
+        <Button color="primary" tint={tint} size="lg" icon={<IoMdSettings />}>
+          Large
+        </Button>
+        <Spacer vertical />
+        <Button color="primary" tint={tint} size="xl" icon={<IoMdSettings />}>
+          Extra Large
         </Button>
       </div>
     </>

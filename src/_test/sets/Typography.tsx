@@ -41,10 +41,18 @@ const Typography = () => {
 
       <Spacer />
 
-      <Text color="fg1">Foreground 1 Text</Text>
-      <Text color="fg2">Foreground 2 Text</Text>
-      <Text color="fg3">Foreground 3 Text</Text>
-      <Text color="fg4">Foreground 4 Text</Text>
+      <div
+        className={css`
+          width: fit-content;
+          padding: 1rem;
+          background: ${theme.color.bg[2]};
+          backdrop-filter: blur(12px);
+        `}>
+        <Text color="fg1">Foreground 1 Text</Text>
+        <Text color="fg2">Foreground 2 Text</Text>
+        <Text color="fg3">Foreground 3 Text</Text>
+        <Text color="fg4">Foreground 4 Text</Text>
+      </div>
 
       <Spacer />
 
@@ -53,6 +61,7 @@ const Typography = () => {
           width: fit-content;
           padding: 1rem;
           background: ${theme.color.bgi[2]};
+          backdrop-filter: blur(12px);
         `}>
         <Text color="fgi1">Foreground Inverse 1 Text</Text>
         <Text color="fgi2">Foreground Inverse 2 Text</Text>

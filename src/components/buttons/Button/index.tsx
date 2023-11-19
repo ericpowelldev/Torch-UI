@@ -37,8 +37,9 @@ interface ButtonProps {
   tint?: TintValues;
   size?: SizeValues;
 
-  tooltip?: React.ReactNode;
-  icon?: React.ReactNode;
+  pill?: BoolValues;
+  buttonShadow?: BoolValues;
+  textShadow?: BoolValues;
 
   fullWidth?: BoolValues;
   uppercase?: BoolValues;
@@ -48,6 +49,9 @@ interface ButtonProps {
   warning?: BoolValues;
   loading?: BoolValues;
   success?: BoolValues;
+
+  tooltip?: React.ReactNode;
+  icon?: React.ReactNode;
 
   [x: string]: any; // Handle default HTML props
 }
@@ -62,8 +66,9 @@ const Button = ({
   tint = 500,
   size = `md`,
   variant = `solid`,
-  tooltip,
-  icon,
+  pill,
+  buttonShadow,
+  textShadow,
   fullWidth,
   uppercase = true,
   disabled,
@@ -71,6 +76,8 @@ const Button = ({
   warning,
   loading,
   success,
+  tooltip,
+  icon,
   ...rest
 }: ButtonProps) => {
   // HOOKS //
@@ -79,7 +86,17 @@ const Button = ({
 
   // CLASSES //
 
-  const buttonStyles = useButtonStyles(theme, { variant, color, tint, size, fullWidth, disabled });
+  const buttonStyles = useButtonStyles(theme, {
+    variant,
+    color,
+    tint,
+    size,
+    pill,
+    buttonShadow,
+    textShadow,
+    fullWidth,
+    disabled,
+  });
   const labelStyles = useLabelStyles(theme, { size, uppercase });
   const startIconStyles = useStartIconStyles(theme, { size });
   const endIconStyles = useEndIconStyles(theme, { size });

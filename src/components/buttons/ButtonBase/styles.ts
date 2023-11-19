@@ -15,13 +15,12 @@ export const useButtonStyles = (theme: any) => {
       width: fit-content;
       padding: 0;
       border: 0;
-      border-radius: ${theme.radius.button || theme.radius.none};
       margin: 0;
       line-height: ${theme.text.heightButton || theme.text.height};
       font-family: ${theme.text.familyButton || theme.text.family};
       font-size: ${theme.text.sizeButton || theme.text.size};
       font-weight: ${theme.text.weightButton || theme.text.weight};
-      background: inherit;
+      background: transparent;
       color: inherit;
       cursor: pointer;
       transition: ${theme.transition.button || theme.transition.none};
