@@ -11,7 +11,7 @@ const theme = {
     // Utility colors
     utility: `#607080`,
     info: `#106080`,
-    error: `#800820`,
+    error: `#800020`,
     warning: `#805004`,
     success: `#248030`,
 

@@ -112,11 +112,7 @@ export const getColorText = (theme: any, color?: ColorValues | TextColorValues, 
 
 /** Get the size of the spinner track */
 export const getTrackSize = (size: number) => {
-  if (size > 48) return size / 8;
-  if (size > 36) return size / 6;
-  if (size > 24) return size / 5;
-  if (size > 12) return size / 4;
-  return size / 2;
+  return Math.sqrt(size);
 };
 
 // SPACER -------------------------------------------------- //

@@ -5,7 +5,7 @@ const Color = require("color");
 // HELPERS -------------------------------------------------- //
 
 /** Build standard colors */
-const buildColors = (color, darkMode) => {
+const buildColors = (color: string, darkMode?: boolean) => {
   // Normalize the main color
   const normalizedColor = Color(color).lightness(50).hex();
 
@@ -129,14 +129,14 @@ const buildColors = (color, darkMode) => {
 };
 
 /** Build foreground colors */
-const buildForegroundColors = (color, darkMode) => {
+const buildForegroundColors = (color: string, darkMode?: boolean) => {
   const alphas = [``, `96`, `72`, `48`];
   const foregroundColors = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
   return foregroundColors;
 };
 
 /** Build background colors */
-const buildBackgroundColors = (color, darkMode) => {
+const buildBackgroundColors = (color: string, darkMode?: boolean) => {
   // Normalize the main color
   const normalizedColor = Color(color).lightness(50).hex();
 
@@ -164,20 +164,18 @@ const buildBackgroundColors = (color, darkMode) => {
 };
 
 /** Build foreground disabled color */
-const buildForegroundDisabledColor = (color, darkMode) => {
-  if (darkMode) return Color(color).fade(0.6).hexa();
-  return Color(color).fade(0.4).hexa();
+const buildForegroundDisabledColor = (color: string, darkMode?: boolean) => {
+  return Color(color).fade(0.2).hexa();
 };
 
 /** Build background disabled color */
-const buildBackgroundDisabledColor = (color, darkMode) => {
-  if (darkMode) return Color(color).fade(0.4).hexa();
+const buildBackgroundDisabledColor = (color: string, darkMode?: boolean) => {
   return Color(color).fade(0.6).hexa();
 };
 
 // ORCHESTRATION -------------------------------------------------- //
 
-const extendTheme = (theme) => {
+const extendTheme = (theme: any) => {
   // Create a copy of the theme object to edit
   let themeEdit = {
     ...theme,

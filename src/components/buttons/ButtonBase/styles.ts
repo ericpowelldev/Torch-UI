@@ -20,7 +20,7 @@ export const useButtonStyles = (theme: any) => {
       font-family: ${theme.text.familyButton || theme.text.family};
       font-size: ${theme.text.sizeButton || theme.text.size};
       font-weight: ${theme.text.weightButton || theme.text.weight};
-      background: transparent;
+      background-color: transparent;
       color: inherit;
       cursor: pointer;
       transition: ${theme.transition.button || theme.transition.none};

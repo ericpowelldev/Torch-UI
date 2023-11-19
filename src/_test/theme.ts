@@ -1,11 +1,12 @@
 const theme = {
   color: {
-    // primary: `#802008`,
-    // secondary: `#204080`,
-    // tertiary: `#308070`,
+    primary: `#f3400c`,
+    secondary: `#486eb7`,
+    tertiary: `#55aa99`,
 
-    // fg: `#323640`,
-    // bg: `#ffffff`,
+    // primary: `#f44232`,
+    // secondary: `#486496`,
+    // tertiary: `#509090`,
   },
 
   text: {

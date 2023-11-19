@@ -19,10 +19,12 @@ const Page = () => {
   return (
     <div
       className={css`
+        position: fixed;
         width: 100vw;
         height: 100vh;
         padding: 24px;
-        background-color: ${theme.color.bgi[2]};
+        background-color: ${theme.color.bg[2]};
+        overflow: auto;
       `}>
       <Typography />
       <Spacer size="xl" />

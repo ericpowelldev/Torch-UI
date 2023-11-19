@@ -22,13 +22,13 @@ export const useButtonStyles = (theme: any, props: any) => {
     button: css`
       position: relative;
       overflow: hidden;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
       width: fit-content;
       padding: 0;
       border: 0;
-      border-radius: ${pill ? theme.radius.pill : theme.radius.button || theme.radius.none};
+      border-radius: ${theme.radius.button || theme.radius.none};
       margin: 0;
       line-height: ${theme.text.heightButton || theme.text.height};
       font-family: ${theme.text.familyButton || theme.text.family};
@@ -59,7 +59,7 @@ export const useButtonStyles = (theme: any, props: any) => {
 
       &:hover {
         background-color: ${getColorHover(theme, `solid`, color, tint)};
-        box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}64;
+        box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}48;
         @media (hover: none) {
           background-color: ${getColorBg(theme, color, tint, disabled)};
           box-shadow: ${theme.shadow.none};
@@ -110,7 +110,7 @@ export const useButtonStyles = (theme: any, props: any) => {
 
       &:hover {
         background-color: ${getColorHover(theme, `outline`, color, tint)};
-        box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}64;
+        box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}48;
         @media (hover: none) {
           background-color: transparent;
           box-shadow: ${theme.shadow.none};
@@ -123,6 +123,9 @@ export const useButtonStyles = (theme: any, props: any) => {
     `,
     size: css`
       padding: ${getButtonPadding(size)};
+    `,
+    pill: css`
+      border-radius: ${theme.radius.pill || theme.radius.button || theme.radius.none};
     `,
     fullWidth: css`
       width: 100%;
@@ -146,6 +149,7 @@ export const useButtonStyles = (theme: any, props: any) => {
   if (variant === `simple`) styles.push(stylesheet.simple);
   if (variant === `outline`) styles.push(stylesheet.outline);
   if (size) styles.push(stylesheet.size);
+  if (pill) styles.push(stylesheet.pill);
   if (fullWidth) styles.push(stylesheet.fullWidth);
   if (buttonShadow && variant === `solid` && !disabled) styles.push(stylesheet.buttonShadow);
   if (textShadow && variant === `solid` && !disabled) styles.push(stylesheet.textShadow);
