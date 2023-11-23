@@ -4,6 +4,10 @@
 export const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
 export type BoolValues = false | null | undefined | typeof NaN | 0 | -0 | `` | true | 1;
 
+/** Array of accepted selector values */
+export const selectorValues = [`base`, `hover`, `active`, `focus`];
+export type SelectorValues = `base` | `hover` | `active` | `focus`;
+
 /** Array of accepted size values */
 export const sizeValues = [`min`, `xs`, `sm`, `md`, `lg`, `xl`, `max`];
 export type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
@@ -215,6 +219,11 @@ export type AlphaTintValues =
   | `a900`
   | `a950`
   | `a1000`;
+
+// INPUT TYPES -------------------------------------------------- //
+
+export const inputVariantValues = [`standard`, `transparent`, `outline`];
+export type InputVariantValues = `standard` | `transparent` | `outline`;
 
 // TEXT TYPES -------------------------------------------------- //
 

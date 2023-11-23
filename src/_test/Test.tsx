@@ -10,6 +10,7 @@ import Spacer from "components/layout/Spacer";
 import ButtonBases from "./sets/ButtonBases";
 import Buttons from "./sets/Buttons";
 import Typography from "./sets/Typography";
+import Inputs from "./sets/Inputs";
 
 // COMPONENT -------------------------------------------------- //
 
@@ -26,6 +27,9 @@ const Page = () => {
         background-color: ${theme.color.bg[2]};
         overflow: auto;
       `}>
+      
+      <Inputs />
+      <Spacer size="xl" />
       <Typography />
       <Spacer size="xl" />
       <ButtonBases />

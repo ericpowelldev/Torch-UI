@@ -37,11 +37,11 @@ interface ButtonProps {
   tint?: TintValues;
   size?: SizeValues;
 
+  fullWidth?: BoolValues;
   pill?: BoolValues;
   buttonShadow?: BoolValues;
   textShadow?: BoolValues;
-
-  fullWidth?: BoolValues;
+  backdropBlur?: BoolValues;
   uppercase?: BoolValues;
 
   disabled?: BoolValues;
@@ -66,10 +66,11 @@ const Button = ({
   color = `utility`,
   tint = 500,
   size = `md`,
+  fullWidth,
   pill,
   buttonShadow,
   textShadow,
-  fullWidth,
+  backdropBlur,
   uppercase = true,
   disabled,
   error,
@@ -91,10 +92,11 @@ const Button = ({
     color,
     tint,
     size,
+    fullWidth,
     pill,
     buttonShadow,
     textShadow,
-    fullWidth,
+    backdropBlur,
     disabled,
   });
   const labelStyles = useLabelStyles(theme, { size, uppercase });
@@ -115,7 +117,7 @@ const Button = ({
   // RENDER //
 
   return (
-    <button className={clsxButton} {...rest}>
+    <button className={clsxButton} disabled={disabled ? true : false} {...rest}>
       {icon ? <span className={clsxStartIcon}>{icon}</span> : null}
 
       <span className={clsxLabel}>{children}</span>

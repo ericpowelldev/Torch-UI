@@ -43,7 +43,7 @@ const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: S
 
   // RENDER //
 
-  return <>{!vertical ? <div className={clsxSpacer} {...rest} /> : <div className={clsxSpacer} {...rest} />}</>;
+  return <div className={clsxSpacer} {...rest} />;
 };
 
 // EXPORT -------------------------------------------------- //

@@ -29,11 +29,9 @@ const theme = {
   text: {
     // Font families
     family: `"Roboto", "Helvetica", "Arial", sans-serif`,
-    familyButton: `"Roboto Condensed", "Roboto", "Helvetica", "Arial", sans-serif`,
 
     // Font sizes
     size: `16px`,
-    sizeButton: `14px`,
 
     // Font weights
     weight: 400,
@@ -43,11 +41,9 @@ const theme = {
     weightMedium: 500,
     weightBold: 700,
     weightBlack: 900,
-    weightButton: 600,
-    
+
     // Font heights
     height: 1.333,
-    heightButton: 1,
 
     // Header text
     h1: {
@@ -112,11 +108,39 @@ const theme = {
       weight: 400,
       height: 1.333,
     },
+
+    // Special text
+    button: {
+      family: `"Roboto", "Helvetica", "Arial", sans-serif`,
+      size: `14px`,
+      weight: 600,
+      height: 1,
+    },
+    input: {
+      size: `16px`,
+      weight: 400,
+      height: `18px`,
+    },
+    label: {
+      size: `12px`,
+      weight: 400,
+      height: 1,
+    },
+    sublabel: {
+      size: `12px`,
+      weight: 400,
+      height: 1,
+    },
+    placeholder: {
+      size: `16px`,
+      weight: 400,
+      height: 1,
+    },
   },
 
   // Pixel Spacing
-  space: (num1 = 2, num2, num3, num4) => {
-    const pix = (num) => `${4 * num}px`;
+  space: (num1: number = 2, num2?: number, num3?: number, num4?: number) => {
+    const pix = (num: number) => `${4 * num}px`;
 
     let pixSpace = [];
     if (num1 && typeof num1 === `number`) pixSpace.push(pix(num1));
@@ -127,16 +151,24 @@ const theme = {
   },
 
   // Radius Options
+  padding: {
+    none: 0,
+    input: `6px 8px`,
+  },
+
+  // Radius Options
   radius: {
     none: 0,
     button: `4px`,
     card: `8px`,
+    input: `4px`,
     pill: `24px`,
   },
 
   // Transition Options
   transition: {
     none: `none`,
+    standard: `all 0.15s ease-in-out`,
     button: `all 0.15s ease-in-out`,
   },
 

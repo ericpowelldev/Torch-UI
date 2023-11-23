@@ -16,10 +16,10 @@ export const useButtonStyles = (theme: any) => {
       padding: 0;
       border: 0;
       margin: 0;
-      line-height: ${theme.text.heightButton || theme.text.height};
-      font-family: ${theme.text.familyButton || theme.text.family};
-      font-size: ${theme.text.sizeButton || theme.text.size};
-      font-weight: ${theme.text.weightButton || theme.text.weight};
+      line-height: ${theme.text.button.height || theme.text.height};
+      font-family: ${theme.text.button.family || theme.text.family};
+      font-size: ${theme.text.button.size || theme.text.size};
+      font-weight: ${theme.text.button.weight || theme.text.weight};
       background-color: transparent;
       color: inherit;
       cursor: pointer;
@@ -34,10 +34,10 @@ export const useButtonStyles = (theme: any) => {
 export const useLabelStyles = (theme: any) => {
   const stylesheet: any = {
     label: css`
-      line-height: ${theme.text.heightButton || theme.text.height};
-      font-family: ${theme.text.familyButton || theme.text.family};
-      font-size: ${theme.text.sizeButton || theme.text.size};
-      font-weight: ${theme.text.weightButton || theme.text.weight};
+      line-height: ${theme.text.button.height || theme.text.height};
+      font-family: ${theme.text.button.family || theme.text.family};
+      font-size: ${theme.text.button.size || theme.text.size};
+      font-weight: ${theme.text.button.weight || theme.text.weight};
       user-select: none;
       pointer-events: none;
     `,

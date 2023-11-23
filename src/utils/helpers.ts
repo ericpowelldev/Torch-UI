@@ -7,6 +7,8 @@ import {
   BoolValues,
   ButtonVariantValues,
   ColorValues,
+  InputVariantValues,
+  SelectorValues,
   SizeValues,
   SizeValuesExtended,
   TextColorValues,
@@ -15,17 +17,17 @@ import {
 
 // BUTTON -------------------------------------------------- //
 
-/** Get button padding from size prop */
+/** Get button padding */
 export const getButtonPadding = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return `4px 8px`;
-  if (size === `sm`) return `6px 10px`;
+  if (size === `xs` || size === `min`) return `2px 4px`;
+  if (size === `sm`) return `5px 8px`;
   if (size === `md`) return `8px 12px`;
-  if (size === `lg`) return `10px 14px`;
-  if (size === `xl` || size === `max`) return `12px 16px`;
+  if (size === `lg`) return `11px 16px`;
+  if (size === `xl` || size === `max`) return `14px 20px`;
   return `8px 12px`;
 };
 
-/** Get button label size from size prop */
+/** Get button label size */
 export const getButtonLabelSize = (size: SizeValues) => {
   if (size === `xs` || size === `min`) return 10;
   if (size === `sm`) return 12;
@@ -35,7 +37,17 @@ export const getButtonLabelSize = (size: SizeValues) => {
   return 14;
 };
 
-/** Get button icon size from size prop */
+/** Get button label height */
+export const getButtonLabelHeight = (size: SizeValues) => {
+  if (size === `xs` || size === `min`) return 12;
+  if (size === `sm`) return 14;
+  if (size === `md`) return 16;
+  if (size === `lg`) return 18;
+  if (size === `xl` || size === `max`) return 20;
+  return 16;
+};
+
+/** Get button icon size */
 export const getButtonIconSize = (size: SizeValues) => {
   if (size === `xs` || size === `min`) return 12;
   if (size === `sm`) return 14;
@@ -45,19 +57,19 @@ export const getButtonIconSize = (size: SizeValues) => {
   return 16;
 };
 
-/** Get button icon margin from size prop */
+/** Get button icon margin */
 export const getButtonIconMargin = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return 6;
-  if (size === `sm`) return 7;
+  if (size === `xs` || size === `min`) return 4;
+  if (size === `sm`) return 6;
   if (size === `md`) return 8;
-  if (size === `lg`) return 9;
-  if (size === `xl` || size === `max`) return 10;
+  if (size === `lg`) return 10;
+  if (size === `xl` || size === `max`) return 12;
   return 8;
 };
 
 // COLORS -------------------------------------------------- //
 
-/** Get color background from color and tint prop */
+/** Get color background */
 export const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
   if (disabled && override === `fg`) return theme.color.fgd;
   if (disabled) return theme.color.bgd;
@@ -65,14 +77,14 @@ export const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, d
   return `inherit`;
 };
 
-/** Get color foreground from color prop */
+/** Get color foreground */
 export const getColorFg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues) => {
   if (disabled) return theme.color.fgd;
   if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
   return `inherit`;
 };
 
-/** Get color hover from background color prop */
+/** Get color hover */
 export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint?: TintValues) => {
   if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `d4`;
   if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
@@ -82,7 +94,7 @@ export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?:
   return `inherit`;
 };
 
-/** Get color active from background color prop */
+/** Get color active */
 export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint?: TintValues) => {
   if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `a0`;
   if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
@@ -92,7 +104,7 @@ export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?
   return `inherit`;
 };
 
-/** Get color foreground from color prop */
+/** Get color foreground */
 export const getColorText = (theme: any, color?: ColorValues | TextColorValues, tint?: TintValues) => {
   if (textColorValues.includes(color)) {
     if (color === `fg1`) return theme.color.fg[0];
@@ -106,6 +118,52 @@ export const getColorText = (theme: any, color?: ColorValues | TextColorValues, 
   }
   if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
   return `inherit`;
+};
+
+// INPUT -------------------------------------------------- //
+
+/** Get input component label color */
+export const getInputLabelColor = (theme?: any, error?: BoolValues, warning?: BoolValues, success?: BoolValues) => {
+  let color = theme.color.fg[1];
+
+  if (success) color = theme.color.success[500];
+  if (warning) color = theme.color.warning[500];
+  if (error) color = theme.color.error[500];
+
+  return color;
+};
+
+/** Get input component padding */
+export const getInputPadding = (variant?: InputVariantValues) => {
+  if (variant === `transparent`) return `7px 8px 6px`;
+  if (variant === `outline`) return `7px 8px`;
+  return `7px 0 6px`;
+};
+
+/** Get input component border */
+export const getInputBorder = (
+  theme?: any,
+  selector?: SelectorValues,
+  disabled?: BoolValues,
+  error?: BoolValues,
+  warning?: BoolValues,
+  success?: BoolValues
+) => {
+  let thickness = `1px`;
+  let style = `solid`;
+  let color = `transparent`;
+
+  if (disabled) style = `dashed`;
+
+  if (!selector || selector === `base`) color = theme.color.fg[2];
+  if (selector === `hover`) color = theme.color.fg[0];
+  if (selector === `active` || selector === `focus`) color = theme.color.primary[500];
+
+  if (success) color = theme.color.success[500];
+  if (warning) color = theme.color.warning[500];
+  if (error) color = theme.color.error[500];
+
+  return `${thickness} ${style} ${color}`;
 };
 
 // LOADING -------------------------------------------------- //

@@ -463,35 +463,75 @@ const Buttons = () => {
       <Spacer size="xl" />
 
       <div style={{ display: `flex`, alignItems: `center` }}>
-        <Button color="primary" tint={tint} pill icon={<IoMdSettings />}>
+        <Button color="secondary" tint={tint} size="xs">
+          Extra Small
+        </Button>
+        <Spacer vertical />
+        <Button color="secondary" tint={tint} size="sm">
+          Small
+        </Button>
+        <Spacer vertical />
+        <Button color="secondary" tint={tint} size="md">
+          Medium
+        </Button>
+        <Spacer vertical />
+        <Button color="secondary" tint={tint} size="lg">
+          Large
+        </Button>
+        <Spacer vertical />
+        <Button color="secondary" tint={tint} size="xl">
+          Extra Large
+        </Button>
+      </div>
+
+      <Spacer size="xl" />
+
+      <div style={{ display: `flex`, alignItems: `center` }}>
+        <Button color="primary" tint={tint} pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
         <Spacer vertical />
-        <Button variant="transparent" color="primary" tint={tint} pill icon={<IoMdSettings />}>
+        <Button variant="transparent" color="primary" tint={tint} pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
         <Spacer vertical />
-        <Button variant="simple" color="primary" tint={tint} pill icon={<IoMdSettings />}>
+        <Button variant="simple" color="primary" tint={tint} pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
         <Spacer vertical />
-        <Button variant="outline" color="primary" tint={tint} pill icon={<IoMdSettings />}>
+        <Button variant="outline" color="primary" tint={tint} pill loading icon={<IoMdSettings />}>
+          Pill
+        </Button>
+        <Spacer vertical size='xl' />
+        <Button color="secondary" tint={tint} size="sm" pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
         <Spacer vertical />
-        <Button color="primary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
+        <Button variant='transparent' color="secondary" tint={tint} size="sm" pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
         <Spacer vertical />
-        <Button variant='transparent' color="primary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
+        <Button variant='simple' color="secondary" tint={tint} size="sm" pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
         <Spacer vertical />
-        <Button variant='simple' color="primary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
+        <Button variant='outline' color="secondary" tint={tint} size="sm" pill loading icon={<IoMdSettings />}>
+          Pill
+        </Button>
+        <Spacer vertical size='xl' />
+        <Button color="tertiary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
         <Spacer vertical />
-        <Button variant='outline' color="primary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
+        <Button variant='transparent' color="tertiary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
+          Pill
+        </Button>
+        <Spacer vertical />
+        <Button variant='simple' color="tertiary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
+          Pill
+        </Button>
+        <Spacer vertical />
+        <Button variant='outline' color="tertiary" tint={tint} size="xs" pill loading icon={<IoMdSettings />}>
           Pill
         </Button>
       </div>
