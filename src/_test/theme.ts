@@ -1,12 +1,20 @@
 const theme = {
   color: {
-    primary: `#f3400c`,
-    secondary: `#4a73b5`,
-    tertiary: `#55aa99`,
+    // Brand colors
+    primary: `#f50`,
+    secondary: `#48c`,
+    tertiary: `#5ba`,
 
-    // primary: `#f44232`,
-    // secondary: `#486496`,
-    // tertiary: `#509090`,
+    // Utility colors
+    utility: `#678`,
+    info: `#18a`,
+    error: `#802`,
+    warning: `#850`,
+    success: `#283`,
+
+    // primary: `#f45408`,
+    // secondary: `#4a73b5`,
+    // tertiary: `#55aa99`,
   },
 
   text: {
