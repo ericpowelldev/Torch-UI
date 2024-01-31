@@ -1,2 +1,2 @@
+export * from "./TUI";
 export * from "./components";
-export * from "./provider";

@@ -23,19 +23,12 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [
-      commonjs(),
-      css({ extract: true }),
-      peerDepsExternal(),
-      resolve(),
-      terser(),
-      typescript({ tsconfig: "./tsconfig.json" }),
-    ],
+    plugins: [commonjs(), css(), peerDepsExternal(), resolve(), terser(), typescript({ tsconfig: "./tsconfig.json" })],
     external: ["react", "react-dom", "@emotion/css", "@emotion/react"],
   },
   {
     input: "src/index.ts",
     output: [{ file: "dist/types.d.ts", format: "es" }],
-    plugins: [dts.default()],
+    plugins: [css(), dts.default()],
   },
 ];

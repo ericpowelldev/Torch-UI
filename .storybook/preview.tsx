@@ -3,10 +3,17 @@ import type { Preview } from "@storybook/react";
 
 import { TUIProvider } from "../src";
 
+// Theme overrides
+const theme = {
+  color: {
+    // primary: "#00ff80",
+  },
+};
+
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <TUIProvider>
+      <TUIProvider theme={theme}>
         <Story />
       </TUIProvider>
     ),

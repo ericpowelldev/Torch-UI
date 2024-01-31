@@ -3,7 +3,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import { useTUI } from "../../provider/TUI";
+import { useTUI } from "../../TUI";
 
 import { BoolValues, ButtonVariantValues, ColorValues, SizeValues, TintValues } from "../../utils/types";
 import { getButtonIconSize } from "../../utils/helpers";
