@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -9,7 +9,7 @@ import { BoolValues } from "utils/types";
 
 import { useOptionStyles } from "./styles";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface OptionProps {
   children?: React.ReactNode;
@@ -29,7 +29,7 @@ interface OptionProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const Option = ({ children, className, classes, hidden, disabled, error, warning, loading, success, ...rest }: OptionProps) => {
   // HOOKS //
@@ -59,6 +59,6 @@ const Option = ({ children, className, classes, hidden, disabled, error, warning
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default Option;

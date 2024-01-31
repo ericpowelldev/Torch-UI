@@ -1,10 +1,10 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css } from "@emotion/css";
 
 import { getColorText } from "utils/helpers";
 
-// STYLES -------------------------------------------------- //
+// STYLES ---------------------------------------------------------------- //
 
 export const useTextStyles = (theme: any, props: any) => {
   const { variant, color, tint, align } = props;

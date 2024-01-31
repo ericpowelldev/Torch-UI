@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -7,7 +7,7 @@ import { useTUI } from "providers/TUI";
 
 import { useButtonStyles, useLabelStyles } from "./styles";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface ButtonBaseProps {
   children?: React.ReactNode;
@@ -21,7 +21,7 @@ interface ButtonBaseProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) => {
   // HOOKS //
@@ -47,6 +47,6 @@ const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) 
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default ButtonBase;

@@ -1,10 +1,10 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css } from "@emotion/css";
 
 import { getSpacerSize } from "utils/helpers";
 
-// STYLES -------------------------------------------------- //
+// STYLES ---------------------------------------------------------------- //
 
 export const useSpacerStyles = (theme: any, props: any) => {
   const { size, vertical } = props;

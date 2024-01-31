@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -9,7 +9,7 @@ import { ColorValues, TintValues, TextAlignValues, TextColorValues, TextComponen
 
 import { useTextStyles } from "./styles";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface TextProps {
   children?: React.ReactNode;
@@ -31,7 +31,7 @@ interface TextProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const Text = ({
   children,
@@ -140,6 +140,6 @@ const Text = ({
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default Text;

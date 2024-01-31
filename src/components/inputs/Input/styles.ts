@@ -1,10 +1,10 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css } from "@emotion/css";
 
 import { getInputLabelColor, getInputBorder, getInputPadding } from "utils/helpers";
 
-// STYLES -------------------------------------------------- //
+// STYLES ---------------------------------------------------------------- //
 
 export const useBaseStyles = (theme: any, props: any) => {
   const { fullWidth } = props;

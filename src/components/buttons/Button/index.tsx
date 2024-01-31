@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -15,7 +15,7 @@ import WarningIcon from "components/icons/WarningIcon";
 import LoadingIcon from "components/icons/LoadingIcon";
 import SuccessIcon from "components/icons/SuccessIcon";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -56,7 +56,7 @@ interface ButtonProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const Button = ({
   children,
@@ -171,6 +171,6 @@ const Button = ({
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default Button;

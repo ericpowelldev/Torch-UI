@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css } from "@emotion/css";
 
@@ -14,7 +14,7 @@ import {
   getButtonIconMargin,
 } from "utils/helpers";
 
-// STYLES -------------------------------------------------- //
+// STYLES ---------------------------------------------------------------- //
 
 export const useButtonStyles = (theme: any, props: any) => {
   const { variant, color, tint, size, fullWidth, pill, buttonShadow, textShadow, backdropBlur, disabled } = props;

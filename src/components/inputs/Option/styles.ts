@@ -1,8 +1,8 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css } from "@emotion/css";
 
-// STYLES -------------------------------------------------- //
+// STYLES ---------------------------------------------------------------- //
 
 export const useOptionStyles = (theme: any, props: any) => {
   const { hidden, disabled, error, warning, success } = props;

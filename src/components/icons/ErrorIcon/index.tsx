@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -11,7 +11,7 @@ import { useIconStyles } from "./styles";
 
 import { MdReport } from "react-icons/md";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface ErrorIconProps {
   children?: React.ReactNode;
@@ -34,7 +34,7 @@ interface ErrorIconProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const ErrorIcon = ({
   children,
@@ -66,6 +66,6 @@ const ErrorIcon = ({
   return <MdReport className={clsxIcon} {...rest} />;
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default ErrorIcon;

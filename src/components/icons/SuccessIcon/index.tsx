@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -11,7 +11,7 @@ import { useIconStyles } from "./styles";
 
 import { MdCheckCircle } from "react-icons/md";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface SuccessIconProps {
   children?: React.ReactNode;
@@ -34,7 +34,7 @@ interface SuccessIconProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const SuccessIcon = ({
   children,
@@ -66,6 +66,6 @@ const SuccessIcon = ({
   return <MdCheckCircle className={clsxIcon} {...rest} />;
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default SuccessIcon;

@@ -1,11 +1,11 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import { Global } from "@emotion/react";
 
 import "static/styles/preset.css";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface PresetProps {
   children?: React.ReactNode;
@@ -13,7 +13,7 @@ interface PresetProps {
   theme?: any;
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const Preset = ({ children, theme }: PresetProps) => {
   return (
@@ -77,6 +77,6 @@ const Preset = ({ children, theme }: PresetProps) => {
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default Preset;

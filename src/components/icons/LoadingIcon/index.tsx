@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -9,7 +9,7 @@ import { BoolValues, ColorValues, TintValues } from "utils/types";
 
 import { useBaseStyles, useTrackStyles, useBarStyles } from "./styles";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface LoadingIconProps {
   children?: React.ReactNode;
@@ -33,7 +33,7 @@ interface LoadingIconProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const LoadingIcon = ({
   children,
@@ -74,6 +74,6 @@ const LoadingIcon = ({
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default LoadingIcon;

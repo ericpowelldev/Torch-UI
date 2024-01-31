@@ -1,10 +1,10 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css, keyframes } from "@emotion/css";
 
 import { getColorFg, getColorBg } from "utils/helpers";
 
-// STYLES -------------------------------------------------- //
+// STYLES ---------------------------------------------------------------- //
 
 export const useIconStyles = (theme: any, props: any) => {
   const { type, color, tint, size, speed, blink, disabled } = props;

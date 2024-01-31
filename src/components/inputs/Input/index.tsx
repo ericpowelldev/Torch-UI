@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -9,7 +9,7 @@ import { BoolValues, InputVariantValues } from "utils/types";
 
 import { useBaseStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface InputProps {
   children?: React.ReactNode;
@@ -44,7 +44,7 @@ interface InputProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const Input = ({
   children,
@@ -118,6 +118,6 @@ const Input = ({
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default Input;

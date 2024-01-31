@@ -1,10 +1,10 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css, keyframes } from "@emotion/css";
 
 import { getColorFg, getColorBg, getTrackSize } from "utils/helpers";
 
-// STYLES -------------------------------------------------- //
+// STYLES ---------------------------------------------------------------- //
 
 export const useBaseStyles = (theme: any) => {
   const stylesheet: any = {

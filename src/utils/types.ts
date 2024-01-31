@@ -1,4 +1,4 @@
-// GENERAL TYPES -------------------------------------------------- //
+// GENERAL TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted bool values */
 export const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
@@ -16,13 +16,13 @@ export type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
 export const sizeValuesExtended = [`4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`];
 export type SizeValuesExtended = `4xs` | `3xs` | `2xs` | `xs` | `sm` | `md` | `lg` | `xl` | `2xl` | `3xl` | `4xl`;
 
-// BUTTON TYPES -------------------------------------------------- //
+// BUTTON TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted button variants */
 export const buttonVariantValues = [`solid`, `transparent`, `simple`, `outline`];
 export type ButtonVariantValues = `solid` | `transparent` | `simple` | `outline`;
 
-// COLOR TYPES -------------------------------------------------- //
+// COLOR TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted color values */
 export const colorValues = [`primary`, `secondary`, `tertiary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
@@ -220,12 +220,12 @@ export type AlphaTintValues =
   | `a950`
   | `a1000`;
 
-// INPUT TYPES -------------------------------------------------- //
+// INPUT TYPES ---------------------------------------------------------------- //
 
 export const inputVariantValues = [`standard`, `transparent`, `outline`];
 export type InputVariantValues = `standard` | `transparent` | `outline`;
 
-// TEXT TYPES -------------------------------------------------- //
+// TEXT TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted text variants */
 export const textAlignValues = [`inherit`, `left`, `center`, `right`, `justify`];

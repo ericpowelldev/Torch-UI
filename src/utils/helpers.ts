@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import {
   colorValues,
@@ -15,7 +15,7 @@ import {
   TintValues,
 } from "utils/types";
 
-// BUTTON -------------------------------------------------- //
+// BUTTON ---------------------------------------------------------------- //
 
 /** Get button padding */
 export const getButtonPadding = (size: SizeValues) => {
@@ -67,7 +67,7 @@ export const getButtonIconMargin = (size: SizeValues) => {
   return 8;
 };
 
-// COLORS -------------------------------------------------- //
+// COLORS ---------------------------------------------------------------- //
 
 /** Get color background */
 export const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
@@ -120,7 +120,7 @@ export const getColorText = (theme: any, color?: ColorValues | TextColorValues, 
   return `inherit`;
 };
 
-// INPUT -------------------------------------------------- //
+// INPUT ---------------------------------------------------------------- //
 
 /** Get input component label color */
 export const getInputLabelColor = (theme?: any, error?: BoolValues, warning?: BoolValues, success?: BoolValues) => {
@@ -166,14 +166,14 @@ export const getInputBorder = (
   return `${thickness} ${style} ${color}`;
 };
 
-// LOADING -------------------------------------------------- //
+// LOADING ---------------------------------------------------------------- //
 
 /** Get the size of the spinner track */
 export const getTrackSize = (size: number) => {
   return Math.sqrt(size);
 };
 
-// SPACER -------------------------------------------------- //
+// SPACER ---------------------------------------------------------------- //
 
 /** Get the size of a space */
 export const getSpacerSize = (size: SizeValuesExtended | number) => {

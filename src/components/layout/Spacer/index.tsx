@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -9,7 +9,7 @@ import { BoolValues } from "utils/types";
 
 import { useSpacerStyles } from "./styles";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface SpacerProps {
   children?: React.ReactNode;
@@ -26,7 +26,7 @@ interface SpacerProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: SpacerProps) => {
   // HOOKS //
@@ -46,6 +46,6 @@ const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: S
   return <div className={clsxSpacer} {...rest} />;
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default Spacer;

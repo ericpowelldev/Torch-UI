@@ -1,4 +1,4 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import clsx from "clsx";
@@ -11,7 +11,7 @@ import { useIconStyles } from "./styles";
 
 import { AiOutlineWarning } from "react-icons/ai";
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface WarningIconProps {
   children?: React.ReactNode;
@@ -34,7 +34,7 @@ interface WarningIconProps {
   [x: string]: any; // Handle default HTML props
 }
 
-// COMPONENT -------------------------------------------------- //
+// COMPONENT ---------------------------------------------------------------- //
 
 const WarningIcon = ({
   children,
@@ -66,6 +66,6 @@ const WarningIcon = ({
   return <AiOutlineWarning className={clsxIcon} {...rest} />;
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default WarningIcon;
