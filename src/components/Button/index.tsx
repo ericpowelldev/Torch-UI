@@ -3,7 +3,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import { useTUI } from "../../providers/TUI";
+import { useTUI } from "../../provider/TUI";
 
 import { BoolValues, ButtonVariantValues, ColorValues, SizeValues, TintValues } from "../../utils/types";
 import { getButtonIconSize } from "../../utils/helpers";
@@ -126,7 +126,7 @@ const Button = ({
         <span className={clsxEndIcon}>
           <IconError
             className={clsxIconError}
-            type={variant === `solid` ? `fg` : `bg`}
+            variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
@@ -137,7 +137,7 @@ const Button = ({
         <span className={clsxEndIcon}>
           <IconWarning
             className={clsxIconWarning}
-            type={variant === `solid` ? `fg` : `bg`}
+            variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
@@ -148,7 +148,7 @@ const Button = ({
         <span className={clsxEndIcon}>
           <IconSuccess
             className={clsxIconSuccess}
-            type={variant === `solid` ? `fg` : `bg`}
+            variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
@@ -159,7 +159,7 @@ const Button = ({
         <span className={clsxEndIcon}>
           <IconLoading
             className={clsxIconLoading}
-            type={variant === `solid` ? `fg` : `bg`}
+            variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}

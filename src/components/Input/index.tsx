@@ -3,7 +3,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import { useTUI } from "../../providers/TUI";
+import { useTUI } from "../../provider/TUI";
 
 import { BoolValues, ColorValues, InputVariantValues, TintValues } from "../../utils/types";
 

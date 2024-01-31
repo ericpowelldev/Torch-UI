@@ -33,7 +33,7 @@ const meta: Meta<typeof Component> = {
     color: {
       description: "The color of the icon.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
     tint: {

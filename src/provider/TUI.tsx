@@ -3,13 +3,13 @@
 import React from "react";
 import deepmerge from "deepmerge";
 
-import "../static/styles/index.css";
-
 import defaultTheme from "../utils/theme/defaultTheme";
 import extendTheme from "../utils/theme/extendTheme";
 import { BoolValues } from "../utils/types";
 
-import CssPreset from "../components/CssPreset";
+import Preset from "./Preset";
+
+import "../static/styles/tui.css";
 
 const extendedDefaultTheme = extendTheme(defaultTheme);
 
@@ -43,7 +43,7 @@ const TUIProvider = ({ children, theme = {}, cssPreset = true }: TUIProviderProp
 
   return (
     <TUIContext.Provider value={ctx}>
-      {cssPreset && <CssPreset theme={extendedTheme} />}
+      {cssPreset && <Preset theme={extendedTheme} />}
       {children}
     </TUIContext.Provider>
   );

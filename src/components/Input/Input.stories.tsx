@@ -39,7 +39,7 @@ const meta: Meta<typeof Component> = {
     color: {
       description: "The color of the input (when active).",
       control: {
-        type: "radio",
+        type: "select",
       },
       table: {
         disable: true,

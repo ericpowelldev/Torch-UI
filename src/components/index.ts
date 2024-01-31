@@ -1,6 +1,5 @@
 export * from "./Button";
 export * from "./ButtonBase";
-export * from "./CssPreset";
 export * from "./IconError";
 export * from "./IconLoading";
 export * from "./IconSuccess";
