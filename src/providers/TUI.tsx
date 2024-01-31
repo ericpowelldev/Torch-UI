@@ -1,19 +1,19 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
 import deepmerge from "deepmerge";
 
-import "static/styles/index.css";
+import "../static/styles/index.css";
 
-import defaultTheme from "utils/theme/defaultTheme";
-import extendTheme from "utils/theme/extendTheme";
-import { BoolValues } from "utils/types";
+import defaultTheme from "../utils/theme/defaultTheme";
+import extendTheme from "../utils/theme/extendTheme";
+import { BoolValues } from "../utils/types";
 
-import CssPreset from "components/_app/CssPreset";
+import CssPreset from "../components/CssPreset";
 
 const extendedDefaultTheme = extendTheme(defaultTheme);
 
-// PROPS -------------------------------------------------- //
+// PROPS ---------------------------------------------------------------- //
 
 interface TUIProviderProps {
   children?: React.ReactNode;
@@ -23,12 +23,12 @@ interface TUIProviderProps {
   cssPreset?: BoolValues;
 }
 
-// CONTEXT/HOOK -------------------------------------------------- //
+// CONTEXT/HOOK ---------------------------------------------------------------- //
 
 const TUIContext = React.createContext({ theme: extendedDefaultTheme, mode: `dark` });
 const useTUI = () => React.useContext(TUIContext);
 
-// PROVIDER -------------------------------------------------- //
+// PROVIDER ---------------------------------------------------------------- //
 
 const TUIProvider = ({ children, theme = {}, cssPreset = true }: TUIProviderProps) => {
   let extendedTheme = deepmerge(defaultTheme, theme);
@@ -49,6 +49,6 @@ const TUIProvider = ({ children, theme = {}, cssPreset = true }: TUIProviderProp
   );
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export { TUIProvider, useTUI };

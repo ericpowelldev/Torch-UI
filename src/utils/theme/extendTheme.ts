@@ -1,8 +1,8 @@
-// DEPENDENCIES -------------------------------------------------- //
+// DEPENDENCIES ---------------------------------------------------------------- //
 
 const Color = require("color");
 
-// HELPERS -------------------------------------------------- //
+// HELPERS ---------------------------------------------------------------- //
 
 /** Build standard colors */
 const buildColors = (color: string, darkMode?: boolean) => {
@@ -173,7 +173,7 @@ const buildBackgroundDisabledColor = (color: string, darkMode?: boolean) => {
   return Color(color).fade(0.6).hexa();
 };
 
-// ORCHESTRATION -------------------------------------------------- //
+// ORCHESTRATION ---------------------------------------------------------------- //
 
 const extendTheme = (theme: any) => {
   // Create a copy of the theme object to edit
@@ -229,6 +229,6 @@ const extendTheme = (theme: any) => {
   return themeEdit;
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default extendTheme;

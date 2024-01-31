@@ -1,19 +1,19 @@
-// THEME -------------------------------------------------- //
+// THEME ---------------------------------------------------------------- //
 
 const theme = {
   // Colors
   color: {
     // Brand colors
-    primary: `#802808`,
-    secondary: `#084080`,
-    tertiary: `#248060`,
+    primary: `#f50`,
+    secondary: `#48c`,
+    tertiary: `#5ba`,
 
     // Utility colors
-    utility: `#607080`,
-    info: `#106080`,
-    error: `#800020`,
-    warning: `#805004`,
-    success: `#248030`,
+    utility: `#678`,
+    info: `#18a`,
+    error: `#802`,
+    warning: `#850`,
+    success: `#283`,
 
     // General colors
     grayscale: `#707880`,
@@ -233,6 +233,6 @@ const theme = {
   },
 };
 
-// EXPORT -------------------------------------------------- //
+// EXPORT ---------------------------------------------------------------- //
 
 export default theme;

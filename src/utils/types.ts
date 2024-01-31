@@ -1,4 +1,4 @@
-// GENERAL TYPES -------------------------------------------------- //
+// GENERAL TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted bool values */
 export const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
@@ -16,13 +16,13 @@ export type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
 export const sizeValuesExtended = [`4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`];
 export type SizeValuesExtended = `4xs` | `3xs` | `2xs` | `xs` | `sm` | `md` | `lg` | `xl` | `2xl` | `3xl` | `4xl`;
 
-// BUTTON TYPES -------------------------------------------------- //
+// BUTTON TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted button variants */
 export const buttonVariantValues = [`solid`, `transparent`, `simple`, `outline`];
 export type ButtonVariantValues = `solid` | `transparent` | `simple` | `outline`;
 
-// COLOR TYPES -------------------------------------------------- //
+// COLOR TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted color values */
 export const colorValues = [`primary`, `secondary`, `tertiary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
@@ -220,12 +220,12 @@ export type AlphaTintValues =
   | `a950`
   | `a1000`;
 
-// INPUT TYPES -------------------------------------------------- //
+// INPUT TYPES ---------------------------------------------------------------- //
 
 export const inputVariantValues = [`standard`, `transparent`, `outline`];
 export type InputVariantValues = `standard` | `transparent` | `outline`;
 
-// TEXT TYPES -------------------------------------------------- //
+// TEXT TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted text variants */
 export const textAlignValues = [`inherit`, `left`, `center`, `right`, `justify`];
@@ -236,8 +236,8 @@ export const textColorValues = [`inherit`, `fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `
 export type TextColorValues = `inherit` | `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
 
 /** Array of accepted text variants */
-export const textComponentValues = [`div`, `span`];
-export type TextComponentValues = `div` | `span`;
+export const textComponentValues = [`inherit`, `div`, `span`];
+export type TextComponentValues = `inherit` | `div` | `span`;
 
 /** Array of accepted text variants */
 export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`];
