@@ -13,7 +13,7 @@ import {
   SizeValuesExtended,
   TextColorValues,
   TintValues,
-} from "utils/types";
+} from "./types";
 
 // BUTTON ---------------------------------------------------------------- //
 

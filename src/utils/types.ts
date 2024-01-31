@@ -236,8 +236,8 @@ export const textColorValues = [`inherit`, `fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `
 export type TextColorValues = `inherit` | `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
 
 /** Array of accepted text variants */
-export const textComponentValues = [`div`, `span`];
-export type TextComponentValues = `div` | `span`;
+export const textComponentValues = [`inherit`, `div`, `span`];
+export type TextComponentValues = `inherit` | `div` | `span`;
 
 /** Array of accepted text variants */
 export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`];

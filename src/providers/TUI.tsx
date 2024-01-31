@@ -3,13 +3,13 @@
 import React from "react";
 import deepmerge from "deepmerge";
 
-import "static/styles/index.css";
+import "../static/styles/index.css";
 
-import defaultTheme from "utils/theme/defaultTheme";
-import extendTheme from "utils/theme/extendTheme";
-import { BoolValues } from "utils/types";
+import defaultTheme from "../utils/theme/defaultTheme";
+import extendTheme from "../utils/theme/extendTheme";
+import { BoolValues } from "../utils/types";
 
-import CssPreset from "components/_app/CssPreset";
+import CssPreset from "../components/CssPreset";
 
 const extendedDefaultTheme = extendTheme(defaultTheme);
 
