@@ -1,6 +1,14 @@
 // THEME ---------------------------------------------------------------- //
 
 const theme = {
+  // Custom style overrides
+  custom: {
+    dark: {
+      fg: `#ffffff`,
+      bg: `#303840`,
+    },
+  },
+
   // Colors
   color: {
     // Brand colors
@@ -19,16 +27,10 @@ const theme = {
     grayscale: `#707880`,
 
     // Foreground/Text colors
-    fg: {
-      light: `#303840`,
-      dark: `#ffffff`,
-    },
+    fg: `#303840`,
 
     // Background/Wall colors
-    bg: {
-      light: `#ffffff`,
-      dark: `#303840`,
-    },
+    bg: `#ffffff`,
   },
 
   // Text Options

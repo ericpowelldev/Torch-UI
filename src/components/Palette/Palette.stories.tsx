@@ -7,7 +7,6 @@ const meta: Meta<typeof Component> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     classes: {
       table: {

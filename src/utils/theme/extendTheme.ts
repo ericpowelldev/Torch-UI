@@ -1,5 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
+import deepmerge from "deepmerge";
 const Color = require("color");
 
 // HELPERS ---------------------------------------------------------------- //
@@ -210,53 +211,71 @@ const buildBackgroundDisabledColor = (color: string, themeMode?: string) => {
 
 // ORCHESTRATION ---------------------------------------------------------------- //
 
-const extendTheme = (theme: any, themeMode: string) => {
+const extendTheme = (theme: any, themeStyle?: string, themeMode?: string) => {
+  // Set the initial theme props to use when extending (Check the theme object for the specified style props and fallback to the main theme object if necessary)
+  const themeProps = themeStyle && theme?.[themeStyle] ? theme?.[themeStyle] : theme;
+
+  // Get each color value based on theme props and fallback to the merged theme object if necessary
+  const primaryColor = themeProps?.color?.primary || theme?.color?.primary;
+  const secondaryColor = themeProps?.color?.secondary || theme?.color?.secondary;
+  const tertiaryColor = themeProps?.color?.tertiary || theme?.color?.tertiary;
+
+  const utilityColor = themeProps?.color?.utility || theme?.color?.utility;
+  const errorColor = themeProps?.color?.error || theme?.color?.error;
+  const warningColor = themeProps?.color?.warning || theme?.color?.warning;
+  const successColor = themeProps?.color?.success || theme?.color?.success;
+  const infoColor = themeProps?.color?.info || theme?.color?.info;
+
+  const grayscaleColor = themeProps?.color?.grayscale || theme?.color?.grayscale;
+
+  const fgColor = themeProps?.color?.fg || theme?.color?.fg;
+  const bgColor = themeProps?.color?.bg || theme?.color?.bg;
+
   // Create a copy of the theme object to edit
   let themeEdit = {
-    ...theme,
-
     color: {
-      ...theme.color,
-
       primary: {
-        ...buildColors(theme.color.primary, themeMode),
+        ...buildColors(primaryColor, themeMode),
       },
       secondary: {
-        ...buildColors(theme.color.secondary, themeMode),
+        ...buildColors(secondaryColor, themeMode),
       },
       tertiary: {
-        ...buildColors(theme.color.tertiary, themeMode),
+        ...buildColors(tertiaryColor, themeMode),
       },
 
       utility: {
-        ...buildColors(theme.color.utility, themeMode),
-      },
-      info: {
-        ...buildColors(theme.color.info, themeMode),
+        ...buildColors(utilityColor, themeMode),
       },
       error: {
-        ...buildColors(theme.color.error, themeMode),
+        ...buildColors(errorColor, themeMode),
       },
       warning: {
-        ...buildColors(theme.color.warning, themeMode),
+        ...buildColors(warningColor, themeMode),
       },
       success: {
-        ...buildColors(theme.color.success, themeMode),
+        ...buildColors(successColor, themeMode),
+      },
+      info: {
+        ...buildColors(infoColor, themeMode),
       },
 
       grayscale: {
-        ...buildColors(theme.color.grayscale, themeMode),
+        ...buildColors(grayscaleColor, themeMode),
       },
 
-      fg: buildForegroundColors(theme.color.fg[themeMode], themeMode),
-      fgi: buildForegroundInverseColors(theme.color.bg[themeMode], themeMode),
-      fgd: buildForegroundDisabledColor(theme.color.grayscale),
+      fg: buildForegroundColors(fgColor, themeMode),
+      fgi: buildForegroundInverseColors(bgColor, themeMode),
+      fgd: buildForegroundDisabledColor(grayscaleColor),
 
-      bg: buildBackgroundColors(theme.color.bg[themeMode], themeMode),
-      bgi: buildBackgroundInverseColors(theme.color.fg[themeMode], themeMode),
-      bgd: buildBackgroundDisabledColor(theme.color.grayscale),
+      bg: buildBackgroundColors(bgColor, themeMode),
+      bgi: buildBackgroundInverseColors(fgColor, themeMode),
+      bgd: buildBackgroundDisabledColor(grayscaleColor),
     },
   };
+
+  // Override the main theme object with the edited theme object
+  themeEdit = deepmerge(theme, themeEdit);
 
   // Return the edited theme object
   return themeEdit;

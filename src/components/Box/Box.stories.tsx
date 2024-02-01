@@ -31,13 +31,13 @@ const meta: Meta<typeof Component> = {
       },
     },
     color: {
-      description: "The color of the button.",
+      description: "The color of the box.",
       control: {
         type: "select",
       },
     },
     tint: {
-      description: "The color tint of the button.",
+      description: "The color tint of the box.",
       control: {
         type: "select",
       },

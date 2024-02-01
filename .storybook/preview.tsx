@@ -15,7 +15,7 @@ const theme = {
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <TUIProvider theme={theme} themeMode="light">
+      <TUIProvider theme={theme} themeStyle="dark" themeMode="system">
         <Story />
       </TUIProvider>
     ),
