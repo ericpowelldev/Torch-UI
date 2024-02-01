@@ -4,13 +4,6 @@ import Component from "./index";
 
 const meta: Meta<typeof Component> = {
   title: "Buttons/Button",
-  decorators: [
-    (Story) => (
-      <div style={{ width: `100%` }}>
-        <Story />
-      </div>
-    ),
-  ],
   component: Component,
   tags: ["autodocs"],
   argTypes: {
@@ -175,7 +168,7 @@ export const Tertiary: Story = {
   },
 };
 
-export const Error: Story = {
+export const ErrorState: Story = {
   args: {
     children: "Error Button",
     color: "error",
@@ -183,7 +176,7 @@ export const Error: Story = {
   },
 };
 
-export const Warning: Story = {
+export const WarningState: Story = {
   args: {
     children: "Warning Button",
     color: "warning",
@@ -191,7 +184,7 @@ export const Warning: Story = {
   },
 };
 
-export const Success: Story = {
+export const SuccessState: Story = {
   args: {
     children: "Success Button",
     color: "success",
@@ -199,11 +192,25 @@ export const Success: Story = {
   },
 };
 
-export const Info: Story = {
+export const InfoState: Story = {
   args: {
     children: "Info Button",
     color: "info",
     info: true,
+  },
+};
+
+export const LoadingState: Story = {
+  args: {
+    children: "Loading Button",
+    loading: true,
+  },
+};
+
+export const DisabledState: Story = {
+  args: {
+    children: "Disabled Button",
+    disabled: true,
   },
 };
 
@@ -244,22 +251,6 @@ export const Tint900: Story = {
     children: "Tint 900 Button",
     color: "primary",
     tint: 900,
-  },
-};
-
-export const Loading: Story = {
-  args: {
-    children: "Loading Button",
-    color: "utility",
-    loading: true,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    children: "Disabled Button",
-    color: "utility",
-    disabled: true,
   },
 };
 

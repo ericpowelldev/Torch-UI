@@ -5,98 +5,98 @@ const Color = require("color");
 // HELPERS ---------------------------------------------------------------- //
 
 /** Build standard colors */
-const buildColors = (color: string, darkMode?: boolean) => {
+const buildColors = (color: string, themeMode?: string) => {
   // Normalize the main color
   const normalizedColor = Color(color).lightness(50).hex();
 
   // Generate the main hexes
   const main = {
     [`0`]: Color(normalizedColor)
-      .lightness(darkMode ? 0 : 100)
+      .lightness(themeMode === `dark` ? 0 : 100)
       .hex(),
     [`50`]: Color(normalizedColor)
-      .lightness(darkMode ? 5 : 95)
+      .lightness(themeMode === `dark` ? 5 : 95)
       .hex(),
     [`100`]: Color(normalizedColor)
-      .lightness(darkMode ? 10 : 90)
+      .lightness(themeMode === `dark` ? 10 : 90)
       .hex(),
     [`150`]: Color(normalizedColor)
-      .lightness(darkMode ? 15 : 85)
+      .lightness(themeMode === `dark` ? 15 : 85)
       .hex(),
     [`200`]: Color(normalizedColor)
-      .lightness(darkMode ? 20 : 80)
+      .lightness(themeMode === `dark` ? 20 : 80)
       .hex(),
     [`250`]: Color(normalizedColor)
-      .lightness(darkMode ? 25 : 75)
+      .lightness(themeMode === `dark` ? 25 : 75)
       .hex(),
     [`300`]: Color(normalizedColor)
-      .lightness(darkMode ? 30 : 70)
+      .lightness(themeMode === `dark` ? 30 : 70)
       .hex(),
     [`350`]: Color(normalizedColor)
-      .lightness(darkMode ? 35 : 65)
+      .lightness(themeMode === `dark` ? 35 : 65)
       .hex(),
     [`400`]: Color(normalizedColor)
-      .lightness(darkMode ? 40 : 60)
+      .lightness(themeMode === `dark` ? 40 : 60)
       .hex(),
     [`450`]: Color(normalizedColor)
-      .lightness(darkMode ? 45 : 55)
+      .lightness(themeMode === `dark` ? 45 : 55)
       .hex(),
     [`500`]: normalizedColor,
     [`550`]: Color(normalizedColor)
-      .lightness(darkMode ? 55 : 45)
+      .lightness(themeMode === `dark` ? 55 : 45)
       .hex(),
     [`600`]: Color(normalizedColor)
-      .lightness(darkMode ? 60 : 40)
+      .lightness(themeMode === `dark` ? 60 : 40)
       .hex(),
     [`650`]: Color(normalizedColor)
-      .lightness(darkMode ? 65 : 35)
+      .lightness(themeMode === `dark` ? 65 : 35)
       .hex(),
     [`700`]: Color(normalizedColor)
-      .lightness(darkMode ? 70 : 30)
+      .lightness(themeMode === `dark` ? 70 : 30)
       .hex(),
     [`750`]: Color(normalizedColor)
-      .lightness(darkMode ? 75 : 25)
+      .lightness(themeMode === `dark` ? 75 : 25)
       .hex(),
     [`800`]: Color(normalizedColor)
-      .lightness(darkMode ? 80 : 20)
+      .lightness(themeMode === `dark` ? 80 : 20)
       .hex(),
     [`850`]: Color(normalizedColor)
-      .lightness(darkMode ? 85 : 15)
+      .lightness(themeMode === `dark` ? 85 : 15)
       .hex(),
     [`900`]: Color(normalizedColor)
-      .lightness(darkMode ? 90 : 10)
+      .lightness(themeMode === `dark` ? 90 : 10)
       .hex(),
     [`950`]: Color(normalizedColor)
-      .lightness(darkMode ? 95 : 5)
+      .lightness(themeMode === `dark` ? 95 : 5)
       .hex(),
     [`1000`]: Color(normalizedColor)
-      .lightness(darkMode ? 100 : 0)
+      .lightness(themeMode === `dark` ? 100 : 0)
       .hex(),
   };
 
   // Generate the inverse hexes
   const inverse = {
-    [`i0`]: darkMode ? main[`500`] : main[`500`],
-    [`i50`]: darkMode ? main[`450`] : main[`550`],
-    [`i100`]: darkMode ? main[`400`] : main[`600`],
-    [`i150`]: darkMode ? main[`350`] : main[`650`],
-    [`i200`]: darkMode ? main[`300`] : main[`700`],
-    [`i250`]: darkMode ? main[`250`] : main[`750`],
-    [`i300`]: darkMode ? main[`200`] : main[`800`],
-    [`i350`]: darkMode ? main[`150`] : main[`850`],
-    [`i400`]: darkMode ? main[`100`] : main[`900`],
-    [`i450`]: darkMode ? main[`50`] : main[`950`],
+    [`i0`]: main[`500`],
+    [`i50`]: main[`550`],
+    [`i100`]: main[`600`],
+    [`i150`]: main[`650`],
+    [`i200`]: main[`700`],
+    [`i250`]: main[`750`],
+    [`i300`]: main[`800`],
+    [`i350`]: main[`850`],
+    [`i400`]: main[`900`],
+    [`i450`]: main[`950`],
     [`i500`]: `#ffffff`,
-    [`i550`]: darkMode ? main[`950`] : main[`50`],
-    [`i600`]: darkMode ? main[`900`] : main[`100`],
-    [`i650`]: darkMode ? main[`850`] : main[`150`],
-    [`i700`]: darkMode ? main[`800`] : main[`200`],
-    [`i750`]: darkMode ? main[`750`] : main[`250`],
-    [`i800`]: darkMode ? main[`700`] : main[`300`],
-    [`i850`]: darkMode ? main[`650`] : main[`350`],
-    [`i900`]: darkMode ? main[`600`] : main[`400`],
-    [`i950`]: darkMode ? main[`550`] : main[`450`],
-    [`i1000`]: darkMode ? main[`500`] : main[`500`],
+    [`i550`]: main[`50`],
+    [`i600`]: main[`100`],
+    [`i650`]: main[`150`],
+    [`i700`]: main[`200`],
+    [`i750`]: main[`250`],
+    [`i800`]: main[`300`],
+    [`i850`]: main[`350`],
+    [`i900`]: main[`400`],
+    [`i950`]: main[`450`],
+    [`i1000`]: main[`500`],
   };
 
   // Generate the alpha hexes
@@ -129,33 +129,68 @@ const buildColors = (color: string, darkMode?: boolean) => {
 };
 
 /** Build foreground colors */
-const buildForegroundColors = (color: string, darkMode?: boolean) => {
+const buildForegroundColors = (color: string, themeMode?: string) => {
+  const alphas = [``, `96`, `72`, `48`];
+  const foregroundColors = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
+  return foregroundColors;
+};
+
+/** Build foreground inverse colors */
+const buildForegroundInverseColors = (color: string, themeMode?: string) => {
   const alphas = [``, `96`, `72`, `48`];
   const foregroundColors = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
   return foregroundColors;
 };
 
 /** Build background colors */
-const buildBackgroundColors = (color: string, darkMode?: boolean) => {
+const buildBackgroundColors = (color: string, themeMode?: string) => {
   // Normalize the main color
   const normalizedColor = Color(color).lightness(50).hex();
 
   // Create shades of the normalized color
   const shades = [
     Color(normalizedColor)
-      .lightness(darkMode ? 5 : 100)
+      .lightness(themeMode === `dark` ? 5 : 100)
       .hex(),
     Color(normalizedColor)
-      .lightness(darkMode ? 10 : 95)
+      .lightness(themeMode === `dark` ? 10 : 95)
       .hex(),
     Color(normalizedColor)
-      .lightness(darkMode ? 15 : 90)
+      .lightness(themeMode === `dark` ? 15 : 90)
       .hex(),
     Color(normalizedColor)
-      .lightness(darkMode ? 20 : 85)
+      .lightness(themeMode === `dark` ? 20 : 85)
       .hex(),
     Color(normalizedColor)
-      .lightness(darkMode ? 25 : 80)
+      .lightness(themeMode === `dark` ? 25 : 80)
+      .hex(),
+  ];
+
+  // Return the shades
+  return shades;
+};
+
+/** Build background inverse colors */
+const buildBackgroundInverseColors = (color: string, themeMode?: string) => {
+  // Normalize the main color
+  const normalizedColor = Color(color).lightness(50).hex();
+
+  // Create shades of the normalized color
+  const shades = [
+    Color(normalizedColor)
+      .lightness(themeMode === `dark` ? 100 : 5)
+      .hex(),
+    Color(normalizedColor)
+      .lightness(themeMode === `dark` ? 95 : 10)
+      .hex(),
+    Color(normalizedColor)
+      .lightness(themeMode === `dark` ? 90 : 15)
+      .hex(),
+    Color(normalizedColor)
+      .lightness(themeMode === `dark` ? 85 : 20)
+      .hex(),
+    Color(normalizedColor)
+      .lightness(themeMode === `dark` ? 80 : 25)
       .hex(),
   ];
 
@@ -164,18 +199,18 @@ const buildBackgroundColors = (color: string, darkMode?: boolean) => {
 };
 
 /** Build foreground disabled color */
-const buildForegroundDisabledColor = (color: string, darkMode?: boolean) => {
+const buildForegroundDisabledColor = (color: string, themeMode?: string) => {
   return Color(color).fade(0.2).hexa();
 };
 
 /** Build background disabled color */
-const buildBackgroundDisabledColor = (color: string, darkMode?: boolean) => {
+const buildBackgroundDisabledColor = (color: string, themeMode?: string) => {
   return Color(color).fade(0.6).hexa();
 };
 
 // ORCHESTRATION ---------------------------------------------------------------- //
 
-const extendTheme = (theme: any) => {
+const extendTheme = (theme: any, themeMode: string) => {
   // Create a copy of the theme object to edit
   let themeEdit = {
     ...theme,
@@ -184,44 +219,42 @@ const extendTheme = (theme: any) => {
       ...theme.color,
 
       primary: {
-        ...buildColors(theme.color.primary, false),
+        ...buildColors(theme.color.primary, themeMode),
       },
       secondary: {
-        ...buildColors(theme.color.secondary, false),
+        ...buildColors(theme.color.secondary, themeMode),
       },
       tertiary: {
-        ...buildColors(theme.color.tertiary, false),
+        ...buildColors(theme.color.tertiary, themeMode),
       },
 
       utility: {
-        ...buildColors(theme.color.utility, false),
+        ...buildColors(theme.color.utility, themeMode),
       },
       info: {
-        ...buildColors(theme.color.info, false),
+        ...buildColors(theme.color.info, themeMode),
       },
       error: {
-        ...buildColors(theme.color.error, false),
+        ...buildColors(theme.color.error, themeMode),
       },
       warning: {
-        ...buildColors(theme.color.warning, false),
+        ...buildColors(theme.color.warning, themeMode),
       },
       success: {
-        ...buildColors(theme.color.success, false),
+        ...buildColors(theme.color.success, themeMode),
       },
 
       grayscale: {
-        ...buildColors(theme.color.grayscale, false),
+        ...buildColors(theme.color.grayscale, themeMode),
       },
 
-      fg: buildForegroundColors(theme.color.fg, false),
-      fgi: buildForegroundColors(theme.color.bg, true),
-      fgd: buildForegroundDisabledColor(theme.color.grayscale, false),
-      fgdi: buildForegroundDisabledColor(theme.color.grayscale, true),
+      fg: buildForegroundColors(theme.color.fg[themeMode], themeMode),
+      fgi: buildForegroundInverseColors(theme.color.bg[themeMode], themeMode),
+      fgd: buildForegroundDisabledColor(theme.color.grayscale),
 
-      bg: buildBackgroundColors(theme.color.bg, false),
-      bgi: buildBackgroundColors(theme.color.fg, true),
-      bgd: buildBackgroundDisabledColor(theme.color.grayscale, false),
-      bgdi: buildBackgroundDisabledColor(theme.color.grayscale, true),
+      bg: buildBackgroundColors(theme.color.bg[themeMode], themeMode),
+      bgi: buildBackgroundInverseColors(theme.color.fg[themeMode], themeMode),
+      bgd: buildBackgroundDisabledColor(theme.color.grayscale),
     },
   };
 

@@ -155,14 +155,6 @@ export const Number: Story = {
   },
 };
 
-export const Standard: Story = {
-  args: {
-    label: "Standard Input",
-    placeholder: "Enter some text...",
-    variant: "standard",
-  },
-};
-
 export const Transparent: Story = {
   args: {
     label: "Transparent Input",

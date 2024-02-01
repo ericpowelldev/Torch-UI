@@ -4,7 +4,7 @@ const theme = {
   // Colors
   color: {
     // Brand colors
-    primary: `#f45000`,
+    primary: `#f46000`,
     secondary: `#4080c8`,
     tertiary: `#40b4a0`,
 
@@ -19,10 +19,16 @@ const theme = {
     grayscale: `#707880`,
 
     // Foreground/Text colors
-    fg: `#303840`,
+    fg: {
+      light: `#303840`,
+      dark: `#ffffff`,
+    },
 
     // Background/Wall colors
-    bg: `#ffffff`,
+    bg: {
+      light: `#ffffff`,
+      dark: `#303840`,
+    },
   },
 
   // Text Options
