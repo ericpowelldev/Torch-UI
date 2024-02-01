@@ -9,7 +9,7 @@ import { BoolValues, ColorValues, TintValues } from "../../utils/types";
 
 import { useIconStyles } from "./styles";
 
-import { AiOutlineWarning } from "react-icons/ai";
+import { MdWarning } from "react-icons/md";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -43,7 +43,7 @@ const IconWarning = ({
   tint = 500,
   size = 40,
   animate = true,
-  animationSpeed = 1600,
+  animationSpeed = 1000,
   disabled,
   ...rest
 }: IconWarningProps) => {
@@ -61,7 +61,7 @@ const IconWarning = ({
 
   // RENDER //
 
-  return <AiOutlineWarning className={clsxIcon} {...rest} />;
+  return <MdWarning className={clsxIcon} {...rest} />;
 };
 
 // EXPORT ---------------------------------------------------------------- //

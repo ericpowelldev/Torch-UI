@@ -1,19 +1,52 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import {
-  colorValues,
-  textColorValues,
-  tintValues,
+  AlphaTintValues,
+  bgColorValues,
+  BGColorValues,
   BoolValues,
   ButtonVariantValues,
+  colorValues,
   ColorValues,
+  fgColorValues,
+  FGColorValues,
   InputVariantValues,
+  InverseTintValues,
   SelectorValues,
   SizeValues,
   SizeValuesExtended,
+  textColorValues,
   TextColorValues,
+  tintValues,
   TintValues,
 } from "./types";
+
+// BOX ---------------------------------------------------------------- //
+
+export const getBoxColor = (
+  theme: any,
+  color?: BGColorValues | FGColorValues | ColorValues,
+  tint?: TintValues | InverseTintValues | AlphaTintValues
+) => {
+  if (color === `bg1`) return theme.color.bg[0];
+  if (color === `bg2`) return theme.color.bg[1];
+  if (color === `bg3`) return theme.color.bg[2];
+  if (color === `bg4`) return theme.color.bg[3];
+  if (color === `bgi1`) return theme.color.bgi[0];
+  if (color === `bgi2`) return theme.color.bgi[1];
+  if (color === `bgi3`) return theme.color.bgi[2];
+  if (color === `bgi4`) return theme.color.bgi[3];
+  if (color === `fg1`) return theme.color.fg[0];
+  if (color === `fg2`) return theme.color.fg[1];
+  if (color === `fg3`) return theme.color.fg[2];
+  if (color === `fg4`) return theme.color.fg[3];
+  if (color === `fgi1`) return theme.color.fgi[0];
+  if (color === `fgi2`) return theme.color.fgi[1];
+  if (color === `fgi3`) return theme.color.fgi[2];
+  if (color === `fgi4`) return theme.color.fgi[3];
+  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
+  return `inherit`;
+};
 
 // BUTTON ---------------------------------------------------------------- //
 

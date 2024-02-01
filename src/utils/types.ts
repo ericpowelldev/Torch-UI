@@ -37,6 +37,14 @@ export type ColorValues =
   | `success`
   | `grayscale`;
 
+/** Array of accepted background color values */
+export const bgColorValues = [`inherit`, `bg1`, `bg2`, `bg3`, `bg4`, `bgi1`, `bgi2`, `bgi3`, `bgi4`];
+export type BGColorValues = `inherit` | `bg1` | `bg2` | `bg3` | `bg4` | `bgi1` | `bgi2` | `bgi3` | `bgi4`;
+
+/** Array of accepted foreground color values */
+export const fgColorValues = [`inherit`, `fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
+export type FGColorValues = `inherit` | `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
+
 /** Array of accepted main color tint values */
 export const tintValues = [
   `0`,

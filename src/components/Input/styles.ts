@@ -157,7 +157,7 @@ export const useInputStyles = (theme: any, props: any) => {
         outline: none;
       }
       &::placeholder {
-        color: ${theme.color.fg[2]};
+        color: ${theme.color.fg[3]};
       }
     `,
     multiline: css`

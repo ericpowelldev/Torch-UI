@@ -6,7 +6,9 @@ import { TUIProvider } from "../src";
 // Theme overrides
 const theme = {
   color: {
-    // primary: "#00ff80",
+    primary: `#f45000`,
+    secondary: `#4080c8`,
+    tertiary: `#40b4a0`,
   },
 };
 

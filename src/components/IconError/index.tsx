@@ -43,7 +43,7 @@ const IconError = ({
   tint = 500,
   size = 40,
   animate = true,
-  animationSpeed = 800,
+  animationSpeed = 500,
   disabled,
   ...rest
 }: IconErrorProps) => {

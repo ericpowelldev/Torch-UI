@@ -4,9 +4,6 @@ import Component from "./index";
 const meta: Meta<typeof Component> = {
   title: "Form/Input",
   component: Component,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
   argTypes: {
     children: {
@@ -28,6 +25,24 @@ const meta: Meta<typeof Component> = {
     style: {
       table: {
         disable: true,
+      },
+    },
+    label: {
+      description: "The label for the input.",
+      control: {
+        type: "text",
+      },
+    },
+    sublabel: {
+      description: "The sublabel for the input.",
+      control: {
+        type: "text",
+      },
+    },
+    placeholder: {
+      description: "The placeholder for the input.",
+      control: {
+        type: "text",
       },
     },
     variant: {
@@ -108,18 +123,6 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
-    label: {
-      description: "The label for the input.",
-      control: {
-        type: "text",
-      },
-    },
-    sublabel: {
-      description: "The sublabel for the input.",
-      control: {
-        type: "text",
-      },
-    },
     tooltip: {
       description: "The content inside of the tooltip.",
       control: {
@@ -138,5 +141,40 @@ export default meta;
 type Story = StoryObj<typeof Component>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    label: "Default Input",
+    placeholder: "Enter some text...",
+  },
+};
+
+export const Number: Story = {
+  args: {
+    label: "Number Input",
+    placeholder: "Enter some numbers...",
+    type: "number",
+  },
+};
+
+export const Standard: Story = {
+  args: {
+    label: "Standard Input",
+    placeholder: "Enter some text...",
+    variant: "standard",
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    label: "Transparent Input",
+    placeholder: "Enter some text...",
+    variant: "transparent",
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    label: "Outline Input",
+    placeholder: "Enter some text...",
+    variant: "outline",
+  },
 };

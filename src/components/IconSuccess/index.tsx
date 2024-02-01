@@ -42,8 +42,8 @@ const IconSuccess = ({
   color = "success",
   tint = 500,
   size = 40,
-  animate = false,
-  animationSpeed = 800,
+  animate = true,
+  animationSpeed = 2000,
   disabled,
   ...rest
 }: IconSuccessProps) => {

@@ -13,6 +13,7 @@ import { useButtonStyles, useLabelStyles, useStartIconStyles, useEndIconStyles }
 import IconError from "../IconError";
 import IconWarning from "../IconWarning";
 import IconSuccess from "../IconSuccess";
+import IconInfo from "../IconInfo";
 import IconLoading from "../IconLoading";
 
 // PROPS ---------------------------------------------------------------- //
@@ -29,6 +30,7 @@ interface ButtonProps {
     iconWarning?: string;
     iconError?: string;
     iconSuccess?: string;
+    iconInfo?: string;
   };
   style?: React.CSSProperties;
 
@@ -48,6 +50,7 @@ interface ButtonProps {
   error?: BoolValues;
   warning?: BoolValues;
   success?: BoolValues;
+  info?: BoolValues;
   loading?: BoolValues;
 
   tooltip?: React.ReactNode;
@@ -76,6 +79,7 @@ const Button = ({
   error,
   warning,
   success,
+  info,
   loading,
   tooltip,
   icon,
@@ -112,6 +116,7 @@ const Button = ({
   const clsxIconError = clsx(classes?.iconError) || undefined;
   const clsxIconWarning = clsx(classes?.iconWarning) || undefined;
   const clsxIconSuccess = clsx(classes?.iconSuccess) || undefined;
+  const clsxIconInfo = clsx(classes?.iconInfo) || undefined;
   const clsxIconLoading = clsx(classes?.iconLoading) || undefined;
 
   // RENDER //
@@ -148,6 +153,17 @@ const Button = ({
         <span className={clsxEndIcon}>
           <IconSuccess
             className={clsxIconSuccess}
+            variant={variant === `solid` ? `fg` : `bg`}
+            color={color}
+            tint={tint}
+            size={getButtonIconSize(size)}
+            disabled={disabled}
+          />
+        </span>
+      ) : info ? (
+        <span className={clsxEndIcon}>
+          <IconInfo
+            className={clsxIconInfo}
             variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}

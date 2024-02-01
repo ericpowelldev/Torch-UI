@@ -43,7 +43,7 @@ const IconInfo = ({
   tint = 500,
   size = 40,
   animate = false,
-  animationSpeed = 800,
+  animationSpeed = 2000,
   disabled,
   ...rest
 }: IconInfoProps) => {

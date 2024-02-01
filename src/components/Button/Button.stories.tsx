@@ -1,12 +1,17 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Component from "./index";
 
 const meta: Meta<typeof Component> = {
   title: "Buttons/Button",
+  decorators: [
+    (Story) => (
+      <div style={{ width: `100%` }}>
+        <Story />
+      </div>
+    ),
+  ],
   component: Component,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
   argTypes: {
     children: {
@@ -114,6 +119,12 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
+    info: {
+      description: "Should the button be in an info state?",
+      control: {
+        type: "boolean",
+      },
+    },
     loading: {
       description: "Should the button be in a loading state?",
       control: {
@@ -161,5 +172,117 @@ export const Tertiary: Story = {
   args: {
     children: "Tertiary Button",
     color: "tertiary",
+  },
+};
+
+export const Error: Story = {
+  args: {
+    children: "Error Button",
+    color: "error",
+    error: true,
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    children: "Warning Button",
+    color: "warning",
+    warning: true,
+  },
+};
+
+export const Success: Story = {
+  args: {
+    children: "Success Button",
+    color: "success",
+    success: true,
+  },
+};
+
+export const Info: Story = {
+  args: {
+    children: "Info Button",
+    color: "info",
+    info: true,
+  },
+};
+
+export const Tint100: Story = {
+  args: {
+    children: "Tint 100 Button",
+    color: "primary",
+    tint: 100,
+  },
+};
+
+export const Tint250: Story = {
+  args: {
+    children: "Tint 250 Button",
+    color: "primary",
+    tint: 250,
+  },
+};
+
+export const Tint500: Story = {
+  args: {
+    children: "Tint 500 Button",
+    color: "primary",
+    tint: 500,
+  },
+};
+
+export const Tint750: Story = {
+  args: {
+    children: "Tint 750 Button",
+    color: "primary",
+    tint: 750,
+  },
+};
+
+export const Tint900: Story = {
+  args: {
+    children: "Tint 900 Button",
+    color: "primary",
+    tint: 900,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    children: "Loading Button",
+    color: "utility",
+    loading: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: "Disabled Button",
+    color: "utility",
+    disabled: true,
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    children: "Transparent Button",
+    color: "primary",
+    variant: "transparent",
+  },
+};
+
+export const Simple: Story = {
+  args: {
+    children: "Simple Button",
+    color: "primary",
+    variant: "simple",
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    children: "Outline Button",
+    color: "primary",
+    variant: "outline",
   },
 };

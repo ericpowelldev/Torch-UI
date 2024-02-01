@@ -4,16 +4,16 @@ const theme = {
   // Colors
   color: {
     // Brand colors
-    primary: `#f50`,
-    secondary: `#48c`,
-    tertiary: `#5ba`,
+    primary: `#f45000`,
+    secondary: `#4080c8`,
+    tertiary: `#40b4a0`,
 
     // Utility colors
-    utility: `#678`,
-    info: `#18a`,
-    error: `#802`,
-    warning: `#850`,
-    success: `#283`,
+    utility: `#607080`,
+    error: `#800020`,
+    warning: `#806000`,
+    success: `#408020`,
+    info: `#0880a0`,
 
     // General colors
     grayscale: `#707880`,
@@ -127,7 +127,7 @@ const theme = {
       height: 1,
     },
     sublabel: {
-      size: `12px`,
+      size: `10px`,
       weight: 400,
       height: 1,
     },
@@ -150,7 +150,7 @@ const theme = {
     return pixSpace.join(` `);
   },
 
-  // Radius Options
+  // Padding Options
   padding: {
     none: 0,
     input: `6px 8px`,
@@ -180,6 +180,14 @@ const theme = {
     harsh: `0 0 12px #00000048`,
     button: `0px 4px 12px #00000048`,
     text: `1px 1px 2px #00000056`,
+  },
+
+  // Blur Options
+  blur: {
+    none: `none`,
+    soft: `blur(8px)`,
+    medium: `blur(12px)`,
+    harsh: `blue(16px)`,
   },
 
   // Z-Index Options

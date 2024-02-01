@@ -23,6 +23,9 @@ interface InputProps {
   };
   style?: React.CSSProperties;
 
+  label?: React.ReactNode;
+  sublabel?: React.ReactNode;
+
   variant?: InputVariantValues;
   color?: ColorValues;
   tint?: TintValues;
@@ -38,8 +41,6 @@ interface InputProps {
   success?: BoolValues;
   loading?: BoolValues;
 
-  label?: React.ReactNode;
-  sublabel?: React.ReactNode;
   tooltip?: React.ReactNode;
   icon?: React.ReactNode;
 
@@ -52,6 +53,8 @@ const Input = ({
   children,
   className,
   classes,
+  label,
+  sublabel,
   variant = "standard",
   color = "primary",
   tint = 500,
@@ -64,8 +67,6 @@ const Input = ({
   warning,
   success,
   loading,
-  label,
-  sublabel,
   tooltip,
   icon,
   ...rest
