@@ -3,11 +3,11 @@ import Component from "./index";
 
 const meta: Meta<typeof Component> = {
   title: "Buttons/ButtonBase",
-  component: Component,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
+  component: Component,
   argTypes: {
     children: {
       description: "The content inside of the button.",

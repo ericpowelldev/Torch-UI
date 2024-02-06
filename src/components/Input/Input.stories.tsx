@@ -3,8 +3,11 @@ import Component from "./index";
 
 const meta: Meta<typeof Component> = {
   title: "Inputs/Input",
-  component: Component,
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
+  component: Component,
   argTypes: {
     children: {
       description: "The content inside of the input.",

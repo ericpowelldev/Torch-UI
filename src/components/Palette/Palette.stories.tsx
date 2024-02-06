@@ -3,10 +3,11 @@ import Component from "./index";
 
 const meta: Meta<typeof Component> = {
   title: "Theme/Palette",
-  component: Component,
+  tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
+  component: Component,
   argTypes: {
     classes: {
       table: {

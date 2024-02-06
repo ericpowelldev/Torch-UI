@@ -25,7 +25,7 @@ import {
 
 export const getBoxColor = (
   theme: any,
-  color?: BGColorValues | FGColorValues | ColorValues,
+  color?: `inherit` | BGColorValues | FGColorValues | ColorValues,
   tint?: TintValues | InverseTintValues | AlphaTintValues
 ) => {
   if (color === `bg1`) return theme.color.bg[0];
@@ -139,7 +139,7 @@ export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?
 };
 
 /** Get color foreground */
-export const getColorText = (theme: any, color?: ColorValues | TextColorValues, tint?: TintValues) => {
+export const getColorText = (theme: any, color?: `inherit` | ColorValues | TextColorValues, tint?: TintValues) => {
   if (textColorValues.includes(color)) {
     if (color === `fg1`) return theme.color.fg[0];
     if (color === `fg2`) return theme.color.fg[1];
@@ -228,4 +228,46 @@ export const getSpacerSize = (size: SizeValuesExtended | number) => {
     if (size === `4xl`) sizeNum = 20;
   }
   return sizeNum;
+};
+
+// TOGGLE ---------------------------------------------------------------- //
+
+/** Get toggle size */
+export const getToggleSize = (size: SizeValues) => {
+  if (size === `xs` || size === `min`) return 16;
+  if (size === `sm`) return 20;
+  if (size === `md`) return 24;
+  if (size === `lg`) return 28;
+  if (size === `xl` || size === `max`) return 32;
+  return 24;
+};
+
+/** Get toggle slide size */
+export const getToggleSlideSize = (size: SizeValues) => {
+  if (size === `xs` || size === `min`) return 12;
+  if (size === `sm`) return 16;
+  if (size === `md`) return 20;
+  if (size === `lg`) return 24;
+  if (size === `xl` || size === `max`) return 28;
+  return 20;
+};
+
+/** Get toggle slide gradient size */
+export const getToggleSlideGradientSize = (size: SizeValues) => {
+  if (size === `xs` || size === `min`) return 1;
+  if (size === `sm`) return 1.333;
+  if (size === `md`) return 1.667;
+  if (size === `lg`) return 2;
+  if (size === `xl` || size === `max`) return 2.333;
+  return 1.5;
+};
+
+/** Get toggle icon size */
+export const getToggleIconSize = (size: SizeValues) => {
+  if (size === `xs` || size === `min`) return 10;
+  if (size === `sm`) return 14;
+  if (size === `md`) return 18;
+  if (size === `lg`) return 22;
+  if (size === `xl` || size === `max`) return 26;
+  return 18;
 };

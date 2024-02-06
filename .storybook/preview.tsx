@@ -9,8 +9,10 @@ const theme = {};
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <TUIProvider theme={theme} themeStyle="dark" themeMode="system">
-        <Story />
+      <TUIProvider theme={theme} themeStyle="light" themeMode="light">
+        <div style={{ padding: "16px" }}>
+          <Story />
+        </div>
       </TUIProvider>
     ),
   ],

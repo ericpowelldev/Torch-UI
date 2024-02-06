@@ -36,6 +36,10 @@ const theme = {
 
     // Background/Wall colors
     bg: `#ffffff`,
+
+    // Black and White colors
+    black: `#000000`,
+    white: `#ffffff`,
   },
 
   // Text Options
@@ -191,8 +195,11 @@ const theme = {
     soft: `0 0 12px #00000016`,
     medium: `0 0 12px #00000024`,
     harsh: `0 0 12px #00000048`,
+
     button: `0px 4px 12px #00000048`,
-    text: `1px 1px 2px #00000056`,
+    text: `1px 1px 2px #00000048`,
+    toggleTrack: `1px 1px 2px #00000048`,
+    toggleSlide: `1px 1px 2px #00000048`,
   },
 
   // Blur Options

@@ -19,7 +19,7 @@ interface BoxProps {
   };
   style?: React.CSSProperties;
 
-  color?: ColorValues | BGColorValues | FGColorValues;
+  color?: `inherit` | ColorValues | BGColorValues | FGColorValues;
   tint?: TintValues | InverseTintValues | AlphaTintValues;
 
   width?: number | string;

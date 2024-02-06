@@ -183,6 +183,8 @@ export const useStartIconStyles = (theme: any, props: any) => {
     startIcon: css`
       margin-left: -2px;
       margin-right: ${getButtonIconMargin(size)}px;
+      line-height: 1;
+      font-size: ${getButtonIconSize(size)}px;
       & svg {
         display: block;
         width: ${getButtonIconSize(size)}px;

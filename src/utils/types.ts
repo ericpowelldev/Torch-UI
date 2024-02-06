@@ -38,12 +38,12 @@ export type ColorValues =
   | `grayscale`;
 
 /** Array of accepted background color values */
-export const bgColorValues = [`inherit`, `bg1`, `bg2`, `bg3`, `bg4`, `bgi1`, `bgi2`, `bgi3`, `bgi4`];
-export type BGColorValues = `inherit` | `bg1` | `bg2` | `bg3` | `bg4` | `bgi1` | `bgi2` | `bgi3` | `bgi4`;
+export const bgColorValues = [`bg1`, `bg2`, `bg3`, `bg4`, `bgi1`, `bgi2`, `bgi3`, `bgi4`];
+export type BGColorValues = `bg1` | `bg2` | `bg3` | `bg4` | `bgi1` | `bgi2` | `bgi3` | `bgi4`;
 
 /** Array of accepted foreground color values */
-export const fgColorValues = [`inherit`, `fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
-export type FGColorValues = `inherit` | `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
+export const fgColorValues = [`fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
+export type FGColorValues = `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
 
 /** Array of accepted main color tint values */
 export const tintValues = [
@@ -236,16 +236,16 @@ export type InputVariantValues = `standard` | `transparent` | `outline`;
 // TEXT TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted text variants */
-export const textAlignValues = [`inherit`, `left`, `center`, `right`, `justify`];
-export type TextAlignValues = `inherit` | `left` | `center` | `right` | `justify`;
+export const textAlignValues = [`left`, `center`, `right`, `justify`];
+export type TextAlignValues = `left` | `center` | `right` | `justify`;
 
 /** Array of accepted text variants */
-export const textColorValues = [`inherit`, `fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
-export type TextColorValues = `inherit` | `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
+export const textColorValues = [`fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
+export type TextColorValues = `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
 
 /** Array of accepted text variants */
-export const textComponentValues = [`inherit`, `div`, `span`];
-export type TextComponentValues = `inherit` | `div` | `span`;
+export const textComponentValues = [`div`, `span`];
+export type TextComponentValues = `div` | `span`;
 
 /** Array of accepted text variants */
 export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`];

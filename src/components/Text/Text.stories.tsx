@@ -3,11 +3,11 @@ import Component from "./index";
 
 const meta: Meta<typeof Component> = {
   title: "Typography/Text",
-  component: Component,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
+  component: Component,
   argTypes: {
     children: {
       description: "The text content.",
@@ -58,6 +58,12 @@ const meta: Meta<typeof Component> = {
       description: "The self-alignment of the text.",
       control: {
         type: "radio",
+      },
+    },
+    shadow: {
+      description: "Should the text have a shadow?",
+      control: {
+        type: "boolean",
       },
     },
     href: {

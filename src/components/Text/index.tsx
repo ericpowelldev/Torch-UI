@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { useTUI } from "../../TUI";
 
 import {
+  BoolValues,
   ColorValues,
   TintValues,
   TextAlignValues,
@@ -26,12 +27,14 @@ interface TextProps {
   };
   style?: React.CSSProperties;
 
-  component?: TextComponentValues;
+  component?: `inherit` | TextComponentValues;
   variant?: TextVariantValues;
-  color?: ColorValues | TextColorValues;
+  color?: `inherit` | ColorValues | TextColorValues;
   tint?: TintValues;
 
-  align?: TextAlignValues;
+  align?: `inherit` | TextAlignValues;
+
+  shadow?: BoolValues;
 
   href?: string;
 
@@ -49,6 +52,7 @@ const Text = ({
   color = "inherit",
   tint = 500,
   align = "inherit",
+  shadow,
   href,
   ...rest
 }: TextProps) => {
@@ -58,7 +62,7 @@ const Text = ({
 
   // CLASSES //
 
-  const textStyles = useTextStyles(theme, { variant, color, tint, align });
+  const textStyles = useTextStyles(theme, { variant, color, tint, align, shadow });
 
   // CLASSNAMES //
 

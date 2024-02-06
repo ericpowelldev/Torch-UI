@@ -2,10 +2,15 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Component from "./index";
 
+import { MdRocketLaunch } from "react-icons/md";
+
 const meta: Meta<typeof Component> = {
   title: "Buttons/Button",
-  component: Component,
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
+  component: Component,
   argTypes: {
     children: {
       description: "The content inside of the button.",
@@ -165,6 +170,20 @@ export const Tertiary: Story = {
   args: {
     children: "Tertiary Button",
     color: "tertiary",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    children: "Button with Icon",
+    icon: <MdRocketLaunch />,
+  },
+};
+
+export const WithEmoji: Story = {
+  args: {
+    children: "Button with Emoji",
+    icon: "🚀",
   },
 };
 

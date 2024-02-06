@@ -3,11 +3,11 @@ import Component from "./index";
 
 const meta: Meta<typeof Component> = {
   title: "Icons/IconWarning",
-  component: Component,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
+  component: Component,
   argTypes: {
     classes: {
       table: {

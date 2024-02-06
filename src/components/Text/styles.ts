@@ -7,7 +7,7 @@ import { getColorText } from "../../utils/helpers";
 // STYLES ---------------------------------------------------------------- //
 
 export const useTextStyles = (theme: any, props: any) => {
-  const { variant, color, tint, align } = props;
+  const { variant, color, tint, align, shadow } = props;
 
   const stylesheet: any = {
     text: css`
@@ -28,6 +28,9 @@ export const useTextStyles = (theme: any, props: any) => {
     align: css`
       text-align: ${align};
     `,
+    shadow: css`
+      text-shadow: ${theme.shadow.text || theme.shadow.none};
+    `,
   };
 
   const styles: any = [stylesheet.text];
@@ -35,6 +38,7 @@ export const useTextStyles = (theme: any, props: any) => {
   if (variant) styles.push(stylesheet.variant);
   if (color) styles.push(stylesheet.color);
   if (align) styles.push(stylesheet.align);
+  if (shadow) styles.push(stylesheet.shadow);
 
   return styles;
 };
