@@ -250,3 +250,9 @@ export type TextComponentValues = `inherit` | `div` | `span`;
 /** Array of accepted text variants */
 export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`];
 export type TextVariantValues = `h1` | `h2` | `h3` | `h4` | `h5` | `h6` | `p1` | `p2` | `p3` | `p4` | `p5` | `p6`;
+
+// TOGGLE TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted toggle variants */
+export const toggleVariantValues = [`solid`, `transparent`, `outline`];
+export type ToggleVariantValues = `solid` | `transparent` | `outline`;

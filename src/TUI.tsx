@@ -32,7 +32,13 @@ const useTUI = () => React.useContext(TUIContext);
 
 // PROVIDER ---------------------------------------------------------------- //
 
-const TUIProvider = ({ children, theme = {}, themeStyle = `dark`, themeMode = `system`, cssPreset = true }: TUIProviderProps) => {
+const TUIProvider = ({
+  children,
+  theme = {},
+  themeStyle = undefined,
+  themeMode = `system`,
+  cssPreset = true,
+}: TUIProviderProps) => {
   let detectedThemeMode = themeMode;
 
   // Detect system preferences for theme mode
@@ -53,7 +59,7 @@ const TUIProvider = ({ children, theme = {}, themeStyle = `dark`, themeMode = `s
     themeMode: detectedThemeMode,
   };
 
-  console.log(`Extended Theme:`, extendedTheme, detectedThemeMode);
+  console.log(`Extended Theme:`, extendedTheme, themeStyle, detectedThemeMode);
 
   return (
     <TUIContext.Provider value={ctx}>

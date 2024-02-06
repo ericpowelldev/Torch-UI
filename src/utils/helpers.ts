@@ -102,18 +102,19 @@ export const getButtonIconMargin = (size: SizeValues) => {
 
 // COLORS ---------------------------------------------------------------- //
 
+/** Get color foreground */
+export const getColorFg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
+  if (disabled && override === `bg`) return theme.color.bgd;
+  if (disabled) return theme.color.fgd;
+  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
+  return `inherit`;
+};
+
 /** Get color background */
 export const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
   if (disabled && override === `fg`) return theme.color.fgd;
   if (disabled) return theme.color.bgd;
   if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
-  return `inherit`;
-};
-
-/** Get color foreground */
-export const getColorFg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues) => {
-  if (disabled) return theme.color.fgd;
-  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
   return `inherit`;
 };
 

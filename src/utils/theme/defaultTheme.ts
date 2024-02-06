@@ -4,8 +4,13 @@ const theme = {
   // Custom style overrides
   custom: {
     dark: {
-      fg: `#ffffff`,
-      bg: `#303840`,
+      color: {
+        fg: `#ffffff`,
+        bg: `#303840`,
+      },
+      text: {
+        family: `"Poppins", "Roboto", "Helvetica", "Arial", sans-serif`,
+      }
     },
   },
 

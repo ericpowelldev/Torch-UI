@@ -212,70 +212,59 @@ const buildBackgroundDisabledColor = (color: string, themeMode?: string) => {
 // ORCHESTRATION ---------------------------------------------------------------- //
 
 const extendTheme = (theme: any, themeStyle?: string, themeMode?: string) => {
-  // Set the initial theme props to use when extending (Check the theme object for the specified style props and fallback to the main theme object if necessary)
-  const themeProps = themeStyle && theme?.[themeStyle] ? theme?.[themeStyle] : theme;
+  // Set the initial theme props to use when extending
+  // Check the theme object for the custom style props
+  let customTheme = themeStyle && theme?.custom?.[themeStyle] ? theme?.custom?.[themeStyle] : {};
 
-  // Get each color value based on theme props and fallback to the merged theme object if necessary
-  const primaryColor = themeProps?.color?.primary || theme?.color?.primary;
-  const secondaryColor = themeProps?.color?.secondary || theme?.color?.secondary;
-  const tertiaryColor = themeProps?.color?.tertiary || theme?.color?.tertiary;
-
-  const utilityColor = themeProps?.color?.utility || theme?.color?.utility;
-  const errorColor = themeProps?.color?.error || theme?.color?.error;
-  const warningColor = themeProps?.color?.warning || theme?.color?.warning;
-  const successColor = themeProps?.color?.success || theme?.color?.success;
-  const infoColor = themeProps?.color?.info || theme?.color?.info;
-
-  const grayscaleColor = themeProps?.color?.grayscale || theme?.color?.grayscale;
-
-  const fgColor = themeProps?.color?.fg || theme?.color?.fg;
-  const bgColor = themeProps?.color?.bg || theme?.color?.bg;
+  // Override the standard theme with the custom theme
+  customTheme = deepmerge(theme, customTheme);
+  if (customTheme.custom) delete customTheme.custom;
 
   // Create a copy of the theme object to edit
   let themeEdit = {
     color: {
       primary: {
-        ...buildColors(primaryColor, themeMode),
+        ...buildColors(customTheme?.color?.primary, themeMode),
       },
       secondary: {
-        ...buildColors(secondaryColor, themeMode),
+        ...buildColors(customTheme?.color?.secondary, themeMode),
       },
       tertiary: {
-        ...buildColors(tertiaryColor, themeMode),
+        ...buildColors(customTheme?.color?.tertiary, themeMode),
       },
 
       utility: {
-        ...buildColors(utilityColor, themeMode),
+        ...buildColors(customTheme?.color?.utility, themeMode),
       },
       error: {
-        ...buildColors(errorColor, themeMode),
+        ...buildColors(customTheme?.color?.error, themeMode),
       },
       warning: {
-        ...buildColors(warningColor, themeMode),
+        ...buildColors(customTheme?.color?.warning, themeMode),
       },
       success: {
-        ...buildColors(successColor, themeMode),
+        ...buildColors(customTheme?.color?.success, themeMode),
       },
       info: {
-        ...buildColors(infoColor, themeMode),
+        ...buildColors(customTheme?.color?.info, themeMode),
       },
 
       grayscale: {
-        ...buildColors(grayscaleColor, themeMode),
+        ...buildColors(customTheme?.color?.grayscale, themeMode),
       },
 
-      fg: buildForegroundColors(fgColor, themeMode),
-      fgi: buildForegroundInverseColors(bgColor, themeMode),
-      fgd: buildForegroundDisabledColor(grayscaleColor),
+      fg: buildForegroundColors(customTheme?.color?.fg, themeMode),
+      fgi: buildForegroundInverseColors(customTheme?.color?.bg, themeMode),
+      fgd: buildForegroundDisabledColor(customTheme?.color?.grayscale),
 
-      bg: buildBackgroundColors(bgColor, themeMode),
-      bgi: buildBackgroundInverseColors(fgColor, themeMode),
-      bgd: buildBackgroundDisabledColor(grayscaleColor),
+      bg: buildBackgroundColors(customTheme?.color?.bg, themeMode),
+      bgi: buildBackgroundInverseColors(customTheme?.color?.fg, themeMode),
+      bgd: buildBackgroundDisabledColor(customTheme?.color?.grayscale),
     },
   };
 
   // Override the main theme object with the edited theme object
-  themeEdit = deepmerge(theme, themeEdit);
+  themeEdit = deepmerge(customTheme, themeEdit);
 
   // Return the edited theme object
   return themeEdit;
