@@ -1,20 +1,24 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
+import clsx from "clsx";
 import { css } from "@emotion/css";
 
 // STYLES ---------------------------------------------------------------- //
 
 export const usePaletteStyles = (theme: any) => {
-  const stylesheet: any = {
-    palette: css`
-      position: relative;
-    `,
-    flex: css`
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    `,
-  };
+  const clsPalette = css`
+    position: relative;
+  `;
 
-  return stylesheet;
+  return clsx(clsPalette);
+};
+
+export const useFlexStyles = (theme: any) => {
+  const clsFlex = css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `;
+
+  return clsx(clsFlex);
 };

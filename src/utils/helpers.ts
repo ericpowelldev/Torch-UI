@@ -15,8 +15,6 @@ import {
   SelectorValues,
   SizeValues,
   SizeValuesExtended,
-  textColorValues,
-  TextColorValues,
   tintValues,
   TintValues,
 } from "./types";
@@ -139,8 +137,8 @@ export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?
 };
 
 /** Get color foreground */
-export const getColorText = (theme: any, color?: `inherit` | ColorValues | TextColorValues, tint?: TintValues) => {
-  if (textColorValues.includes(color)) {
+export const getColorText = (theme: any, color?: `inherit` | ColorValues | FGColorValues, tint?: TintValues) => {
+  if (fgColorValues.includes(color)) {
     if (color === `fg1`) return theme.color.fg[0];
     if (color === `fg2`) return theme.color.fg[1];
     if (color === `fg3`) return theme.color.fg[2];
@@ -152,6 +150,14 @@ export const getColorText = (theme: any, color?: `inherit` | ColorValues | TextC
   }
   if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
   return `inherit`;
+};
+
+// CONTAINER ---------------------------------------------------------------- //
+
+/** Get container max width */
+export const getContainerMaxWidth = (theme: any, size: SizeValues) => {
+  if (size) return theme?.container?.[size];
+  return `100%`;
 };
 
 // INPUT ---------------------------------------------------------------- //
@@ -209,25 +215,27 @@ export const getTrackSize = (size: number) => {
 
 // SPACER ---------------------------------------------------------------- //
 
-/** Get the size of a space */
+/** Get spacer size */
 export const getSpacerSize = (size: SizeValuesExtended | number) => {
-  let sizeNum = 4;
   if (typeof size === `number`) {
-    sizeNum = size;
-  } else if (typeof size === `string`) {
-    if (size === `4xs`) sizeNum = 0.25;
-    if (size === `3xs`) sizeNum = 0.5;
-    if (size === `2xs`) sizeNum = 1;
-    if (size === `xs`) sizeNum = 2;
-    if (size === `sm`) sizeNum = 3;
-    if (size === `md`) sizeNum = 4;
-    if (size === `lg`) sizeNum = 6;
-    if (size === `xl`) sizeNum = 8;
-    if (size === `2xl`) sizeNum = 12;
-    if (size === `3xl`) sizeNum = 16;
-    if (size === `4xl`) sizeNum = 20;
+    return size;
   }
-  return sizeNum;
+
+  if (typeof size === `string`) {
+    if (size === `4xs`) return 0.25;
+    if (size === `3xs`) return 0.5;
+    if (size === `2xs`) return 1;
+    if (size === `xs`) return 2;
+    if (size === `sm`) return 3;
+    if (size === `md`) return 4;
+    if (size === `lg`) return 6;
+    if (size === `xl`) return 8;
+    if (size === `2xl`) return 12;
+    if (size === `3xl`) return 16;
+    if (size === `4xl`) return 20;
+  }
+
+  return 4;
 };
 
 // TOGGLE ---------------------------------------------------------------- //

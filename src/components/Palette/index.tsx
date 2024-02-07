@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
-import { usePaletteStyles } from "./styles";
+import { usePaletteStyles, useFlexStyles } from "./styles";
 
 import Box from "../Box";
 import Spacer from "../Spacer";
@@ -13,18 +13,25 @@ import Spacer from "../Spacer";
 // PROPS ---------------------------------------------------------------- //
 
 interface PaletteProps {
+  // Generic props
   className?: string;
   classes?: {
     palette?: string;
+    flex?: string;
   };
   style?: React.CSSProperties;
+  props?: {
+    palette?: React.HTMLAttributes<HTMLDivElement>;
+    flex?: React.HTMLAttributes<HTMLDivElement>;
+  };
 
-  [x: string]: any; // Handle default HTML props
+  // Default HTML props
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const Palette = ({ className, classes, ...rest }: PaletteProps) => {
+const Palette = ({ className, classes, props, ...rest }: PaletteProps) => {
   // HOOKS //
 
   const { theme } = useTUI();
@@ -32,22 +39,23 @@ const Palette = ({ className, classes, ...rest }: PaletteProps) => {
   // CLASSES //
 
   const paletteStyles = usePaletteStyles(theme);
+  const flexStyles = useFlexStyles(theme);
 
   // CLASSNAMES //
 
-  const clsxPalette = clsx(paletteStyles?.palette, classes?.palette, className) || undefined;
-  const clsxFlex = clsx(paletteStyles?.flex) || undefined;
+  const clsxPalette = clsx(paletteStyles, classes?.palette, className) || undefined;
+  const clsxFlex = clsx(flexStyles, classes?.flex) || undefined;
 
   // RENDER //
 
   return (
-    <div className={clsxPalette} {...rest}>
-      <div className={clsxFlex}>
+    <div className={clsxPalette} {...props?.palette} {...rest}>
+      <div className={clsxFlex} {...props?.flex}>
         <Box color="primary" tint={100} width={64} height={64} />
         <Box color="secondary" tint={100} width={64} height={64} />
         <Box color="tertiary" tint={100} width={64} height={64} />
 
-        <Spacer vertical size={8} />
+        <Spacer direction="vertical" size={8} />
 
         <Box color="utility" tint={100} width={64} height={64} />
         <Box color="error" tint={100} width={64} height={64} />
@@ -56,12 +64,12 @@ const Palette = ({ className, classes, ...rest }: PaletteProps) => {
         <Box color="info" tint={100} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex}>
+      <div className={clsxFlex} {...props?.flex}>
         <Box color="primary" tint={250} width={64} height={64} />
         <Box color="secondary" tint={250} width={64} height={64} />
         <Box color="tertiary" tint={250} width={64} height={64} />
 
-        <Spacer vertical size={8} />
+        <Spacer direction="vertical" size={8} />
 
         <Box color="utility" tint={250} width={64} height={64} />
         <Box color="error" tint={250} width={64} height={64} />
@@ -70,12 +78,12 @@ const Palette = ({ className, classes, ...rest }: PaletteProps) => {
         <Box color="info" tint={250} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex}>
+      <div className={clsxFlex} {...props?.flex}>
         <Box color="primary" tint={500} width={64} height={64} />
         <Box color="secondary" tint={500} width={64} height={64} />
         <Box color="tertiary" tint={500} width={64} height={64} />
 
-        <Spacer vertical size={8} />
+        <Spacer direction="vertical" size={8} />
 
         <Box color="utility" tint={500} width={64} height={64} />
         <Box color="error" tint={500} width={64} height={64} />
@@ -84,12 +92,12 @@ const Palette = ({ className, classes, ...rest }: PaletteProps) => {
         <Box color="info" tint={500} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex}>
+      <div className={clsxFlex} {...props?.flex}>
         <Box color="primary" tint={750} width={64} height={64} />
         <Box color="secondary" tint={750} width={64} height={64} />
         <Box color="tertiary" tint={750} width={64} height={64} />
 
-        <Spacer vertical size={8} />
+        <Spacer direction="vertical" size={8} />
 
         <Box color="utility" tint={750} width={64} height={64} />
         <Box color="error" tint={750} width={64} height={64} />
@@ -98,12 +106,12 @@ const Palette = ({ className, classes, ...rest }: PaletteProps) => {
         <Box color="info" tint={750} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex}>
+      <div className={clsxFlex} {...props?.flex}>
         <Box color="primary" tint={900} width={64} height={64} />
         <Box color="secondary" tint={900} width={64} height={64} />
         <Box color="tertiary" tint={900} width={64} height={64} />
 
-        <Spacer vertical size={8} />
+        <Spacer direction="vertical" size={8} />
 
         <Box color="utility" tint={900} width={64} height={64} />
         <Box color="error" tint={900} width={64} height={64} />

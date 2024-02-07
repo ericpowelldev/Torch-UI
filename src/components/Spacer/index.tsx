@@ -5,37 +5,59 @@ import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
-import { BoolValues } from "../../utils/types";
+import { BoolValues, SizeValuesExtended, SpacerComponentValues, SpacerDirectionValues } from "../../utils/types";
 
 import { useSpacerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
 interface SpacerProps {
-  children?: React.ReactNode;
+  // Generic props
   className?: string;
   classes?: {
     spacer?: string;
   };
   style?: React.CSSProperties;
+  props?: {
+    spacer?: React.HTMLAttributes<HTMLDivElement> | React.HTMLAttributes<HTMLSpanElement>;
+  };
+  children?: React.ReactNode;
+  component?: SpacerComponentValues;
 
-  size?: number | string;
+  // Specialized props
+  size?: SizeValuesExtended | number;
+  direction?: SpacerDirectionValues;
+  visualize?: BoolValues;
 
-  vertical?: BoolValues;
-
-  [x: string]: any; // Handle default HTML props
+  // Default HTML props
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: SpacerProps) => {
+const Spacer = ({
+  // Generic props
+  className,
+  classes,
+  props,
+  children,
+  component,
+
+  // Specialized props
+  size = 4,
+  direction = "horizontal",
+  visualize = false,
+
+  // Default HTML props
+  ...rest
+}: SpacerProps) => {
   // HOOKS //
 
   const { theme } = useTUI();
 
   // CLASSES //
 
-  const spacerStyles = useSpacerStyles(theme, { size, vertical });
+  const spacerStyles = useSpacerStyles(theme, { size, direction, visualize });
 
   // CLASSNAMES //
 
@@ -43,7 +65,7 @@ const Spacer = ({ children, className, classes, size = 4, vertical, ...rest }: S
 
   // RENDER //
 
-  return <div className={clsxSpacer} {...rest} />;
+  return React.createElement(component || `div`, { className: clsxSpacer, ...props?.spacer, ...rest });
 };
 
 // EXPORT ---------------------------------------------------------------- //

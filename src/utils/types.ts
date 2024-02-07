@@ -228,20 +228,32 @@ export type AlphaTintValues =
   | `a950`
   | `a1000`;
 
+// CONTAINER TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted container component values */
+export const containerComponentValues = [`div`, `span`];
+export type ContainerComponentValues = `div` | `span`;
+
 // INPUT TYPES ---------------------------------------------------------------- //
 
 export const inputVariantValues = [`standard`, `transparent`, `outline`];
 export type InputVariantValues = `standard` | `transparent` | `outline`;
+
+// SPACER TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted spacer component values */
+export const spacerComponentValues = [`div`, `span`];
+export type SpacerComponentValues = `div` | `span`;
+
+/** Array of accepted spacer direction values */
+export const spacerDirectionValues = [`horizontal`, `vertical`];
+export type SpacerDirectionValues = `horizontal` | `vertical`;
 
 // TEXT TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted text variants */
 export const textAlignValues = [`left`, `center`, `right`, `justify`];
 export type TextAlignValues = `left` | `center` | `right` | `justify`;
-
-/** Array of accepted text variants */
-export const textColorValues = [`fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
-export type TextColorValues = `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
 
 /** Array of accepted text variants */
 export const textComponentValues = [`div`, `span`];

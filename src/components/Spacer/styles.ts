@@ -1,5 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
+import clsx from "clsx";
 import { css } from "@emotion/css";
 
 import { getSpacerSize } from "../../utils/helpers";
@@ -7,21 +8,29 @@ import { getSpacerSize } from "../../utils/helpers";
 // STYLES ---------------------------------------------------------------- //
 
 export const useSpacerStyles = (theme: any, props: any) => {
-  const { size, vertical } = props;
+  const { size, direction, visualize } = props;
 
-  const stylesheet: any = {
-    horizontal: css`
-      position: relative;
-      width: 100%;
-      height: ${theme.space(getSpacerSize(size))};
-    `,
-    vertical: css`
-      position: relative;
-      width: ${theme.space(getSpacerSize(size))};
-      height: auto;
-    `,
-  };
+  const clsSpacer = css`
+    display: block;
+  `;
 
-  if (vertical) return stylesheet.vertical;
-  return stylesheet.horizontal;
+  const clsDirection =
+    direction !== "vertical"
+      ? css`
+          width: 100%;
+          height: ${theme.space(getSpacerSize(size))};
+        `
+      : css`
+          width: ${theme.space(getSpacerSize(size))};
+          height: auto;
+        `;
+
+  const clsVisualize = visualize
+    ? css`
+        outline: 2px dashed gray;
+        outline-offset: -2px;
+      `
+    : null;
+
+  return clsx(clsSpacer, clsDirection, clsVisualize);
 };

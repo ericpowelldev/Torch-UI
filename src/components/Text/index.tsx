@@ -8,9 +8,9 @@ import { useTUI } from "../../TUI";
 import {
   BoolValues,
   ColorValues,
+  FGColorValues,
   TintValues,
   TextAlignValues,
-  TextColorValues,
   TextComponentValues,
   TextVariantValues,
 } from "../../utils/types";
@@ -28,8 +28,9 @@ interface TextProps {
   style?: React.CSSProperties;
 
   component?: `inherit` | TextComponentValues;
+  
   variant?: TextVariantValues;
-  color?: `inherit` | ColorValues | TextColorValues;
+  color?: `inherit` | ColorValues | FGColorValues;
   tint?: TintValues;
 
   align?: `inherit` | TextAlignValues;
