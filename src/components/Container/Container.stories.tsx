@@ -75,7 +75,7 @@ type Story = StoryObj<typeof Component>;
 
 export const Default: Story = {
   args: {
-    children: <div style={{ width: "100%", height: "256px" }} />,
     visualize: true,
+    children: <div style={{ width: "256px", height: "256px" }} />,
   },
 };

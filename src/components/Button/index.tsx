@@ -7,7 +7,7 @@ import { useTUI } from "../../TUI";
 import { BoolValues, ButtonVariantValues, ColorValues, SizeValues, TintValues } from "../../utils/types";
 import { getButtonIconSize } from "../../utils/helpers";
 
-import { useButtonStyles, useLabelStyles, useStartIconStyles, useEndIconStyles } from "./styles";
+import { useButtonStyles, useLabelStyles, useStartIconStyles, useEndIconStyles, useCenterIconStyles } from "./styles";
 
 import IconError from "../IconError";
 import IconWarning from "../IconWarning";
@@ -25,6 +25,7 @@ interface ButtonProps {
     label?: React.HTMLAttributes<HTMLElement>;
     startIcon?: React.HTMLAttributes<HTMLElement>;
     endIcon?: React.HTMLAttributes<HTMLElement>;
+    centerIcon?: React.HTMLAttributes<HTMLElement>;
     iconError?: React.HTMLAttributes<HTMLElement>;
     iconWarning?: React.HTMLAttributes<HTMLElement>;
     iconSuccess?: React.HTMLAttributes<HTMLElement>;
@@ -36,6 +37,7 @@ interface ButtonProps {
     label?: string;
     startIcon?: string;
     endIcon?: string;
+    centerIcon?: string;
     iconError?: string;
     iconWarning?: string;
     iconSuccess?: string;
@@ -68,6 +70,7 @@ interface ButtonProps {
   success?: BoolValues;
   info?: BoolValues;
   loading?: BoolValues;
+  fetching?: BoolValues;
   disabled?: BoolValues;
 
   // HTML Properties //
@@ -104,6 +107,7 @@ const Button = ({
   success = false,
   info = false,
   loading = false,
+  fetching = false,
   disabled = false,
 
   // HTML Properties //
@@ -126,6 +130,8 @@ const Button = ({
       shadowButton,
       shadowLabel,
       backdropBlur,
+      loading,
+      fetching,
       disabled,
     },
     [classes?.button, className]
@@ -133,6 +139,7 @@ const Button = ({
   const labelStyles = useLabelStyles(theme, { size, uppercase }, [classes?.label]);
   const startIconStyles = useStartIconStyles(theme, { size }, [classes?.startIcon]);
   const endIconStyles = useEndIconStyles(theme, { size }, [classes?.endIcon]);
+  const centerIconStyles = useCenterIconStyles(theme, { size }, [classes?.centerIcon]);
   const iconErrorStyles = classes?.iconError || undefined;
   const iconWarningStyles = classes?.iconWarning || undefined;
   const iconSuccessStyles = classes?.iconSuccess || undefined;
@@ -200,8 +207,10 @@ const Button = ({
             {...props?.iconInfo}
           />
         </span>
-      ) : loading ? (
-        <span className={endIconStyles} {...props?.endIcon}>
+      ) : null}
+
+      {loading ? (
+        <div className={centerIconStyles} {...props?.centerIcon}>
           <IconLoading
             className={iconLoadingStyles}
             variant={variant === `solid` ? `fg` : `bg`}
@@ -211,7 +220,7 @@ const Button = ({
             disabled={disabled}
             {...props?.iconLoading}
           />
-        </span>
+        </div>
       ) : null}
     </button>
   );

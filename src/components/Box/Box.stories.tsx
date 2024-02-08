@@ -89,6 +89,12 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
+    visualize: {
+      description: "Should the component be visualized?",
+      control: {
+        type: "boolean",
+      },
+    },
   },
 };
 export default meta;
@@ -97,10 +103,9 @@ type Story = StoryObj<typeof Component>;
 
 export const Default: Story = {
   args: {
-    width: 256,
+    visualize: true,
+    width: "100%",
     height: 256,
-    radius: 16,
-    color: "utility",
-    tint: 500,
+    radius: 12,
   },
 };

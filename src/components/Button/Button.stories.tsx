@@ -159,27 +159,27 @@ type Story = StoryObj<typeof Component>;
 
 export const Default: Story = {
   args: {
-    children: "Default Button",
+    children: "Default",
   },
 };
 
 export const Primary: Story = {
   args: {
-    children: "Primary Button",
+    children: "Primary",
     color: "primary",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: "Secondary Button",
+    children: "Secondary",
     color: "secondary",
   },
 };
 
 export const Tertiary: Story = {
   args: {
-    children: "Tertiary Button",
+    children: "Tertiary",
     color: "tertiary",
   },
 };
@@ -200,7 +200,7 @@ export const WithEmoji: Story = {
 
 export const ErrorState: Story = {
   args: {
-    children: "Error Button",
+    children: "Error State",
     color: "error",
     error: true,
   },
@@ -208,7 +208,7 @@ export const ErrorState: Story = {
 
 export const WarningState: Story = {
   args: {
-    children: "Warning Button",
+    children: "Warning State",
     color: "warning",
     warning: true,
   },
@@ -216,7 +216,7 @@ export const WarningState: Story = {
 
 export const SuccessState: Story = {
   args: {
-    children: "Success Button",
+    children: "Success State",
     color: "success",
     success: true,
   },
@@ -224,7 +224,7 @@ export const SuccessState: Story = {
 
 export const InfoState: Story = {
   args: {
-    children: "Info Button",
+    children: "Info State",
     color: "info",
     info: true,
   },
@@ -232,77 +232,84 @@ export const InfoState: Story = {
 
 export const LoadingState: Story = {
   args: {
-    children: "Loading Button",
+    children: "Loading State",
     loading: true,
+  },
+};
+
+export const FetchingState: Story = {
+  args: {
+    children: "Fetching State",
+    fetching: true,
   },
 };
 
 export const DisabledState: Story = {
   args: {
-    children: "Disabled Button",
+    children: "Disabled State",
     disabled: true,
   },
 };
 
 export const Tint100: Story = {
   args: {
-    children: "Tint 100 Button",
+    children: "Tint 100",
     color: "primary",
     tint: 100,
   },
 };
 
-export const Tint250: Story = {
+export const Tint300: Story = {
   args: {
-    children: "Tint 250 Button",
+    children: "Tint 300",
     color: "primary",
-    tint: 250,
+    tint: 300,
   },
 };
 
 export const Tint500: Story = {
   args: {
-    children: "Tint 500 Button",
+    children: "Tint 500",
     color: "primary",
     tint: 500,
   },
 };
 
-export const Tint750: Story = {
+export const Tint700: Story = {
   args: {
-    children: "Tint 750 Button",
+    children: "Tint 700",
     color: "primary",
-    tint: 750,
+    tint: 700,
   },
 };
 
 export const Tint900: Story = {
   args: {
-    children: "Tint 900 Button",
+    children: "Tint 900",
     color: "primary",
     tint: 900,
   },
 };
 
-export const Transparent: Story = {
+export const TransparentVariant: Story = {
   args: {
-    children: "Transparent Button",
+    children: "Transparent Variant",
     variant: "transparent",
     color: "primary",
   },
 };
 
-export const Simple: Story = {
+export const SimpleVariant: Story = {
   args: {
-    children: "Simple Button",
+    children: "Simple Variant",
     variant: "simple",
     color: "primary",
   },
 };
 
-export const Outline: Story = {
+export const OutlineVariant: Story = {
   args: {
-    children: "Outline Button",
+    children: "Outline Variant",
     variant: "outline",
     color: "primary",
   },

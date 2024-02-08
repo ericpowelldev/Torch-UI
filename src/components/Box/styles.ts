@@ -8,7 +8,7 @@ import { getBoxColor } from "../../utils/helpers";
 // STYLES ---------------------------------------------------------------- //
 
 export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { color, tint, width, height, radius, shadow, backdropBlur } = props;
+  const { color, tint, width, height, radius, shadow, backdropBlur, visualize } = props;
 
   const boxCSS = css`
     display: block;
@@ -40,5 +40,12 @@ export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | und
       `
     : null;
 
-  return clsx(boxCSS, radiusCSS, colorCSS, shadowCSS, backdropBlurCSS, overrides) || undefined;
+  const visualizeCSS = visualize
+    ? css`
+        outline: 2px dashed gray;
+        outline-offset: -2px;
+      `
+    : null;
+
+  return clsx(boxCSS, radiusCSS, colorCSS, shadowCSS, backdropBlurCSS, visualizeCSS, overrides) || undefined;
 };

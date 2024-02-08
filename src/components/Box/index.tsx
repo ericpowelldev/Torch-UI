@@ -41,6 +41,7 @@ interface BoxProps {
   tint?: TintValues | InverseTintValues | AlphaTintValues;
   shadow?: boolean;
   backdropBlur?: boolean;
+  visualize?: boolean;
 
   // HTML Properties //
 
@@ -67,6 +68,7 @@ const Box = ({
   tint = 500,
   shadow = false,
   backdropBlur = false,
+  visualize,
 
   // HTML Properties //
 
@@ -76,7 +78,7 @@ const Box = ({
   const { theme } = useTUI();
 
   // Styles
-  const boxStyles = useBoxStyles(theme, { width, height, radius, color, tint, shadow, backdropBlur }, [
+  const boxStyles = useBoxStyles(theme, { width, height, radius, color, tint, shadow, backdropBlur, visualize }, [
     classes?.box,
     className,
   ]);

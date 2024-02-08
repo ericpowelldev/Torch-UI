@@ -18,7 +18,8 @@ import {
 // STYLES ---------------------------------------------------------------- //
 
 export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size, fullWidth, pill, shadowButton, shadowLabel, backdropBlur, disabled } = props;
+  const { variant, color, tint, size, fullWidth, pill, shadowButton, shadowLabel, backdropBlur, loading, fetching, disabled } =
+    props;
 
   const buttonCSS = css`
     position: relative;
@@ -164,6 +165,26 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
       `
     : null;
 
+  const loadingCSS = loading
+    ? css`
+        cursor: wait;
+        pointer-events: none;
+        & span {
+          opacity: 0;
+        }
+      `
+    : null;
+
+  const fetchingCSS = fetching
+    ? css`
+        cursor: wait;
+        pointer-events: none;
+        & span {
+          opacity: 0;
+        }
+      `
+    : null;
+
   const disabledCSS = disabled
     ? css`
         cursor: not-allowed;
@@ -185,6 +206,8 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
       shadowButtonCSS,
       shadowLabelCSS,
       backdropBlurCSS,
+      loadingCSS,
+      fetchingCSS,
       disabledCSS,
       overrides
     ) || undefined
@@ -251,4 +274,22 @@ export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string |
   `;
 
   return clsx(endIconCSS, overrides) || undefined;
+};
+
+export const useCenterIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  const { size } = props;
+
+  const centerIconCSS = css`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    & svg {
+      display: block;
+      width: ${getButtonIconSize(size)}px;
+      height: ${getButtonIconSize(size)}px;
+    }
+  `;
+
+  return clsx(centerIconCSS, overrides) || undefined;
 };
