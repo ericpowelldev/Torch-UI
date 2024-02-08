@@ -7,14 +7,14 @@ import { getSpacerSize } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useSpacerStyles = (theme: any, props: any) => {
+export const useSpacerStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
   const { size, direction, visualize } = props;
 
-  const clsSpacer = css`
+  const spacerCSS = css`
     display: block;
   `;
 
-  const clsDirection =
+  const directionCSS =
     direction !== "vertical"
       ? css`
           width: 100%;
@@ -25,12 +25,12 @@ export const useSpacerStyles = (theme: any, props: any) => {
           height: auto;
         `;
 
-  const clsVisualize = visualize
+  const visualizeCSS = visualize
     ? css`
         outline: 2px dashed gray;
         outline-offset: -2px;
       `
     : null;
 
-  return clsx(clsSpacer, clsDirection, clsVisualize);
+  return clsx(spacerCSS, directionCSS, visualizeCSS, overrides) || undefined;
 };

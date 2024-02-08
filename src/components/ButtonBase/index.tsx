@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
@@ -10,39 +9,54 @@ import { useButtonStyles, useLabelStyles } from "./styles";
 // PROPS ---------------------------------------------------------------- //
 
 interface ButtonBaseProps {
-  children?: React.ReactNode;
-  className?: string;
+  // General Properties //
+
+  props?: {
+    button?: React.HTMLAttributes<HTMLElement>;
+    label?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     button?: string;
     label?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
+  tooltip?: React.ReactNode;
 
-  [x: string]: any; // Handle default HTML props
+  // HTML Properties //
+
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const ButtonBase = ({ children, className, classes, ...rest }: ButtonBaseProps) => {
-  // HOOKS //
+const ButtonBase = ({
+  // General Properties //
 
+  props,
+  classes,
+  className,
+  children,
+  tooltip,
+
+  // HTML Properties //
+
+  ...rest
+}: ButtonBaseProps) => {
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const buttonStyles = useButtonStyles(theme, undefined, [classes?.button, className]);
+  const labelStyles = useLabelStyles(theme, undefined, [classes?.label]);
 
-  const buttonStyles = useButtonStyles(theme);
-  const labelStyles = useLabelStyles(theme);
-
-  // CLASSNAMES //
-
-  const clsxButton = clsx(buttonStyles, classes?.button, className) || undefined;
-  const clsxLabel = clsx(labelStyles, classes?.label) || undefined;
-
-  // RENDER //
-
+  // Return Component
   return (
-    <button className={clsxButton} {...rest}>
-      <span className={clsxLabel}>{children}</span>
+    <button className={buttonStyles} {...props?.button} {...rest}>
+      <span className={labelStyles} {...props?.label}>
+        {children}
+      </span>
     </button>
   );
 };

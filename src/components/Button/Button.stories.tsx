@@ -1,64 +1,87 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Component from "./index";
 
+import React from "react";
 import { MdRocketLaunch } from "react-icons/md";
 
 const meta: Meta<typeof Component> = {
   title: "Buttons/Button",
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
   component: Component,
   argTypes: {
-    children: {
-      description: "The content inside of the button.",
-      control: {
-        type: "text",
+    // General Properties //
+
+    props: {
+      description: "Nested properties of the component.",
+      table: {
+        disable: true,
       },
     },
     classes: {
+      description: "Nested CSS classes of the component.",
       table: {
         disable: true,
       },
     },
     className: {
+      description: "CSS class of the component.",
       table: {
         disable: true,
       },
     },
     style: {
+      description: "Inline styling of the component.",
       table: {
         disable: true,
       },
     },
+    children: {
+      description: "Content inside of the component.",
+      control: {
+        type: "text",
+      },
+    },
+    tooltip: {
+      description: "Content inside of the tooltip (If present, tooltip will pop up on hover).",
+      control: {
+        type: "text",
+      },
+    },
+
+    // Specialized Properties //
+
     variant: {
-      description: "The variation of the button.",
+      description: "Variation of the button.",
       control: {
         type: "radio",
       },
     },
     color: {
-      description: "The color of the button.",
+      description: "Color of the button.",
       control: {
         type: "select",
       },
     },
     tint: {
-      description: "The color tint of the button.",
+      description: "Color tint of the button.",
       control: {
         type: "select",
       },
     },
     size: {
-      description: "The size of the button.",
+      description: "Size of the button.",
       control: {
         type: "radio",
       },
     },
+    uppercase: {
+      description: "Should the button text be uppercase?",
+      control: {
+        type: "boolean",
+      },
+    },
     fullWidth: {
-      description: "Should the button be full width?",
+      description: "Should the button be the full width of its container?",
       control: {
         type: "boolean",
       },
@@ -69,34 +92,27 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
-    buttonShadow: {
+    shadowButton: {
       description: "Should the button have a shadow?",
       control: {
         type: "boolean",
       },
     },
-    textShadow: {
-      description: "Should the button text have a shadow?",
+    shadowLabel: {
+      description: "Should the button label have a shadow?",
       control: {
         type: "boolean",
       },
     },
     backdropBlur: {
-      description: "Should the background behind the button have a blur?",
+      description: "Should the button have a backdrop blur?",
       control: {
         type: "boolean",
       },
     },
-    uppercase: {
-      description: "Should the button text be uppercase?",
-      control: {
-        type: "boolean",
-      },
-    },
-    disabled: {
-      description: "Should the button be disabled?",
-      control: {
-        type: "boolean",
+    icon: {
+      table: {
+        disable: true,
       },
     },
     error: {
@@ -129,15 +145,10 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
-    tooltip: {
-      description: "The content inside of the tooltip.",
+    disabled: {
+      description: "Should the button be in a disabled state?",
       control: {
-        type: "text",
-      },
-    },
-    icon: {
-      table: {
-        disable: true,
+        type: "boolean",
       },
     },
   },
@@ -276,23 +287,23 @@ export const Tint900: Story = {
 export const Transparent: Story = {
   args: {
     children: "Transparent Button",
-    color: "primary",
     variant: "transparent",
+    color: "primary",
   },
 };
 
 export const Simple: Story = {
   args: {
     children: "Simple Button",
-    color: "primary",
     variant: "simple",
+    color: "primary",
   },
 };
 
 export const Outline: Story = {
   args: {
     children: "Outline Button",
-    color: "primary",
     variant: "outline",
+    color: "primary",
   },
 };

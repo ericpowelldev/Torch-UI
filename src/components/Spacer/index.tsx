@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
@@ -12,60 +11,59 @@ import { useSpacerStyles } from "./styles";
 // PROPS ---------------------------------------------------------------- //
 
 interface SpacerProps {
-  // Generic props
-  className?: string;
+  // General Properties //
+
+  props?: {
+    spacer?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     spacer?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
-  props?: {
-    spacer?: React.HTMLAttributes<HTMLDivElement> | React.HTMLAttributes<HTMLSpanElement>;
-  };
   children?: React.ReactNode;
   component?: SpacerComponentValues;
 
-  // Specialized props
+  // Specialized Properties //
+
   size?: SizeValuesExtended | number;
   direction?: SpacerDirectionValues;
   visualize?: BoolValues;
 
-  // Default HTML props
+  // HTML Properties //
+
   [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
 const Spacer = ({
-  // Generic props
-  className,
-  classes,
+  // General Properties //
+
   props,
+  classes,
+  className,
   children,
   component,
 
-  // Specialized props
+  // Specialized Properties //
+
   size = 4,
   direction = "horizontal",
   visualize = false,
 
-  // Default HTML props
+  // HTML Properties //
+
   ...rest
 }: SpacerProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const spacerStyles = useSpacerStyles(theme, { size, direction, visualize }, [classes?.spacer, className]);
 
-  const spacerStyles = useSpacerStyles(theme, { size, direction, visualize });
-
-  // CLASSNAMES //
-
-  const clsxSpacer = clsx(spacerStyles, classes?.spacer, className) || undefined;
-
-  // RENDER //
-
-  return React.createElement(component || `div`, { className: clsxSpacer, ...props?.spacer, ...rest });
+  // Return Component
+  return React.createElement(component || `div`, { className: spacerStyles, ...props?.spacer, ...rest });
 };
 
 // EXPORT ---------------------------------------------------------------- //

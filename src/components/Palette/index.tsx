@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
@@ -13,44 +12,48 @@ import Spacer from "../Spacer";
 // PROPS ---------------------------------------------------------------- //
 
 interface PaletteProps {
-  // Generic props
-  className?: string;
+  // General Properties //
+
+  props?: {
+    palette?: React.HTMLAttributes<HTMLElement>;
+    flex?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     palette?: string;
     flex?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
-  props?: {
-    palette?: React.HTMLAttributes<HTMLDivElement>;
-    flex?: React.HTMLAttributes<HTMLDivElement>;
-  };
 
-  // Default HTML props
+  // HTML Properties //
+
   [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const Palette = ({ className, classes, props, ...rest }: PaletteProps) => {
-  // HOOKS //
+const Palette = ({
+  // General Properties //
 
+  props,
+  classes,
+  className,
+
+  // HTML Properties //
+
+  ...rest
+}: PaletteProps) => {
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const paletteStyles = usePaletteStyles(theme, undefined, [classes?.palette, className]);
+  const flexStyles = useFlexStyles(theme, undefined, [classes?.flex]);
 
-  const paletteStyles = usePaletteStyles(theme);
-  const flexStyles = useFlexStyles(theme);
-
-  // CLASSNAMES //
-
-  const clsxPalette = clsx(paletteStyles, classes?.palette, className) || undefined;
-  const clsxFlex = clsx(flexStyles, classes?.flex) || undefined;
-
-  // RENDER //
-
+  // Return Component
   return (
-    <div className={clsxPalette} {...props?.palette} {...rest}>
-      <div className={clsxFlex} {...props?.flex}>
+    <div className={paletteStyles} {...props?.palette} {...rest}>
+      <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={100} width={64} height={64} />
         <Box color="secondary" tint={100} width={64} height={64} />
         <Box color="tertiary" tint={100} width={64} height={64} />
@@ -64,7 +67,7 @@ const Palette = ({ className, classes, props, ...rest }: PaletteProps) => {
         <Box color="info" tint={100} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex} {...props?.flex}>
+      <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={250} width={64} height={64} />
         <Box color="secondary" tint={250} width={64} height={64} />
         <Box color="tertiary" tint={250} width={64} height={64} />
@@ -78,7 +81,7 @@ const Palette = ({ className, classes, props, ...rest }: PaletteProps) => {
         <Box color="info" tint={250} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex} {...props?.flex}>
+      <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={500} width={64} height={64} />
         <Box color="secondary" tint={500} width={64} height={64} />
         <Box color="tertiary" tint={500} width={64} height={64} />
@@ -92,7 +95,7 @@ const Palette = ({ className, classes, props, ...rest }: PaletteProps) => {
         <Box color="info" tint={500} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex} {...props?.flex}>
+      <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={750} width={64} height={64} />
         <Box color="secondary" tint={750} width={64} height={64} />
         <Box color="tertiary" tint={750} width={64} height={64} />
@@ -106,7 +109,7 @@ const Palette = ({ className, classes, props, ...rest }: PaletteProps) => {
         <Box color="info" tint={750} width={64} height={64} />
       </div>
 
-      <div className={clsxFlex} {...props?.flex}>
+      <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={900} width={64} height={64} />
         <Box color="secondary" tint={900} width={64} height={64} />
         <Box color="tertiary" tint={900} width={64} height={64} />

@@ -1,24 +1,44 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
+import clsx from "clsx";
 import { css } from "@emotion/css";
 
 import { getBoxColor } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBoxStyles = (theme: any, props: any) => {
+export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
   const { color, tint, width, height, radius, shadow, backdropBlur } = props;
 
-  const stylesheet: any = {
-    box: css`
-      width: ${typeof width === `number` ? `${width}px` : typeof width === `string` ? width : `inherit`};
-      height: ${typeof height === `number` ? `${height}px` : typeof height === `string` ? height : `inherit`};
-      border-radius: ${typeof radius === `number` ? `${radius}px` : typeof radius === `string` ? radius : `inherit`};
-      background-color: ${getBoxColor(theme, color, tint)};
-      box-shadow: ${shadow ? theme.shadow.medium : `none`};
-      backdrop-filter: ${backdropBlur ? theme.blur.medium : `none`};
-    `,
-  };
+  const boxCSS = css`
+    display: block;
+    width: ${typeof width === `number` ? `${width}px` : typeof width === `string` ? width : `inherit`};
+    height: ${typeof height === `number` ? `${height}px` : typeof height === `string` ? height : `inherit`};
+  `;
 
-  return stylesheet.box;
+  const radiusCSS = radius
+    ? css`
+        border-radius: ${typeof radius === `number` ? `${radius}px` : radius};
+      `
+    : null;
+
+  const colorCSS = color
+    ? css`
+        background-color: ${getBoxColor(theme, color, tint)};
+      `
+    : null;
+
+  const shadowCSS = shadow
+    ? css`
+        box-shadow: ${theme?.shadow?.medium};
+      `
+    : null;
+
+  const backdropBlurCSS = backdropBlur
+    ? css`
+        backdrop-filter: ${theme?.blur?.medium};
+      `
+    : null;
+
+  return clsx(boxCSS, radiusCSS, colorCSS, shadowCSS, backdropBlurCSS, overrides) || undefined;
 };

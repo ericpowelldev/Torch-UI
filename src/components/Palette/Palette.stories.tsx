@@ -4,27 +4,30 @@ import Component from "./index";
 const meta: Meta<typeof Component> = {
   title: "Theme/Palette",
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
   component: Component,
   argTypes: {
+    // General Properties //
+
+    props: {
+      description: "Nested properties of the component.",
+      table: {
+        disable: true,
+      },
+    },
     classes: {
+      description: "Nested CSS classes of the component.",
       table: {
         disable: true,
       },
     },
     className: {
+      description: "CSS class of the component.",
       table: {
         disable: true,
       },
     },
     style: {
-      table: {
-        disable: true,
-      },
-    },
-    props: {
+      description: "Inline styling of the component.",
       table: {
         disable: true,
       },

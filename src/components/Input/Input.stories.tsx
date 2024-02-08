@@ -4,72 +4,83 @@ import Component from "./index";
 const meta: Meta<typeof Component> = {
   title: "Inputs/Input",
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
   component: Component,
   argTypes: {
-    children: {
-      description: "The content inside of the input.",
-      control: {
-        type: "text",
+    // General Properties //
+
+    props: {
+      description: "Nested properties of the component.",
+      table: {
+        disable: true,
       },
     },
     classes: {
+      description: "Nested CSS classes of the component.",
       table: {
         disable: true,
       },
     },
     className: {
+      description: "CSS class of the component.",
       table: {
         disable: true,
       },
     },
     style: {
+      description: "Inline styling of the component.",
       table: {
         disable: true,
       },
     },
+    component: {
+      description: "HTML element to render the component as.",
+      control: {
+        type: "radio",
+      },
+    },
+    tooltip: {
+      description: "Content inside of the tooltip (If present, tooltip will pop up on hover).",
+      control: {
+        type: "text",
+      },
+    },
+
+    // Specialized Properties //
+
     label: {
-      description: "The label for the input.",
+      description: "Label content for the input.",
       control: {
         type: "text",
       },
     },
     sublabel: {
-      description: "The sublabel for the input.",
+      description: "Sublabel content for the input.",
       control: {
         type: "text",
       },
     },
     placeholder: {
-      description: "The placeholder for the input.",
+      description: "Placeholder content for the input.",
       control: {
         type: "text",
       },
     },
     variant: {
-      description: "The variation of the input.",
+      description: "Variation of the input.",
       control: {
         type: "radio",
       },
     },
     color: {
-      description: "The color of the input (when active).",
+      description: "Color of the input (when focused).",
       control: {
         type: "select",
-      },
-      table: {
-        disable: true,
       },
     },
     tint: {
-      description: "The color tint of the input (when active).",
+      description: "Color tint of the input (when focused).",
       control: {
         type: "select",
-      },
-      table: {
-        disable: true,
       },
     },
     required: {
@@ -85,21 +96,20 @@ const meta: Meta<typeof Component> = {
       },
     },
     fullWidth: {
-      description: "Should the input be full width?",
+      description: "Should the input be the full width of its container?",
       control: {
         type: "boolean",
       },
     },
     backdropBlur: {
-      description: "Should the background behind the input have a blur?",
+      description: "Should the input have a backdrop blur?",
       control: {
         type: "boolean",
       },
     },
-    disabled: {
-      description: "Should the input be disabled?",
-      control: {
-        type: "boolean",
+    icon: {
+      table: {
+        disable: true,
       },
     },
     error: {
@@ -120,21 +130,22 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
+    info: {
+      description: "Should the input be in an info state?",
+      control: {
+        type: "boolean",
+      },
+    },
     loading: {
       description: "Should the input be in a loading state?",
       control: {
         type: "boolean",
       },
     },
-    tooltip: {
-      description: "The content inside of the tooltip.",
+    disabled: {
+      description: "Should the input be in a disabled state?",
       control: {
-        type: "text",
-      },
-    },
-    icon: {
-      table: {
-        disable: true,
+        type: "boolean",
       },
     },
   },

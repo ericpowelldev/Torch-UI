@@ -1,71 +1,88 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
-import { AlphaTintValues, BGColorValues, ColorValues, FGColorValues, InverseTintValues, TintValues } from "utils/types";
+import {
+  AlphaTintValues,
+  BGColorValues,
+  BoxComponentValues,
+  ColorValues,
+  FGColorValues,
+  InverseTintValues,
+  TintValues,
+} from "utils/types";
 
 import { useBoxStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
 interface BoxProps {
-  children?: React.ReactNode;
-  className?: string;
+  // General Properties //
+
+  props?: {
+    box?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     box?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
+  component?: BoxComponentValues;
 
-  color?: `inherit` | ColorValues | BGColorValues | FGColorValues;
-  tint?: TintValues | InverseTintValues | AlphaTintValues;
+  // Specialized Properties //
 
   width?: number | string;
   height?: number | string;
   radius?: number | string;
-
+  color?: `inherit` | ColorValues | BGColorValues | FGColorValues;
+  tint?: TintValues | InverseTintValues | AlphaTintValues;
   shadow?: boolean;
   backdropBlur?: boolean;
 
-  [x: string]: any; // Handle default HTML props
+  // HTML Properties //
+
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
 const Box = ({
-  children,
-  className,
+  // General Properties //
+
+  props,
   classes,
-  color = "utility",
+  className,
+  children,
+  component,
+
+  // Specialized Properties //
+
+  width = 0,
+  height = 0,
+  radius = 0,
+  color = "inherit",
   tint = 500,
-  width,
-  height,
-  radius,
-  shadow,
-  backdropBlur,
+  shadow = false,
+  backdropBlur = false,
+
+  // HTML Properties //
+
   ...rest
 }: BoxProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const boxStyles = useBoxStyles(theme, { width, height, radius, color, tint, shadow, backdropBlur }, [
+    classes?.box,
+    className,
+  ]);
 
-  const boxStyles = useBoxStyles(theme, { color, tint, width, height, radius, shadow, backdropBlur });
-
-  // CLASSNAMES //
-
-  const clsxBox = clsx(boxStyles, classes?.box, className) || undefined;
-
-  // RENDER //
-
-  return (
-    <div className={clsxBox} {...rest}>
-      {children}
-    </div>
-  );
+  // Return Component
+  return React.createElement(component || `div`, { className: boxStyles, ...props?.box, ...rest }, children);
 };
 
 // EXPORT ---------------------------------------------------------------- //

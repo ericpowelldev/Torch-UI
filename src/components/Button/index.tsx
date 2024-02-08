@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
@@ -19,167 +18,198 @@ import IconLoading from "../IconLoading";
 // PROPS ---------------------------------------------------------------- //
 
 interface ButtonProps {
-  children?: React.ReactNode;
-  className?: string;
+  // General Properties //
+
+  props?: {
+    button?: React.HTMLAttributes<HTMLElement>;
+    label?: React.HTMLAttributes<HTMLElement>;
+    startIcon?: React.HTMLAttributes<HTMLElement>;
+    endIcon?: React.HTMLAttributes<HTMLElement>;
+    iconError?: React.HTMLAttributes<HTMLElement>;
+    iconWarning?: React.HTMLAttributes<HTMLElement>;
+    iconSuccess?: React.HTMLAttributes<HTMLElement>;
+    iconInfo?: React.HTMLAttributes<HTMLElement>;
+    iconLoading?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     button?: string;
     label?: string;
     startIcon?: string;
     endIcon?: string;
-    iconLoading?: string;
-    iconWarning?: string;
     iconError?: string;
+    iconWarning?: string;
     iconSuccess?: string;
     iconInfo?: string;
+    iconLoading?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
+  tooltip?: React.ReactNode;
+
+  // Specialized Properties //
 
   variant?: ButtonVariantValues;
   color?: ColorValues;
   tint?: TintValues;
   size?: SizeValues;
 
+  uppercase?: BoolValues;
   fullWidth?: BoolValues;
   pill?: BoolValues;
-  buttonShadow?: BoolValues;
-  textShadow?: BoolValues;
+  shadowButton?: BoolValues;
+  shadowLabel?: BoolValues;
   backdropBlur?: BoolValues;
-  uppercase?: BoolValues;
 
-  disabled?: BoolValues;
+  icon?: React.ReactNode;
+
   error?: BoolValues;
   warning?: BoolValues;
   success?: BoolValues;
   info?: BoolValues;
   loading?: BoolValues;
+  disabled?: BoolValues;
 
-  tooltip?: React.ReactNode;
-  icon?: React.ReactNode;
+  // HTML Properties //
 
-  [x: string]: any; // Handle default HTML props
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
 const Button = ({
-  children,
-  className,
+  // General Properties //
+
+  props,
   classes,
+  className,
+  children,
+  tooltip,
+
+  // Specialized Properties //
+
   variant = "solid",
   color = "utility",
   tint = 500,
   size = "md",
-  fullWidth,
-  pill,
-  buttonShadow,
-  textShadow,
-  backdropBlur,
   uppercase = true,
-  disabled,
-  error,
-  warning,
-  success,
-  info,
-  loading,
-  tooltip,
+  fullWidth = false,
+  pill = false,
+  shadowButton = false,
+  shadowLabel = false,
+  backdropBlur = false,
   icon,
+  error = false,
+  warning = false,
+  success = false,
+  info = false,
+  loading = false,
+  disabled = false,
+
+  // HTML Properties //
+
   ...rest
 }: ButtonProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const buttonStyles = useButtonStyles(
+    theme,
+    {
+      variant,
+      color,
+      tint,
+      size,
+      fullWidth,
+      pill,
+      shadowButton,
+      shadowLabel,
+      backdropBlur,
+      disabled,
+    },
+    [classes?.button, className]
+  );
+  const labelStyles = useLabelStyles(theme, { size, uppercase }, [classes?.label]);
+  const startIconStyles = useStartIconStyles(theme, { size }, [classes?.startIcon]);
+  const endIconStyles = useEndIconStyles(theme, { size }, [classes?.endIcon]);
+  const iconErrorStyles = classes?.iconError || undefined;
+  const iconWarningStyles = classes?.iconWarning || undefined;
+  const iconSuccessStyles = classes?.iconSuccess || undefined;
+  const iconInfoStyles = classes?.iconInfo || undefined;
+  const iconLoadingStyles = classes?.iconLoading || undefined;
 
-  const buttonStyles = useButtonStyles(theme, {
-    variant,
-    color,
-    tint,
-    size,
-    fullWidth,
-    pill,
-    buttonShadow,
-    textShadow,
-    backdropBlur,
-    disabled,
-  });
-  const labelStyles = useLabelStyles(theme, { size, uppercase });
-  const startIconStyles = useStartIconStyles(theme, { size });
-  const endIconStyles = useEndIconStyles(theme, { size });
-
-  // CLASSNAMES //
-
-  const clsxButton = clsx(buttonStyles, classes?.button, className) || undefined;
-  const clsxLabel = clsx(labelStyles, classes?.label) || undefined;
-  const clsxStartIcon = clsx(startIconStyles, classes?.startIcon) || undefined;
-  const clsxEndIcon = clsx(endIconStyles, classes?.endIcon) || undefined;
-  const clsxIconError = clsx(classes?.iconError) || undefined;
-  const clsxIconWarning = clsx(classes?.iconWarning) || undefined;
-  const clsxIconSuccess = clsx(classes?.iconSuccess) || undefined;
-  const clsxIconInfo = clsx(classes?.iconInfo) || undefined;
-  const clsxIconLoading = clsx(classes?.iconLoading) || undefined;
-
-  // RENDER //
-
+  // Return Component
   return (
-    <button className={clsxButton} disabled={disabled ? true : false} {...rest}>
-      {icon ? <span className={clsxStartIcon}>{icon}</span> : null}
+    <button className={buttonStyles} disabled={disabled ? true : false} {...props?.button} {...rest}>
+      {icon ? (
+        <span className={startIconStyles} {...props?.startIcon}>
+          {icon}
+        </span>
+      ) : null}
 
-      <span className={clsxLabel}>{children}</span>
+      <span className={labelStyles} {...props?.label}>
+        {children}
+      </span>
 
       {error ? (
-        <span className={clsxEndIcon}>
+        <span className={endIconStyles} {...props?.endIcon}>
           <IconError
-            className={clsxIconError}
+            className={iconErrorStyles}
             variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
+            {...props?.iconError}
           />
         </span>
       ) : warning ? (
-        <span className={clsxEndIcon}>
+        <span className={endIconStyles} {...props?.endIcon}>
           <IconWarning
-            className={clsxIconWarning}
+            className={iconWarningStyles}
             variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
+            {...props?.iconWarning}
           />
         </span>
       ) : success ? (
-        <span className={clsxEndIcon}>
+        <span className={endIconStyles} {...props?.endIcon}>
           <IconSuccess
-            className={clsxIconSuccess}
+            className={iconSuccessStyles}
             variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
+            {...props?.iconSuccess}
           />
         </span>
       ) : info ? (
-        <span className={clsxEndIcon}>
+        <span className={endIconStyles} {...props?.endIcon}>
           <IconInfo
-            className={clsxIconInfo}
+            className={iconInfoStyles}
             variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
+            {...props?.iconInfo}
           />
         </span>
       ) : loading ? (
-        <span className={clsxEndIcon}>
+        <span className={endIconStyles} {...props?.endIcon}>
           <IconLoading
-            className={clsxIconLoading}
+            className={iconLoadingStyles}
             variant={variant === `solid` ? `fg` : `bg`}
             color={color}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
+            {...props?.iconLoading}
           />
         </span>
       ) : null}

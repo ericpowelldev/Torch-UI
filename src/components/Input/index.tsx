@@ -1,19 +1,25 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
-import { BoolValues, ColorValues, InputVariantValues, TintValues } from "../../utils/types";
+import { BoolValues, ColorValues, InputComponentValues, InputVariantValues, TintValues } from "../../utils/types";
 
 import { useBaseStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
 interface InputProps {
-  children?: React.ReactNode;
-  className?: string;
+  // General Properties //
+
+  props?: {
+    base?: React.HTMLAttributes<HTMLElement>;
+    label?: React.HTMLAttributes<HTMLElement>;
+    sublabel?: React.HTMLAttributes<HTMLElement>;
+    wrapper?: React.HTMLAttributes<HTMLElement>;
+    input?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     base?: string;
     label?: string;
@@ -21,7 +27,12 @@ interface InputProps {
     wrapper?: string;
     input?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
+  component?: InputComponentValues;
+  tooltip?: React.ReactNode;
+
+  // Specialized Properties //
 
   label?: React.ReactNode;
   sublabel?: React.ReactNode;
@@ -29,94 +40,111 @@ interface InputProps {
   variant?: InputVariantValues;
   color?: ColorValues;
   tint?: TintValues;
-
   required?: BoolValues;
   multiline?: BoolValues;
+
   fullWidth?: BoolValues;
   backdropBlur?: BoolValues;
 
-  disabled?: BoolValues;
+  icon?: React.ReactNode;
+
   error?: BoolValues;
   warning?: BoolValues;
   success?: BoolValues;
+  info?: BoolValues;
   loading?: BoolValues;
+  disabled?: BoolValues;
 
-  tooltip?: React.ReactNode;
-  icon?: React.ReactNode;
+  // HTML Properties //
 
-  [x: string]: any; // Handle default HTML props
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
 const Input = ({
-  children,
-  className,
+  // General Properties //
+
+  props,
   classes,
+  className,
+  component,
+  tooltip,
+
+  // Specialized Properties //
+
   label,
   sublabel,
   variant = "standard",
   color = "primary",
   tint = 500,
-  required,
-  multiline,
-  fullWidth,
-  backdropBlur,
-  disabled,
-  error,
-  warning,
-  success,
-  loading,
-  tooltip,
+  required = false,
+  multiline = false,
+  fullWidth = false,
+  backdropBlur = false,
   icon,
+  error = false,
+  warning = false,
+  success = false,
+  info = false,
+  loading = false,
+  disabled = false,
+
+  // HTML Properties //
+
   ...rest
 }: InputProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const baseStyles = useBaseStyles(theme, { fullWidth }, [classes?.base, className]);
+  const labelStyles = useLabelStyles(theme, { error, warning, success, info, disabled }, [classes?.label]);
+  const wrapperStyles = useWrapperStyles(
+    theme,
+    {
+      variant,
+      fullWidth,
+      backdropBlur,
+      error,
+      warning,
+      success,
+      info,
+      disabled,
+    },
+    [classes?.wrapper]
+  );
+  const inputStyles = useInputStyles(
+    theme,
+    {
+      multiline,
+      fullWidth,
+      disabled,
+    },
+    [classes?.input]
+  );
 
-  const baseStyles = useBaseStyles(theme, { fullWidth });
-  const labelStyles = useLabelStyles(theme, { variant, fullWidth, backdropBlur, disabled, error, warning, success });
-  const wrapperStyles = useWrapperStyles(theme, {
-    variant,
-    fullWidth,
-    backdropBlur,
-    disabled,
-    error,
-    warning,
-    success,
-  });
-  const inputStyles = useInputStyles(theme, {
-    multiline,
-    fullWidth,
-    disabled,
-  });
-
-  // CLASSNAMES //
-
-  const clsxBase = clsx(baseStyles, classes?.base, className) || undefined;
-  const clsxLabel = clsx(labelStyles, classes?.label, className) || undefined;
-  const clsxWrapper = clsx(wrapperStyles, classes?.wrapper, className) || undefined;
-  const clsxInput = clsx(inputStyles, classes?.input, className) || undefined;
-
-  // RENDER //
-
+  // Return Component
   return (
-    <div className={clsxBase}>
+    <div className={baseStyles} {...props?.base}>
       {label && (
-        <label className={clsxLabel}>
+        <label className={labelStyles} {...props?.label}>
           {label}
           {required && <span style={{ color: theme.color.error[500] }}> *</span>}
         </label>
       )}
 
-      <div className={clsxWrapper}>
+      <div className={wrapperStyles}>
         {multiline ? (
-          <textarea className={clsxInput} disabled={disabled ? true : false} rows={rest?.rows || 3} {...rest} />
+          <textarea
+            className={inputStyles}
+            disabled={disabled ? true : false}
+            rows={rest?.rows || 3}
+            {...props?.input}
+            {...rest}
+          />
         ) : (
-          <input className={clsxInput} disabled={disabled ? true : false} {...rest} />
+          <input className={inputStyles} disabled={disabled ? true : false} {...props?.input} {...rest} />
         )}
       </div>
     </div>

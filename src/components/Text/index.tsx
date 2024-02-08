@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
@@ -14,141 +13,75 @@ import {
   TextComponentValues,
   TextVariantValues,
 } from "../../utils/types";
+import { getTextComponent } from "../../utils/helpers";
 
 import { useTextStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
 interface TextProps {
-  children?: React.ReactNode;
+  // General Properties //
+
   className?: string;
   classes?: {
     text?: string;
   };
   style?: React.CSSProperties;
-
+  props?: {
+    text?: React.HTMLAttributes<HTMLElement>;
+  };
+  children?: React.ReactNode;
   component?: `inherit` | TextComponentValues;
-  
-  variant?: TextVariantValues;
+
+  // Specialized Properties //
+
+  variant?: `inherit` | TextVariantValues;
   color?: `inherit` | ColorValues | FGColorValues;
   tint?: TintValues;
-
   align?: `inherit` | TextAlignValues;
-
+  href?: string;
   shadow?: BoolValues;
 
-  href?: string;
+  // Other Properties //
 
-  [x: string]: any; // Handle default HTML props
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
 const Text = ({
-  children,
-  className,
+  // General Properties //
+
+  props,
   classes,
+  className,
+  children,
   component,
+
+  // Specialized Properties //
+
   variant = "p1",
   color = "inherit",
   tint = 500,
-  align = "inherit",
-  shadow,
+  align,
   href,
+  shadow = false,
+
+  // Other Properties //
+
   ...rest
 }: TextProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const textStyles = useTextStyles(theme, { variant, color, tint, align, shadow }, [classes?.text, className]);
 
-  const textStyles = useTextStyles(theme, { variant, color, tint, align, shadow });
-
-  // CLASSNAMES //
-
-  const clsxText = clsx(textStyles, classes?.text, className) || undefined;
-
-  // RENDER //
-
-  // Link Variant
-
-  if (href) {
-    return (
-      <a className={clsxText} href={href} {...rest}>
-        {children}
-      </a>
-    );
-  }
-
-  // Component Variants
-
-  if (component === `div`) {
-    return (
-      <div className={clsxText} {...rest}>
-        {children}
-      </div>
-    );
-  }
-  if (component === `span`) {
-    return (
-      <span className={clsxText} {...rest}>
-        {children}
-      </span>
-    );
-  }
-
-  // Header Variants
-
-  if (variant === `h1`) {
-    return (
-      <h1 className={clsxText} {...rest}>
-        {children}
-      </h1>
-    );
-  }
-  if (variant === `h2`) {
-    return (
-      <h2 className={clsxText} {...rest}>
-        {children}
-      </h2>
-    );
-  }
-  if (variant === `h3`) {
-    return (
-      <h3 className={clsxText} {...rest}>
-        {children}
-      </h3>
-    );
-  }
-  if (variant === `h4`) {
-    return (
-      <h4 className={clsxText} {...rest}>
-        {children}
-      </h4>
-    );
-  }
-  if (variant === `h5`) {
-    return (
-      <h5 className={clsxText} {...rest}>
-        {children}
-      </h5>
-    );
-  }
-  if (variant === `h6`) {
-    return (
-      <h6 className={clsxText} {...rest}>
-        {children}
-      </h6>
-    );
-  }
-
-  // Default Variant
-
-  return (
-    <p className={clsxText} {...rest}>
-      {children}
-    </p>
+  // Return Component
+  return React.createElement(
+    getTextComponent(component, variant, href),
+    { className: textStyles, href: href || undefined, ...props?.text, ...rest },
+    children
   );
 };
 

@@ -6,52 +6,63 @@ import React from "react";
 const meta: Meta<typeof Component> = {
   title: "Layout/Container",
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
   component: Component,
   argTypes: {
+    // General Properties //
+
+    props: {
+      description: "Nested properties of the component.",
+      table: {
+        disable: true,
+      },
+    },
     classes: {
+      description: "Nested CSS classes of the component.",
       table: {
         disable: true,
       },
     },
     className: {
+      description: "CSS class of the component.",
       table: {
         disable: true,
       },
     },
     style: {
-      table: {
-        disable: true,
-      },
-    },
-    props: {
+      description: "Inline styling of the component.",
       table: {
         disable: true,
       },
     },
     children: {
-      table: {
-        disable: true,
+      description: "Content inside of the component.",
+      control: {
+        type: "text",
       },
     },
     component: {
+      description: "HTML element to render the component as.",
       control: {
-        type: "select",
+        type: "radio",
       },
     },
+
+    // Specialized Properties //
+
     maxWidth: {
+      description: "Maximum width of the container.",
       control: {
         type: "radio",
       },
     },
     disablePadding: {
+      description: "Should the outside padding be disabled?",
       control: {
         type: "boolean",
       },
     },
     visualize: {
+      description: "Should the component be visualized?",
       control: {
         type: "boolean",
       },

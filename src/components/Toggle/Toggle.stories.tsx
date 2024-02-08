@@ -1,25 +1,30 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Component from "./index";
 
+import React from "react";
 import { MdPower, MdPowerOff } from "react-icons/md";
 
 const meta: Meta<typeof Component> = {
   title: "Inputs/Toggle",
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
   component: Component,
   argTypes: {
-    className: {
-      description: "Class of the component.",
+    // General Properties //
+
+    props: {
+      description: "Nested properties of the component.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Classes object of the component.",
+      description: "Nested CSS classes of the component.",
+      table: {
+        disable: true,
+      },
+    },
+    className: {
+      description: "CSS class of the component.",
       table: {
         disable: true,
       },
@@ -30,14 +35,23 @@ const meta: Meta<typeof Component> = {
         disable: true,
       },
     },
-    props: {
-      description: "Inner properties of the component.",
-      table: {
-        disable: true,
+    component: {
+      description: "HTML element to render the component as.",
+      control: {
+        type: "radio",
       },
     },
+    tooltip: {
+      description: "Content inside of the tooltip (If present, tooltip will pop up on hover).",
+      control: {
+        type: "text",
+      },
+    },
+
+    // Specialized Properties //
+    
     variant: {
-      description: "The variant of the toggle.",
+      description: "Variation of the toggle.",
       control: {
         type: "radio",
       },
@@ -46,19 +60,19 @@ const meta: Meta<typeof Component> = {
       },
     },
     color: {
-      description: "The color of the toggle.",
+      description: "Color of the toggle.",
       control: {
         type: "select",
       },
     },
     tint: {
-      description: "The color tint of the toggle.",
+      description: "Color tint of the toggle.",
       control: {
         type: "select",
       },
     },
     size: {
-      description: "The size of the toggle.",
+      description: "Size of the toggle.",
       control: {
         type: "radio",
       },
@@ -75,6 +89,24 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
+    iconChecked: {
+      description: "Icon to display when the toggle is on.",
+      table: {
+        disable: true,
+      },
+    },
+    iconUnchecked: {
+      description: "Icon to display when the toggle is off.",
+      table: {
+        disable: true,
+      },
+    },
+    disabled: {
+      description: "Should the toggle be in a disabled state?",
+      control: {
+        type: "boolean",
+      },
+    },
     checked: {
       description: "Should the toggle be checked?",
       control: {
@@ -82,30 +114,6 @@ const meta: Meta<typeof Component> = {
       },
       table: {
         disable: true,
-      },
-    },
-    disabled: {
-      description: "Should the button be disabled?",
-      control: {
-        type: "boolean",
-      },
-    },
-    iconChecked: {
-      description: "The icon to display when the toggle is on.",
-      table: {
-        disable: true,
-      },
-    },
-    iconUnchecked: {
-      description: "The icon to display when the toggle is off.",
-      table: {
-        disable: true,
-      },
-    },
-    tooltip: {
-      description: "The content inside of the tooltip.",
-      control: {
-        type: "text",
       },
     },
   },
@@ -132,8 +140,8 @@ export const Disabled: Story = {
 
 export const DisabledChecked: Story = {
   args: {
-    defaultChecked: true,
     disabled: true,
+    defaultChecked: true,
   },
 };
 

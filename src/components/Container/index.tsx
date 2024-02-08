@@ -1,73 +1,71 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
-import { useContainerStyles } from "./styles";
-
 import { BoolValues, ContainerComponentValues, SizeValues } from "../../utils/types";
+
+import { useContainerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
 interface ContainerProps {
-  // Generic props
-  className?: string;
+  // General Properties //
+
+  props?: {
+    container?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     container?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
-  props?: {
-    container?: React.HTMLAttributes<HTMLDivElement> | React.HTMLAttributes<HTMLSpanElement>;
-  };
   children?: React.ReactNode;
   component?: ContainerComponentValues;
 
-  // Specialized props
+  // Specialized Properties //
+
   maxWidth?: SizeValues;
   disablePadding?: BoolValues;
   visualize?: BoolValues;
 
-  // Default HTML props
+  // HTML Properties //
+
   [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
 const Container = ({
-  // Generic props
-  className,
-  classes,
+  // General Properties //
+
   props,
+  classes,
+  className,
   children,
   component,
 
-  // Specialized props
+  // Specialized Properties //
+
   maxWidth = "max",
   disablePadding = false,
   visualize = false,
 
-  // Default HTML props
+  // HTML Properties //
+
   ...rest
 }: ContainerProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const containerStyles = useContainerStyles(theme, { maxWidth, disablePadding, visualize }, [classes?.container, className]);
 
-  const containerStyles = useContainerStyles(theme, { maxWidth, disablePadding, visualize });
-
-  // CLASSNAMES //
-
-  const clsxContainer = clsx(containerStyles, classes?.container, className) || undefined;
-
-  // RENDER //
-
+  // Return Component
   return React.createElement(
     component || `div`,
-    { className: clsxContainer, ...props?.container, ...rest },
+    { className: containerStyles, ...props?.container, ...rest },
     visualize ? (
       <div style={{ width: "100%", borderLeft: "2px dashed red", borderRight: "2px dashed red" }}>{children}</div>
     ) : (

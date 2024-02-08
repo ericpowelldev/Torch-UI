@@ -1,11 +1,10 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
 
 import { useTUI } from "../../TUI";
 
-import { BoolValues, ColorValues, SizeValues, TintValues, ToggleVariantValues } from "../../utils/types";
+import { BoolValues, ColorValues, SizeValues, TintValues, ToggleComponentValues, ToggleVariantValues } from "../../utils/types";
 
 import {
   useToggleStyles,
@@ -16,12 +15,19 @@ import {
   useIconUncheckedStyles,
 } from "./styles";
 
-import { MdLock } from "react-icons/md";
-
 // PROPS ---------------------------------------------------------------- //
 
 interface ToggleProps {
-  className?: string;
+  // General Properties //
+
+  props?: {
+    toggle?: React.HTMLAttributes<HTMLElement>;
+    track?: React.HTMLAttributes<HTMLElement>;
+    slide?: React.HTMLAttributes<HTMLElement>;
+    input?: React.InputHTMLAttributes<HTMLInputElement>;
+    iconChecked?: React.HTMLAttributes<HTMLElement>;
+    iconUnchecked?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     toggle?: string;
     track?: string;
@@ -30,15 +36,12 @@ interface ToggleProps {
     iconChecked?: string;
     iconUnchecked?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
-  props?: {
-    toggle?: React.HTMLAttributes<HTMLDivElement>;
-    track?: React.HTMLAttributes<HTMLSpanElement>;
-    slide?: React.HTMLAttributes<HTMLSpanElement>;
-    input?: React.InputHTMLAttributes<HTMLInputElement>;
-    iconChecked?: React.HTMLAttributes<HTMLSpanElement>;
-    iconUnchecked?: React.HTMLAttributes<HTMLSpanElement>;
-  };
+  component?: ToggleComponentValues;
+  tooltip?: React.ReactNode;
+
+  // Specialized Properties //
 
   variant?: ToggleVariantValues;
   color?: ColorValues;
@@ -48,76 +51,73 @@ interface ToggleProps {
   shadowTrack?: BoolValues;
   shadowSlide?: BoolValues;
 
-  disabled?: BoolValues;
-
   iconChecked?: React.ReactNode;
   iconUnchecked?: React.ReactNode;
 
-  tooltip?: React.ReactNode;
+  disabled?: BoolValues;
 
-  [x: string]: any; // Handle default HTML props
+  // HTML Properties //
+
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
 const Toggle = ({
-  className,
-  classes,
+  // General Properties //
+
   props,
+  classes,
+  className,
+  component,
+  tooltip,
+
+  // Specialized Properties //
+
   variant = "solid",
   color = "success",
   tint = 500,
   size = "md",
-  shadowTrack,
-  shadowSlide,
-  disabled,
+  shadowTrack = false,
+  shadowSlide = false,
   iconChecked,
   iconUnchecked,
-  tooltip,
+  disabled = false,
+
+  // HTML Properties //
+
   ...rest
 }: ToggleProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const toggleStyles = useToggleStyles(theme, { color, tint, size, disabled }, [classes?.toggle, className]);
+  const trackStyles = useTrackStyles(theme, { color, tint, size, shadowTrack, disabled }, [classes?.track]);
+  const slideStyles = useSlideStyles(theme, { color, tint, size, shadowSlide, disabled }, [classes?.slide]);
+  const inputStyles = useInputStyles(theme, { color, tint, size, disabled }, [classes?.input]);
+  const iconCheckedStyles = useIconCheckedStyles(theme, { color, tint, size, disabled }, [classes?.iconChecked]);
+  const iconUncheckedStyles = useIconUncheckedStyles(theme, { color, tint, size, disabled }, [classes?.iconUnchecked]);
 
-  const toggleStyles = useToggleStyles(theme, { color, tint, size, disabled });
-  const trackStyles = useTrackStyles(theme, { color, tint, size, shadowTrack, disabled });
-  const slideStyles = useSlideStyles(theme, { color, tint, size, shadowSlide, disabled });
-  const inputStyles = useInputStyles(theme, { color, tint, size, disabled });
-  const iconCheckedStyles = useIconCheckedStyles(theme, { color, tint, size, disabled });
-  const iconUncheckedStyles = useIconUncheckedStyles(theme, { color, tint, size, disabled });
-
-  // CLASSNAMES //
-
-  const clsxToggle = clsx(toggleStyles, classes?.toggle, className) || undefined;
-  const clsxTrack = clsx(trackStyles, classes?.track) || undefined;
-  const clsxSlide = clsx(slideStyles, classes?.slide) || undefined;
-  const clsxInput = clsx(inputStyles, classes?.input) || undefined;
-  const clsxIconChecked = clsx(iconCheckedStyles, classes?.iconChecked) || undefined;
-  const clsxIconUnchecked = clsx(iconUncheckedStyles, classes?.iconUnchecked) || undefined;
-
-  // RENDER //
-
+  // Return Component
   return (
-    <div className={clsxToggle} {...props?.toggle}>
-      <span className={clsxTrack} {...props?.track}>
+    <div className={toggleStyles} {...props?.toggle}>
+      <span className={trackStyles} {...props?.track}>
         {iconChecked ? (
-          <span className={clsxIconChecked} {...props?.iconChecked}>
+          <span className={iconCheckedStyles} {...props?.iconChecked}>
             {iconChecked}
           </span>
         ) : null}
 
         {iconUnchecked ? (
-          <span className={clsxIconUnchecked} {...props?.iconUnchecked}>
+          <span className={iconUncheckedStyles} {...props?.iconUnchecked}>
             {iconUnchecked}
           </span>
         ) : null}
 
-        <span className={clsxSlide} {...props?.slide} />
+        <span className={slideStyles} {...props?.slide} />
 
-        <input className={clsxInput} type="checkbox" disabled={disabled ? true : false} {...rest} {...props?.input} />
+        <input className={inputStyles} type="checkbox" disabled={disabled ? true : false} {...props?.input} {...rest} />
       </span>
     </div>
   );

@@ -15,6 +15,8 @@ import {
   SelectorValues,
   SizeValues,
   SizeValuesExtended,
+  TextComponentValues,
+  TextVariantValues,
   tintValues,
   TintValues,
 } from "./types";
@@ -101,7 +103,13 @@ export const getButtonIconMargin = (size: SizeValues) => {
 // COLORS ---------------------------------------------------------------- //
 
 /** Get color foreground */
-export const getColorFg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
+export const getColorFg = (
+  theme: any,
+  color?: ColorValues,
+  tint: TintValues = 500,
+  disabled?: BoolValues,
+  override?: string
+) => {
   if (disabled && override === `bg`) return theme.color.bgd;
   if (disabled) return theme.color.fgd;
   if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
@@ -109,7 +117,13 @@ export const getColorFg = (theme: any, color?: ColorValues, tint?: TintValues, d
 };
 
 /** Get color background */
-export const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, disabled?: BoolValues, override?: string) => {
+export const getColorBg = (
+  theme: any,
+  color?: ColorValues,
+  tint: TintValues = 500,
+  disabled?: BoolValues,
+  override?: string
+) => {
   if (disabled && override === `fg`) return theme.color.fgd;
   if (disabled) return theme.color.bgd;
   if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
@@ -117,7 +131,7 @@ export const getColorBg = (theme: any, color?: ColorValues, tint?: TintValues, d
 };
 
 /** Get color hover */
-export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint?: TintValues) => {
+export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint: TintValues = 500) => {
   if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `d4`;
   if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
     return theme.color[color][tint] + `48`;
@@ -127,7 +141,7 @@ export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?:
 };
 
 /** Get color active */
-export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint?: TintValues) => {
+export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint: TintValues = 500) => {
   if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `a0`;
   if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
     return theme.color[color][tint] + `64`;
@@ -137,7 +151,7 @@ export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?
 };
 
 /** Get color foreground */
-export const getColorText = (theme: any, color?: `inherit` | ColorValues | FGColorValues, tint?: TintValues) => {
+export const getColorText = (theme: any, color?: `inherit` | ColorValues | FGColorValues, tint: TintValues = 500) => {
   if (fgColorValues.includes(color)) {
     if (color === `fg1`) return theme.color.fg[0];
     if (color === `fg2`) return theme.color.fg[1];
@@ -163,14 +177,18 @@ export const getContainerMaxWidth = (theme: any, size: SizeValues) => {
 // INPUT ---------------------------------------------------------------- //
 
 /** Get input component label color */
-export const getInputLabelColor = (theme?: any, error?: BoolValues, warning?: BoolValues, success?: BoolValues) => {
-  let color = theme.color.fg[1];
-
-  if (success) color = theme.color.success[500];
-  if (warning) color = theme.color.warning[500];
-  if (error) color = theme.color.error[500];
-
-  return color;
+export const getInputLabelColor = (
+  theme?: any,
+  error?: BoolValues,
+  warning?: BoolValues,
+  success?: BoolValues,
+  info?: BoolValues
+) => {
+  if (error) return theme?.color?.error?.[500];
+  if (warning) return theme?.color?.warning?.[500];
+  if (success) return theme?.color?.success?.[500];
+  if (info) return theme?.color?.info?.[500];
+  return theme?.color?.fg?.[1];
 };
 
 /** Get input component padding */
@@ -184,10 +202,11 @@ export const getInputPadding = (variant?: InputVariantValues) => {
 export const getInputBorder = (
   theme?: any,
   selector?: SelectorValues,
-  disabled?: BoolValues,
   error?: BoolValues,
   warning?: BoolValues,
-  success?: BoolValues
+  success?: BoolValues,
+  info?: BoolValues,
+  disabled?: BoolValues
 ) => {
   let thickness = `1px`;
   let style = `solid`;
@@ -195,13 +214,14 @@ export const getInputBorder = (
 
   if (disabled) style = `dashed`;
 
-  if (!selector || selector === `base`) color = theme.color.fg[2];
-  if (selector === `hover`) color = theme.color.fg[0];
-  if (selector === `active` || selector === `focus`) color = theme.color.primary[500];
+  if (!selector || selector === `base`) color = theme?.color?.fg?.[2];
+  if (selector === `hover`) color = theme?.color?.fg?.[0];
+  if (selector === `active` || selector === `focus`) color = theme?.color?.primary?.[500];
 
-  if (success) color = theme.color.success[500];
-  if (warning) color = theme.color.warning[500];
-  if (error) color = theme.color.error[500];
+  if (info) color = theme?.color?.info?.[500];
+  if (success) color = theme?.color?.success?.[500];
+  if (warning) color = theme?.color?.warning?.[500];
+  if (error) color = theme?.color?.error?.[500];
 
   return `${thickness} ${style} ${color}`;
 };
@@ -236,6 +256,25 @@ export const getSpacerSize = (size: SizeValuesExtended | number) => {
   }
 
   return 4;
+};
+
+// TEXT ---------------------------------------------------------------- //
+
+/** Get text component to render */
+export const getTextComponent = (
+  component?: `inherit` | TextComponentValues,
+  variant?: `inherit` | TextVariantValues,
+  href?: string
+) => {
+  if (href) return `a`;
+  if (component && component !== `inherit`) return component;
+  if (variant === `h1`) return `h1`;
+  if (variant === `h2`) return `h2`;
+  if (variant === `h3`) return `h3`;
+  if (variant === `h4`) return `h4`;
+  if (variant === `h5`) return `h5`;
+  if (variant === `h6`) return `h6`;
+  return `p`;
 };
 
 // TOGGLE ---------------------------------------------------------------- //

@@ -30,7 +30,7 @@ interface IconWarningProps {
 
   disabled?: BoolValues;
 
-  [x: string]: any; // Handle default HTML props
+  [x: string]: any; 
 }
 
 // COMPONENT ---------------------------------------------------------------- //

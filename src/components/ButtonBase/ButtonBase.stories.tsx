@@ -4,30 +4,44 @@ import Component from "./index";
 const meta: Meta<typeof Component> = {
   title: "Buttons/ButtonBase",
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
   component: Component,
   argTypes: {
-    children: {
-      description: "The content inside of the button.",
-      control: {
-        type: "text",
+    // General Properties //
+
+    props: {
+      description: "Nested properties of the component.",
+      table: {
+        disable: true,
       },
     },
     classes: {
+      description: "Nested CSS classes of the component.",
       table: {
         disable: true,
       },
     },
     className: {
+      description: "CSS class of the component.",
       table: {
         disable: true,
       },
     },
     style: {
+      description: "Inline styling of the component.",
       table: {
         disable: true,
+      },
+    },
+    children: {
+      description: "Content inside of the component.",
+      control: {
+        type: "text",
+      },
+    },
+    tooltip: {
+      description: "Content inside of the tooltip (If present, tooltip will pop up on hover).",
+      control: {
+        type: "text",
       },
     },
   },

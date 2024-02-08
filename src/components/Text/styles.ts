@@ -1,44 +1,48 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
+import clsx from "clsx";
 import { css } from "@emotion/css";
 
 import { getColorText } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useTextStyles = (theme: any, props: any) => {
+export const useTextStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
   const { variant, color, tint, align, shadow } = props;
 
-  const stylesheet: any = {
-    text: css`
-      line-height: ${theme.text.height};
-      font-family: ${theme.text.family};
-      font-size: ${theme.text.size};
-      font-weight: ${theme.text.weight};
-    `,
-    variant: css`
-      line-height: ${theme.text[variant].height || theme.text.height};
-      font-family: ${theme.text[variant].family || theme.text.family};
-      font-size: ${theme.text[variant].size || theme.text.size};
-      font-weight: ${theme.text[variant].weight || theme.text.weight};
-    `,
-    color: css`
-      color: ${getColorText(theme, color, tint)};
-    `,
-    align: css`
-      text-align: ${align};
-    `,
-    shadow: css`
-      text-shadow: ${theme.shadow.text || theme.shadow.none};
-    `,
-  };
+  const textCSS = css`
+    line-height: ${theme?.text?.height};
+    font-family: ${theme?.text?.family};
+    font-size: ${theme?.text?.size};
+    font-weight: ${theme?.text?.weight};
+  `;
 
-  const styles: any = [stylesheet.text];
+  const variantCSS = variant
+    ? css`
+        line-height: ${theme?.text?.[variant]?.height || theme?.text?.height};
+        font-family: ${theme?.text?.[variant]?.family || theme?.text?.family};
+        font-size: ${theme?.text?.[variant]?.size || theme?.text?.size};
+        font-weight: ${theme?.text?.[variant]?.weight || theme?.text?.weight};
+      `
+    : null;
 
-  if (variant) styles.push(stylesheet.variant);
-  if (color) styles.push(stylesheet.color);
-  if (align) styles.push(stylesheet.align);
-  if (shadow) styles.push(stylesheet.shadow);
+  const colorCSS = color
+    ? css`
+        color: ${getColorText(theme, color, tint)};
+      `
+    : null;
 
-  return styles;
+  const alignCSS = align
+    ? css`
+        text-align: ${align};
+      `
+    : null;
+
+  const shadowCSS = shadow
+    ? css`
+        text-shadow: ${theme?.shadow?.text || theme?.shadow?.none};
+      `
+    : null;
+
+  return clsx(textCSS, variantCSS, colorCSS, alignCSS, shadowCSS, overrides) || undefined;
 };
