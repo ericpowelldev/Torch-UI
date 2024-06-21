@@ -1,7 +1,7 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
+import { cx } from "@emotion/css";
 
 import { useTUI } from "../../TUI";
 
@@ -57,11 +57,11 @@ const IconInfo = ({
 
   // CLASSNAMES //
 
-  const clsxIcon = clsx(iconStyles, classes?.icon, className) || undefined;
+  const cxIcon = cx(iconStyles, classes?.icon, className) || undefined;
 
   // RENDER //
 
-  return <MdInfo className={clsxIcon} {...rest} />;
+  return <MdInfo className={cxIcon} {...rest} />;
 };
 
 // EXPORT ---------------------------------------------------------------- //

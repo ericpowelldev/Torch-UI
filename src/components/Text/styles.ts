@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 import { getColorText } from "../../utils/helpers";
 
@@ -44,5 +43,5 @@ export const useTextStyles = (theme?: any, props?: any, overrides?: (string | un
       `
     : null;
 
-  return clsx(textCSS, variantCSS, colorCSS, alignCSS, shadowCSS, overrides) || undefined;
+  return cx(textCSS, variantCSS, colorCSS, alignCSS, shadowCSS, overrides) || undefined;
 };

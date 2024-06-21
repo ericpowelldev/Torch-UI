@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 import {
   getColorFg,
@@ -33,7 +32,7 @@ export const useToggleStyles = (theme?: any, props?: any, overrides?: (string | 
       `
     : null;
 
-  return clsx(toggleCSS, disabledCSS, overrides) || undefined;
+  return cx(toggleCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -58,7 +57,7 @@ export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
-  return clsx(trackCSS, shadowCSS, overrides) || undefined;
+  return cx(trackCSS, shadowCSS, overrides) || undefined;
 };
 
 export const useSlideStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -110,7 +109,7 @@ export const useSlideStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
-  return clsx(slideCSS, shadowCSS, disabledCSS, overrides) || undefined;
+  return cx(slideCSS, shadowCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useInputStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -131,7 +130,7 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
     transition: ${theme?.transition?.standard || theme?.transition?.none};
   `;
 
-  return clsx(inputCSS, overrides) || undefined;
+  return cx(inputCSS, overrides) || undefined;
 };
 
 export const useIconCheckedStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -162,7 +161,7 @@ export const useIconCheckedStyles = (theme?: any, props?: any, overrides?: (stri
     }
   `;
 
-  return clsx(iconCheckedCSS, overrides) || undefined;
+  return cx(iconCheckedCSS, overrides) || undefined;
 };
 
 export const useIconUncheckedStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -193,5 +192,5 @@ export const useIconUncheckedStyles = (theme?: any, props?: any, overrides?: (st
     }
   `;
 
-  return clsx(iconUncheckedCSS, overrides) || undefined;
+  return cx(iconUncheckedCSS, overrides) || undefined;
 };

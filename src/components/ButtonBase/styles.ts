@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 // STYLES ---------------------------------------------------------------- //
 
@@ -27,7 +26,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
     user-select: none;
   `;
 
-  return clsx(buttonCSS, overrides) || undefined;
+  return cx(buttonCSS, overrides) || undefined;
 };
 
 export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -40,5 +39,5 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
     pointer-events: none;
   `;
 
-  return clsx(labelCSS, overrides) || undefined;
+  return cx(labelCSS, overrides) || undefined;
 };

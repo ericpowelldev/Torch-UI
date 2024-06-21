@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 import { getSpacerSize } from "../../utils/helpers";
 
@@ -32,5 +31,5 @@ export const useSpacerStyles = (theme?: any, props?: any, overrides?: (string | 
       `
     : null;
 
-  return clsx(spacerCSS, directionCSS, visualizeCSS, overrides) || undefined;
+  return cx(spacerCSS, directionCSS, visualizeCSS, overrides) || undefined;
 };

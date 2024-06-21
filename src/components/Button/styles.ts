@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 import {
   getColorFg,
@@ -194,7 +193,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
     : null;
 
   return (
-    clsx(
+    cx(
       buttonCSS,
       solidCSS,
       transparentCSS,
@@ -239,7 +238,7 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
-  return clsx(labelCSS, sizeCSS, uppercaseCSS, overrides) || undefined;
+  return cx(labelCSS, sizeCSS, uppercaseCSS, overrides) || undefined;
 };
 
 export const useStartIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -257,7 +256,7 @@ export const useStartIconStyles = (theme?: any, props?: any, overrides?: (string
     }
   `;
 
-  return clsx(startIconCSS, overrides) || undefined;
+  return cx(startIconCSS, overrides) || undefined;
 };
 
 export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -273,7 +272,7 @@ export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string |
     }
   `;
 
-  return clsx(endIconCSS, overrides) || undefined;
+  return cx(endIconCSS, overrides) || undefined;
 };
 
 export const useCenterIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -291,5 +290,5 @@ export const useCenterIconStyles = (theme?: any, props?: any, overrides?: (strin
     }
   `;
 
-  return clsx(centerIconCSS, overrides) || undefined;
+  return cx(centerIconCSS, overrides) || undefined;
 };

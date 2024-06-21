@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 // STYLES ---------------------------------------------------------------- //
 
@@ -10,7 +9,7 @@ export const usePaletteStyles = (theme?: any, props?: any, overrides?: (string |
     position: relative;
   `;
 
-  return clsx(paletteCSS, overrides) || undefined;
+  return cx(paletteCSS, overrides) || undefined;
 };
 
 export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -20,5 +19,5 @@ export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | un
     justify-content: center;
   `;
 
-  return clsx(flexCSS, overrides) || undefined;
+  return cx(flexCSS, overrides) || undefined;
 };

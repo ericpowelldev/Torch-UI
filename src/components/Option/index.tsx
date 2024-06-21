@@ -1,7 +1,7 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
+import { cx } from "@emotion/css";
 
 import { useTUI } from "../../TUI";
 
@@ -48,12 +48,12 @@ const Option = ({ children, className, classes, hidden, disabled, error, warning
 
   // CLASSNAMES //
 
-  const clsxOption = clsx(optionStyles, classes?.option, className) || undefined;
+  const cxOption = cx(optionStyles, classes?.option, className) || undefined;
 
   // RENDER //
 
   return (
-    <option className={clsxOption} {...rest}>
+    <option className={cxOption} {...rest}>
       {children}
     </option>
   );

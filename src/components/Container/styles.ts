@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 import { getContainerMaxWidth } from "../../utils/helpers";
 
@@ -50,5 +49,5 @@ export const useContainerStyles = (theme?: any, props?: any, overrides?: (string
       `
     : null;
 
-  return clsx(containerCSS, maxWidthCSS, disablePaddingCSS, visualizeCSS, overrides) || undefined;
+  return cx(containerCSS, maxWidthCSS, disablePaddingCSS, visualizeCSS, overrides) || undefined;
 };

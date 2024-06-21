@@ -1,7 +1,7 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import clsx from "clsx";
+import { cx } from "@emotion/css";
 
 import { useTUI } from "../../TUI";
 
@@ -59,16 +59,16 @@ const IconLoading = ({
 
   // CLASSNAMES //
 
-  const clsxBase = clsx(baseStyles, classes?.base, className) || undefined;
-  const clsxTrack = clsx(trackStyles, classes?.track) || undefined;
-  const clsxBar = clsx(barStyles, classes?.bar) || undefined;
+  const cxBase = cx(baseStyles, classes?.base, className) || undefined;
+  const cxTrack = cx(trackStyles, classes?.track) || undefined;
+  const cxBar = cx(barStyles, classes?.bar) || undefined;
 
   // RENDER //
 
   return (
-    <div className={clsxBase} {...rest}>
-      <div className={clsxTrack} />
-      <div className={clsxBar} />
+    <div className={cxBase} {...rest}>
+      <div className={cxTrack} />
+      <div className={cxBar} />
     </div>
   );
 };

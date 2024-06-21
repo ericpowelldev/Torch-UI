@@ -1,7 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import clsx from "clsx";
-import { css } from "@emotion/css";
+import { css, cx } from "@emotion/css";
 
 import { getInputLabelColor, getInputBorder, getInputPadding } from "../../utils/helpers";
 
@@ -28,7 +27,7 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
       `
     : null;
 
-  return clsx(baseCSS, fullWidthCSS, overrides) || undefined;
+  return cx(baseCSS, fullWidthCSS, overrides) || undefined;
 };
 
 export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -58,7 +57,7 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
-  return clsx(labelCSS, colorCSS, disabledCSS, overrides) || undefined;
+  return cx(labelCSS, colorCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
@@ -149,7 +148,7 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
     : null;
 
   return (
-    clsx(wrapperCSS, standardCSS, transparentCSS, outlineCSS, fullWidthCSS, backdropBlurCSS, disabledCSS, overrides) ||
+    cx(wrapperCSS, standardCSS, transparentCSS, outlineCSS, fullWidthCSS, backdropBlurCSS, disabledCSS, overrides) ||
     undefined
   );
 };
@@ -205,5 +204,5 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
-  return clsx(inputCSS, multilineCSS, fullWidthCSS, disabledCSS, overrides) || undefined;
+  return cx(inputCSS, multilineCSS, fullWidthCSS, disabledCSS, overrides) || undefined;
 };
