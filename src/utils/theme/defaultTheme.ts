@@ -9,7 +9,7 @@ const theme = {
         bg: `#303840`,
       },
       text: {
-        family: `"Poppins", "Roboto", "Helvetica", "Arial", sans-serif`,
+        family: `"Public Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
       }
     },
   },
@@ -45,7 +45,7 @@ const theme = {
   // Text Options
   text: {
     // Font families
-    family: `"Roboto", "Helvetica", "Arial", sans-serif`,
+    family: `"Public Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
 
     // Font sizes
     size: `16px`,
@@ -128,7 +128,7 @@ const theme = {
 
     // Special text
     button: {
-      family: `"Roboto", "Helvetica", "Arial", sans-serif`,
+      family: `"Public Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
       size: `14px`,
       weight: 600,
       height: 1,
@@ -176,9 +176,9 @@ const theme = {
   // Radius Options
   radius: {
     none: 0,
-    button: `4px`,
-    card: `8px`,
-    input: `4px`,
+    button: `6px`,
+    card: `10px`,
+    input: `6px`,
     pill: `24px`,
   },
 
