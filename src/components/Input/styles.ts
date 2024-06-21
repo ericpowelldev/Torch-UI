@@ -1,6 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx } from "@emotion/css";
+import { css, cx } from "../../utils/emotion";
 
 import { getInputLabelColor, getInputBorder, getInputPadding } from "../../utils/helpers";
 

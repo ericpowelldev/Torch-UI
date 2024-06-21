@@ -1,6 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx } from "@emotion/css";
+import { css, cx } from "../../utils/emotion";
 
 import {
   getColorFg,

@@ -1,6 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx } from "@emotion/css";
+import { css, cx } from "../../utils/emotion";
 
 import { getBoxColor } from "../../utils/helpers";
 
@@ -10,6 +10,7 @@ export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | und
   const { color, tint, width, height, radius, shadow, backdropBlur, visualize } = props;
 
   const boxCSS = css`
+    label: TuiBox;
     display: block;
     width: ${typeof width === `number` ? `${width}px` : typeof width === `string` ? width : `inherit`};
     height: ${typeof height === `number` ? `${height}px` : typeof height === `string` ? height : `inherit`};

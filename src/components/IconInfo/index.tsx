@@ -1,7 +1,7 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import { cx } from "@emotion/css";
+import { cx } from "../../utils/emotion";
 
 import { useTUI } from "../../TUI";
 

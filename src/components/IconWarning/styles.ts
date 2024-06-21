@@ -1,6 +1,6 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, keyframes } from "@emotion/css";
+import { css, keyframes } from "../../utils/emotion";
 
 import { getColorFg, getColorBg } from "../../utils/helpers";
 

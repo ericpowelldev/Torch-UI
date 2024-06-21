@@ -106,6 +106,6 @@ export const Default: Story = {
     visualize: true,
     width: "100%",
     height: 256,
-    radius: 12,
+    radius: 10,
   },
 };
