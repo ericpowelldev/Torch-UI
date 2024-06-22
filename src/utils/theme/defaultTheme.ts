@@ -10,7 +10,7 @@ const theme = {
       },
       text: {
         family: `"Public Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
-      }
+      },
     },
   },
 
@@ -138,6 +138,11 @@ const theme = {
       weight: 400,
       height: `18px`,
     },
+    divider: {
+      size: `16px`,
+      weight: 600,
+      height: 1.333,
+    },
     label: {
       size: `12px`,
       weight: 400,
@@ -205,9 +210,9 @@ const theme = {
   // Blur Options
   blur: {
     none: `none`,
-    soft: `blur(8px)`,
-    medium: `blur(12px)`,
-    harsh: `blue(16px)`,
+    soft: `blur(3px)`,
+    medium: `blur(6px)`,
+    harsh: `blue(9px)`,
   },
 
   // Z-Index Options
@@ -226,39 +231,36 @@ const theme = {
   // Breakpoint Options
   break: {
     min: `0px`,
-    xs: {
-      up: `481px`,
-      down: `480px`,
-    },
-    sm: {
-      up: `769px`,
-      down: `768px`,
-    },
-    md: {
-      up: `1025px`,
-      down: `1024px`,
-    },
-    lg: {
-      up: `1281px`,
-      down: `1280px`,
-    },
-    xl: {
-      up: `1601px`,
-      down: `1600px`,
-    },
+    xs: `480px`,
+    sm: `640px`,
+    md: `960px`,
+    lg: `1280px`,
+    xl: `1600px`,
     max: `1920px`,
+  },
+
+  // Breakpoint Query Options
+  query: {
+    only: (breakpoint: string) => `@media (min-width: ${breakpoint}) and (max-width: ${breakpoint})`,
+    up: (breakpoint: string) => `@media (min-width: ${breakpoint})`,
+    down: (breakpoint: string) => `@media (max-width: ${breakpoint})`,
+    between: (breakpointUp: string, breakpointDown: string) =>
+      `@media (min-width: ${breakpointUp}) and (max-width: ${breakpointDown})`,
   },
 
   // Container Max-Width Options
   container: {
     min: `100%`,
-    xs: `420px`,
-    sm: `680px`,
+    xs: `480px`,
+    sm: `640px`,
     md: `960px`,
-    lg: `1200px`,
-    xl: `1400px`,
+    lg: `1280px`,
+    xl: `1600px`,
     max: `100%`,
   },
+
+  // Visualize Options
+  visualize: `repeating-linear-gradient(135deg, #00000010, #00000010 8px, #00000008 8px, #00000008 16px)`,
 };
 
 // EXPORT ---------------------------------------------------------------- //

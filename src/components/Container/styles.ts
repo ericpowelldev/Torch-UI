@@ -12,21 +12,21 @@ export const useContainerStyles = (theme?: any, props?: any, overrides?: (string
   const containerCSS = css`
     display: block;
     width: 100%;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: ${theme.space(6)};
+    padding-right: ${theme.space(6)};
     margin-left: auto;
     margin-right: auto;
-    @media (max-width: ${theme?.break?.md?.down}) {
-      padding-left: 20px;
-      padding-right: 20px;
+    ${theme?.query?.down(theme?.break?.md)} {
+      padding-left: ${theme.space(5)};
+      padding-right: ${theme.space(5)};
     }
-    @media (max-width: ${theme?.break?.sm?.down}) {
-      padding-left: 16px;
-      padding-right: 16px;
+    ${theme?.query?.down(theme?.break?.sm)} {
+      padding-left: ${theme.space(4)};
+      padding-right: ${theme.space(4)};
     }
-    @media (max-width: ${theme?.break?.xs?.down}) {
-      padding-left: 12px;
-      padding-right: 12px;
+    ${theme?.query?.down(theme?.break?.xs)} {
+      padding-left: ${theme.space(3)};
+      padding-right: ${theme.space(3)};
     }
   `;
 
@@ -44,8 +44,8 @@ export const useContainerStyles = (theme?: any, props?: any, overrides?: (string
 
   const visualizeCSS = visualize
     ? css`
-        outline: 2px dashed gray;
-        outline-offset: -2px;
+        background-color: transparent;
+        background-image: ${theme?.visualize};
       `
     : null;
 

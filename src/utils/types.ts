@@ -4,6 +4,14 @@
 export const boolValues = [false, null, undefined, NaN, 0, -0, ``, true, 1];
 export type BoolValues = false | null | undefined | typeof NaN | 0 | -0 | `` | true | 1;
 
+/** Array of accepted breakpoints */
+export const breakpointValues = [`min`, `xs`, `sm`, `md`, `lg`, `xl`, `max`];
+export type BreakpointValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
+
+/** Array of accepted percentile */
+export const percentValues = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+export type PercentValues = 0 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1;
+
 /** Array of accepted selectors */
 export const selectorValues = [`base`, `hover`, `active`, `focus`];
 export type SelectorValues = `base` | `hover` | `active` | `focus`;
@@ -239,6 +247,22 @@ export type AlphaTintValues =
 /** Array of accepted container components */
 export const containerComponentValues = [`div`, `span`];
 export type ContainerComponentValues = `div` | `span`;
+
+// DIVIDER TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted divider components */
+export const dividerComponentValues = [`div`, `span`];
+export type DividerComponentValues = `div` | `span`;
+
+/** Array of accepted divider directions */
+export const dividerDirectionValues = [`horizontal`, `vertical`];
+export type DividerDirectionValues = `horizontal` | `vertical`;
+
+// FLEX TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted flex components */
+export const flexComponentValues = [`div`, `span`];
+export type FlexComponentValues = `div` | `span`;
 
 // INPUT TYPES ---------------------------------------------------------------- //
 

@@ -44,7 +44,10 @@ const meta: Meta<typeof Component> = {
     size: {
       description: "Size of the spacer.",
       control: {
-        type: "number",
+        type: "range",
+        min: 0,
+        max: 24,
+        step: 1,
       },
     },
     direction: {

@@ -42,8 +42,8 @@ export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | und
 
   const visualizeCSS = visualize
     ? css`
-        outline: 2px dashed gray;
-        outline-offset: -2px;
+        background-color: transparent;
+        background-image: ${theme?.visualize};
       `
     : null;
 

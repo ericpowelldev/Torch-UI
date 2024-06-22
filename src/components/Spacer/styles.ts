@@ -26,8 +26,8 @@ export const useSpacerStyles = (theme?: any, props?: any, overrides?: (string | 
 
   const visualizeCSS = visualize
     ? css`
-        outline: 2px dashed gray;
-        outline-offset: -2px;
+        background-color: transparent;
+        background-image: ${theme?.visualize};
       `
     : null;
 

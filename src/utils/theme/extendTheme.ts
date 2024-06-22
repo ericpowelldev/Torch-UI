@@ -209,6 +209,25 @@ const buildBackgroundDisabledColor = (color: string, themeMode?: string) => {
   return Color(color).fade(0.6).hexa();
 };
 
+/** Build interact colors */
+const buildInteractColors = (color: string, themeMode?: string) => {
+  return {
+    hover: Color(color).fade(0.96).hexa(),
+    focus: Color(color).fade(0.92).hexa(),
+    active: Color(color).fade(0.88).hexa(),
+    selected: Color(color).fade(0.84).hexa(),
+  };
+};
+
+/** Build divider colors */
+const buildDividerColors = (color: string, themeMode?: string) => {
+  return {
+    soft: Color(color).fade(0.88).hexa(),
+    medium: Color(color).fade(0.82).hexa(),
+    harsh: Color(color).fade(0.76).hexa(),
+  }
+};
+
 // ORCHESTRATION ---------------------------------------------------------------- //
 
 const extendTheme = (theme: any, themeStyle?: string, themeMode?: string) => {
@@ -260,6 +279,9 @@ const extendTheme = (theme: any, themeStyle?: string, themeMode?: string) => {
       bg: buildBackgroundColors(customTheme?.color?.bg, themeMode),
       bgi: buildBackgroundInverseColors(customTheme?.color?.fg, themeMode),
       bgd: buildBackgroundDisabledColor(customTheme?.color?.grayscale),
+
+      interact: buildInteractColors(customTheme?.color?.fg, themeMode),
+      divider: buildDividerColors(customTheme?.color?.fg, themeMode),
     },
   };
 

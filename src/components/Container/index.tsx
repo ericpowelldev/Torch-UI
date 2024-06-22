@@ -67,7 +67,7 @@ const Container = ({
     component || `div`,
     { className: containerStyles, ...props?.container, ...rest },
     visualize ? (
-      <div style={{ width: "100%", borderLeft: "2px dashed red", borderRight: "2px dashed red" }}>{children}</div>
+      <div style={{ width: "100%", borderLeft: "1px dashed red", borderRight: "1px dashed red" }}>{children}</div>
     ) : (
       children
     )
