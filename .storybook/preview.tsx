@@ -9,7 +9,10 @@ const theme = {};
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <TUIProvider theme={theme} themeStyle="light" themeMode="light">
+      <TUIProvider
+        theme={theme}
+        // customThemeName="dark"
+      >
         <div style={{ padding: "16px" }}>
           <Story />
         </div>
@@ -24,7 +27,7 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 };
 

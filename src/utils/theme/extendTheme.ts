@@ -5,74 +5,49 @@ const Color = require("color");
 
 // HELPERS ---------------------------------------------------------------- //
 
+/** Generate a lighter shade of a color */
+const lightenColor = (color: string, amount: number) => {
+  const rgb = Color(color).rgb().array();
+  const newRGB = rgb.map((value: number) => {
+    return value + (255 - value) * amount;
+  });
+  return Color.rgb(newRGB).hex();
+};
+
+/** Generate a darker shade of a color */
+const darkenColor = (color: string, amount: number) => {
+  const rgbColor = Color(color).rgb().array();
+  const newRGB = rgbColor.map((value: number) => {
+    return value - value * amount;
+  });
+  return Color.rgb(newRGB).hex();
+};
+
 /** Build standard colors */
 const buildColors = (color: string, themeMode?: string) => {
-  // Normalize the main color
-  const normalizedColor = Color(color).lightness(50).hex();
-
   // Generate the main hexes
   const main = {
-    [`0`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 0 : 100)
-      .hex(),
-    [`50`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 5 : 95)
-      .hex(),
-    [`100`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 10 : 90)
-      .hex(),
-    [`150`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 15 : 85)
-      .hex(),
-    [`200`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 20 : 80)
-      .hex(),
-    [`250`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 25 : 75)
-      .hex(),
-    [`300`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 30 : 70)
-      .hex(),
-    [`350`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 35 : 65)
-      .hex(),
-    [`400`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 40 : 60)
-      .hex(),
-    [`450`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 45 : 55)
-      .hex(),
-    [`500`]: normalizedColor,
-    [`550`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 55 : 45)
-      .hex(),
-    [`600`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 60 : 40)
-      .hex(),
-    [`650`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 65 : 35)
-      .hex(),
-    [`700`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 70 : 30)
-      .hex(),
-    [`750`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 75 : 25)
-      .hex(),
-    [`800`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 80 : 20)
-      .hex(),
-    [`850`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 85 : 15)
-      .hex(),
-    [`900`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 90 : 10)
-      .hex(),
-    [`950`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 95 : 5)
-      .hex(),
-    [`1000`]: Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 100 : 0)
-      .hex(),
+    [`0`]: themeMode === `dark` ? darkenColor(color, 1) : lightenColor(color, 1),
+    [`50`]: themeMode === `dark` ? darkenColor(color, 0.9) : lightenColor(color, 0.9),
+    [`100`]: themeMode === `dark` ? darkenColor(color, 0.8) : lightenColor(color, 0.8),
+    [`150`]: themeMode === `dark` ? darkenColor(color, 0.7) : lightenColor(color, 0.7),
+    [`200`]: themeMode === `dark` ? darkenColor(color, 0.6) : lightenColor(color, 0.6),
+    [`250`]: themeMode === `dark` ? darkenColor(color, 0.5) : lightenColor(color, 0.5),
+    [`300`]: themeMode === `dark` ? darkenColor(color, 0.4) : lightenColor(color, 0.4),
+    [`350`]: themeMode === `dark` ? darkenColor(color, 0.3) : lightenColor(color, 0.3),
+    [`400`]: themeMode === `dark` ? darkenColor(color, 0.2) : lightenColor(color, 0.2),
+    [`450`]: themeMode === `dark` ? darkenColor(color, 0.1) : lightenColor(color, 0.1),
+    [`500`]: color,
+    [`550`]: themeMode === `dark` ? lightenColor(color, 0.1) : darkenColor(color, 0.1),
+    [`600`]: themeMode === `dark` ? lightenColor(color, 0.2) : darkenColor(color, 0.2),
+    [`650`]: themeMode === `dark` ? lightenColor(color, 0.3) : darkenColor(color, 0.3),
+    [`700`]: themeMode === `dark` ? lightenColor(color, 0.4) : darkenColor(color, 0.4),
+    [`750`]: themeMode === `dark` ? lightenColor(color, 0.5) : darkenColor(color, 0.5),
+    [`800`]: themeMode === `dark` ? lightenColor(color, 0.6) : darkenColor(color, 0.6),
+    [`850`]: themeMode === `dark` ? lightenColor(color, 0.7) : darkenColor(color, 0.7),
+    [`900`]: themeMode === `dark` ? lightenColor(color, 0.8) : darkenColor(color, 0.8),
+    [`950`]: themeMode === `dark` ? lightenColor(color, 0.9) : darkenColor(color, 0.9),
+    [`1000`]: themeMode === `dark` ? lightenColor(color, 1) : darkenColor(color, 1),
   };
 
   // Generate the inverse hexes
@@ -102,27 +77,27 @@ const buildColors = (color: string, themeMode?: string) => {
 
   // Generate the alpha hexes
   const alpha = {
-    [`a0`]: Color(normalizedColor).fade(1).hexa(),
-    [`a50`]: Color(normalizedColor).fade(0.95).hexa(),
-    [`a100`]: Color(normalizedColor).fade(0.9).hexa(),
-    [`a150`]: Color(normalizedColor).fade(0.85).hexa(),
-    [`a200`]: Color(normalizedColor).fade(0.8).hexa(),
-    [`a250`]: Color(normalizedColor).fade(0.75).hexa(),
-    [`a300`]: Color(normalizedColor).fade(0.7).hexa(),
-    [`a350`]: Color(normalizedColor).fade(0.65).hexa(),
-    [`a400`]: Color(normalizedColor).fade(0.6).hexa(),
-    [`a450`]: Color(normalizedColor).fade(0.55).hexa(),
-    [`a500`]: Color(normalizedColor).fade(0.5).hexa(),
-    [`a550`]: Color(normalizedColor).fade(0.45).hexa(),
-    [`a600`]: Color(normalizedColor).fade(0.4).hexa(),
-    [`a650`]: Color(normalizedColor).fade(0.35).hexa(),
-    [`a700`]: Color(normalizedColor).fade(0.3).hexa(),
-    [`a750`]: Color(normalizedColor).fade(0.25).hexa(),
-    [`a800`]: Color(normalizedColor).fade(0.2).hexa(),
-    [`a850`]: Color(normalizedColor).fade(0.15).hexa(),
-    [`a900`]: Color(normalizedColor).fade(0.1).hexa(),
-    [`a950`]: Color(normalizedColor).fade(0.05).hexa(),
-    [`a1000`]: normalizedColor,
+    [`a0`]: Color(color).fade(1).hexa(),
+    [`a50`]: Color(color).fade(0.95).hexa(),
+    [`a100`]: Color(color).fade(0.9).hexa(),
+    [`a150`]: Color(color).fade(0.85).hexa(),
+    [`a200`]: Color(color).fade(0.8).hexa(),
+    [`a250`]: Color(color).fade(0.75).hexa(),
+    [`a300`]: Color(color).fade(0.7).hexa(),
+    [`a350`]: Color(color).fade(0.65).hexa(),
+    [`a400`]: Color(color).fade(0.6).hexa(),
+    [`a450`]: Color(color).fade(0.55).hexa(),
+    [`a500`]: Color(color).fade(0.5).hexa(),
+    [`a550`]: Color(color).fade(0.45).hexa(),
+    [`a600`]: Color(color).fade(0.4).hexa(),
+    [`a650`]: Color(color).fade(0.35).hexa(),
+    [`a700`]: Color(color).fade(0.3).hexa(),
+    [`a750`]: Color(color).fade(0.25).hexa(),
+    [`a800`]: Color(color).fade(0.2).hexa(),
+    [`a850`]: Color(color).fade(0.15).hexa(),
+    [`a900`]: Color(color).fade(0.1).hexa(),
+    [`a950`]: Color(color).fade(0.05).hexa(),
+    [`a1000`]: color,
   };
 
   // Return all the hexes
@@ -131,14 +106,14 @@ const buildColors = (color: string, themeMode?: string) => {
 
 /** Build foreground colors */
 const buildForegroundColors = (color: string, themeMode?: string) => {
-  const alphas = [``, `96`, `72`, `48`];
+  const alphas = [``, `98`, `70`, `48`];
   const foregroundColors = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
   return foregroundColors;
 };
 
 /** Build foreground inverse colors */
 const buildForegroundInverseColors = (color: string, themeMode?: string) => {
-  const alphas = [``, `96`, `72`, `48`];
+  const alphas = [``, `98`, `70`, `48`];
   const foregroundColors = alphas.map((alpha) => `${Color(color).hex()}${alpha}`);
   return foregroundColors;
 };
@@ -225,15 +200,16 @@ const buildDividerColors = (color: string, themeMode?: string) => {
     soft: Color(color).fade(0.88).hexa(),
     medium: Color(color).fade(0.82).hexa(),
     harsh: Color(color).fade(0.76).hexa(),
-  }
+  };
 };
 
 // ORCHESTRATION ---------------------------------------------------------------- //
 
-const extendTheme = (theme: any, themeStyle?: string, themeMode?: string) => {
+const extendTheme = (theme: any, customThemeName?: string) => {
   // Set the initial theme props to use when extending
   // Check the theme object for the custom style props
-  let customTheme = themeStyle && theme?.custom?.[themeStyle] ? theme?.custom?.[themeStyle] : {};
+  let customTheme = customThemeName && theme?.custom?.[customThemeName] ? theme?.custom?.[customThemeName] : {};
+  const themeMode = customTheme?.mode || `light`;
 
   // Override the standard theme with the custom theme
   customTheme = deepmerge(theme, customTheme);
@@ -247,9 +223,6 @@ const extendTheme = (theme: any, themeStyle?: string, themeMode?: string) => {
       },
       secondary: {
         ...buildColors(customTheme?.color?.secondary, themeMode),
-      },
-      tertiary: {
-        ...buildColors(customTheme?.color?.tertiary, themeMode),
       },
 
       utility: {

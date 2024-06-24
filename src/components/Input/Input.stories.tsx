@@ -169,6 +169,14 @@ export const Number: Story = {
   },
 };
 
+export const Solid: Story = {
+  args: {
+    label: "Solid Input",
+    placeholder: "Enter some text...",
+    variant: "solid",
+  },
+};
+
 export const Soft: Story = {
   args: {
     label: "Soft Input",
@@ -177,10 +185,10 @@ export const Soft: Story = {
   },
 };
 
-export const Outlined: Story = {
+export const Plain: Story = {
   args: {
-    label: "Outlined Input",
+    label: "Plain Input",
     placeholder: "Enter some text...",
-    variant: "outlined",
+    variant: "plain",
   },
 };

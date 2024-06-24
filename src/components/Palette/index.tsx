@@ -55,7 +55,6 @@ const Palette = ({
       <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={100} width={64} height={64} />
         <Box color="secondary" tint={100} width={64} height={64} />
-        <Box color="tertiary" tint={100} width={64} height={64} />
 
         <Spacer direction="vertical" size={8} />
 
@@ -69,7 +68,6 @@ const Palette = ({
       <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={300} width={64} height={64} />
         <Box color="secondary" tint={300} width={64} height={64} />
-        <Box color="tertiary" tint={300} width={64} height={64} />
 
         <Spacer direction="vertical" size={8} />
 
@@ -83,7 +81,6 @@ const Palette = ({
       <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={500} width={64} height={64} />
         <Box color="secondary" tint={500} width={64} height={64} />
-        <Box color="tertiary" tint={500} width={64} height={64} />
 
         <Spacer direction="vertical" size={8} />
 
@@ -97,7 +94,6 @@ const Palette = ({
       <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={700} width={64} height={64} />
         <Box color="secondary" tint={700} width={64} height={64} />
-        <Box color="tertiary" tint={700} width={64} height={64} />
 
         <Spacer direction="vertical" size={8} />
 
@@ -111,7 +107,6 @@ const Palette = ({
       <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={900} width={64} height={64} />
         <Box color="secondary" tint={900} width={64} height={64} />
-        <Box color="tertiary" tint={900} width={64} height={64} />
 
         <Spacer direction="vertical" size={8} />
 

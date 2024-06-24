@@ -43,17 +43,8 @@ export type ButtonVariantValues = `solid` | `soft` | `plain` | `outlined`;
 // COLOR TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted colors */
-export const colorValues = [`primary`, `secondary`, `tertiary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
-export type ColorValues =
-  | `primary`
-  | `secondary`
-  | `tertiary`
-  | `utility`
-  | `info`
-  | `error`
-  | `warning`
-  | `success`
-  | `grayscale`;
+export const colorValues = [`primary`, `secondary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
+export type ColorValues = `primary` | `secondary` | `utility` | `info` | `error` | `warning` | `success` | `grayscale`;
 
 /** Array of accepted background colors */
 export const bgColorValues = [`bg1`, `bg2`, `bg3`, `bg4`, `bgi1`, `bgi2`, `bgi3`, `bgi4`];

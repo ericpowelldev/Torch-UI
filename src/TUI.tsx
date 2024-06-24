@@ -11,7 +11,16 @@ import Preset from "./Preset";
 
 import "../static/styles/tui.css";
 
-const extendedDefaultTheme = extendTheme(defaultTheme, undefined, `light`);
+// HELPERS ---------------------------------------------------------------- //
+
+/** Extend the default theme */
+const extendedDefaultTheme = extendTheme(defaultTheme, undefined);
+
+/** Detect system preferences for theme mode */
+const detectSystemThemeMode = () => {
+  if (window?.matchMedia("(prefers-color-scheme: dark)")?.matches) return `dark`;
+  return `light`;
+};
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -19,47 +28,30 @@ interface TUIProviderProps {
   children?: React.ReactNode;
 
   theme?: any;
-  themeStyle?: string;
-  themeMode?: `light` | `dark` | `system`;
+  customThemeName?: string;
 
   cssPreset?: BoolValues;
 }
 
 // CONTEXT/HOOK ---------------------------------------------------------------- //
 
-const TUIContext = React.createContext({ theme: extendedDefaultTheme, themeStyle: undefined, themeMode: `light` });
+const TUIContext = React.createContext({ theme: extendedDefaultTheme, customThemeName: undefined });
 const useTUI = () => React.useContext(TUIContext);
 
 // PROVIDER ---------------------------------------------------------------- //
 
-const TUIProvider = ({
-  children,
-  theme = {},
-  themeStyle = undefined,
-  themeMode = `system`,
-  cssPreset = true,
-}: TUIProviderProps) => {
-  let detectedThemeMode = themeMode;
-
-  // Detect system preferences for theme mode
-  if (themeMode === `system` && window?.matchMedia("(prefers-color-scheme: light)")?.matches) {
-    detectedThemeMode = `light`;
-  }
-  if (themeMode === `system` && window?.matchMedia("(prefers-color-scheme: dark)")?.matches) {
-    detectedThemeMode = `dark`;
-  }
-
+const TUIProvider = ({ children, theme = {}, customThemeName = undefined, cssPreset = true }: TUIProviderProps) => {
   // Merge the override theme and extend the merged theme
   let extendedTheme = deepmerge(defaultTheme, theme);
-  extendedTheme = extendTheme(extendedTheme, themeStyle, detectedThemeMode);
+  extendedTheme = extendTheme(extendedTheme, customThemeName);
 
   const ctx = {
     theme: extendedTheme,
-    themeStyle: themeStyle,
-    themeMode: detectedThemeMode,
+    customThemeName: customThemeName,
+    detectSystemThemeMode: detectSystemThemeMode,
   };
 
-  console.log(`Extended Theme:`, extendedTheme, themeStyle, detectedThemeMode);
+  console.log(`Extended Theme (${customThemeName || `default`}):`, extendedTheme);
 
   return (
     <TUIContext.Provider value={ctx}>

@@ -2,7 +2,15 @@
 
 import { css, cx } from "../../utils/emotion";
 
-import { getInputLabelColor, getInputBorder, getInputPadding } from "../../utils/helpers";
+import {
+  getColorActive,
+  getColorBg,
+  getColorFg,
+  getColorHover,
+  getInputBorder,
+  getInputLabelColor,
+  getInputPadding,
+} from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
@@ -68,7 +76,7 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
 
 export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
   // Props
-  const { backdropBlur, disabled, error, fullWidth, info, success, variant, warning } = props;
+  const { backdropBlur, color, disabled, error, fullWidth, info, success, tint, variant, warning } = props;
 
   // CSS Stylesheet
   const wrapperCSS = css`
@@ -77,6 +85,7 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
     display: inline-flex;
     padding: 0;
     border: 0;
+    border-radius: ${theme?.radius?.input || theme?.radius?.none};
     margin: 0;
     background-color: transparent;
     color: ${theme?.color?.fg};
@@ -84,16 +93,15 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
     transition: ${theme?.transition?.input || theme?.transition?.standard || theme?.transition?.none};
   `;
 
-  const standardCSS =
-    variant === `standard`
+  const solidCSS =
+    variant === `solid`
       ? css`
-          padding: ${getInputPadding(variant)};
-          border-bottom: ${getInputBorder(theme, `base`, error, warning, success, info, disabled)};
-          &:hover {
-            border-bottom: ${getInputBorder(theme, `hover`, error, warning, success, info, disabled)};
-          }
+          outline: 1px solid ${theme?.color?.fg?.[0]}00;
+          outline-offset: -1px;
+          background-color: ${getColorBg(theme, color, tint, disabled)};
           &:focus-within {
-            border-bottom: ${getInputBorder(theme, `focus`, error, warning, success, info, disabled)};
+            outline-width: 2px;
+            outline-offset: -2px;
           }
         `
       : null;
@@ -101,17 +109,31 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
   const softCSS =
     variant === `soft`
       ? css`
-          padding: ${getInputPadding(variant)};
-          border-bottom: ${getInputBorder(theme, `base`, error, warning, success, info, disabled)};
-          border-radius: ${theme?.radius?.input || theme?.radius?.none} ${theme?.radius?.input || theme?.radius?.none} 0 0;
-          background-color: ${theme?.color?.fg[0]}16;
+          outline: 1px solid ${getColorBg(theme, color, tint, disabled)}00;
+          outline-offset: -1px;
+          background-color: ${getColorBg(theme, color, tint, disabled, `fg`)}24;
           &:hover {
-            border-bottom: ${getInputBorder(theme, `hover`, error, warning, success, info, disabled)};
-            background-color: ${theme?.color?.fg[0]}24;
+            outline: 1px solid ${getColorBg(theme, color, tint, disabled)}24;
           }
           &:focus-within {
-            border-bottom: ${getInputBorder(theme, `focus`, error, warning, success, info, disabled)};
-            background-color: ${theme?.color?.fg[0]}16;
+            outline: 2px solid ${getColorBg(theme, color, tint, disabled)};
+            outline-offset: -2px;
+          }
+        `
+      : null;
+
+  const plainCSS =
+    variant === `plain`
+      ? css`
+          outline: 1px solid ${getColorBg(theme, color, tint, disabled)}00;
+          outline-offset: -1px;
+          background-color: ${getColorBg(theme, color, tint, disabled, `fg`)}06;
+          &:hover {
+            outline: 1px solid ${getColorBg(theme, color, tint, disabled)}24;
+          }
+          &:focus-within {
+            outline: 2px solid ${getColorBg(theme, color, tint, disabled)};
+            outline-offset: -2px;
           }
         `
       : null;
@@ -119,15 +141,15 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
   const outlinedCSS =
     variant === `outlined`
       ? css`
-          padding: ${getInputPadding(variant)};
-          border-radius: ${theme?.radius?.input || theme?.radius?.none};
           outline: ${getInputBorder(theme, `base`, error, warning, success, info, disabled)};
           outline-offset: -1px;
+          background-color: transparent;
           &:hover {
             outline: ${getInputBorder(theme, `hover`, error, warning, success, info, disabled)};
           }
           &:focus-within {
-            outline: ${getInputBorder(theme, `focus`, error, warning, success, info, disabled)};
+            outline: 2px solid ${getColorBg(theme, color, tint, disabled)};
+            outline-offset: -2px;
           }
         `
       : null;
@@ -149,19 +171,18 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
         cursor: not-allowed;
         user-select: none;
         pointer-events: none;
-        /* &::placeholder {
-          color: transparent;
-        } */
       `
     : null;
 
   // Return Styles
-  return cx(wrapperCSS, standardCSS, softCSS, outlinedCSS, fullWidthCSS, backdropBlurCSS, disabledCSS, overrides) || undefined;
+  return (
+    cx(wrapperCSS, solidCSS, softCSS, plainCSS, outlinedCSS, fullWidthCSS, backdropBlurCSS, disabledCSS, overrides) || undefined
+  );
 };
 
 export const useInputStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
   // Props
-  const { disabled, fullWidth, multiline } = props;
+  const { color, disabled, fullWidth, multiline, tint, variant } = props;
 
   // CSS Stylesheet
   const inputCSS = css`
@@ -169,7 +190,7 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 0;
+    padding: ${getInputPadding(variant)};
     border: 0;
     margin: 0;
     line-height: ${theme?.text?.input?.height || theme?.text?.height};
@@ -183,9 +204,49 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
       outline: none;
     }
     &::placeholder {
-      color: ${theme?.color?.fg[3]};
+      user-select: none;
     }
   `;
+
+  const solidCSS =
+    variant === `solid`
+      ? css`
+          color: ${getColorFg(theme, color, tint, disabled)};
+          &::placeholder {
+            color: ${theme?.color?.fgi[2]};
+          }
+        `
+      : null;
+
+  const softCSS =
+    variant === `soft`
+      ? css`
+          color: ${getColorBg(theme, color, tint, disabled)};
+          &::placeholder {
+            color: ${getColorBg(theme, color, tint, disabled)}80;
+          }
+        `
+      : null;
+
+  const plainCSS =
+    variant === `plain`
+      ? css`
+          color: ${getColorBg(theme, color, tint, disabled)};
+          &::placeholder {
+            color: ${getColorBg(theme, color, tint, disabled)}80;
+          }
+        `
+      : null;
+
+  const outlinedCSS =
+    variant === `outlined`
+      ? css`
+          color: ${theme?.color?.fg?.[0]};
+          &::placeholder {
+            color: ${theme?.color?.fg?.[2]};
+          }
+        `
+      : null;
 
   const multilineCSS = multiline
     ? css`
@@ -206,12 +267,11 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
         cursor: not-allowed;
         user-select: none;
         pointer-events: none;
-        /* &::placeholder {
-          color: transparent;
-        } */
       `
     : null;
 
   // Return Styles
-  return cx(inputCSS, multilineCSS, fullWidthCSS, disabledCSS, overrides) || undefined;
+  return (
+    cx(inputCSS, solidCSS, softCSS, plainCSS, outlinedCSS, multilineCSS, fullWidthCSS, disabledCSS, overrides) || undefined
+  );
 };

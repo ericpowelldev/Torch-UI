@@ -3,6 +3,7 @@ import Component from "./index";
 
 import React from "react";
 import { MdRocketLaunch } from "react-icons/md";
+import Flex from "../Flex";
 
 const meta: Meta<typeof Component> = {
   title: "Inputs/Button",
@@ -184,13 +185,6 @@ export const Secondary: Story = {
   },
 };
 
-export const Tertiary: Story = {
-  args: {
-    children: "Tertiary",
-    color: "tertiary",
-  },
-};
-
 export const WithIcon: Story = {
   args: {
     children: "Button with Icon",
@@ -259,65 +253,211 @@ export const DisabledState: Story = {
 };
 
 export const Tint100: Story = {
-  args: {
-    children: "Tint 100",
-    color: "primary",
-    tint: 100,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component color="primary" tint="100">
+        Primary
+      </Component>
+      <Component color="secondary" tint="100">
+        Secondary
+      </Component>
+      <Component color="utility" tint="100">
+        Utility
+      </Component>
+      <Component color="error" tint="100">
+        Error
+      </Component>
+      <Component color="warning" tint="100">
+        Warning
+      </Component>
+      <Component color="success" tint="100">
+        Success
+      </Component>
+      <Component color="info" tint="100">
+        Info
+      </Component>
+    </Flex>
+  ),
 };
 
 export const Tint300: Story = {
-  args: {
-    children: "Tint 300",
-    color: "primary",
-    tint: 300,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component color="primary" tint="300">
+        Primary
+      </Component>
+      <Component color="secondary" tint="300">
+        Secondary
+      </Component>
+      <Component color="utility" tint="300">
+        Utility
+      </Component>
+      <Component color="error" tint="300">
+        Error
+      </Component>
+      <Component color="warning" tint="300">
+        Warning
+      </Component>
+      <Component color="success" tint="300">
+        Success
+      </Component>
+      <Component color="info" tint="300">
+        Info
+      </Component>
+    </Flex>
+  ),
 };
 
 export const Tint500: Story = {
-  args: {
-    children: "Tint 500",
-    color: "primary",
-    tint: 500,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component color="primary">Primary</Component>
+      <Component color="secondary">Secondary</Component>
+      <Component color="utility">Utility</Component>
+      <Component color="error">Error</Component>
+      <Component color="warning">Warning</Component>
+      <Component color="success">Success</Component>
+      <Component color="info">Info</Component>
+    </Flex>
+  ),
 };
 
 export const Tint700: Story = {
-  args: {
-    children: "Tint 700",
-    color: "primary",
-    tint: 700,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component color="primary" tint="700">
+        Primary
+      </Component>
+      <Component color="secondary" tint="700">
+        Secondary
+      </Component>
+      <Component color="utility" tint="700">
+        Utility
+      </Component>
+      <Component color="error" tint="700">
+        Error
+      </Component>
+      <Component color="warning" tint="700">
+        Warning
+      </Component>
+      <Component color="success" tint="700">
+        Success
+      </Component>
+      <Component color="info" tint="700">
+        Info
+      </Component>
+    </Flex>
+  ),
 };
 
 export const Tint900: Story = {
-  args: {
-    children: "Tint 900",
-    color: "primary",
-    tint: 900,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component color="primary" tint="900">
+        Primary
+      </Component>
+      <Component color="secondary" tint="900">
+        Secondary
+      </Component>
+      <Component color="utility" tint="900">
+        Utility
+      </Component>
+      <Component color="error" tint="900">
+        Error
+      </Component>
+      <Component color="warning" tint="900">
+        Warning
+      </Component>
+      <Component color="success" tint="900">
+        Success
+      </Component>
+      <Component color="info" tint="900">
+        Info
+      </Component>
+    </Flex>
+  ),
 };
 
 export const SoftVariant: Story = {
-  args: {
-    children: "Soft Variant",
-    variant: "soft",
-    color: "primary",
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component variant="soft" color="primary">
+        Primary
+      </Component>
+      <Component variant="soft" color="secondary">
+        Secondary
+      </Component>
+      <Component variant="soft" color="utility">
+        Utility
+      </Component>
+      <Component variant="soft" color="error">
+        Error
+      </Component>
+      <Component variant="soft" color="warning">
+        Warning
+      </Component>
+      <Component variant="soft" color="success">
+        Success
+      </Component>
+      <Component variant="soft" color="info">
+        Info
+      </Component>
+    </Flex>
+  ),
 };
 
 export const PlainVariant: Story = {
-  args: {
-    children: "Plain Variant",
-    variant: "plain",
-    color: "primary",
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component variant="plain" color="primary">
+        Primary
+      </Component>
+      <Component variant="plain" color="secondary">
+        Secondary
+      </Component>
+      <Component variant="plain" color="utility">
+        Utility
+      </Component>
+      <Component variant="plain" color="error">
+        Error
+      </Component>
+      <Component variant="plain" color="warning">
+        Warning
+      </Component>
+      <Component variant="plain" color="success">
+        Success
+      </Component>
+      <Component variant="plain" color="info">
+        Info
+      </Component>
+    </Flex>
+  ),
 };
 
 export const OutlinedVariant: Story = {
-  args: {
-    children: "Outlined Variant",
-    variant: "outlined",
-    color: "primary",
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component variant="outlined" color="primary">
+        Primary
+      </Component>
+      <Component variant="outlined" color="secondary">
+        Secondary
+      </Component>
+      <Component variant="outlined" color="utility">
+        Utility
+      </Component>
+      <Component variant="outlined" color="error">
+        Error
+      </Component>
+      <Component variant="outlined" color="warning">
+        Warning
+      </Component>
+      <Component variant="outlined" color="success">
+        Success
+      </Component>
+      <Component variant="outlined" color="info">
+        Info
+      </Component>
+    </Flex>
+  ),
 };

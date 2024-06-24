@@ -99,11 +99,13 @@ const Input = ({
     theme,
     {
       backdropBlur,
+      color,
       disabled,
       error,
       fullWidth,
       info,
       success,
+      tint,
       variant,
       warning,
     },
@@ -112,9 +114,12 @@ const Input = ({
   const inputStyles = useInputStyles(
     theme,
     {
+      color,
       disabled,
       fullWidth,
       multiline,
+      tint,
+      variant,
     },
     [classes?.input]
   );

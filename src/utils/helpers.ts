@@ -202,9 +202,7 @@ export const getInputLabelColor = (
 
 /** Get input component padding */
 export const getInputPadding = (variant?: InputVariantValues) => {
-  if (variant === `soft`) return `7px 8px 6px`;
-  if (variant === `outlined`) return `7px 8px`;
-  return `7px 0 6px`;
+  return `8px 12px`;
 };
 
 /** Get input component border */

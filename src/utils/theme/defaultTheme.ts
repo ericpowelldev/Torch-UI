@@ -1,38 +1,27 @@
 // THEME ---------------------------------------------------------------- //
 
 const theme = {
-  // Custom style overrides
-  custom: {
-    dark: {
-      color: {
-        fg: `#ffffff`,
-        bg: `#303840`,
-      },
-      text: {
-        family: `"Inter Tight", "Roboto", "Helvetica", "Arial", sans-serif`,
-      },
-    },
-  },
+  // Theme Mode Options
+  mode: `light`,
 
-  // Colors
+  // Color Options
   color: {
     // Brand colors
-    primary: `#f46000`,
-    secondary: `#4080c8`,
-    tertiary: `#40b4a0`,
+    primary: `#6068f8`,
+    secondary: `#f85090`,
 
     // Utility colors
-    utility: `#607080`,
-    error: `#800020`,
-    warning: `#806000`,
-    success: `#408020`,
-    info: `#0880a0`,
+    utility: `#687890`,
+    error: `#dc0818`,
+    warning: `#e89808`,
+    success: `#20a008`,
+    info: `#3080e0`,
 
     // General colors
-    grayscale: `#707880`,
+    grayscale: `#687890`,
 
     // Foreground/Text colors
-    fg: `#303840`,
+    fg: `#242c40`,
 
     // Background/Wall colors
     bg: `#ffffff`,
@@ -126,7 +115,7 @@ const theme = {
     input: {
       size: `16px`,
       weight: 400,
-      height: `18px`,
+      height: `20px`,
     },
     divider: {
       size: `16px`,
@@ -150,7 +139,7 @@ const theme = {
     },
   },
 
-  // Pixel Spacing
+  // Pixel Spacing Options
   space: (num1: number = 2, num2?: number, num3?: number, num4?: number) => {
     const pix = (num: number) => `${4 * num}px`;
 
@@ -180,8 +169,9 @@ const theme = {
   // Transition Options
   transition: {
     none: `none`,
-    standard: `all 0.15s ease-in-out`,
-    button: `all 0.15s ease-in-out`,
+    standard: `all 0.1s ease-in-out`,
+    button: `all 0.1s ease-in-out`,
+    input: `all 0.05s ease-in-out`,
   },
 
   // Shadow Options
@@ -251,6 +241,17 @@ const theme = {
 
   // Visualize Options
   visualize: `repeating-linear-gradient(135deg, #00000010, #00000010 8px, #00000008 8px, #00000008 16px)`,
+
+  // Custom theme overrides
+  custom: {
+    dark: {
+      mode: `dark`,
+      color: {
+        fg: `#ffffff`,
+        bg: `#242c40`,
+      },
+    },
+  },
 };
 
 // EXPORT ---------------------------------------------------------------- //
