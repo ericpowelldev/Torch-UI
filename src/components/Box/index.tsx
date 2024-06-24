@@ -2,8 +2,6 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import {
   AlphaTintValues,
   BGColorValues,
@@ -14,6 +12,7 @@ import {
   TintValues,
 } from "utils/types";
 
+import { useTUI } from "../../TUI";
 import { useBoxStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -34,14 +33,14 @@ interface BoxProps {
 
   // Specialized Properties //
 
-  width?: number | string;
+  backdropBlur?: boolean;
+  color?: `inherit` | ColorValues | BGColorValues | FGColorValues;
   height?: number | string;
   radius?: number | string;
-  color?: `inherit` | ColorValues | BGColorValues | FGColorValues;
-  tint?: TintValues | InverseTintValues | AlphaTintValues;
   shadow?: boolean;
-  backdropBlur?: boolean;
+  tint?: TintValues | InverseTintValues | AlphaTintValues;
   visualize?: boolean;
+  width?: number | string;
 
   // HTML Properties //
 
@@ -61,14 +60,14 @@ const Box = ({
 
   // Specialized Properties //
 
-  width = 0,
-  height = 0,
-  radius = 0,
-  color = "inherit",
-  tint = 500,
-  shadow = false,
   backdropBlur = false,
+  color = "inherit",
+  height,
+  radius = 0,
+  shadow = false,
+  tint = 500,
   visualize,
+  width,
 
   // HTML Properties //
 
@@ -78,7 +77,7 @@ const Box = ({
   const { theme } = useTUI();
 
   // Styles
-  const boxStyles = useBoxStyles(theme, { width, height, radius, color, tint, shadow, backdropBlur, visualize }, [
+  const boxStyles = useBoxStyles(theme, { backdropBlur, color, height, radius, shadow, tint, visualize, width }, [
     classes?.box,
     className,
   ]);

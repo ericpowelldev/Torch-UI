@@ -7,8 +7,10 @@ import { getSpacerSize } from "../../utils/helpers";
 // STYLES ---------------------------------------------------------------- //
 
 export const useSpacerStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { size, direction, visualize } = props;
+  // Props
+  const { direction, size, visualize } = props;
 
+  // CSS Stylesheet
   const spacerCSS = css`
     display: block;
   `;
@@ -31,5 +33,6 @@ export const useSpacerStyles = (theme?: any, props?: any, overrides?: (string | 
       `
     : null;
 
+  // Return Styles
   return cx(spacerCSS, directionCSS, visualizeCSS, overrides) || undefined;
 };

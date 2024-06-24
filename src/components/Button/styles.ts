@@ -17,15 +17,17 @@ import {
 // STYLES ---------------------------------------------------------------- //
 
 export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size, fullWidth, pill, shadowButton, shadowLabel, backdropBlur, loading, fetching, disabled } =
+  // Props
+  const { backdropBlur, color, disabled, fullWidth, loading, pill, placeholder, shadowButton, shadowLabel, size, tint, variant } =
     props;
 
+  // CSS Stylesheet
   const buttonCSS = css`
     position: relative;
     overflow: hidden;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: fit-content;
     padding: 0;
     border: 0;
@@ -71,49 +73,49 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
         `
       : null;
 
-  const transparentCSS =
-    variant === `transparent`
+  const softCSS =
+    variant === `soft`
       ? css`
           background-color: ${getColorBg(theme, color, tint, disabled, `fg`)}24;
           color: ${getColorBg(theme, color, tint, disabled, `fg`)};
           &:hover {
-            background-color: ${getColorHover(theme, `transparent`, color, tint)};
+            background-color: ${getColorHover(theme, `soft`, color, tint)};
             @media (hover: none) {
               background-color: ${getColorBg(theme, color, tint, disabled, `fg`)}24;
             }
           }
           &:active {
-            background-color: ${getColorActive(theme, `transparent`, color, tint)};
+            background-color: ${getColorActive(theme, `soft`, color, tint)};
           }
         `
       : null;
 
-  const simpleCSS =
-    variant === `simple`
+  const plainCSS =
+    variant === `plain`
       ? css`
           background-color: transparent;
           color: ${getColorBg(theme, color, tint, disabled, `fg`)};
           &:hover {
-            background-color: ${getColorHover(theme, `simple`, color, tint)};
+            background-color: ${getColorHover(theme, `plain`, color, tint)};
             @media (hover: none) {
               background-color: transparent;
             }
           }
           &:active {
-            background-color: ${getColorActive(theme, `simple`, color, tint)};
+            background-color: ${getColorActive(theme, `plain`, color, tint)};
           }
         `
       : null;
 
-  const outlineCSS =
-    variant === `outline`
+  const outlinedCSS =
+    variant === `outlined`
       ? css`
           outline: 1px solid ${getColorBg(theme, color, tint, disabled, `fg`)};
           outline-offset: -1px;
           background-color: transparent;
           color: ${getColorBg(theme, color, tint, disabled, `fg`)};
           &:hover {
-            background-color: ${getColorHover(theme, `outline`, color, tint)};
+            background-color: ${getColorHover(theme, `outlined`, color, tint)};
             box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}48;
             @media (hover: none) {
               background-color: transparent;
@@ -121,7 +123,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
             }
           }
           &:active {
-            background-color: ${getColorActive(theme, `outline`, color, tint)};
+            background-color: ${getColorActive(theme, `outlined`, color, tint)};
           }
         `
       : null;
@@ -174,7 +176,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
       `
     : null;
 
-  const fetchingCSS = fetching
+  const placeholderCSS = placeholder
     ? css`
         cursor: wait;
         pointer-events: none;
@@ -192,13 +194,14 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
       `
     : null;
 
+  // Return Styles
   return (
     cx(
       buttonCSS,
       solidCSS,
-      transparentCSS,
-      simpleCSS,
-      outlineCSS,
+      softCSS,
+      plainCSS,
+      outlinedCSS,
       sizeCSS,
       fullWidthCSS,
       pillCSS,
@@ -206,7 +209,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
       shadowLabelCSS,
       backdropBlurCSS,
       loadingCSS,
-      fetchingCSS,
+      placeholderCSS,
       disabledCSS,
       overrides
     ) || undefined
@@ -214,8 +217,10 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
 };
 
 export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // Props
   const { size, uppercase } = props;
 
+  // CSS Stylesheet
   const labelCSS = css`
     line-height: ${theme?.text?.button?.height || theme?.text?.height};
     font-family: ${theme?.text?.button?.family || theme?.text?.family};
@@ -238,14 +243,17 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
+  // Return Styles
   return cx(labelCSS, sizeCSS, uppercaseCSS, overrides) || undefined;
 };
 
 export const useStartIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // Props
   const { size } = props;
 
+  // CSS Stylesheet
   const startIconCSS = css`
-    margin-left: -2px;
+    margin-left: -4px;
     margin-right: ${getButtonIconMargin(size)}px;
     line-height: 1;
     font-size: ${getButtonIconSize(size)}px;
@@ -256,15 +264,18 @@ export const useStartIconStyles = (theme?: any, props?: any, overrides?: (string
     }
   `;
 
+  // Return Styles
   return cx(startIconCSS, overrides) || undefined;
 };
 
 export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // Props
   const { size } = props;
 
+  // CSS Stylesheet
   const endIconCSS = css`
     margin-left: ${getButtonIconMargin(size)}px;
-    margin-right: -2px;
+    margin-right: -4px;
     & svg {
       display: block;
       width: ${getButtonIconSize(size)}px;
@@ -272,12 +283,15 @@ export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string |
     }
   `;
 
+  // Return Styles
   return cx(endIconCSS, overrides) || undefined;
 };
 
 export const useCenterIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // Props
   const { size } = props;
 
+  // CSS Stylesheet
   const centerIconCSS = css`
     position: absolute;
     left: 50%;
@@ -290,5 +304,6 @@ export const useCenterIconStyles = (theme?: any, props?: any, overrides?: (strin
     }
   `;
 
+  // Return Styles
   return cx(centerIconCSS, overrides) || undefined;
 };

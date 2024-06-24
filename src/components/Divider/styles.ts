@@ -5,8 +5,10 @@ import { css, cx } from "../../utils/emotion";
 // STYLES ---------------------------------------------------------------- //
 
 export const useDividerStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { direction, gap, gutter, marginAfter, marginBefore, textPosition, tip } = props;
+  // Props
+  const { direction, gap, gutter, spaceAfter, spaceBefore, textPosition, tip } = props;
 
+  // CSS Stylesheet
   const dividerCSS = css`
     display: flex;
     flex-wrap: nowrap;
@@ -44,34 +46,37 @@ export const useDividerStyles = (theme?: any, props?: any, overrides?: (string |
           `
         : null;
 
-  const marginBeforeCSS =
-    marginBefore && direction !== "vertical"
+  const spaceBeforeCSS =
+    spaceBefore && direction !== "vertical"
       ? css`
-          margin-top: ${theme.space(marginBefore)};
+          margin-top: ${theme.space(spaceBefore)};
         `
-      : marginBefore && direction === "vertical"
+      : spaceBefore && direction === "vertical"
         ? css`
-            margin-left: ${theme.space(marginBefore)};
+            margin-left: ${theme.space(spaceBefore)};
           `
         : null;
 
-  const marginAfterCSS =
-    marginAfter && direction !== "vertical"
+  const spaceAfterCSS =
+    spaceAfter && direction !== "vertical"
       ? css`
-          margin-bottom: ${theme.space(marginAfter)};
+          margin-bottom: ${theme.space(spaceAfter)};
         `
-      : marginAfter && direction === "vertical"
+      : spaceAfter && direction === "vertical"
         ? css`
-            margin-right: ${theme.space(marginAfter)};
+            margin-right: ${theme.space(spaceAfter)};
           `
         : null;
 
-  return cx(dividerCSS, directionCSS, gapCSS, gutterCSS, marginBeforeCSS, marginAfterCSS, overrides) || undefined;
+  // Return Styles
+  return cx(dividerCSS, directionCSS, gapCSS, gutterCSS, spaceBeforeCSS, spaceAfterCSS, overrides) || undefined;
 };
 
 export const useStretchStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // Props
   const { gap } = props;
 
+  // CSS Stylesheet
   const stretchCSS = css`
     display: flex;
     flex-wrap: nowrap;
@@ -86,10 +91,12 @@ export const useStretchStyles = (theme?: any, props?: any, overrides?: (string |
       `
     : null;
 
+  // Return Styles
   return cx(stretchCSS, gapCSS, overrides) || undefined;
 };
 
 export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // CSS Stylesheet
   const labelCSS = css`
     line-height: ${theme?.text?.divider?.height};
     font-size: ${theme?.text?.divider?.size};
@@ -97,29 +104,34 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
     color: ${theme?.color?.fg?.[2]};
   `;
 
+  // Return Styles
   return cx(labelCSS, overrides) || undefined;
 };
 
 export const useLineStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { direction } = props;
+  // Props
+  const { direction, lineStyle, lineWidth } = props;
 
+  // CSS Stylesheet
   const lineCSS =
     direction !== "vertical"
       ? css`
           min-width: 0px;
           width: 100%;
-          border-top: 1px solid ${theme?.color?.divider?.medium};
+          border-top: ${lineWidth}px ${lineStyle} ${theme?.color?.divider?.medium};
         `
       : css`
           min-width: 0px;
           height: 100%;
-          border-left: 1px solid ${theme?.color?.divider?.medium};
+          border-left: ${lineWidth}px ${lineStyle} ${theme?.color?.divider?.medium};
         `;
 
+  // Return Styles
   return cx(lineCSS, overrides) || undefined;
 };
 
 export const useIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // CSS Stylesheet
   const iconCSS = css`
     min-width: 20px;
     min-height: 20px;
@@ -128,5 +140,6 @@ export const useIconStyles = (theme?: any, props?: any, overrides?: (string | un
     color: ${theme?.color?.fg?.[2]};
   `;
 
+  // Return Styles
   return cx(iconCSS, overrides) || undefined;
 };

@@ -2,8 +2,6 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import {
   BoolValues,
   ColorValues,
@@ -15,6 +13,7 @@ import {
 } from "../../utils/types";
 import { getTextComponent } from "../../utils/helpers";
 
+import { useTUI } from "../../TUI";
 import { useTextStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -22,25 +21,25 @@ import { useTextStyles } from "./styles";
 interface TextProps {
   // General Properties //
 
-  className?: string;
-  classes?: {
-    text?: string;
-  };
-  style?: React.CSSProperties;
   props?: {
     text?: React.HTMLAttributes<HTMLElement>;
   };
+  classes?: {
+    text?: string;
+  };
+  className?: string;
+  style?: React.CSSProperties;
   children?: React.ReactNode;
   component?: `inherit` | TextComponentValues;
 
   // Specialized Properties //
 
-  variant?: `inherit` | TextVariantValues;
-  color?: `inherit` | ColorValues | FGColorValues;
-  tint?: TintValues;
   align?: `inherit` | TextAlignValues;
+  color?: `inherit` | ColorValues | FGColorValues;
   href?: string;
   shadow?: BoolValues;
+  tint?: TintValues;
+  variant?: `inherit` | TextVariantValues;
 
   // Other Properties //
 
@@ -60,12 +59,12 @@ const Text = ({
 
   // Specialized Properties //
 
-  variant = "p1",
-  color = "inherit",
-  tint = 500,
   align,
+  color = "inherit",
   href,
   shadow = false,
+  tint = 500,
+  variant = "p1",
 
   // Other Properties //
 
@@ -75,7 +74,7 @@ const Text = ({
   const { theme } = useTUI();
 
   // Styles
-  const textStyles = useTextStyles(theme, { variant, color, tint, align, shadow }, [classes?.text, className]);
+  const textStyles = useTextStyles(theme, { align, color, shadow, tint, variant }, [classes?.text, className]);
 
   // Return Component
   return React.createElement(

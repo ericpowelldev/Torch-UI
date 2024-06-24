@@ -5,32 +5,32 @@ import React from "react";
 import { MdRocketLaunch } from "react-icons/md";
 
 const meta: Meta<typeof Component> = {
-  title: "Buttons/Button",
+  title: "Inputs/Button",
   tags: ["autodocs"],
   component: Component,
   argTypes: {
     // General Properties //
 
     props: {
-      description: "Nested properties of the component.",
+      description: "Nested properties of the child components.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Nested CSS classes of the component.",
+      description: "Nested CSS classes of the child components.",
       table: {
         disable: true,
       },
     },
     className: {
-      description: "CSS class of the component.",
+      description: "CSS class of the root component.",
       table: {
         disable: true,
       },
     },
     style: {
-      description: "Inline styling of the component.",
+      description: "Inline styling of the root component.",
       table: {
         disable: true,
       },
@@ -50,10 +50,10 @@ const meta: Meta<typeof Component> = {
 
     // Specialized Properties //
 
-    variant: {
-      description: "Variation of the button.",
+    backdropBlur: {
+      description: "Should the button have a backdrop blur?",
       control: {
-        type: "radio",
+        type: "boolean",
       },
     },
     color: {
@@ -62,20 +62,14 @@ const meta: Meta<typeof Component> = {
         type: "select",
       },
     },
-    tint: {
-      description: "Color tint of the button.",
+    disabled: {
+      description: "Should the button be in a disabled state?",
       control: {
-        type: "select",
+        type: "boolean",
       },
     },
-    size: {
-      description: "Size of the button.",
-      control: {
-        type: "radio",
-      },
-    },
-    uppercase: {
-      description: "Should the button text be uppercase?",
+    error: {
+      description: "Should the button be in an error state?",
       control: {
         type: "boolean",
       },
@@ -86,8 +80,32 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
+    icon: {
+      description: "Icon to render at the start of the button.",
+      table: {
+        disable: true,
+      },
+    },
+    info: {
+      description: "Should the button be in an info state?",
+      control: {
+        type: "boolean",
+      },
+    },
+    loading: {
+      description: "Should the button be in a loading state?",
+      control: {
+        type: "boolean",
+      },
+    },
     pill: {
       description: "Should the button be pill shaped?",
+      control: {
+        type: "boolean",
+      },
+    },
+    placeholder: {
+      description: "Should the button be in a placeholder state?",
       control: {
         type: "boolean",
       },
@@ -104,19 +122,20 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
-    backdropBlur: {
-      description: "Should the button have a backdrop blur?",
+    size: {
+      description: "Size of the button.",
       control: {
-        type: "boolean",
+        type: "radio",
       },
     },
-    icon: {
-      table: {
-        disable: true,
+    tint: {
+      description: "Color tint of the button.",
+      control: {
+        type: "select",
       },
     },
-    error: {
-      description: "Should the button be in an error state?",
+    uppercase: {
+      description: "Should the button text be uppercase?",
       control: {
         type: "boolean",
       },
@@ -133,22 +152,10 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
-    info: {
-      description: "Should the button be in an info state?",
+    variant: {
+      description: "Variation of the button.",
       control: {
-        type: "boolean",
-      },
-    },
-    loading: {
-      description: "Should the button be in a loading state?",
-      control: {
-        type: "boolean",
-      },
-    },
-    disabled: {
-      description: "Should the button be in a disabled state?",
-      control: {
-        type: "boolean",
+        type: "radio",
       },
     },
   },
@@ -237,10 +244,10 @@ export const LoadingState: Story = {
   },
 };
 
-export const FetchingState: Story = {
+export const PlaceholderState: Story = {
   args: {
-    children: "Fetching State",
-    fetching: true,
+    children: "Placeholder State",
+    placeholder: true,
   },
 };
 
@@ -291,26 +298,26 @@ export const Tint900: Story = {
   },
 };
 
-export const TransparentVariant: Story = {
+export const SoftVariant: Story = {
   args: {
-    children: "Transparent Variant",
-    variant: "transparent",
+    children: "Soft Variant",
+    variant: "soft",
     color: "primary",
   },
 };
 
-export const SimpleVariant: Story = {
+export const PlainVariant: Story = {
   args: {
-    children: "Simple Variant",
-    variant: "simple",
+    children: "Plain Variant",
+    variant: "plain",
     color: "primary",
   },
 };
 
-export const OutlineVariant: Story = {
+export const OutlinedVariant: Story = {
   args: {
-    children: "Outline Variant",
-    variant: "outline",
+    children: "Outlined Variant",
+    variant: "outlined",
     color: "primary",
   },
 };

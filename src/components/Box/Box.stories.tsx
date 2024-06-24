@@ -9,25 +9,25 @@ const meta: Meta<typeof Component> = {
     // General Properties //
 
     props: {
-      description: "Nested properties of the component.",
+      description: "Nested properties of the child components.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Nested CSS classes of the component.",
+      description: "Nested CSS classes of the child components.",
       table: {
         disable: true,
       },
     },
     className: {
-      description: "CSS class of the component.",
+      description: "CSS class of the root component.",
       table: {
         disable: true,
       },
     },
     style: {
-      description: "Inline styling of the component.",
+      description: "Inline styling of the root component.",
       table: {
         disable: true,
       },
@@ -41,16 +41,22 @@ const meta: Meta<typeof Component> = {
     component: {
       description: "HTML element to render the component as.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
 
     // Specialized Properties //
 
-    width: {
-      description: "Width of the box.",
+    backdropBlur: {
+      description: "Should the box have a backdrop blur?",
       control: {
-        type: "number",
+        type: "boolean",
+      },
+    },
+    color: {
+      description: "Color of the box.",
+      control: {
+        type: "select",
       },
     },
     height: {
@@ -65,10 +71,10 @@ const meta: Meta<typeof Component> = {
         type: "number",
       },
     },
-    color: {
-      description: "Color of the box.",
+    shadow: {
+      description: "Should the box have a shadow?",
       control: {
-        type: "select",
+        type: "boolean",
       },
     },
     tint: {
@@ -77,22 +83,16 @@ const meta: Meta<typeof Component> = {
         type: "select",
       },
     },
-    shadow: {
-      description: "Should the box have a shadow?",
-      control: {
-        type: "boolean",
-      },
-    },
-    backdropBlur: {
-      description: "Should the box have a backdrop blur?",
-      control: {
-        type: "boolean",
-      },
-    },
     visualize: {
       description: "Should the component be visualized?",
       control: {
         type: "boolean",
+      },
+    },
+    width: {
+      description: "Width of the box.",
+      control: {
+        type: "number",
       },
     },
   },
@@ -103,9 +103,9 @@ type Story = StoryObj<typeof Component>;
 
 export const Default: Story = {
   args: {
-    visualize: true,
-    width: "100%",
     height: 256,
     radius: 10,
+    visualize: true,
+    width: "100%",
   },
 };

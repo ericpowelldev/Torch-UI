@@ -12,25 +12,25 @@ const meta: Meta<typeof Component> = {
     // General Properties //
 
     props: {
-      description: "Nested properties of the component.",
+      description: "Nested properties of the child components.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Nested CSS classes of the component.",
+      description: "Nested CSS classes of the child components.",
       table: {
         disable: true,
       },
     },
     className: {
-      description: "CSS class of the component.",
+      description: "CSS class of the root component.",
       table: {
         disable: true,
       },
     },
     style: {
-      description: "Inline styling of the component.",
+      description: "Inline styling of the root component.",
       table: {
         disable: true,
       },
@@ -38,7 +38,7 @@ const meta: Meta<typeof Component> = {
     component: {
       description: "HTML element to render the component as.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
     tooltip: {
@@ -49,11 +49,11 @@ const meta: Meta<typeof Component> = {
     },
 
     // Specialized Properties //
-    
-    variant: {
-      description: "Variation of the toggle.",
+
+    checked: {
+      description: "Should the toggle be checked?",
       control: {
-        type: "radio",
+        type: "boolean",
       },
       table: {
         disable: true,
@@ -65,26 +65,8 @@ const meta: Meta<typeof Component> = {
         type: "select",
       },
     },
-    tint: {
-      description: "Color tint of the toggle.",
-      control: {
-        type: "select",
-      },
-    },
-    size: {
-      description: "Size of the toggle.",
-      control: {
-        type: "radio",
-      },
-    },
-    shadowTrack: {
-      description: "Should the toggle track have a shadow?",
-      control: {
-        type: "boolean",
-      },
-    },
-    shadowSlide: {
-      description: "Should the toggle slide have a shadow?",
+    disabled: {
+      description: "Should the toggle be in a disabled state?",
       control: {
         type: "boolean",
       },
@@ -101,16 +83,34 @@ const meta: Meta<typeof Component> = {
         disable: true,
       },
     },
-    disabled: {
-      description: "Should the toggle be in a disabled state?",
+    shadowSlide: {
+      description: "Should the toggle slide have a shadow?",
       control: {
         type: "boolean",
       },
     },
-    checked: {
-      description: "Should the toggle be checked?",
+    shadowTrack: {
+      description: "Should the toggle track have a shadow?",
       control: {
         type: "boolean",
+      },
+    },
+    size: {
+      description: "Size of the toggle.",
+      control: {
+        type: "radio",
+      },
+    },
+    tint: {
+      description: "Color tint of the toggle.",
+      control: {
+        type: "select",
+      },
+    },
+    variant: {
+      description: "Variation of the toggle.",
+      control: {
+        type: "radio",
       },
       table: {
         disable: true,

@@ -3,7 +3,6 @@
 import React from "react";
 
 import { useTUI } from "../../TUI";
-
 import { usePaletteStyles, useFlexStyles } from "./styles";
 
 import Box from "../Box";

@@ -11,25 +11,25 @@ const meta: Meta<typeof Component> = {
     // General Properties //
 
     props: {
-      description: "Nested properties of the component.",
+      description: "Nested properties of the child components.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Nested CSS classes of the component.",
+      description: "Nested CSS classes of the child components.",
       table: {
         disable: true,
       },
     },
     className: {
-      description: "CSS class of the component.",
+      description: "CSS class of the root component.",
       table: {
         disable: true,
       },
     },
     style: {
-      description: "Inline styling of the component.",
+      description: "Inline styling of the root component.",
       table: {
         disable: true,
       },
@@ -43,35 +43,35 @@ const meta: Meta<typeof Component> = {
     component: {
       description: "HTML element to render the component as.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
 
     // Specialized Properties //
 
     alignContent: {
-      description: "The vertical alignment of the child flex items (particularly when flex items are overflowing).",
+      description: "Vertical alignment of the child flex items (particularly when flex items are overflowing).",
       control: {
         type: "select",
       },
       options: ["stretch", "flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
     },
     alignItems: {
-      description: "The vertical alignment of the child flex items.",
+      description: "Vertical alignment of the child flex items.",
       control: {
         type: "select",
       },
       options: ["stretch", "flex-start", "flex-end", "center", "baseline"],
     },
     alignSelf: {
-      description: "The vertical alignment of this component's container.",
+      description: "Vertical alignment of this component's container.",
       control: {
         type: "select",
       },
       options: ["auto", "stretch", "flex-start", "flex-end", "center", "baseline"],
     },
     columnGap: {
-      description: "The horizontal gap between the flex items.",
+      description: "Horizontal space between the flex items.",
       control: {
         type: "range",
         min: 0,
@@ -92,14 +92,14 @@ const meta: Meta<typeof Component> = {
       },
     },
     direction: {
-      description: "The direction of the flex items.",
+      description: "Direction of the flex items.",
       control: {
         type: "select",
       },
       options: ["row", "row-reverse", "column", "column-reverse"],
     },
     gap: {
-      description: "The gap between the flex items.",
+      description: "Space between the flex items.",
       control: {
         type: "range",
         min: 0,
@@ -108,28 +108,28 @@ const meta: Meta<typeof Component> = {
       },
     },
     justifyContent: {
-      description: "The horizontal alignment of the child flex items.",
+      description: "Horizontal alignment of the child flex items.",
       control: {
         type: "select",
       },
       options: ["stretch", "flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
     },
     justifyItems: {
-      description: "The horizontal alignment of the child flex items (particularly when flex items are overflowing).",
+      description: "Horizontal alignment of the child flex items (particularly when flex items are overflowing).",
       control: {
         type: "select",
       },
       options: ["stretch", "flex-start", "flex-end", "center", "baseline"],
     },
     justifySelf: {
-      description: "The horizontal alignment of this component's container.",
+      description: "Horizontal alignment of this component's container.",
       control: {
         type: "select",
       },
       options: ["auto", "stretch", "flex-start", "flex-end", "center", "baseline"],
     },
     rowGap: {
-      description: "The vertical gap between the flex items.",
+      description: "Vertical space between the flex items.",
       control: {
         type: "range",
         min: 0,
@@ -144,7 +144,7 @@ const meta: Meta<typeof Component> = {
       },
     },
     wrap: {
-      description: "The wrapping behavior of the flex items.",
+      description: "Wrapping behavior of the flex items.",
       control: {
         type: "select",
       },

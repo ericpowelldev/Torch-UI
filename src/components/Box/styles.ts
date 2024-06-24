@@ -7,14 +7,27 @@ import { getBoxColor } from "../../utils/helpers";
 // STYLES ---------------------------------------------------------------- //
 
 export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { color, tint, width, height, radius, shadow, backdropBlur, visualize } = props;
+  // Props
+  const { backdropBlur, color, height, radius, shadow, tint, visualize, width } = props;
 
+  // CSS Stylesheet
   const boxCSS = css`
     label: TuiBox;
-    display: block;
-    width: ${typeof width === `number` ? `${width}px` : typeof width === `string` ? width : `inherit`};
-    height: ${typeof height === `number` ? `${height}px` : typeof height === `string` ? height : `inherit`};
   `;
+
+  const widthCSS =
+    width || width === 0
+      ? css`
+          width: ${typeof width === `number` ? `${width}px` : typeof width === `string` ? width : `inherit`};
+        `
+      : null;
+
+  const heightCSS =
+    height || height === 0
+      ? css`
+          height: ${typeof height === `number` ? `${height}px` : typeof height === `string` ? height : `inherit`};
+        `
+      : null;
 
   const radiusCSS = radius
     ? css`
@@ -47,5 +60,6 @@ export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | und
       `
     : null;
 
-  return cx(boxCSS, radiusCSS, colorCSS, shadowCSS, backdropBlurCSS, visualizeCSS, overrides) || undefined;
+  // Return Styles
+  return cx(boxCSS, widthCSS, heightCSS, radiusCSS, colorCSS, shadowCSS, backdropBlurCSS, visualizeCSS, overrides) || undefined;
 };

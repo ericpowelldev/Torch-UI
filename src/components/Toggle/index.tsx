@@ -2,10 +2,9 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import { BoolValues, ColorValues, SizeValues, TintValues, ToggleComponentValues, ToggleVariantValues } from "../../utils/types";
 
+import { useTUI } from "../../TUI";
 import {
   useToggleStyles,
   useTrackStyles,
@@ -43,18 +42,15 @@ interface ToggleProps {
 
   // Specialized Properties //
 
-  variant?: ToggleVariantValues;
   color?: ColorValues;
-  tint?: TintValues;
-  size?: SizeValues;
-
-  shadowTrack?: BoolValues;
-  shadowSlide?: BoolValues;
-
+  disabled?: BoolValues;
   iconChecked?: React.ReactNode;
   iconUnchecked?: React.ReactNode;
-
-  disabled?: BoolValues;
+  shadowSlide?: BoolValues;
+  shadowTrack?: BoolValues;
+  size?: SizeValues;
+  tint?: TintValues;
+  variant?: ToggleVariantValues;
 
   // HTML Properties //
 
@@ -74,15 +70,15 @@ const Toggle = ({
 
   // Specialized Properties //
 
-  variant = "solid",
   color = "success",
-  tint = 500,
-  size = "md",
-  shadowTrack = false,
-  shadowSlide = false,
+  disabled = false,
   iconChecked,
   iconUnchecked,
-  disabled = false,
+  shadowSlide = false,
+  shadowTrack = false,
+  size = "md",
+  tint = 500,
+  variant = "solid",
 
   // HTML Properties //
 
@@ -92,12 +88,12 @@ const Toggle = ({
   const { theme } = useTUI();
 
   // Styles
-  const toggleStyles = useToggleStyles(theme, { color, tint, size, disabled }, [classes?.toggle, className]);
-  const trackStyles = useTrackStyles(theme, { color, tint, size, shadowTrack, disabled }, [classes?.track]);
-  const slideStyles = useSlideStyles(theme, { color, tint, size, shadowSlide, disabled }, [classes?.slide]);
-  const inputStyles = useInputStyles(theme, { color, tint, size, disabled }, [classes?.input]);
-  const iconCheckedStyles = useIconCheckedStyles(theme, { color, tint, size, disabled }, [classes?.iconChecked]);
-  const iconUncheckedStyles = useIconUncheckedStyles(theme, { color, tint, size, disabled }, [classes?.iconUnchecked]);
+  const toggleStyles = useToggleStyles(theme, { color, disabled, size, tint }, [classes?.toggle, className]);
+  const trackStyles = useTrackStyles(theme, { color, disabled, shadowTrack, size, tint }, [classes?.track]);
+  const slideStyles = useSlideStyles(theme, { color, disabled, shadowSlide, size, tint }, [classes?.slide]);
+  const inputStyles = useInputStyles(theme, { color, disabled, size, tint }, [classes?.input]);
+  const iconCheckedStyles = useIconCheckedStyles(theme, { color, disabled, size, tint }, [classes?.iconChecked]);
+  const iconUncheckedStyles = useIconUncheckedStyles(theme, { color, disabled, size, tint }, [classes?.iconUnchecked]);
 
   // Return Component
   return (

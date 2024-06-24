@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Component from "./index";
 
-import React from "react";
-
 const meta: Meta<typeof Component> = {
-  title: "Layout/Container",
+  title: "Display/StatusIcon",
   tags: ["autodocs"],
   component: Component,
   argTypes: {
@@ -34,37 +32,61 @@ const meta: Meta<typeof Component> = {
         disable: true,
       },
     },
-    children: {
-      description: "Content inside of the component.",
+    tooltip: {
+      description: "Content inside of the tooltip (If present, tooltip will pop up on hover).",
       control: {
         type: "text",
-      },
-    },
-    component: {
-      description: "HTML element to render the component as.",
-      control: {
-        type: "select",
       },
     },
 
     // Specialized Properties //
 
-    disablePadding: {
-      description: "Should the outside padding be disabled?",
+    animate: {
+      description: "Should the icon animate?",
       control: {
         type: "boolean",
       },
     },
-    maxWidth: {
-      description: "Maximum width of the container.",
+    animateMs: {
+      description: "Speed at which the icon animates (in milliseconds).",
+      control: {
+        type: "range",
+        min: 100,
+        max: 2500,
+        step: 100,
+      },
+    },
+    color: {
+      description: "Color of the icon.",
+      control: {
+        type: "select",
+      },
+    },
+    disabled: {
+      description: "Should the icon be disabled?",
+      control: {
+        type: "boolean",
+      },
+    },
+    size: {
+      description: "Size of the icon.",
+      control: {
+        type: "range",
+        min: 12,
+        max: 96,
+        step: 1,
+      },
+    },
+    tint: {
+      description: "Color tint of the icon.",
+      control: {
+        type: "select",
+      },
+    },
+    variant: {
+      description: "Variation of the icon.",
       control: {
         type: "radio",
-      },
-    },
-    visualize: {
-      description: "Should the component be visualized?",
-      control: {
-        type: "boolean",
       },
     },
   },
@@ -74,8 +96,5 @@ export default meta;
 type Story = StoryObj<typeof Component>;
 
 export const Default: Story = {
-  args: {
-    children: <div style={{ width: "256px", height: "256px" }} />,
-    visualize: true,
-  },
+  args: {},
 };

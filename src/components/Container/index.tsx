@@ -2,10 +2,9 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import { BoolValues, ContainerComponentValues, SizeValues } from "../../utils/types";
 
+import { useTUI } from "../../TUI";
 import { useContainerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -26,8 +25,8 @@ interface ContainerProps {
 
   // Specialized Properties //
 
-  maxWidth?: SizeValues;
   disablePadding?: BoolValues;
+  maxWidth?: SizeValues;
   visualize?: BoolValues;
 
   // HTML Properties //
@@ -48,8 +47,8 @@ const Container = ({
 
   // Specialized Properties //
 
-  maxWidth = "max",
   disablePadding = false,
+  maxWidth = "max",
   visualize = false,
 
   // HTML Properties //
@@ -60,7 +59,7 @@ const Container = ({
   const { theme } = useTUI();
 
   // Styles
-  const containerStyles = useContainerStyles(theme, { maxWidth, disablePadding, visualize }, [classes?.container, className]);
+  const containerStyles = useContainerStyles(theme, { disablePadding, maxWidth, visualize }, [classes?.container, className]);
 
   // Return Component
   return React.createElement(

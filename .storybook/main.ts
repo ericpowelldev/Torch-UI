@@ -21,6 +21,8 @@ const config: StorybookConfig = {
     },
   },
 
+  staticDirs: ["../static"],
+
   stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
   typescript: {

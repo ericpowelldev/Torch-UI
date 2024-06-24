@@ -2,44 +2,93 @@
 
 Torch UI - A dynamic & lightweight React component library.
 
-## Components
+## Component Checklist
 
-- Buttons
-  - Button
-  - ButtonBase
-  - ButtonGroup
-  - ButtonIcon
-  - ButtonIconGroup
-- Icons
-  - IconError
-  - IconWarning
-  - IconSuccess
-  - IconInfo
-  - IconLoading
+- Display
+  - [ ] Avatar
+  - [ ] Badge
+  - [x] Divider
+  - [ ] Pill
+  - [ ] Popover
+  - [ ] StatusAlert
+  - [ ] StatusIcon
+  - [x] Text
+  - [ ] Tooltip
+
+- Feedback
+  - Dialog
+    - [ ] Dialog
+    - [ ] DialogAction
+    - [ ] DialogContent
+    - [ ] DialogFooter
+    - [ ] DialogHeader
+  - Progress
+    - [ ] ProgressBar
+    - [x] ProgressCircle
+    - [ ] ProgressPlaceholder
+  - Toaster
+    - [ ] Toaster
+    - [ ] ToasterItem
+  - [ ] Drawer
+  - [ ] Overlay
+
 - Inputs
-  - Autocomplete
-  - Checkbox
-  - CheckboxGroup
-  - Input
-  - Multiselect
-  - Option
-  - Radio
-  - RadioGroup
-  - Select
-  - Slider
-  - Toggle
-- Dialogue
-  - Overlay
-  - Modal
-  - ModalHeader
-  - ModalFooter
-  - ModalContent
-  - ModalAction
+  - Button
+    - [x] Button
+    - [ ] CompoundButton
+    - [ ] IconButton
+  - Field
+    - [ ] Autocomplete
+    - [ ] DatePicker
+    - [ ] Field
+    - [x] Input
+    - [ ] Select
+    - [ ] TimePicker
+  - [ ] Checkbox
+  - [ ] Radio
+  - [ ] Slider
+  - [x] Toggle
+
 - Layout
-  - Box
-  - Container
-  - Divider
-  - Flex
-  - Spacer
-- Typography
-  - Text
+  - [x] Box
+  - [x] Container
+  - [x] Flex
+  - [x] Spacer
+
+- Lists & Items
+  - Menu
+    - [ ] Menu
+    - [ ] MenuList
+    - [ ] MenuItem
+  - Nav
+    - [ ] Nav
+    - [ ] NavList
+    - [ ] NavItem
+  - Table
+    - [ ] Table
+    - [ ] TableBody
+    - [ ] TableHead
+    - [ ] TableHeadText
+    - [ ] TablePagination
+    - [ ] TableRow
+    - [ ] TableRowText
+    - [ ] TableWrapper
+  - Tabs
+    - [ ] Tabs
+    - [ ] Tab
+
+- Surfaces
+  - [ ] Fold
+  - [ ] Riser
+
+- Theme
+  - [x] Palette
+
+---
+
+## Reference UI
+
+- [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/controls/web)
+- [Fluent UI - React](https://react.fluentui.dev/?path=/docs/concepts-introduction--page)
+- [Joy UI](https://mui.com/joy-ui/getting-started/)
+- [Material UI](https://mui.com/material-ui/getting-started/)

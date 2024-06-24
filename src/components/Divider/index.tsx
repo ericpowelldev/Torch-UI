@@ -2,10 +2,9 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import { DividerComponentValues, DividerDirectionValues, PercentValues } from "../../utils/types";
 
+import { useTUI } from "../../TUI";
 import { useDividerStyles, useStretchStyles, useLabelStyles, useLineStyles, useIconStyles } from "./styles";
 
 import { MdInfo } from "react-icons/md";
@@ -39,8 +38,10 @@ interface DividerProps {
   direction?: DividerDirectionValues;
   gap?: number;
   gutter?: number;
-  marginAfter?: number;
-  marginBefore?: number;
+  lineStyle?: React.CSSProperties["borderStyle"];
+  lineWidth?: number;
+  spaceAfter?: number;
+  spaceBefore?: number;
   textPosition?: PercentValues;
   tip?: React.ReactNode;
 
@@ -65,8 +66,10 @@ const Divider = ({
   direction = "horizontal",
   gap = 2,
   gutter,
-  marginAfter,
-  marginBefore,
+  lineStyle = `solid`,
+  lineWidth = 1,
+  spaceAfter,
+  spaceBefore,
   textPosition = 0.5,
   tip,
 
@@ -84,8 +87,8 @@ const Divider = ({
       direction,
       gap,
       gutter,
-      marginAfter,
-      marginBefore,
+      spaceAfter,
+      spaceBefore,
       textPosition,
       tip,
     },
@@ -93,7 +96,7 @@ const Divider = ({
   );
   const stretchStyles = useStretchStyles(theme, { gap }, [classes?.stretch]);
   const labelStyles = useLabelStyles(theme, {}, [classes?.label]);
-  const lineStyles = useLineStyles(theme, { direction }, [classes?.line]);
+  const lineStyles = useLineStyles(theme, { direction, lineStyle, lineWidth }, [classes?.line]);
   const iconStyles = useIconStyles(theme, {}, [classes?.icon]);
 
   // Return Component

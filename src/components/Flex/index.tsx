@@ -2,10 +2,9 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import { BoolValues, FlexComponentValues } from "../../utils/types";
 
+import { useTUI } from "../../TUI";
 import { useFlexStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //

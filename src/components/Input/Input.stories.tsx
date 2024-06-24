@@ -9,25 +9,25 @@ const meta: Meta<typeof Component> = {
     // General Properties //
 
     props: {
-      description: "Nested properties of the component.",
+      description: "Nested properties of the child components.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Nested CSS classes of the component.",
+      description: "Nested CSS classes of the child components.",
       table: {
         disable: true,
       },
     },
     className: {
-      description: "CSS class of the component.",
+      description: "CSS class of the root component.",
       table: {
         disable: true,
       },
     },
     style: {
-      description: "Inline styling of the component.",
+      description: "Inline styling of the root component.",
       table: {
         disable: true,
       },
@@ -35,7 +35,7 @@ const meta: Meta<typeof Component> = {
     component: {
       description: "HTML element to render the component as.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
     tooltip: {
@@ -47,28 +47,10 @@ const meta: Meta<typeof Component> = {
 
     // Specialized Properties //
 
-    label: {
-      description: "Label content for the input.",
+    backdropBlur: {
+      description: "Should the input have a backdrop blur?",
       control: {
-        type: "text",
-      },
-    },
-    sublabel: {
-      description: "Sublabel content for the input.",
-      control: {
-        type: "text",
-      },
-    },
-    placeholder: {
-      description: "Placeholder content for the input.",
-      control: {
-        type: "text",
-      },
-    },
-    variant: {
-      description: "Variation of the input.",
-      control: {
-        type: "radio",
+        type: "boolean",
       },
     },
     color: {
@@ -77,20 +59,14 @@ const meta: Meta<typeof Component> = {
         type: "select",
       },
     },
-    tint: {
-      description: "Color tint of the input (when focused).",
-      control: {
-        type: "select",
-      },
-    },
-    required: {
-      description: "Should the input be required?",
+    disabled: {
+      description: "Should the input be in a disabled state?",
       control: {
         type: "boolean",
       },
     },
-    multiline: {
-      description: "Should the input be multiline?",
+    error: {
+      description: "Should the input be in an error state?",
       control: {
         type: "boolean",
       },
@@ -101,33 +77,9 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
-    backdropBlur: {
-      description: "Should the input have a backdrop blur?",
-      control: {
-        type: "boolean",
-      },
-    },
     icon: {
       table: {
         disable: true,
-      },
-    },
-    error: {
-      description: "Should the input be in an error state?",
-      control: {
-        type: "boolean",
-      },
-    },
-    warning: {
-      description: "Should the input be in a warning state?",
-      control: {
-        type: "boolean",
-      },
-    },
-    success: {
-      description: "Should the input be in a success state?",
-      control: {
-        type: "boolean",
       },
     },
     info: {
@@ -136,14 +88,62 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
+    label: {
+      description: "Label content for the input.",
+      control: {
+        type: "text",
+      },
+    },
     loading: {
       description: "Should the input be in a loading state?",
       control: {
         type: "boolean",
       },
     },
-    disabled: {
-      description: "Should the input be in a disabled state?",
+    multiline: {
+      description: "Should the input be multiline?",
+      control: {
+        type: "boolean",
+      },
+    },
+    placeholder: {
+      description: "Placeholder content for the input.",
+      control: {
+        type: "text",
+      },
+    },
+    required: {
+      description: "Should the input be required?",
+      control: {
+        type: "boolean",
+      },
+    },
+    sublabel: {
+      description: "Sublabel content for the input.",
+      control: {
+        type: "text",
+      },
+    },
+    success: {
+      description: "Should the input be in a success state?",
+      control: {
+        type: "boolean",
+      },
+    },
+    tint: {
+      description: "Color tint of the input (when focused).",
+      control: {
+        type: "select",
+      },
+    },
+    variant: {
+      description: "Variation of the input.",
+      control: {
+        type: "radio",
+      },
+    },
+    warning: {
+      description: "Should the input be in a warning state?",
       control: {
         type: "boolean",
       },
@@ -169,18 +169,18 @@ export const Number: Story = {
   },
 };
 
-export const Transparent: Story = {
+export const Soft: Story = {
   args: {
-    label: "Transparent Input",
+    label: "Soft Input",
     placeholder: "Enter some text...",
-    variant: "transparent",
+    variant: "soft",
   },
 };
 
-export const Outline: Story = {
+export const Outlined: Story = {
   args: {
-    label: "Outline Input",
+    label: "Outlined Input",
     placeholder: "Enter some text...",
-    variant: "outline",
+    variant: "outlined",
   },
 };

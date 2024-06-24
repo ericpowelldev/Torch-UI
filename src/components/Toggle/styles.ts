@@ -14,8 +14,10 @@ import {
 // STYLES ---------------------------------------------------------------- //
 
 export const useToggleStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size, disabled } = props;
+  // Props
+  const { disabled, size } = props;
 
+  // CSS Stylesheet
   const toggleCSS = css`
     position: relative;
     width: ${getToggleSize(size) * 2}px;
@@ -32,12 +34,15 @@ export const useToggleStyles = (theme?: any, props?: any, overrides?: (string | 
       `
     : null;
 
+  // Return Styles
   return cx(toggleCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size, shadowTrack } = props;
+  // Props
+  const { color, shadowTrack, size, tint } = props;
 
+  // CSS Stylesheet
   const trackCSS = css`
     position: relative;
     display: inline-flex;
@@ -57,12 +62,15 @@ export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
+  // Return Styles
   return cx(trackCSS, shadowCSS, overrides) || undefined;
 };
 
 export const useSlideStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size, shadowSlide, disabled } = props;
+  // Props
+  const { color, disabled, shadowSlide, size, tint } = props;
 
+  // CSS Stylesheet
   const slideCSS = css`
     z-index: 1;
     display: inline-flex;
@@ -109,12 +117,15 @@ export const useSlideStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
+  // Return Styles
   return cx(slideCSS, shadowCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useInputStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size, disabled } = props;
+  // Props
+  const { size } = props;
 
+  // CSS Stylesheet
   const inputCSS = css`
     z-index: 1;
     position: absolute;
@@ -130,12 +141,15 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
     transition: ${theme?.transition?.standard || theme?.transition?.none};
   `;
 
+  // Return Styles
   return cx(inputCSS, overrides) || undefined;
 };
 
 export const useIconCheckedStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size } = props;
+  // Props
+  const { color, size, tint } = props;
 
+  // CSS Stylesheet
   const iconCheckedCSS = css`
     position: absolute;
     display: inline-flex;
@@ -161,12 +175,15 @@ export const useIconCheckedStyles = (theme?: any, props?: any, overrides?: (stri
     }
   `;
 
+  // Return Styles
   return cx(iconCheckedCSS, overrides) || undefined;
 };
 
 export const useIconUncheckedStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, size } = props;
+  // Props
+  const { size } = props;
 
+  // CSS Stylesheet
   const iconUncheckedCSS = css`
     position: absolute;
     display: inline-flex;
@@ -192,5 +209,6 @@ export const useIconUncheckedStyles = (theme?: any, props?: any, overrides?: (st
     }
   `;
 
+  // Return Styles
   return cx(iconUncheckedCSS, overrides) || undefined;
 };

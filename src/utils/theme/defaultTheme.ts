@@ -9,7 +9,7 @@ const theme = {
         bg: `#303840`,
       },
       text: {
-        family: `"Public Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
+        family: `"Inter Tight", "Roboto", "Helvetica", "Arial", sans-serif`,
       },
     },
   },
@@ -45,7 +45,7 @@ const theme = {
   // Text Options
   text: {
     // Font families
-    family: `"Public Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
+    family: `"Inter Tight", "Roboto", "Helvetica", "Arial", sans-serif`,
 
     // Font sizes
     size: `16px`,
@@ -115,20 +115,10 @@ const theme = {
       weight: 400,
       height: 1.333,
     },
-    p5: {
-      size: `9px`,
-      weight: 400,
-      height: 1.333,
-    },
-    p6: {
-      size: `8px`,
-      weight: 400,
-      height: 1.333,
-    },
 
     // Special text
     button: {
-      family: `"Public Sans", "Roboto", "Helvetica", "Arial", sans-serif`,
+      family: `"Inter Tight", "Roboto", "Helvetica", "Arial", sans-serif`,
       size: `14px`,
       weight: 600,
       height: 1,
@@ -184,7 +174,7 @@ const theme = {
     button: `6px`,
     card: `10px`,
     input: `6px`,
-    pill: `24px`,
+    pill: `10000px`,
   },
 
   // Transition Options

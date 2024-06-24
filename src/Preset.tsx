@@ -3,7 +3,7 @@
 import React from "react";
 import { Global } from "@emotion/react";
 
-import "./static/styles/preset.css";
+import "../static/styles/preset.css";
 
 // PROPS ---------------------------------------------------------------- //
 

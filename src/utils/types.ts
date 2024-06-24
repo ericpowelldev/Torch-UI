@@ -24,6 +24,10 @@ export type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
 export const sizeValuesExtended = [`4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`];
 export type SizeValuesExtended = `4xs` | `3xs` | `2xs` | `xs` | `sm` | `md` | `lg` | `xl` | `2xl` | `3xl` | `4xl`;
 
+/** Array of accepted statuses */
+export const statusValues = [`error`, `warning`, `success`, `info`];
+export type StatusValues = `error` | `warning` | `success` | `info`;
+
 // BOX TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted box components */
@@ -33,8 +37,8 @@ export type BoxComponentValues = `div` | `span`;
 // BUTTON TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted button variants */
-export const buttonVariantValues = [`solid`, `transparent`, `simple`, `outline`];
-export type ButtonVariantValues = `solid` | `transparent` | `simple` | `outline`;
+export const buttonVariantValues = [`solid`, `soft`, `plain`, `outlined`];
+export type ButtonVariantValues = `solid` | `soft` | `plain` | `outlined`;
 
 // COLOR TYPES ---------------------------------------------------------------- //
 
@@ -271,8 +275,8 @@ export const inputComponentValues = [`div`, `span`];
 export type InputComponentValues = `div` | `span`;
 
 /** Array of accepted input variants */
-export const inputVariantValues = [`standard`, `transparent`, `outline`];
-export type InputVariantValues = `standard` | `transparent` | `outline`;
+export const inputVariantValues = [`solid`, `soft`, `plain`, `outlined`];
+export type InputVariantValues = `solid` | `soft` | `plain` | `outlined`;
 
 // SPACER TYPES ---------------------------------------------------------------- //
 
@@ -295,8 +299,8 @@ export const textComponentValues = [`a`, `div`, `h1`, `h2`, `h3`, `h4`, `h5`, `h
 export type TextComponentValues = `a` | `div` | `h1` | `h2` | `h3` | `h4` | `h5` | `h6` | `p` | `span`;
 
 /** Array of accepted text variants */
-export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`];
-export type TextVariantValues = `h1` | `h2` | `h3` | `h4` | `h5` | `h6` | `p1` | `p2` | `p3` | `p4` | `p5` | `p6`;
+export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`];
+export type TextVariantValues = `h1` | `h2` | `h3` | `h4` | `h5` | `h6` | `p1` | `p2` | `p3` | `p4`;
 
 // TOGGLE TYPES ---------------------------------------------------------------- //
 
@@ -305,5 +309,5 @@ export const toggleComponentValues = [`div`, `span`];
 export type ToggleComponentValues = `div` | `span`;
 
 /** Array of accepted toggle variants */
-export const toggleVariantValues = [`solid`, `transparent`, `outline`];
-export type ToggleVariantValues = `solid` | `transparent` | `outline`;
+export const toggleVariantValues = [`solid`, `soft`, `plain`, `outlined`];
+export type ToggleVariantValues = `solid` | `soft` | `plain` | `outlined`;

@@ -2,10 +2,9 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import { BoolValues, SizeValuesExtended, SpacerComponentValues, SpacerDirectionValues } from "../../utils/types";
 
+import { useTUI } from "../../TUI";
 import { useSpacerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -26,8 +25,8 @@ interface SpacerProps {
 
   // Specialized Properties //
 
-  size?: SizeValuesExtended | number;
   direction?: SpacerDirectionValues;
+  size?: SizeValuesExtended | number;
   visualize?: BoolValues;
 
   // HTML Properties //
@@ -48,8 +47,8 @@ const Spacer = ({
 
   // Specialized Properties //
 
-  size = 4,
   direction = "horizontal",
+  size = 4,
   visualize = false,
 
   // HTML Properties //
@@ -60,7 +59,7 @@ const Spacer = ({
   const { theme } = useTUI();
 
   // Styles
-  const spacerStyles = useSpacerStyles(theme, { size, direction, visualize }, [classes?.spacer, className]);
+  const spacerStyles = useSpacerStyles(theme, { direction, size, visualize }, [classes?.spacer, className]);
 
   // Return Component
   return React.createElement(component || `div`, { className: spacerStyles, ...props?.spacer, ...rest });

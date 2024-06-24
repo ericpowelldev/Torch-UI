@@ -2,10 +2,9 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
-
 import { BoolValues, ColorValues, InputComponentValues, InputVariantValues, TintValues } from "../../utils/types";
 
+import { useTUI } from "../../TUI";
 import { useBaseStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -34,26 +33,22 @@ interface InputProps {
 
   // Specialized Properties //
 
-  label?: React.ReactNode;
-  sublabel?: React.ReactNode;
-
-  variant?: InputVariantValues;
-  color?: ColorValues;
-  tint?: TintValues;
-  required?: BoolValues;
-  multiline?: BoolValues;
-
-  fullWidth?: BoolValues;
   backdropBlur?: BoolValues;
-
-  icon?: React.ReactNode;
-
-  error?: BoolValues;
-  warning?: BoolValues;
-  success?: BoolValues;
-  info?: BoolValues;
-  loading?: BoolValues;
+  color?: ColorValues;
   disabled?: BoolValues;
+  error?: BoolValues;
+  fullWidth?: BoolValues;
+  icon?: React.ReactNode;
+  info?: BoolValues;
+  label?: React.ReactNode;
+  loading?: BoolValues;
+  multiline?: BoolValues;
+  required?: BoolValues;
+  sublabel?: React.ReactNode;
+  success?: BoolValues;
+  tint?: TintValues;
+  variant?: InputVariantValues;
+  warning?: BoolValues;
 
   // HTML Properties //
 
@@ -73,22 +68,22 @@ const Input = ({
 
   // Specialized Properties //
 
-  label,
-  sublabel,
-  variant = "standard",
-  color = "primary",
-  tint = 500,
-  required = false,
-  multiline = false,
-  fullWidth = false,
   backdropBlur = false,
-  icon,
-  error = false,
-  warning = false,
-  success = false,
-  info = false,
-  loading = false,
+  color = "primary",
   disabled = false,
+  error = false,
+  fullWidth = false,
+  icon,
+  info = false,
+  label,
+  loading = false,
+  multiline = false,
+  required = false,
+  sublabel,
+  success = false,
+  tint = 500,
+  variant = "outlined",
+  warning = false,
 
   // HTML Properties //
 
@@ -99,27 +94,27 @@ const Input = ({
 
   // Styles
   const baseStyles = useBaseStyles(theme, { fullWidth }, [classes?.base, className]);
-  const labelStyles = useLabelStyles(theme, { error, warning, success, info, disabled }, [classes?.label]);
+  const labelStyles = useLabelStyles(theme, { disabled, error, info, success, warning }, [classes?.label]);
   const wrapperStyles = useWrapperStyles(
     theme,
     {
-      variant,
-      fullWidth,
       backdropBlur,
-      error,
-      warning,
-      success,
-      info,
       disabled,
+      error,
+      fullWidth,
+      info,
+      success,
+      variant,
+      warning,
     },
     [classes?.wrapper]
   );
   const inputStyles = useInputStyles(
     theme,
     {
-      multiline,
-      fullWidth,
       disabled,
+      fullWidth,
+      multiline,
     },
     [classes?.input]
   );

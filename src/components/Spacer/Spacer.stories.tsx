@@ -9,25 +9,25 @@ const meta: Meta<typeof Component> = {
     // General Properties //
 
     props: {
-      description: "Nested properties of the component.",
+      description: "Nested properties of the child components.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Nested CSS classes of the component.",
+      description: "Nested CSS classes of the child components.",
       table: {
         disable: true,
       },
     },
     className: {
-      description: "CSS class of the component.",
+      description: "CSS class of the root component.",
       table: {
         disable: true,
       },
     },
     style: {
-      description: "Inline styling of the component.",
+      description: "Inline styling of the root component.",
       table: {
         disable: true,
       },
@@ -35,12 +35,18 @@ const meta: Meta<typeof Component> = {
     component: {
       description: "HTML element to render the component as.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
 
     // Specialized Properties //
-    
+
+    direction: {
+      description: "Direction of the spacer.",
+      control: {
+        type: "radio",
+      },
+    },
     size: {
       description: "Size of the spacer.",
       control: {
@@ -48,12 +54,6 @@ const meta: Meta<typeof Component> = {
         min: 0,
         max: 24,
         step: 1,
-      },
-    },
-    direction: {
-      description: "Direction of the spacer.",
-      control: {
-        type: "radio",
       },
     },
     visualize: {

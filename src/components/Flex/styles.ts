@@ -5,6 +5,7 @@ import { css, cx } from "../../utils/emotion";
 // STYLES ---------------------------------------------------------------- //
 
 export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // Props
   const {
     alignContent,
     alignItems,
@@ -22,6 +23,7 @@ export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | un
     wrap,
   } = props;
 
+  // CSS Stylesheet
   const flexContainerCSS = container
     ? css`
         label: TuiFlexContainer;
@@ -129,6 +131,7 @@ export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | un
       `
     : null;
 
+  // Return Styles
   return (
     cx(
       flexContainerCSS,

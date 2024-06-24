@@ -15,6 +15,7 @@ import {
   SelectorValues,
   SizeValues,
   SizeValuesExtended,
+  StatusValues,
   TextComponentValues,
   TextVariantValues,
   tintValues,
@@ -52,52 +53,62 @@ export const getBoxColor = (
 
 /** Get button padding */
 export const getButtonPadding = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return `2px 4px`;
-  if (size === `sm`) return `5px 8px`;
-  if (size === `md`) return `8px 12px`;
-  if (size === `lg`) return `11px 16px`;
-  if (size === `xl` || size === `max`) return `14px 20px`;
-  return `8px 12px`;
+  if (size === `min`) return `2px 8px`;
+  if (size === `xs`) return `4px 10px`;
+  if (size === `sm`) return `6px 12px`;
+  if (size === `md`) return `8px 14px`;
+  if (size === `lg`) return `10px 16px`;
+  if (size === `xl`) return `12px 18px`;
+  if (size === `max`) return `14px 20px`;
+  return `8px 14px`;
 };
 
 /** Get button label size */
 export const getButtonLabelSize = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return 10;
-  if (size === `sm`) return 12;
+  if (size === `min`) return 10;
+  if (size === `xs`) return 12;
+  if (size === `sm`) return 13;
   if (size === `md`) return 14;
   if (size === `lg`) return 16;
-  if (size === `xl` || size === `max`) return 18;
+  if (size === `xl`) return 18;
+  if (size === `max`) return 20;
   return 14;
 };
 
 /** Get button label height */
 export const getButtonLabelHeight = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return 12;
-  if (size === `sm`) return 14;
-  if (size === `md`) return 16;
-  if (size === `lg`) return 18;
-  if (size === `xl` || size === `max`) return 20;
-  return 16;
+  if (size === `min`) return 14;
+  if (size === `xs`) return 16;
+  if (size === `sm`) return 18;
+  if (size === `md`) return 20;
+  if (size === `lg`) return 22;
+  if (size === `xl`) return 24;
+  if (size === `max`) return 26;
+  return 20;
 };
 
 /** Get button icon size */
 export const getButtonIconSize = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return 12;
-  if (size === `sm`) return 14;
-  if (size === `md`) return 16;
-  if (size === `lg`) return 18;
-  if (size === `xl` || size === `max`) return 20;
-  return 16;
+  if (size === `min`) return 12;
+  if (size === `xs`) return 14;
+  if (size === `sm`) return 16;
+  if (size === `md`) return 18;
+  if (size === `lg`) return 20;
+  if (size === `xl`) return 22;
+  if (size === `max`) return 24;
+  return 18;
 };
 
 /** Get button icon margin */
 export const getButtonIconMargin = (size: SizeValues) => {
-  if (size === `xs` || size === `min`) return 4;
-  if (size === `sm`) return 6;
-  if (size === `md`) return 8;
-  if (size === `lg`) return 10;
-  if (size === `xl` || size === `max`) return 12;
-  return 8;
+  if (size === `min`) return 4;
+  if (size === `xs`) return 6;
+  if (size === `sm`) return 8;
+  if (size === `md`) return 10;
+  if (size === `lg`) return 12;
+  if (size === `xl`) return 14;
+  if (size === `max`) return 16;
+  return 10;
 };
 
 // COLORS ---------------------------------------------------------------- //
@@ -133,9 +144,8 @@ export const getColorBg = (
 /** Get color hover */
 export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint: TintValues = 500) => {
   if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `d4`;
-  if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
-    return theme.color[color][tint] + `48`;
-  if ((variant === `outline` || variant === `simple`) && colorValues.includes(color) && tintValues.includes(tint))
+  if (variant === `soft` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `48`;
+  if ((variant === `outlined` || variant === `plain`) && colorValues.includes(color) && tintValues.includes(tint))
     return theme.color[color][tint] + `24`;
   return `inherit`;
 };
@@ -143,9 +153,8 @@ export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?:
 /** Get color active */
 export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint: TintValues = 500) => {
   if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `a0`;
-  if (variant === `transparent` && colorValues.includes(color) && tintValues.includes(tint))
-    return theme.color[color][tint] + `64`;
-  if ((variant === `outline` || variant === `simple`) && colorValues.includes(color) && tintValues.includes(tint))
+  if (variant === `soft` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `64`;
+  if ((variant === `outlined` || variant === `plain`) && colorValues.includes(color) && tintValues.includes(tint))
     return theme.color[color][tint] + `48`;
   return `inherit`;
 };
@@ -193,8 +202,8 @@ export const getInputLabelColor = (
 
 /** Get input component padding */
 export const getInputPadding = (variant?: InputVariantValues) => {
-  if (variant === `transparent`) return `7px 8px 6px`;
-  if (variant === `outline`) return `7px 8px`;
+  if (variant === `soft`) return `7px 8px 6px`;
+  if (variant === `outlined`) return `7px 8px`;
   return `7px 0 6px`;
 };
 
@@ -210,7 +219,7 @@ export const getInputBorder = (
 ) => {
   let thickness = `1px`;
   let style = `solid`;
-  let color = `transparent`;
+  let color = `soft`;
 
   if (disabled) style = `dashed`;
 
@@ -256,6 +265,28 @@ export const getSpacerSize = (size: SizeValuesExtended | number) => {
   }
 
   return 4;
+};
+
+// STATUS ICON ---------------------------------------------------------------- //
+
+/** Get the status icon animate bool */
+export const getStatusIconAnimate = (status?: StatusValues, override?: BoolValues) => {
+  if (override) return override ? true : false;
+
+  if (status === `error`) return true;
+  if (status === `warning`) return true;
+  if (status === `success`) return true;
+  return false;
+};
+
+/** Get the status icon animation speed */
+export const getStatusIconAnimationSpeed = (status?: StatusValues, override?: number) => {
+  if (override) return override;
+
+  if (status === `error`) return 500;
+  if (status === `warning`) return 1000;
+  if (status === `success`) return 2000;
+  return 2000;
 };
 
 // TEXT ---------------------------------------------------------------- //

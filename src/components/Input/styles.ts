@@ -7,8 +7,10 @@ import { getInputLabelColor, getInputBorder, getInputPadding } from "../../utils
 // STYLES ---------------------------------------------------------------- //
 
 export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+  // Props
   const { fullWidth } = props;
 
+  // CSS Stylesheet
   const baseCSS = css`
     position: relative;
     display: block;
@@ -27,12 +29,15 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
       `
     : null;
 
+  // Return Styles
   return cx(baseCSS, fullWidthCSS, overrides) || undefined;
 };
 
 export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { error, warning, success, info, disabled } = props;
+  // Props
+  const { disabled, error, info, success, warning } = props;
 
+  // CSS Stylesheet
   const labelCSS = css`
     display: block;
     margin-bottom: 4px;
@@ -57,12 +62,15 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
       `
     : null;
 
+  // Return Styles
   return cx(labelCSS, colorCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, fullWidth, backdropBlur, error, warning, success, info, disabled } = props;
+  // Props
+  const { backdropBlur, disabled, error, fullWidth, info, success, variant, warning } = props;
 
+  // CSS Stylesheet
   const wrapperCSS = css`
     position: relative;
     overflow: hidden;
@@ -90,8 +98,8 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
         `
       : null;
 
-  const transparentCSS =
-    variant === `transparent`
+  const softCSS =
+    variant === `soft`
       ? css`
           padding: ${getInputPadding(variant)};
           border-bottom: ${getInputBorder(theme, `base`, error, warning, success, info, disabled)};
@@ -108,8 +116,8 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
         `
       : null;
 
-  const outlineCSS =
-    variant === `outline`
+  const outlinedCSS =
+    variant === `outlined`
       ? css`
           padding: ${getInputPadding(variant)};
           border-radius: ${theme?.radius?.input || theme?.radius?.none};
@@ -141,21 +149,21 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
         cursor: not-allowed;
         user-select: none;
         pointer-events: none;
-        &::placeholder {
+        /* &::placeholder {
           color: transparent;
-        }
+        } */
       `
     : null;
 
-  return (
-    cx(wrapperCSS, standardCSS, transparentCSS, outlineCSS, fullWidthCSS, backdropBlurCSS, disabledCSS, overrides) ||
-    undefined
-  );
+  // Return Styles
+  return cx(wrapperCSS, standardCSS, softCSS, outlinedCSS, fullWidthCSS, backdropBlurCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useInputStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { multiline, fullWidth, disabled } = props;
+  // Props
+  const { disabled, fullWidth, multiline } = props;
 
+  // CSS Stylesheet
   const inputCSS = css`
     position: relative;
     overflow: hidden;
@@ -198,11 +206,12 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
         cursor: not-allowed;
         user-select: none;
         pointer-events: none;
-        &::placeholder {
+        /* &::placeholder {
           color: transparent;
-        }
+        } */
       `
     : null;
 
+  // Return Styles
   return cx(inputCSS, multilineCSS, fullWidthCSS, disabledCSS, overrides) || undefined;
 };

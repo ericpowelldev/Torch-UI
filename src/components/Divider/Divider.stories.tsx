@@ -11,25 +11,25 @@ const meta: Meta<typeof Component> = {
     // General Properties //
 
     props: {
-      description: "Nested properties of the component.",
+      description: "Nested properties of the child components.",
       table: {
         disable: true,
       },
     },
     classes: {
-      description: "Nested CSS classes of the component.",
+      description: "Nested CSS classes of the child components.",
       table: {
         disable: true,
       },
     },
     className: {
-      description: "CSS class of the component.",
+      description: "CSS class of the root component.",
       table: {
         disable: true,
       },
     },
     style: {
-      description: "Inline styling of the component.",
+      description: "Inline styling of the root component.",
       table: {
         disable: true,
       },
@@ -37,7 +37,7 @@ const meta: Meta<typeof Component> = {
     component: {
       description: "HTML element to render the component as.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
 
@@ -50,7 +50,7 @@ const meta: Meta<typeof Component> = {
       },
     },
     gap: {
-      description: "The gap between the flex items.",
+      description: "Gap between the child items.",
       control: {
         type: "range",
         min: 0,
@@ -59,7 +59,7 @@ const meta: Meta<typeof Component> = {
       },
     },
     gutter: {
-      description: "The outside padding around the divider.",
+      description: "Outside padding around the divider.",
       control: {
         type: "range",
         min: 0,
@@ -67,8 +67,24 @@ const meta: Meta<typeof Component> = {
         step: 1,
       },
     },
-    marginAfter: {
-      description: "The margin below (or margin right when vertical).",
+    lineStyle: {
+      description: "Style of the line(s).",
+      control: {
+        type: "select",
+      },
+      options: [`solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`],
+    },
+    lineWidth: {
+      description: "Width of the line(s).",
+      control: {
+        type: "range",
+        min: 0,
+        max: 12,
+        step: 1,
+      },
+    },
+    spaceAfter: {
+      description: "Margin below (or margin right when vertical).",
       control: {
         type: "range",
         min: 0,
@@ -76,8 +92,8 @@ const meta: Meta<typeof Component> = {
         step: 1,
       },
     },
-    marginBefore: {
-      description: "The margin above (or margin left when vertical).",
+    spaceBefore: {
+      description: "Margin above (or margin left when vertical).",
       control: {
         type: "range",
         min: 0,

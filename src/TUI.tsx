@@ -9,7 +9,7 @@ import { BoolValues } from "./utils/types";
 
 import Preset from "./Preset";
 
-import "./static/styles/tui.css";
+import "../static/styles/tui.css";
 
 const extendedDefaultTheme = extendTheme(defaultTheme, undefined, `light`);
 

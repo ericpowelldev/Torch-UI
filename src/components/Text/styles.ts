@@ -7,8 +7,10 @@ import { getColorText } from "../../utils/helpers";
 // STYLES ---------------------------------------------------------------- //
 
 export const useTextStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
-  const { variant, color, tint, align, shadow } = props;
+  // Props
+  const { align, color, shadow, tint, variant } = props;
 
+  // CSS Stylesheet
   const textCSS = css`
     line-height: ${theme?.text?.height};
     font-family: ${theme?.text?.family};
@@ -43,5 +45,6 @@ export const useTextStyles = (theme?: any, props?: any, overrides?: (string | un
       `
     : null;
 
+  // Return Styles
   return cx(textCSS, variantCSS, colorCSS, alignCSS, shadowCSS, overrides) || undefined;
 };
