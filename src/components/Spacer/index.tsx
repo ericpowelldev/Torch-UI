@@ -2,7 +2,12 @@
 
 import React from "react";
 
-import { BoolValues, SizeValuesExtended, SpacerComponentValues, SpacerDirectionValues } from "../../utils/types";
+import {
+  BoolValues,
+  SizeValuesExtended,
+  SpacerComponentValues,
+  SpacerDirectionValues,
+} from "../../utils/types";
 
 import { useTUI } from "../../TUI";
 import { useSpacerStyles } from "./styles";
@@ -59,10 +64,17 @@ const Spacer = ({
   const { theme } = useTUI();
 
   // Styles
-  const spacerStyles = useSpacerStyles(theme, { direction, size, visualize }, [classes?.spacer, className]);
+  const spacerStyles = useSpacerStyles(theme, { direction, size, visualize }, [
+    classes?.spacer,
+    className,
+  ]);
 
   // Return Component
-  return React.createElement(component || `div`, { className: spacerStyles, ...props?.spacer, ...rest });
+  return React.createElement(component || `div`, {
+    className: spacerStyles,
+    ...props?.spacer,
+    ...rest,
+  });
 };
 
 // EXPORT ---------------------------------------------------------------- //

@@ -26,12 +26,23 @@ interface OptionProps {
   success?: BoolValues;
   loading?: BoolValues;
 
-  [x: string]: any; 
+  [x: string]: any;
 }
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const Option = ({ children, className, classes, hidden, disabled, error, warning, success, loading, ...rest }: OptionProps) => {
+const Option = ({
+  children,
+  className,
+  classes,
+  hidden,
+  disabled,
+  error,
+  warning,
+  success,
+  loading,
+  ...rest
+}: OptionProps) => {
   // HOOKS //
 
   const { theme } = useTUI();

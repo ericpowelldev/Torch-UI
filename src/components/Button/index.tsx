@@ -2,11 +2,23 @@
 
 import React from "react";
 
-import { BoolValues, ButtonVariantValues, ColorValues, SizeValues, TintValues } from "../../utils/types";
+import {
+  BoolValues,
+  ButtonVariantValues,
+  ColorValues,
+  SizeValues,
+  TintValues,
+} from "../../utils/types";
 import { getButtonIconSize } from "../../utils/helpers";
 
 import { useTUI } from "../../TUI";
-import { useButtonStyles, useLabelStyles, useStartIconStyles, useEndIconStyles, useCenterIconStyles } from "./styles";
+import {
+  useButtonStyles,
+  useLabelStyles,
+  useStartIconStyles,
+  useEndIconStyles,
+  useCenterIconStyles,
+} from "./styles";
 
 import ProgressCircle from "../ProgressCircle";
 import StatusIcon from "../StatusIcon";
@@ -141,7 +153,12 @@ const Button = ({
 
   // Return Component
   return (
-    <button className={buttonStyles} disabled={disabled ? true : false} {...props?.button} {...rest}>
+    <button
+      className={buttonStyles}
+      disabled={disabled ? true : false}
+      {...props?.button}
+      {...rest}
+    >
       {icon ? (
         <span className={startIconStyles} {...props?.startIcon}>
           {icon}

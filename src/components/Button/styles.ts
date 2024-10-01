@@ -18,8 +18,20 @@ import {
 
 export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
   // Props
-  const { backdropBlur, color, disabled, fullWidth, loading, pill, placeholder, shadowButton, shadowLabel, size, tint, variant } =
-    props;
+  const {
+    backdropBlur,
+    color,
+    disabled,
+    fullWidth,
+    loading,
+    pill,
+    placeholder,
+    shadowButton,
+    shadowLabel,
+    size,
+    tint,
+    variant,
+  } = props;
 
   // CSS Stylesheet
   const buttonCSS = css`
@@ -142,7 +154,9 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
 
   const pillCSS = pill
     ? css`
-        border-radius: ${theme?.radius?.pill || theme?.radius?.button || theme?.radius?.none} !important;
+        border-radius: ${theme?.radius?.pill ||
+        theme?.radius?.button ||
+        theme?.radius?.none} !important;
       `
     : null;
 
@@ -247,7 +261,11 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
   return cx(labelCSS, sizeCSS, uppercaseCSS, overrides) || undefined;
 };
 
-export const useStartIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useStartIconStyles = (
+  theme?: any,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { size } = props;
 
@@ -287,7 +305,11 @@ export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string |
   return cx(endIconCSS, overrides) || undefined;
 };
 
-export const useCenterIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useCenterIconStyles = (
+  theme?: any,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { size } = props;
 

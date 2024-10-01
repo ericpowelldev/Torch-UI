@@ -123,7 +123,8 @@ export const getColorFg = (
 ) => {
   if (disabled && override === `bg`) return theme.color.bgd;
   if (disabled) return theme.color.fgd;
-  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][`i${tint}`];
+  if (colorValues.includes(color) && tintValues.includes(tint))
+    return theme.color[color][`i${tint}`];
   return `inherit`;
 };
 
@@ -142,25 +143,51 @@ export const getColorBg = (
 };
 
 /** Get color hover */
-export const getColorHover = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint: TintValues = 500) => {
-  if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `d4`;
-  if (variant === `soft` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `48`;
-  if ((variant === `outlined` || variant === `plain`) && colorValues.includes(color) && tintValues.includes(tint))
+export const getColorHover = (
+  theme: any,
+  variant?: ButtonVariantValues,
+  color?: ColorValues,
+  tint: TintValues = 500
+) => {
+  if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint))
+    return theme.color[color][tint] + `d4`;
+  if (variant === `soft` && colorValues.includes(color) && tintValues.includes(tint))
+    return theme.color[color][tint] + `48`;
+  if (
+    (variant === `outlined` || variant === `plain`) &&
+    colorValues.includes(color) &&
+    tintValues.includes(tint)
+  )
     return theme.color[color][tint] + `24`;
   return `inherit`;
 };
 
 /** Get color active */
-export const getColorActive = (theme: any, variant?: ButtonVariantValues, color?: ColorValues, tint: TintValues = 500) => {
-  if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `a0`;
-  if (variant === `soft` && colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint] + `64`;
-  if ((variant === `outlined` || variant === `plain`) && colorValues.includes(color) && tintValues.includes(tint))
+export const getColorActive = (
+  theme: any,
+  variant?: ButtonVariantValues,
+  color?: ColorValues,
+  tint: TintValues = 500
+) => {
+  if (variant === `solid` && colorValues.includes(color) && tintValues.includes(tint))
+    return theme.color[color][tint] + `a0`;
+  if (variant === `soft` && colorValues.includes(color) && tintValues.includes(tint))
+    return theme.color[color][tint] + `64`;
+  if (
+    (variant === `outlined` || variant === `plain`) &&
+    colorValues.includes(color) &&
+    tintValues.includes(tint)
+  )
     return theme.color[color][tint] + `48`;
   return `inherit`;
 };
 
 /** Get color foreground */
-export const getColorText = (theme: any, color?: `inherit` | ColorValues | FGColorValues, tint: TintValues = 500) => {
+export const getColorText = (
+  theme: any,
+  color?: `inherit` | ColorValues | FGColorValues,
+  tint: TintValues = 500
+) => {
   if (fgColorValues.includes(color)) {
     if (color === `fg1`) return theme.color.fg[0];
     if (color === `fg2`) return theme.color.fg[1];
@@ -269,7 +296,7 @@ export const getSpacerSize = (size: SizeValuesExtended | number) => {
 
 /** Get the status icon animate bool */
 export const getStatusIconAnimate = (status?: StatusValues, override?: BoolValues) => {
-  if (override) return override ? true : false;
+  if (override === true || override === false) return override;
 
   if (status === `error`) return true;
   if (status === `warning`) return true;

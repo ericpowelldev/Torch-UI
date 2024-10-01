@@ -103,7 +103,11 @@ const Flex = ({
   );
 
   // Return Component
-  return React.createElement(component || `div`, { className: flexStyles, ...props?.flex, ...rest }, children);
+  return React.createElement(
+    component || `div`,
+    { className: flexStyles, ...props?.flex, ...rest },
+    children
+  );
 };
 
 // EXPORT ---------------------------------------------------------------- //

@@ -69,7 +69,10 @@ export const useDividerStyles = (theme?: any, props?: any, overrides?: (string |
         : null;
 
   // Return Styles
-  return cx(dividerCSS, directionCSS, gapCSS, gutterCSS, spaceBeforeCSS, spaceAfterCSS, overrides) || undefined;
+  return (
+    cx(dividerCSS, directionCSS, gapCSS, gutterCSS, spaceBeforeCSS, spaceAfterCSS, overrides) ||
+    undefined
+  );
 };
 
 export const useStretchStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {

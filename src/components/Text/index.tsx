@@ -74,7 +74,10 @@ const Text = ({
   const { theme } = useTUI();
 
   // Styles
-  const textStyles = useTextStyles(theme, { align, color, shadow, tint, variant }, [classes?.text, className]);
+  const textStyles = useTextStyles(theme, { align, color, shadow, tint, variant }, [
+    classes?.text,
+    className,
+  ]);
 
   // Return Component
   return React.createElement(

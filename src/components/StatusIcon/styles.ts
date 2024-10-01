@@ -2,7 +2,12 @@
 
 import { css, cx, keyframes } from "../../utils/emotion";
 
-import { getColorFg, getColorBg, getStatusIconAnimate, getStatusIconAnimationSpeed } from "../../utils/helpers";
+import {
+  getColorFg,
+  getColorBg,
+  getStatusIconAnimate,
+  getStatusIconAnimationSpeed,
+} from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
@@ -16,6 +21,9 @@ export const useIconStyles = (theme?: any, props?: any, overrides?: (string | un
       opacity: 0.5;
     }
     45% {
+      opacity: 1;
+    }
+    55% {
       opacity: 1;
     }
     100% {

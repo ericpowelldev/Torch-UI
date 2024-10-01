@@ -18,14 +18,22 @@ export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | und
   const widthCSS =
     width || width === 0
       ? css`
-          width: ${typeof width === `number` ? `${width}px` : typeof width === `string` ? width : `inherit`};
+          width: ${typeof width === `number`
+            ? `${width}px`
+            : typeof width === `string`
+              ? width
+              : `inherit`};
         `
       : null;
 
   const heightCSS =
     height || height === 0
       ? css`
-          height: ${typeof height === `number` ? `${height}px` : typeof height === `string` ? height : `inherit`};
+          height: ${typeof height === `number`
+            ? `${height}px`
+            : typeof height === `string`
+              ? height
+              : `inherit`};
         `
       : null;
 
@@ -61,5 +69,17 @@ export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | und
     : null;
 
   // Return Styles
-  return cx(boxCSS, widthCSS, heightCSS, radiusCSS, colorCSS, shadowCSS, backdropBlurCSS, visualizeCSS, overrides) || undefined;
+  return (
+    cx(
+      boxCSS,
+      widthCSS,
+      heightCSS,
+      radiusCSS,
+      colorCSS,
+      shadowCSS,
+      backdropBlurCSS,
+      visualizeCSS,
+      overrides
+    ) || undefined
+  );
 };

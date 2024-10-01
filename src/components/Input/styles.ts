@@ -76,7 +76,8 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
 
 export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
   // Props
-  const { backdropBlur, color, disabled, error, fullWidth, info, success, tint, variant, warning } = props;
+  const { backdropBlur, color, disabled, error, fullWidth, info, success, tint, variant, warning } =
+    props;
 
   // CSS Stylesheet
   const wrapperCSS = css`
@@ -90,7 +91,9 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
     background-color: transparent;
     color: ${theme?.color?.fg};
     cursor: text;
-    transition: ${theme?.transition?.input || theme?.transition?.standard || theme?.transition?.none};
+    transition: ${theme?.transition?.input ||
+    theme?.transition?.standard ||
+    theme?.transition?.none};
   `;
 
   const solidCSS =
@@ -176,7 +179,17 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
 
   // Return Styles
   return (
-    cx(wrapperCSS, solidCSS, softCSS, plainCSS, outlinedCSS, fullWidthCSS, backdropBlurCSS, disabledCSS, overrides) || undefined
+    cx(
+      wrapperCSS,
+      solidCSS,
+      softCSS,
+      plainCSS,
+      outlinedCSS,
+      fullWidthCSS,
+      backdropBlurCSS,
+      disabledCSS,
+      overrides
+    ) || undefined
   );
 };
 
@@ -199,7 +212,9 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
     font-weight: ${theme?.text?.input?.weight || theme?.text?.weight};
     background-color: transparent;
     color: ${theme?.color?.fg?.[0]};
-    transition: ${theme?.transition?.input || theme?.transition?.standard || theme?.transition?.none};
+    transition: ${theme?.transition?.input ||
+    theme?.transition?.standard ||
+    theme?.transition?.none};
     &:focus {
       outline: none;
     }
@@ -272,6 +287,16 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
 
   // Return Styles
   return (
-    cx(inputCSS, solidCSS, softCSS, plainCSS, outlinedCSS, multilineCSS, fullWidthCSS, disabledCSS, overrides) || undefined
+    cx(
+      inputCSS,
+      solidCSS,
+      softCSS,
+      plainCSS,
+      outlinedCSS,
+      multilineCSS,
+      fullWidthCSS,
+      disabledCSS,
+      overrides
+    ) || undefined
   );
 };

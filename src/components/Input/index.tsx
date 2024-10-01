@@ -2,7 +2,13 @@
 
 import React from "react";
 
-import { BoolValues, ColorValues, InputComponentValues, InputVariantValues, TintValues } from "../../utils/types";
+import {
+  BoolValues,
+  ColorValues,
+  InputComponentValues,
+  InputVariantValues,
+  TintValues,
+} from "../../utils/types";
 
 import { useTUI } from "../../TUI";
 import { useBaseStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
@@ -94,7 +100,9 @@ const Input = ({
 
   // Styles
   const baseStyles = useBaseStyles(theme, { fullWidth }, [classes?.base, className]);
-  const labelStyles = useLabelStyles(theme, { disabled, error, info, success, warning }, [classes?.label]);
+  const labelStyles = useLabelStyles(theme, { disabled, error, info, success, warning }, [
+    classes?.label,
+  ]);
   const wrapperStyles = useWrapperStyles(
     theme,
     {
@@ -144,7 +152,12 @@ const Input = ({
             {...rest}
           />
         ) : (
-          <input className={inputStyles} disabled={disabled ? true : false} {...props?.input} {...rest} />
+          <input
+            className={inputStyles}
+            disabled={disabled ? true : false}
+            {...props?.input}
+            {...rest}
+          />
         )}
       </div>
     </div>

@@ -17,14 +17,14 @@
       "components/*": ["./src/components/*"],
       "src/*": ["./src/*"],
       "static/*": ["./src/static/*"],
-      "TUI":  ["./src/TUI.tsx"],
-      "utils/*":  ["./src/utils/*"],
+      "TUI": ["./src/TUI.tsx"],
+      "utils/*": ["./src/utils/*"]
     },
     "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES2020",
+    "target": "ES2020"
   },
   "exclude": ["dist", "node_modules", "src/**/*.test.tsx", "src/**/*.stories.tsx"],
   "include": ["src"]

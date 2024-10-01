@@ -23,7 +23,14 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [commonjs(), css(), peerDepsExternal(), resolve(), terser(), typescript({ tsconfig: "./tsconfig.json" })],
+    plugins: [
+      commonjs(),
+      css(),
+      peerDepsExternal(),
+      resolve(),
+      terser(),
+      typescript({ tsconfig: "./tsconfig.json" }),
+    ],
     external: ["react", "react-dom", "@emotion/css", "@emotion/react"],
   },
   {

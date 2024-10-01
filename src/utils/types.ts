@@ -21,8 +21,31 @@ export const sizeValues = [`min`, `xs`, `sm`, `md`, `lg`, `xl`, `max`];
 export type SizeValues = `min` | `xs` | `sm` | `md` | `lg` | `xl` | `max`;
 
 /** Array of accepted extended sizes */
-export const sizeValuesExtended = [`4xs`, `3xs`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`];
-export type SizeValuesExtended = `4xs` | `3xs` | `2xs` | `xs` | `sm` | `md` | `lg` | `xl` | `2xl` | `3xl` | `4xl`;
+export const sizeValuesExtended = [
+  `4xs`,
+  `3xs`,
+  `2xs`,
+  `xs`,
+  `sm`,
+  `md`,
+  `lg`,
+  `xl`,
+  `2xl`,
+  `3xl`,
+  `4xl`,
+];
+export type SizeValuesExtended =
+  | `4xs`
+  | `3xs`
+  | `2xs`
+  | `xs`
+  | `sm`
+  | `md`
+  | `lg`
+  | `xl`
+  | `2xl`
+  | `3xl`
+  | `4xl`;
 
 /** Array of accepted statuses */
 export const statusValues = [`error`, `warning`, `success`, `info`];
@@ -43,8 +66,25 @@ export type ButtonVariantValues = `solid` | `soft` | `plain` | `outlined`;
 // COLOR TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted colors */
-export const colorValues = [`primary`, `secondary`, `utility`, `info`, `error`, `warning`, `success`, `grayscale`];
-export type ColorValues = `primary` | `secondary` | `utility` | `info` | `error` | `warning` | `success` | `grayscale`;
+export const colorValues = [
+  `primary`,
+  `secondary`,
+  `utility`,
+  `info`,
+  `error`,
+  `warning`,
+  `success`,
+  `grayscale`,
+];
+export type ColorValues =
+  | `primary`
+  | `secondary`
+  | `utility`
+  | `info`
+  | `error`
+  | `warning`
+  | `success`
+  | `grayscale`;
 
 /** Array of accepted background colors */
 export const bgColorValues = [`bg1`, `bg2`, `bg3`, `bg4`, `bgi1`, `bgi2`, `bgi3`, `bgi4`];
@@ -287,7 +327,17 @@ export type TextAlignValues = `left` | `center` | `right` | `justify`;
 
 /** Array of accepted text components */
 export const textComponentValues = [`a`, `div`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `span`];
-export type TextComponentValues = `a` | `div` | `h1` | `h2` | `h3` | `h4` | `h5` | `h6` | `p` | `span`;
+export type TextComponentValues =
+  | `a`
+  | `div`
+  | `h1`
+  | `h2`
+  | `h3`
+  | `h4`
+  | `h5`
+  | `h6`
+  | `p`
+  | `span`;
 
 /** Array of accepted text variants */
 export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`];

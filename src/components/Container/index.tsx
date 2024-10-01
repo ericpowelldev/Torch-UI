@@ -59,14 +59,19 @@ const Container = ({
   const { theme } = useTUI();
 
   // Styles
-  const containerStyles = useContainerStyles(theme, { disablePadding, maxWidth, visualize }, [classes?.container, className]);
+  const containerStyles = useContainerStyles(theme, { disablePadding, maxWidth, visualize }, [
+    classes?.container,
+    className,
+  ]);
 
   // Return Component
   return React.createElement(
     component || `div`,
     { className: containerStyles, ...props?.container, ...rest },
     visualize ? (
-      <div style={{ width: "100%", borderLeft: "1px dashed red", borderRight: "1px dashed red" }}>{children}</div>
+      <div style={{ width: "100%", borderLeft: "1px dashed red", borderRight: "1px dashed red" }}>
+        {children}
+      </div>
     ) : (
       children
     )

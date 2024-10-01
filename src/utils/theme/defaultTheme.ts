@@ -221,7 +221,8 @@ const theme = {
 
   // Breakpoint Query Options
   query: {
-    only: (breakpoint: string) => `@media (min-width: ${breakpoint}) and (max-width: ${breakpoint})`,
+    only: (breakpoint: string) =>
+      `@media (min-width: ${breakpoint}) and (max-width: ${breakpoint})`,
     up: (breakpoint: string) => `@media (min-width: ${breakpoint})`,
     down: (breakpoint: string) => `@media (max-width: ${breakpoint})`,
     between: (breakpointUp: string, breakpointDown: string) =>

@@ -2,7 +2,14 @@
 
 import React from "react";
 
-import { BoolValues, ColorValues, SizeValues, TintValues, ToggleComponentValues, ToggleVariantValues } from "../../utils/types";
+import {
+  BoolValues,
+  ColorValues,
+  SizeValues,
+  TintValues,
+  ToggleComponentValues,
+  ToggleVariantValues,
+} from "../../utils/types";
 
 import { useTUI } from "../../TUI";
 import {
@@ -88,12 +95,23 @@ const Toggle = ({
   const { theme } = useTUI();
 
   // Styles
-  const toggleStyles = useToggleStyles(theme, { color, disabled, size, tint }, [classes?.toggle, className]);
-  const trackStyles = useTrackStyles(theme, { color, disabled, shadowTrack, size, tint }, [classes?.track]);
-  const slideStyles = useSlideStyles(theme, { color, disabled, shadowSlide, size, tint }, [classes?.slide]);
+  const toggleStyles = useToggleStyles(theme, { color, disabled, size, tint }, [
+    classes?.toggle,
+    className,
+  ]);
+  const trackStyles = useTrackStyles(theme, { color, disabled, shadowTrack, size, tint }, [
+    classes?.track,
+  ]);
+  const slideStyles = useSlideStyles(theme, { color, disabled, shadowSlide, size, tint }, [
+    classes?.slide,
+  ]);
   const inputStyles = useInputStyles(theme, { color, disabled, size, tint }, [classes?.input]);
-  const iconCheckedStyles = useIconCheckedStyles(theme, { color, disabled, size, tint }, [classes?.iconChecked]);
-  const iconUncheckedStyles = useIconUncheckedStyles(theme, { color, disabled, size, tint }, [classes?.iconUnchecked]);
+  const iconCheckedStyles = useIconCheckedStyles(theme, { color, disabled, size, tint }, [
+    classes?.iconChecked,
+  ]);
+  const iconUncheckedStyles = useIconUncheckedStyles(theme, { color, disabled, size, tint }, [
+    classes?.iconUnchecked,
+  ]);
 
   // Return Component
   return (
@@ -113,7 +131,13 @@ const Toggle = ({
 
         <span className={slideStyles} {...props?.slide} />
 
-        <input className={inputStyles} type="checkbox" disabled={disabled ? true : false} {...props?.input} {...rest} />
+        <input
+          className={inputStyles}
+          type="checkbox"
+          disabled={disabled ? true : false}
+          {...props?.input}
+          {...rest}
+        />
       </span>
     </div>
   );

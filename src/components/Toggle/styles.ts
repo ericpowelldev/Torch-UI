@@ -145,7 +145,11 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
   return cx(inputCSS, overrides) || undefined;
 };
 
-export const useIconCheckedStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useIconCheckedStyles = (
+  theme?: any,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { color, size, tint } = props;
 
@@ -179,7 +183,11 @@ export const useIconCheckedStyles = (theme?: any, props?: any, overrides?: (stri
   return cx(iconCheckedCSS, overrides) || undefined;
 };
 
-export const useIconUncheckedStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useIconUncheckedStyles = (
+  theme?: any,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { size } = props;
 

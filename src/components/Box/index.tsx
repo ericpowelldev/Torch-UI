@@ -77,13 +77,18 @@ const Box = ({
   const { theme } = useTUI();
 
   // Styles
-  const boxStyles = useBoxStyles(theme, { backdropBlur, color, height, radius, shadow, tint, visualize, width }, [
-    classes?.box,
-    className,
-  ]);
+  const boxStyles = useBoxStyles(
+    theme,
+    { backdropBlur, color, height, radius, shadow, tint, visualize, width },
+    [classes?.box, className]
+  );
 
   // Return Component
-  return React.createElement(component || `div`, { className: boxStyles, ...props?.box, ...rest }, children);
+  return React.createElement(
+    component || `div`,
+    { className: boxStyles, ...props?.box, ...rest },
+    children
+  );
 };
 
 // EXPORT ---------------------------------------------------------------- //

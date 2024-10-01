@@ -40,7 +40,12 @@ const useTUI = () => React.useContext(TUIContext);
 
 // PROVIDER ---------------------------------------------------------------- //
 
-const TUIProvider = ({ children, theme = {}, customThemeName = undefined, cssPreset = true }: TUIProviderProps) => {
+const TUIProvider = ({
+  children,
+  theme = {},
+  customThemeName = undefined,
+  cssPreset = true,
+}: TUIProviderProps) => {
   // Merge the override theme and extend the merged theme
   let extendedTheme = deepmerge(defaultTheme, theme);
   extendedTheme = extendTheme(extendedTheme, customThemeName);

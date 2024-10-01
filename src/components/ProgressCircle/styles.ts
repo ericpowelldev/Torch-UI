@@ -32,7 +32,9 @@ export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | u
     width: ${size}px;
     height: ${size}px;
     border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
-      ${variant === `bg` ? getColorBg(theme, color, tint, disabled, `fg`) : getColorFg(theme, color, tint, disabled)};
+      ${variant === `bg`
+        ? getColorBg(theme, color, tint, disabled, `fg`)
+        : getColorFg(theme, color, tint, disabled)};
     border-radius: 50%;
     background-color: transparent;
     opacity: 20%;
@@ -65,7 +67,9 @@ export const useBarStyles = (theme?: any, props?: any, overrides?: (string | und
     height: ${size}px;
     border: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid transparent;
     border-top: ${thickness ? `${thickness}px` : `${getTrackSize(size)}px`} solid
-      ${variant === `bg` ? getColorBg(theme, color, tint, disabled, `fg`) : getColorFg(theme, color, tint, disabled)};
+      ${variant === `bg`
+        ? getColorBg(theme, color, tint, disabled, `fg`)
+        : getColorFg(theme, color, tint, disabled)};
     border-radius: 50%;
     background-color: transparent;
     animation: ${spinKF} ${animateMs}ms linear infinite;

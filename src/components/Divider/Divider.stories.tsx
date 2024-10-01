@@ -111,7 +111,8 @@ const meta: Meta<typeof Component> = {
       },
     },
     tip: {
-      description: "When a tip is present, the help icon will be displayed along with a tooltip on hover.",
+      description:
+        "When a tip is present, the help icon will be displayed along with a tooltip on hover.",
       control: {
         type: "text",
       },

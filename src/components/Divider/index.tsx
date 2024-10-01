@@ -5,7 +5,13 @@ import React from "react";
 import { DividerComponentValues, DividerDirectionValues, PercentValues } from "../../utils/types";
 
 import { useTUI } from "../../TUI";
-import { useDividerStyles, useStretchStyles, useLabelStyles, useLineStyles, useIconStyles } from "./styles";
+import {
+  useDividerStyles,
+  useStretchStyles,
+  useLabelStyles,
+  useLineStyles,
+  useIconStyles,
+} from "./styles";
 
 import { MdInfo } from "react-icons/md";
 

@@ -208,7 +208,8 @@ const buildDividerColors = (color: string, themeMode?: string) => {
 const extendTheme = (theme: any, customThemeName?: string) => {
   // Set the initial theme props to use when extending
   // Check the theme object for the custom style props
-  let customTheme = customThemeName && theme?.custom?.[customThemeName] ? theme?.custom?.[customThemeName] : {};
+  let customTheme =
+    customThemeName && theme?.custom?.[customThemeName] ? theme?.custom?.[customThemeName] : {};
   const themeMode = customTheme?.mode || `light`;
 
   // Override the standard theme with the custom theme

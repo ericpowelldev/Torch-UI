@@ -50,11 +50,20 @@ const meta: Meta<typeof Component> = {
     // Specialized Properties //
 
     alignContent: {
-      description: "Vertical alignment of the child flex items (particularly when flex items are overflowing).",
+      description:
+        "Vertical alignment of the child flex items (particularly when flex items are overflowing).",
       control: {
         type: "select",
       },
-      options: ["stretch", "flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
+      options: [
+        "stretch",
+        "flex-start",
+        "flex-end",
+        "center",
+        "space-between",
+        "space-around",
+        "space-evenly",
+      ],
     },
     alignItems: {
       description: "Vertical alignment of the child flex items.",
@@ -112,10 +121,19 @@ const meta: Meta<typeof Component> = {
       control: {
         type: "select",
       },
-      options: ["stretch", "flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
+      options: [
+        "stretch",
+        "flex-start",
+        "flex-end",
+        "center",
+        "space-between",
+        "space-around",
+        "space-evenly",
+      ],
     },
     justifyItems: {
-      description: "Horizontal alignment of the child flex items (particularly when flex items are overflowing).",
+      description:
+        "Horizontal alignment of the child flex items (particularly when flex items are overflowing).",
       control: {
         type: "select",
       },
@@ -171,7 +189,8 @@ export const Default: Story = {
             border: "1px solid #00000008",
             borderRadius: "6px",
             backgroundColor: "#e0e0e0",
-          }}>
+          }}
+        >
           Flex Item 1
         </Component>
 
@@ -184,7 +203,8 @@ export const Default: Story = {
             border: "1px solid #00000008",
             borderRadius: "6px",
             backgroundColor: "#e0e0e0",
-          }}>
+          }}
+        >
           Flex Item 2
         </Component>
 
@@ -197,7 +217,8 @@ export const Default: Story = {
             border: "1px solid #00000008",
             borderRadius: "6px",
             backgroundColor: "#e0e0e0",
-          }}>
+          }}
+        >
           Flex Item 3
         </Component>
       </>

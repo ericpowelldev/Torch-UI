@@ -6,7 +6,11 @@ import { getContainerMaxWidth } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useContainerStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useContainerStyles = (
+  theme?: any,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { disablePadding, maxWidth, visualize } = props;
 
