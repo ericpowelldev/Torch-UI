@@ -251,6 +251,7 @@ const theme = {
         fg: `#ffffff`,
         bg: `#242c40`,
       },
+      visualize: `repeating-linear-gradient(135deg, #ffffff10, #ffffff10 8px, #ffffff08 8px, #ffffff08 16px)`,
     },
   },
 };
