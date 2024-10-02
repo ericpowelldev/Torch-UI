@@ -47,14 +47,14 @@ const TUIProvider = ({
   cssPreset = true,
 }: TUIProviderProps) => {
   // Merge the override theme and extend the merged theme
-  let extendedTheme = deepmerge(defaultTheme, theme);
+  let extendedTheme = deepmerge(defaultTheme, theme) as any;
   extendedTheme = extendTheme(extendedTheme, customThemeName);
 
   const ctx = {
     theme: extendedTheme,
     customThemeName: customThemeName,
     detectSystemThemeMode: detectSystemThemeMode,
-  };
+  } as any;
 
   console.log(`Extended Theme (${customThemeName || `default`}):`, extendedTheme);
 
