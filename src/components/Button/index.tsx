@@ -175,7 +175,7 @@ const Button = ({
             className={iconErrorStyles}
             status={`error`}
             variant={variant === `solid` ? `fg` : `bg`}
-            color={color}
+            color={color as any}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
@@ -188,7 +188,7 @@ const Button = ({
             className={iconWarningStyles}
             status={`warning`}
             variant={variant === `solid` ? `fg` : `bg`}
-            color={color}
+            color={color as any}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
@@ -201,7 +201,7 @@ const Button = ({
             className={iconSuccessStyles}
             status={`success`}
             variant={variant === `solid` ? `fg` : `bg`}
-            color={color}
+            color={color as any}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
@@ -214,7 +214,7 @@ const Button = ({
             className={iconInfoStyles}
             status={`info`}
             variant={variant === `solid` ? `fg` : `bg`}
-            color={color}
+            color={color as any}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
@@ -228,7 +228,7 @@ const Button = ({
           <ProgressCircle
             className={iconLoadingStyles}
             variant={variant === `solid` ? `fg` : `bg`}
-            color={color}
+            color={color as any}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}
