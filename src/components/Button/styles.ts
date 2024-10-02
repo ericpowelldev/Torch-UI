@@ -39,7 +39,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
     overflow: hidden;
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: fit-content;
     padding: 0;
     border: 0;
