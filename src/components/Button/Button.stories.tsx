@@ -171,85 +171,286 @@ export const Default: Story = {
   },
 };
 
-export const Primary: Story = {
-  args: {
-    children: "Primary",
-    color: "primary",
-  },
-};
+export const VariantsAndColors: Story = {
+  render: () => (
+    <Flex container direction="column" gap={3}>
+      <Flex container gap={2}>
+        <Component style={{ width: 180 }} variant="solid" color="primary">
+          Primary Solid
+        </Component>
+        <Component style={{ width: 180 }} variant="soft" color="primary">
+          Primary Soft
+        </Component>
+        <Component style={{ width: 180 }} variant="plain" color="primary">
+          Primary Plain
+        </Component>
+        <Component style={{ width: 180 }} variant="outlined" color="primary">
+          Primary Outlined
+        </Component>
+      </Flex>
 
-export const Secondary: Story = {
-  args: {
-    children: "Secondary",
-    color: "secondary",
-  },
+      <Flex container gap={2}>
+        <Component style={{ width: 180 }} variant="solid" color="secondary">
+          Secondary Solid
+        </Component>
+        <Component style={{ width: 180 }} variant="soft" color="secondary">
+          Secondary Soft
+        </Component>
+        <Component style={{ width: 180 }} variant="plain" color="secondary">
+          Secondary Plain
+        </Component>
+        <Component style={{ width: 180 }} variant="outlined" color="secondary">
+          Secondary Outlined
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component style={{ width: 180 }} variant="solid" color="utility">
+          Utility Solid
+        </Component>
+        <Component style={{ width: 180 }} variant="soft" color="utility">
+          Utility Soft
+        </Component>
+        <Component style={{ width: 180 }} variant="plain" color="utility">
+          Utility Plain
+        </Component>
+        <Component style={{ width: 180 }} variant="outlined" color="utility">
+          Utility Outlined
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component style={{ width: 180 }} variant="solid" color="error">
+          Error Solid
+        </Component>
+        <Component style={{ width: 180 }} variant="soft" color="error">
+          Error Soft
+        </Component>
+        <Component style={{ width: 180 }} variant="plain" color="error">
+          Error Plain
+        </Component>
+        <Component style={{ width: 180 }} variant="outlined" color="error">
+          Error Outlined
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component style={{ width: 180 }} variant="solid" color="warning">
+          Warning Solid
+        </Component>
+        <Component style={{ width: 180 }} variant="soft" color="warning">
+          Warning Soft
+        </Component>
+        <Component style={{ width: 180 }} variant="plain" color="warning">
+          Warning Plain
+        </Component>
+        <Component style={{ width: 180 }} variant="outlined" color="warning">
+          Warning Outlined
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component style={{ width: 180 }} variant="solid" color="success">
+          Success Solid
+        </Component>
+        <Component style={{ width: 180 }} variant="soft" color="success">
+          Success Soft
+        </Component>
+        <Component style={{ width: 180 }} variant="plain" color="success">
+          Success Plain
+        </Component>
+        <Component style={{ width: 180 }} variant="outlined" color="success">
+          Success Outlined
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component style={{ width: 180 }} variant="solid" color="info">
+          Info Solid
+        </Component>
+        <Component style={{ width: 180 }} variant="soft" color="info">
+          Info Soft
+        </Component>
+        <Component style={{ width: 180 }} variant="plain" color="info">
+          Info Plain
+        </Component>
+        <Component style={{ width: 180 }} variant="outlined" color="info">
+          Info Outlined
+        </Component>
+      </Flex>
+    </Flex>
+  ),
 };
 
 export const WithIcon: Story = {
-  args: {
-    children: "Button with Icon",
-    icon: <MdRocketLaunch />,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component variant="solid" icon={<MdRocketLaunch />}>
+        Button with Icon
+      </Component>
+      <Component variant="soft" icon={<MdRocketLaunch />}>
+        Button with Icon
+      </Component>
+      <Component variant="plain" icon={<MdRocketLaunch />}>
+        Button with Icon
+      </Component>
+      <Component variant="outlined" icon={<MdRocketLaunch />}>
+        Button with Icon
+      </Component>
+    </Flex>
+  ),
 };
 
 export const WithEmoji: Story = {
-  args: {
-    children: "Button with Emoji",
-    icon: "🚀",
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component variant="solid" icon="🚀">
+        Button with Emoji
+      </Component>
+      <Component variant="soft" icon="🚀">
+        Button with Emoji
+      </Component>
+      <Component variant="plain" icon="🚀">
+        Button with Emoji
+      </Component>
+      <Component variant="outlined" icon="🚀">
+        Button with Emoji
+      </Component>
+    </Flex>
+  ),
 };
 
 export const ErrorState: Story = {
-  args: {
-    children: "Error State",
-    color: "error",
-    error: true,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component error variant="solid" color="error">
+        Error State
+      </Component>
+      <Component error variant="soft" color="error">
+        Error State
+      </Component>
+      <Component error variant="plain" color="error">
+        Error State
+      </Component>
+      <Component error variant="outlined" color="error">
+        Error State
+      </Component>
+    </Flex>
+  ),
 };
 
 export const WarningState: Story = {
-  args: {
-    children: "Warning State",
-    color: "warning",
-    warning: true,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component warning variant="solid" color="warning">
+        Warning State
+      </Component>
+      <Component warning variant="soft" color="warning">
+        Warning State
+      </Component>
+      <Component warning variant="plain" color="warning">
+        Warning State
+      </Component>
+      <Component warning variant="outlined" color="warning">
+        Warning State
+      </Component>
+    </Flex>
+  ),
 };
 
 export const SuccessState: Story = {
-  args: {
-    children: "Success State",
-    color: "success",
-    success: true,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component success variant="solid" color="success">
+        Success State
+      </Component>
+      <Component success variant="soft" color="success">
+        Success State
+      </Component>
+      <Component success variant="plain" color="success">
+        Success State
+      </Component>
+      <Component success variant="outlined" color="success">
+        Success State
+      </Component>
+    </Flex>
+  ),
 };
 
 export const InfoState: Story = {
-  args: {
-    children: "Info State",
-    color: "info",
-    info: true,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component info variant="solid" color="info">
+        Info State
+      </Component>
+      <Component info variant="soft" color="info">
+        Info State
+      </Component>
+      <Component info variant="plain" color="info">
+        Info State
+      </Component>
+      <Component info variant="outlined" color="info">
+        Info State
+      </Component>
+    </Flex>
+  ),
 };
 
 export const LoadingState: Story = {
-  args: {
-    children: "Loading State",
-    loading: true,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component loading variant="solid">
+        Loading State
+      </Component>
+      <Component loading variant="soft">
+        Loading State
+      </Component>
+      <Component loading variant="plain">
+        Loading State
+      </Component>
+      <Component loading variant="outlined">
+        Loading State
+      </Component>
+    </Flex>
+  ),
 };
 
 export const PlaceholderState: Story = {
-  args: {
-    children: "Placeholder State",
-    placeholder: true,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component placeholder variant="solid">
+        Placeholder State
+      </Component>
+      <Component placeholder variant="soft">
+        Placeholder State
+      </Component>
+      <Component placeholder variant="plain">
+        Placeholder State
+      </Component>
+      <Component placeholder variant="outlined">
+        Placeholder State
+      </Component>
+    </Flex>
+  ),
 };
 
 export const DisabledState: Story = {
-  args: {
-    children: "Disabled State",
-    disabled: true,
-  },
+  render: () => (
+    <Flex container gap={2}>
+      <Component disabled variant="solid">
+        Disabled State
+      </Component>
+      <Component disabled variant="soft">
+        Disabled State
+      </Component>
+      <Component disabled variant="plain">
+        Disabled State
+      </Component>
+      <Component disabled variant="outlined">
+        Disabled State
+      </Component>
+    </Flex>
+  ),
 };
 
 export const Tint100: Story = {
@@ -372,90 +573,6 @@ export const Tint900: Story = {
         Success
       </Component>
       <Component color="info" tint="900">
-        Info
-      </Component>
-    </Flex>
-  ),
-};
-
-export const SoftVariant: Story = {
-  render: () => (
-    <Flex container gap={2}>
-      <Component variant="soft" color="primary">
-        Primary
-      </Component>
-      <Component variant="soft" color="secondary">
-        Secondary
-      </Component>
-      <Component variant="soft" color="utility">
-        Utility
-      </Component>
-      <Component variant="soft" color="error">
-        Error
-      </Component>
-      <Component variant="soft" color="warning">
-        Warning
-      </Component>
-      <Component variant="soft" color="success">
-        Success
-      </Component>
-      <Component variant="soft" color="info">
-        Info
-      </Component>
-    </Flex>
-  ),
-};
-
-export const PlainVariant: Story = {
-  render: () => (
-    <Flex container gap={2}>
-      <Component variant="plain" color="primary">
-        Primary
-      </Component>
-      <Component variant="plain" color="secondary">
-        Secondary
-      </Component>
-      <Component variant="plain" color="utility">
-        Utility
-      </Component>
-      <Component variant="plain" color="error">
-        Error
-      </Component>
-      <Component variant="plain" color="warning">
-        Warning
-      </Component>
-      <Component variant="plain" color="success">
-        Success
-      </Component>
-      <Component variant="plain" color="info">
-        Info
-      </Component>
-    </Flex>
-  ),
-};
-
-export const OutlinedVariant: Story = {
-  render: () => (
-    <Flex container gap={2}>
-      <Component variant="outlined" color="primary">
-        Primary
-      </Component>
-      <Component variant="outlined" color="secondary">
-        Secondary
-      </Component>
-      <Component variant="outlined" color="utility">
-        Utility
-      </Component>
-      <Component variant="outlined" color="error">
-        Error
-      </Component>
-      <Component variant="outlined" color="warning">
-        Warning
-      </Component>
-      <Component variant="outlined" color="success">
-        Success
-      </Component>
-      <Component variant="outlined" color="info">
         Info
       </Component>
     </Flex>

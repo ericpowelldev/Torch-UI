@@ -3,15 +3,16 @@
 import { css, cx } from "../../utils/emotion";
 
 import {
-  getColorFg,
-  getColorBg,
-  getColorHover,
-  getColorActive,
   getButtonPadding,
   getButtonLabelSize,
   getButtonLabelHeight,
   getButtonIconSize,
   getButtonIconMargin,
+  getVariantBoxShadow,
+  getVariantColorFg,
+  getVariantColorBg,
+  getVariantColorHover,
+  getVariantColorActive,
 } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
@@ -69,18 +70,18 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
   const solidCSS =
     variant === `solid`
       ? css`
-          background-color: ${getColorBg(theme, color, tint, disabled)};
-          color: ${getColorFg(theme, color, tint, disabled)};
+          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           &:hover {
-            background-color: ${getColorHover(theme, `solid`, color, tint)};
-            box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}48;
+            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
-              background-color: ${getColorBg(theme, color, tint, disabled)};
+              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
               box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getColorActive(theme, `solid`, color, tint)};
+            background-color: ${getVariantColorActive(theme, variant, color, tint)};
           }
         `
       : null;
@@ -88,16 +89,18 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
   const softCSS =
     variant === `soft`
       ? css`
-          background-color: ${getColorBg(theme, color, tint, disabled, `fg`)}24;
-          color: ${getColorBg(theme, color, tint, disabled, `fg`)};
+          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           &:hover {
-            background-color: ${getColorHover(theme, `soft`, color, tint)};
+            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
-              background-color: ${getColorBg(theme, color, tint, disabled, `fg`)}24;
+              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+              box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getColorActive(theme, `soft`, color, tint)};
+            background-color: ${getVariantColorActive(theme, variant, color, tint)};
           }
         `
       : null;
@@ -105,16 +108,18 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
   const plainCSS =
     variant === `plain`
       ? css`
-          background-color: transparent;
-          color: ${getColorBg(theme, color, tint, disabled, `fg`)};
+          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           &:hover {
-            background-color: ${getColorHover(theme, `plain`, color, tint)};
+            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
-              background-color: transparent;
+              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+              box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getColorActive(theme, `plain`, color, tint)};
+            background-color: ${getVariantColorActive(theme, variant, color, tint)};
           }
         `
       : null;
@@ -122,20 +127,20 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
   const outlinedCSS =
     variant === `outlined`
       ? css`
-          outline: 1px solid ${getColorBg(theme, color, tint, disabled, `fg`)};
+          outline: 1px solid ${getVariantColorFg(theme, variant, color, tint, disabled)};
           outline-offset: -1px;
-          background-color: transparent;
-          color: ${getColorBg(theme, color, tint, disabled, `fg`)};
+          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           &:hover {
-            background-color: ${getColorHover(theme, `outlined`, color, tint)};
-            box-shadow: 0 0 16px -2px ${getColorBg(theme, color, tint, disabled)}48;
+            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
-              background-color: transparent;
+              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
               box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getColorActive(theme, `outlined`, color, tint)};
+            background-color: ${getVariantColorActive(theme, variant, color, tint)};
           }
         `
       : null;

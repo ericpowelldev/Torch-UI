@@ -3,10 +3,8 @@
 import { css, cx } from "../../utils/emotion";
 
 import {
-  getColorActive,
   getColorBg,
   getColorFg,
-  getColorHover,
   getInputBorder,
   getInputLabelColor,
   getInputPadding,
@@ -228,7 +226,7 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
       ? css`
           color: ${getColorFg(theme, color, tint, disabled)};
           &::placeholder {
-            color: ${theme?.color?.fgi[2]};
+            color: ${theme?.color?.fgInverse[2]};
           }
         `
       : null;

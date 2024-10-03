@@ -2,6 +2,7 @@ import { TUIProvider, useTUI } from "./TUI";
 
 import Box from "./components/Box";
 import Button from "./components/Button";
+import Checkbox from "./components/Checkbox";
 import Container from "./components/Container";
 import Divider from "./components/Divider";
 import Flex from "./components/Flex";
@@ -19,6 +20,7 @@ export {
   useTUI,
   Box,
   Button,
+  Checkbox,
   Container,
   Divider,
   Flex,

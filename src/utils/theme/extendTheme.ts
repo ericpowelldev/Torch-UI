@@ -129,16 +129,16 @@ const buildBackgroundColors = (color: string, themeMode?: string) => {
       .lightness(themeMode === `dark` ? 5 : 100)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 10 : 95)
+      .lightness(themeMode === `dark` ? 10 : 97.5)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 15 : 90)
+      .lightness(themeMode === `dark` ? 15 : 95)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 20 : 85)
+      .lightness(themeMode === `dark` ? 20 : 92.5)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 25 : 80)
+      .lightness(themeMode === `dark` ? 25 : 90)
       .hex(),
   ];
 
@@ -157,16 +157,16 @@ const buildBackgroundInverseColors = (color: string, themeMode?: string) => {
       .lightness(themeMode === `dark` ? 100 : 5)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 95 : 10)
+      .lightness(themeMode === `dark` ? 97.5 : 10)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 90 : 15)
+      .lightness(themeMode === `dark` ? 95 : 15)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 85 : 20)
+      .lightness(themeMode === `dark` ? 92.5 : 20)
       .hex(),
     Color(normalizedColor)
-      .lightness(themeMode === `dark` ? 80 : 25)
+      .lightness(themeMode === `dark` ? 90 : 25)
       .hex(),
   ];
 
@@ -247,12 +247,12 @@ const extendTheme = (theme: any, customThemeName?: string) => {
       },
 
       fg: buildForegroundColors(customTheme?.color?.fg, themeMode),
-      fgi: buildForegroundInverseColors(customTheme?.color?.bg, themeMode),
-      fgd: buildForegroundDisabledColor(customTheme?.color?.grayscale),
+      fgInverse: buildForegroundInverseColors(customTheme?.color?.bg, themeMode),
+      fgDisabled: buildForegroundDisabledColor(customTheme?.color?.grayscale),
 
       bg: buildBackgroundColors(customTheme?.color?.bg, themeMode),
-      bgi: buildBackgroundInverseColors(customTheme?.color?.fg, themeMode),
-      bgd: buildBackgroundDisabledColor(customTheme?.color?.grayscale),
+      bgInverse: buildBackgroundInverseColors(customTheme?.color?.fg, themeMode),
+      bgDisabled: buildBackgroundDisabledColor(customTheme?.color?.grayscale),
 
       interact: buildInteractColors(customTheme?.color?.fg, themeMode),
       divider: buildDividerColors(customTheme?.color?.fg, themeMode),

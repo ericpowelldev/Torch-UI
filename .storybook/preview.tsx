@@ -13,7 +13,7 @@ const preview: Preview = {
         theme={theme}
         // customThemeName="dark"
       >
-        <div style={{ padding: "16px" }}>
+        <div style={{ position: "relative", padding: "16px" }}>
           <Story />
         </div>
       </TUIProvider>

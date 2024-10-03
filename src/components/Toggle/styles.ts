@@ -49,7 +49,7 @@ export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | u
     width: ${getToggleSize(size) * 2}px;
     height: ${getToggleSize(size)}px;
     border-radius: 16px;
-    background-color: ${theme?.color?.fg?.[2]};
+    background-color: ${theme?.color?.grayscale?.[500]}a0;
     transition: ${theme?.transition?.standard || theme?.transition?.none};
     &:has(> input[type="checkbox"]:checked) {
       background-color: ${getColorBg(theme, color, tint)};

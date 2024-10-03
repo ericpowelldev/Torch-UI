@@ -169,7 +169,7 @@ export const Number: Story = {
   },
 };
 
-export const Solid: Story = {
+export const SolidVariant: Story = {
   args: {
     label: "Solid Input",
     placeholder: "Enter some text...",
@@ -177,7 +177,7 @@ export const Solid: Story = {
   },
 };
 
-export const Soft: Story = {
+export const SoftVariant: Story = {
   args: {
     label: "Soft Input",
     placeholder: "Enter some text...",
@@ -185,7 +185,7 @@ export const Soft: Story = {
   },
 };
 
-export const Plain: Story = {
+export const PlainVariant: Story = {
   args: {
     label: "Plain Input",
     placeholder: "Enter some text...",

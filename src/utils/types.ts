@@ -51,6 +51,10 @@ export type SizeValuesExtended =
 export const statusValues = [`error`, `warning`, `success`, `info`];
 export type StatusValues = `error` | `warning` | `success` | `info`;
 
+/** Array of accepted variants */
+export const variantValues = [`solid`, `soft`, `plain`, `outlined`];
+export type VariantValues = `solid` | `soft` | `plain` | `outlined`;
+
 // BOX TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted box components */
@@ -62,6 +66,16 @@ export type BoxComponentValues = `div` | `span`;
 /** Array of accepted button variants */
 export const buttonVariantValues = [`solid`, `soft`, `plain`, `outlined`];
 export type ButtonVariantValues = `solid` | `soft` | `plain` | `outlined`;
+
+// CHECKBOX TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted checkbox components */
+export const checkboxComponentValues = [`div`, `span`];
+export type CheckboxComponentValues = `div` | `span`;
+
+/** Array of accepted checkbox variants */
+export const checkboxVariantValues = [`solid`, `soft`, `plain`, `outlined`];
+export type CheckboxVariantValues = `solid` | `soft` | `plain` | `outlined`;
 
 // COLOR TYPES ---------------------------------------------------------------- //
 
@@ -87,12 +101,46 @@ export type ColorValues =
   | `grayscale`;
 
 /** Array of accepted background colors */
-export const bgColorValues = [`bg1`, `bg2`, `bg3`, `bg4`, `bgi1`, `bgi2`, `bgi3`, `bgi4`];
-export type BGColorValues = `bg1` | `bg2` | `bg3` | `bg4` | `bgi1` | `bgi2` | `bgi3` | `bgi4`;
+export const bgColorValues = [
+  `bg1`,
+  `bg2`,
+  `bg3`,
+  `bg4`,
+  `bgInverse1`,
+  `bgInverse2`,
+  `bgInverse3`,
+  `bgInverse4`,
+];
+export type BGColorValues =
+  | `bg1`
+  | `bg2`
+  | `bg3`
+  | `bg4`
+  | `bgInverse1`
+  | `bgInverse2`
+  | `bgInverse3`
+  | `bgInverse4`;
 
 /** Array of accepted foreground colors */
-export const fgColorValues = [`fg1`, `fg2`, `fg3`, `fg4`, `fgi1`, `fgi2`, `fgi3`, `fgi4`];
-export type FGColorValues = `fg1` | `fg2` | `fg3` | `fg4` | `fgi1` | `fgi2` | `fgi3` | `fgi4`;
+export const fgColorValues = [
+  `fg1`,
+  `fg2`,
+  `fg3`,
+  `fg4`,
+  `fgInverse1`,
+  `fgInverse2`,
+  `fgInverse3`,
+  `fgInverse4`,
+];
+export type FGColorValues =
+  | `fg1`
+  | `fg2`
+  | `fg3`
+  | `fg4`
+  | `fgInverse1`
+  | `fgInverse2`
+  | `fgInverse3`
+  | `fgInverse4`;
 
 /** Array of accepted main color tints */
 export const tintValues = [

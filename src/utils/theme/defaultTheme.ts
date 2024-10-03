@@ -163,6 +163,7 @@ const theme = {
     button: `6px`,
     card: `10px`,
     input: `6px`,
+    checkbox: `4px`,
     pill: `10000px`,
   },
 
@@ -172,6 +173,7 @@ const theme = {
     standard: `all 0.1s ease-in-out`,
     button: `all 0.1s ease-in-out`,
     input: `all 0.05s ease-in-out`,
+    checkbox: `outline-color 0.1s ease-in-out, background-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out`,
   },
 
   // Shadow Options
