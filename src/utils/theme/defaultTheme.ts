@@ -107,7 +107,6 @@ const theme = {
 
     // Special text
     button: {
-      family: `"Inter Tight", "Roboto", "Helvetica", "Arial", sans-serif`,
       size: `14px`,
       weight: 600,
       height: 1,
@@ -124,7 +123,7 @@ const theme = {
     },
     label: {
       size: `12px`,
-      weight: 400,
+      weight: 600,
       height: 1,
     },
     sublabel: {
@@ -170,10 +169,11 @@ const theme = {
   // Transition Options
   transition: {
     none: `none`,
-    standard: `all 0.1s ease-in-out`,
-    button: `all 0.1s ease-in-out`,
-    input: `all 0.05s ease-in-out`,
-    checkbox: `outline-color 0.1s ease-in-out, background-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out`,
+    standard: `all 0.15s ease-in-out`,
+    button: `all 0.15s ease-in-out`,
+    input: `all 0.15s ease-in-out`,
+    inputWithOutline: `all 0.15s ease-in-out, outline-color 0.0s, outline-offset 0.0s, outline-width 0.0s`,
+    checkbox: `outline-color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out`,
   },
 
   // Shadow Options

@@ -34,6 +34,7 @@ interface InputProps {
   };
   className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
   component?: InputComponentValues;
   tooltip?: React.ReactNode;
 
@@ -46,10 +47,12 @@ interface InputProps {
   fullWidth?: BoolValues;
   icon?: React.ReactNode;
   info?: BoolValues;
+  inverse?: BoolValues;
   label?: React.ReactNode;
   loading?: BoolValues;
   multiline?: BoolValues;
   required?: BoolValues;
+  select?: BoolValues;
   sublabel?: React.ReactNode;
   success?: BoolValues;
   tint?: TintValues;
@@ -69,6 +72,7 @@ const Input = ({
   props,
   classes,
   className,
+  children,
   component,
   tooltip,
 
@@ -81,10 +85,12 @@ const Input = ({
   fullWidth = false,
   icon,
   info = false,
+  inverse = false,
   label,
   loading = false,
   multiline = false,
   required = false,
+  select = false,
   sublabel,
   success = false,
   tint = 500,
@@ -100,7 +106,7 @@ const Input = ({
 
   // Styles
   const baseStyles = useBaseStyles(theme, { fullWidth }, [classes?.base, className]);
-  const labelStyles = useLabelStyles(theme, { disabled, error, info, success, warning }, [
+  const labelStyles = useLabelStyles(theme, { disabled, error, info, inverse, success, warning }, [
     classes?.label,
   ]);
   const wrapperStyles = useWrapperStyles(
@@ -109,13 +115,10 @@ const Input = ({
       backdropBlur,
       color,
       disabled,
-      error,
       fullWidth,
-      info,
-      success,
+      inverse,
       tint,
       variant,
-      warning,
     },
     [classes?.wrapper]
   );
@@ -125,7 +128,9 @@ const Input = ({
       color,
       disabled,
       fullWidth,
+      inverse,
       multiline,
+      select,
       tint,
       variant,
     },
@@ -143,7 +148,16 @@ const Input = ({
       )}
 
       <div className={wrapperStyles}>
-        {multiline ? (
+        {select ? (
+          <select
+            className={inputStyles}
+            disabled={disabled ? true : false}
+            {...props?.input}
+            {...rest}
+          >
+            {children}
+          </select>
+        ) : multiline ? (
           <textarea
             className={inputStyles}
             disabled={disabled ? true : false}

@@ -56,12 +56,6 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
     cursor: pointer;
     transition: ${theme?.transition?.button || theme?.transition?.none};
     user-select: none;
-    &:hover {
-      transform: translateY(-2px);
-      @media (hover: none) {
-        transform: none;
-      }
-    }
     &:active {
       transition: ${theme?.transition?.none};
     }

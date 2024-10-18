@@ -32,7 +32,7 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
     background-color: transparent;
     color: inherit;
     cursor: pointer;
-    transition: ${theme?.transition?.checkbox};
+    transition: ${theme?.transition?.checkbox || theme?.transition?.none};
     &:active {
       transition: ${theme?.transition?.none};
     }
@@ -176,45 +176,37 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
   const outlinedCss =
     variant === `outlined`
       ? css`
-          outline: 1px solid
-            ${getVariantColorFg(theme, `outlined`, `grayscale`, tint, disabled, true)};
+          outline: 1px solid ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           outline-offset: -1px;
-          background-color: ${getVariantColorBg(
-            theme,
-            `outlined`,
-            `grayscale`,
-            tint,
-            disabled,
-            true
-          )};
-          color: ${getVariantColorFg(theme, `outlined`, `grayscale`, tint, disabled, true)};
+          background-color: ${getVariantColorBg(theme, variant, `grayscale`, tint, disabled, true)};
+          color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
-            outline: 1px solid ${getVariantColorFg(theme, `outlined`, color, tint, disabled)};
+            outline: 1px solid ${getVariantColorFg(theme, variant, color, tint, disabled)};
             outline-offset: -1px;
-            background-color: ${getVariantColorHover(theme, `outlined`, color, tint)};
-            color: ${getVariantColorFg(theme, `outlined`, color, tint, disabled)};
-            box-shadow: ${getVariantBoxShadow(theme, `outlined`, color, tint)};
+            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
               outline: 1px solid
-                ${getVariantColorFg(theme, `outlined`, `grayscale`, tint, disabled, true)};
+                ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
               outline-offset: -1px;
               background-color: ${getVariantColorBg(
                 theme,
-                `outlined`,
+                variant,
                 `grayscale`,
                 tint,
                 disabled,
                 true
               )};
-              color: ${getVariantColorFg(theme, `outlined`, `grayscale`, tint, disabled, true)};
+              color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
               box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            outline: 2px solid ${getVariantColorFg(theme, `outlined`, color, tint)};
+            outline: 2px solid ${getVariantColorFg(theme, variant, color, tint)};
             outline-offset: -2px;
-            background-color: ${getVariantColorActive(theme, `outlined`, color, tint)};
-            color: ${getVariantColorFg(theme, `outlined`, color, tint)};
+            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            color: ${getVariantColorFg(theme, variant, color, tint)};
           }
 
           &:has(> input[type="checkbox"]:checked) {

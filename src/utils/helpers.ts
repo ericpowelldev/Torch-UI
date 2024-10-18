@@ -233,6 +233,29 @@ export const getVariantColorBg = (
   return `inherit`;
 };
 
+/** Get placeholder color for a variant */
+export const getVariantColorPlaceholder = (
+  theme: any,
+  variant?: VariantValues,
+  color?: ColorValues,
+  tint: TintValues = 500,
+  disabled?: BoolValues,
+  grayscale?: BoolValues
+) => {
+  if (variant === `solid`) {
+    if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
+    if (grayscale) return theme?.color?.grayscale?.[500] + `c8`;
+    if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+      return `${theme?.color?.[color]?.[`i${tint}`]}90`;
+  }
+  if (variant === `soft` || variant === `plain` || variant === `outlined`) {
+    if (disabled) return theme?.color?.grayscale?.[500] + `a0`;
+    if (grayscale) return theme?.color?.grayscale?.[500] + `a0`;
+    if (color && colorValues?.includes(color)) return `${theme?.color?.[color]?.[500]}90`;
+  }
+  return `inherit`;
+};
+
 /** Get hover color for a variant */
 export const getVariantColorHover = (
   theme: any,
@@ -282,16 +305,16 @@ export const getVariantBoxShadow = (
 ) => {
   if (variant === `solid`) {
     if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
-      return `0 0 12px ${theme?.color?.[color]?.[tint]}60`;
+      return `0 0 12px ${theme?.color?.[color]?.[tint]}40`;
   }
   if (variant === `soft`) {
     if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}30`;
   }
   if (variant === `plain`) {
-    if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}18`;
+    if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}20`;
   }
   if (variant === `outlined`) {
-    if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}48`;
+    if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}40`;
   }
   return `none`;
 };
@@ -312,12 +335,14 @@ export const getInputLabelColor = (
   error?: BoolValues,
   warning?: BoolValues,
   success?: BoolValues,
-  info?: BoolValues
+  info?: BoolValues,
+  inverse?: BoolValues
 ) => {
   if (error) return theme?.color?.error?.[500];
   if (warning) return theme?.color?.warning?.[500];
   if (success) return theme?.color?.success?.[500];
   if (info) return theme?.color?.info?.[500];
+  if (inverse) return theme?.color?.fgInverse?.[1];
   return theme?.color?.fg?.[1];
 };
 

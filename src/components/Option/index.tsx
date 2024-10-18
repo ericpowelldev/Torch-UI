@@ -1,30 +1,33 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import React from "react";
-import { cx } from "../../utils/emotion";
-
-import { useTUI } from "../../TUI";
 
 import { BoolValues } from "../../utils/types";
 
+import { useTUI } from "../../TUI";
 import { useOptionStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
 interface OptionProps {
-  children?: React.ReactNode;
-  className?: string;
+  // General Properties //
+
+  props?: {
+    option?: React.HTMLAttributes<HTMLElement>;
+  };
   classes?: {
     option?: string;
   };
+  className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
 
-  hidden?: BoolValues;
+  // Specialized Properties //
+
   disabled?: BoolValues;
-  error?: BoolValues;
-  warning?: BoolValues;
-  success?: BoolValues;
-  loading?: BoolValues;
+  hidden?: BoolValues;
+
+  // HTML Properties //
 
   [x: string]: any;
 }
@@ -32,39 +35,37 @@ interface OptionProps {
 // COMPONENT ---------------------------------------------------------------- //
 
 const Option = ({
-  children,
-  className,
+  // General Properties //
+
+  props,
   classes,
-  hidden,
-  disabled,
-  error,
-  warning,
-  success,
-  loading,
+  className,
+  children,
+
+  // Specialized Properties //
+
+  disabled = false,
+  hidden = false,
+
+  // HTML Properties //
+
   ...rest
 }: OptionProps) => {
-  // HOOKS //
-
+  // Hooks
   const { theme } = useTUI();
 
-  // CLASSES //
+  // Styles
+  const optionStyles = useOptionStyles(theme, { disabled }, [classes?.option, className]);
 
-  const optionStyles = useOptionStyles(theme, {
-    hidden,
-    disabled,
-    error,
-    warning,
-    success,
-  });
-
-  // CLASSNAMES //
-
-  const cxOption = cx(optionStyles, classes?.option, className) || undefined;
-
-  // RENDER //
-
+  // Return Component
+  if (hidden) return null;
   return (
-    <option className={cxOption} {...rest}>
+    <option
+      className={optionStyles}
+      disabled={disabled ? true : false}
+      {...props?.option}
+      {...rest}
+    >
       {children}
     </option>
   );
