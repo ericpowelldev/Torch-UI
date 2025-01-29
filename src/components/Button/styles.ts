@@ -36,6 +36,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
 
   // CSS Stylesheet
   const buttonCSS = css`
+    label: TuiButton;
     position: relative;
     overflow: hidden;
     display: inline-flex;

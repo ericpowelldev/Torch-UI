@@ -25,7 +25,8 @@ interface ContainerProps {
 
   // Specialized Properties //
 
-  disablePadding?: BoolValues;
+  horizontalPadding?: BoolValues;
+  verticalPadding?: BoolValues;
   maxWidth?: SizeValues;
   visualize?: BoolValues;
 
@@ -47,7 +48,8 @@ const Container = ({
 
   // Specialized Properties //
 
-  disablePadding = false,
+  horizontalPadding = true,
+  verticalPadding = false,
   maxWidth = "max",
   visualize = false,
 
@@ -59,17 +61,30 @@ const Container = ({
   const { theme } = useTUI();
 
   // Styles
-  const containerStyles = useContainerStyles(theme, { disablePadding, maxWidth, visualize }, [
-    classes?.container,
-    className,
-  ]);
+  const containerStyles = useContainerStyles(
+    theme,
+    {
+      horizontalPadding,
+      verticalPadding,
+      maxWidth,
+      visualize,
+    },
+    [classes?.container, className]
+  );
 
   // Return Component
   return React.createElement(
     component || `div`,
     { className: containerStyles, ...props?.container, ...rest },
     visualize ? (
-      <div style={{ width: "100%", borderLeft: "1px dashed red", borderRight: "1px dashed red" }}>
+      <div
+        style={{
+          width: "100%",
+          borderTop: "1px dashed black",
+          borderBottom: "1px dashed black",
+          borderLeft: "1px dashed red",
+          borderRight: "1px dashed red",
+        }}>
         {children}
       </div>
     ) : (

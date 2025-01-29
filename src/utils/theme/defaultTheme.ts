@@ -143,10 +143,10 @@ const theme = {
     const pix = (num: number) => `${4 * num}px`;
 
     let pixSpace = [];
-    if (num1 && typeof num1 === `number`) pixSpace.push(pix(num1));
-    if (num2 && typeof num2 === `number`) pixSpace.push(pix(num2));
-    if (num3 && typeof num3 === `number`) pixSpace.push(pix(num3));
-    if (num4 && typeof num4 === `number`) pixSpace.push(pix(num4));
+    if ((num1 || num1 === 0) && typeof num1 === `number`) pixSpace.push(pix(num1));
+    if ((num2 || num2 === 0) && typeof num2 === `number`) pixSpace.push(pix(num2));
+    if ((num3 || num3 === 0) && typeof num3 === `number`) pixSpace.push(pix(num3));
+    if ((num4 || num4 === 0) && typeof num4 === `number`) pixSpace.push(pix(num4));
     return pixSpace.join(` `);
   },
 
@@ -223,8 +223,7 @@ const theme = {
 
   // Breakpoint Query Options
   query: {
-    only: (breakpoint: string) =>
-      `@media (min-width: ${breakpoint}) and (max-width: ${breakpoint})`,
+    only: (breakpoint: string) => `@media (min-width: ${breakpoint}) and (max-width: ${breakpoint})`,
     up: (breakpoint: string) => `@media (min-width: ${breakpoint})`,
     down: (breakpoint: string) => `@media (max-width: ${breakpoint})`,
     between: (breakpointUp: string, breakpointDown: string) =>

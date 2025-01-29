@@ -49,8 +49,14 @@ const meta: Meta<typeof Component> = {
 
     // Specialized Properties //
 
-    disablePadding: {
-      description: "Should the outside padding be disabled?",
+    horizontalPadding: {
+      description: "Horizontal padding of the container.",
+      control: {
+        type: "boolean",
+      },
+    },
+    verticalPadding: {
+      description: "Vertical padding of the container.",
       control: {
         type: "boolean",
       },
