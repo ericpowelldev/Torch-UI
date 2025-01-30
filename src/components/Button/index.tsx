@@ -8,10 +8,10 @@ import {
   ColorValues,
   SizeValues,
   TintValues,
-} from "../../utils/types";
-import { getButtonIconSize } from "../../utils/helpers";
+} from "@utils/types";
+import { getButtonIconSize } from "@utils/helpers";
 
-import { useTui } from "../../Tui";
+import { useTui } from "@tui";
 import {
   useButtonStyles,
   useLabelStyles,
@@ -20,8 +20,8 @@ import {
   useCenterIconStyles,
 } from "./styles";
 
-import ProgressCircle from "../ProgressCircle";
-import StatusIcon from "../StatusIcon";
+import ProgressCircle from "@components/ProgressCircle";
+import StatusIcon from "@components/StatusIcon";
 
 // PROPS ---------------------------------------------------------------- //
 

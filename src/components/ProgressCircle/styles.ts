@@ -1,9 +1,9 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx, keyframes } from "../../utils/emotion";
+import { css, cx, keyframes } from "@utils/emotion";
 
-import { Theme } from "../../utils/types";
-import { getColorFg, getColorBg, getTrackSize } from "../../utils/helpers";
+import { Theme } from "@utils/types";
+import { getColorFg, getColorBg, getTrackSize } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 

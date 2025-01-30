@@ -10,10 +10,10 @@ import {
   TextAlignValues,
   TextComponentValues,
   TextVariantValues,
-} from "../../utils/types";
-import { getTextComponent } from "../../utils/helpers";
+} from "@utils/types";
+import { getTextComponent } from "@utils/helpers";
 
-import { useTui } from "../../Tui";
+import { useTui } from "@tui";
 import { useTextStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //

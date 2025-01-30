@@ -1,8 +1,8 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx } from "../../utils/emotion";
+import { css, cx } from "@utils/emotion";
 
-import { Theme } from "../../utils/types";
+import { Theme } from "@utils/types";
 import {
   getInputLabelColor,
   getInputPadding,
@@ -11,7 +11,7 @@ import {
   getVariantColorBg,
   getVariantColorHover,
   getVariantColorPlaceholder,
-} from "../../utils/helpers";
+} from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 

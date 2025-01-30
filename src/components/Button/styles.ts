@@ -1,8 +1,8 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx } from "../../utils/emotion";
+import { css, cx } from "@utils/emotion";
 
-import { Theme } from "../../utils/types";
+import { Theme } from "@utils/types";
 import {
   getButtonPadding,
   getButtonLabelSize,
@@ -14,7 +14,7 @@ import {
   getVariantColorBg,
   getVariantColorHover,
   getVariantColorActive,
-} from "../../utils/helpers";
+} from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 

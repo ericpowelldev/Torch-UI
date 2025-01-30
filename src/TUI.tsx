@@ -3,9 +3,9 @@
 import React from "react";
 import deepmerge from "deepmerge";
 
-import defaultTheme from "./utils/theme/defaultTheme";
-import extendTheme from "./utils/theme/extendTheme";
-import { BoolValues, Theme } from "./utils/types";
+import defaultTheme from "@utils/theme/defaultTheme";
+import extendTheme from "@utils/theme/extendTheme";
+import { BoolValues, Theme } from "@utils/types";
 
 import Preset from "./Preset";
 

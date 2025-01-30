@@ -2,9 +2,9 @@
 
 import React from "react";
 
-import { BoolValues, ContainerComponentValues, SizeValues } from "../../utils/types";
+import { BoolValues, ContainerComponentValues, SizeValues } from "@utils/types";
 
-import { useTui } from "../../Tui";
+import { useTui } from "@tui";
 import { useContainerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //

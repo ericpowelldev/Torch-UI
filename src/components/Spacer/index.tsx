@@ -7,9 +7,9 @@ import {
   SizeValuesExtended,
   SpacerComponentValues,
   SpacerDirectionValues,
-} from "../../utils/types";
+} from "@utils/types";
 
-import { useTui } from "../../Tui";
+import { useTui } from "@tui";
 import { useSpacerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //

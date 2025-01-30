@@ -16,7 +16,6 @@
     "paths": {
       "@src/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@static/*": ["./src/static/*"],
       "@utils/*": ["./src/utils/*"],
       "@tui": ["./src/Tui.tsx"]
     },

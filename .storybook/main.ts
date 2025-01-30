@@ -1,3 +1,5 @@
+import path from "path";
+
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
 const config: StorybookConfig = {
@@ -27,6 +29,17 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: "react-docgen-typescript",
+  },
+
+  webpackFinal: async (config: any) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@src": path.resolve(__dirname, "../src"),
+      "@components": path.resolve(__dirname, "../src/components"),
+      "@utils": path.resolve(__dirname, "../src/utils"),
+      "@tui": path.resolve(__dirname, "../src/Tui.tsx"),
+    };
+    return config;
   },
 };
 

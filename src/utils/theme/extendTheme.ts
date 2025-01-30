@@ -1,7 +1,7 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import deepmerge from "deepmerge";
-import { SimpleTheme } from "../types";
+import { SimpleTheme } from "@utils/types";
 
 const Color = require("color");
 

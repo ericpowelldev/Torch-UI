@@ -1,9 +1,9 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx } from "../../utils/emotion";
+import { css, cx } from "@utils/emotion";
 
-import { Theme } from "../../utils/types";
-import { getColorText } from "../../utils/helpers";
+import { Theme } from "@utils/types";
+import { getColorText } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 

@@ -1,8 +1,8 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx } from "../../utils/emotion";
+import { css, cx } from "@utils/emotion";
 
-import { Theme } from "../../utils/types";
+import { Theme } from "@utils/types";
 import {
   getColorFg,
   getColorBg,
@@ -10,7 +10,7 @@ import {
   getToggleSlideSize,
   getToggleSlideGradientSize,
   getToggleIconSize,
-} from "../../utils/helpers";
+} from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 

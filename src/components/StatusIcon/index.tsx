@@ -2,9 +2,9 @@
 
 import React from "react";
 
-import { BoolValues, ColorValues, StatusValues, TintValues } from "../../utils/types";
+import { BoolValues, ColorValues, StatusValues, TintValues } from "@utils/types";
 
-import { useTui } from "../../Tui";
+import { useTui } from "@tui";
 import { useIconStyles } from "./styles";
 
 import { MdCheckCircle, MdInfo, MdReport, MdWarning } from "react-icons/md";

@@ -1,5 +1,5 @@
 import { TuiThemeProvider, useTui } from "./Tui";
-import { SimpleTheme, Theme } from "./utils/types";
+import { SimpleTheme, Theme } from "@utils/types";
 
 import Box from "./components/Box";
 import Button from "./components/Button";

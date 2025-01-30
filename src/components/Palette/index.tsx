@@ -2,11 +2,11 @@
 
 import React from "react";
 
-import { useTui } from "../../Tui";
+import { useTui } from "@tui";
 import { usePaletteStyles, useFlexStyles } from "./styles";
 
-import Box from "../Box";
-import Spacer from "../Spacer";
+import Box from "@components/Box";
+import Spacer from "@components/Spacer";
 
 // PROPS ---------------------------------------------------------------- //
 

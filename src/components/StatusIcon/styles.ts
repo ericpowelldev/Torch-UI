@@ -1,14 +1,14 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
-import { css, cx, keyframes } from "../../utils/emotion";
+import { css, cx, keyframes } from "@utils/emotion";
 
-import { Theme } from "../../utils/types";
+import { Theme } from "@utils/types";
 import {
   getColorFg,
   getColorBg,
   getStatusIconAnimate,
   getStatusIconAnimationSpeed,
-} from "../../utils/helpers";
+} from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 

@@ -3,7 +3,7 @@
 import React from "react";
 import { Global } from "@emotion/react";
 
-import { Theme } from "./utils/types";
+import { Theme } from "@utils/types";
 
 import "../static/styles/preset.css";
 

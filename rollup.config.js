@@ -15,7 +15,6 @@ const aliasConfig = {
   entries: [
     { find: "@src", replacement: path.resolve(__dirname, "./src") },
     { find: "@components", replacement: path.resolve(__dirname, "./src/components") },
-    { find: "@static", replacement: path.resolve(__dirname, "./src/static") },
     { find: "@utils", replacement: path.resolve(__dirname, "./src/utils") },
     { find: "@tui", replacement: path.resolve(__dirname, "./src/Tui.tsx") },
   ],
@@ -54,7 +53,7 @@ const config = [
   {
     input: "src/index.ts",
     output: [{ file: "dist/types.d.ts", format: "es" }],
-    plugins: [css(), dts.default()],
+    plugins: [alias(aliasConfig), css(), dts.default()],
   },
 ];
 
