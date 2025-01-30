@@ -79,8 +79,14 @@ const meta: Meta<typeof Component> = {
       },
       options: ["auto", "stretch", "flex-start", "flex-end", "center", "baseline"],
     },
+    basis: {
+      description: "Base width (row) or height (column) of the component.",
+      control: {
+        type: "text",
+      },
+    },
     columnGap: {
-      description: "Horizontal space between the flex items.",
+      description: "Horizontal space between the flex items (Overrides gap property).",
       control: {
         type: "range",
         min: 0,
@@ -109,6 +115,15 @@ const meta: Meta<typeof Component> = {
     },
     gap: {
       description: "Space between the flex items.",
+      control: {
+        type: "range",
+        min: 0,
+        max: 24,
+        step: 1,
+      },
+    },
+    grow: {
+      description: "Scale of the component compared to its siblings.",
       control: {
         type: "range",
         min: 0,
@@ -147,7 +162,17 @@ const meta: Meta<typeof Component> = {
       options: ["auto", "stretch", "flex-start", "flex-end", "center", "baseline"],
     },
     rowGap: {
-      description: "Vertical space between the flex items.",
+      description: "Vertical space between the flex items (Overrides gap property).",
+      control: {
+        type: "range",
+        min: 0,
+        max: 24,
+        step: 1,
+      },
+    },
+    shrink: {
+      description:
+        "When stretched to the maximum, this is the scale of the component compared to its siblings.",
       control: {
         type: "range",
         min: 0,
@@ -183,10 +208,11 @@ export const Default: Story = {
         <Component
           container
           alignItems="center"
+          justifyContent="center"
+          grow={1}
           style={{
-            height: "32px",
-            padding: "0 12px",
-            border: "1px solid #00000008",
+            padding: "12px 12px",
+            border: "1px solid #00000018",
             borderRadius: "6px",
             backgroundColor: "#e0e0e0",
           }}
@@ -197,10 +223,11 @@ export const Default: Story = {
         <Component
           container
           alignItems="center"
+          justifyContent="center"
+          grow={2}
           style={{
-            height: "48px",
-            padding: "0 12px",
-            border: "1px solid #00000008",
+            padding: "18px 12px",
+            border: "1px solid #00000018",
             borderRadius: "6px",
             backgroundColor: "#e0e0e0",
           }}
@@ -211,10 +238,11 @@ export const Default: Story = {
         <Component
           container
           alignItems="center"
+          justifyContent="center"
+          basis={128}
           style={{
-            height: "64px",
-            padding: "0 12px",
-            border: "1px solid #00000008",
+            padding: "24px 12px",
+            border: "1px solid #00000018",
             borderRadius: "6px",
             backgroundColor: "#e0e0e0",
           }}

@@ -7,7 +7,7 @@ import { getContainerMaxWidth } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useContainerStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -16,8 +16,8 @@ export const useContainerStyles = (
   const { horizontalPadding, verticalPadding, maxWidth, visualize } = props;
 
   // CSS Stylesheet
-  const containerCSS = css`
-    label: Container;
+  const rootCSS = css`
+    label: TuiContainer-root;
     display: block;
     width: 100%;
     margin-left: auto;
@@ -78,7 +78,7 @@ export const useContainerStyles = (
   // Return Styles
   return (
     cx(
-      containerCSS,
+      rootCSS,
       horizontalPaddingCSS,
       verticalPaddingCSS,
       maxWidthCSS,

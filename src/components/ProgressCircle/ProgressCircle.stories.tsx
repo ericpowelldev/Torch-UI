@@ -75,7 +75,7 @@ const meta: Meta<typeof Component> = {
       description: "Thickness of the icon track.",
       control: {
         type: "range",
-        min: 1,
+        min: 0,
         max: 24,
         step: 1,
       },

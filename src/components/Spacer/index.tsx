@@ -10,7 +10,7 @@ import {
 } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useSpacerStyles } from "./styles";
+import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -18,10 +18,10 @@ interface SpacerProps {
   // General Properties //
 
   props?: {
-    spacer?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    spacer?: string;
+    root?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -64,15 +64,15 @@ const Spacer = ({
   const { theme } = useTui();
 
   // Styles
-  const spacerStyles = useSpacerStyles(theme, { direction, size, visualize }, [
-    classes?.spacer,
+  const rootStyles = useRootStyles(theme, { direction, size, visualize }, [
+    classes?.root,
     className,
   ]);
 
   // Return Component
   return React.createElement(component || `div`, {
-    className: spacerStyles,
-    ...props?.spacer,
+    className: rootStyles,
+    ...props?.root,
     ...rest,
   });
 };

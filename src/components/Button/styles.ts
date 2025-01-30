@@ -18,7 +18,7 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useButtonStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -40,8 +40,8 @@ export const useButtonStyles = (
   } = props;
 
   // CSS Stylesheet
-  const buttonCSS = css`
-    label: Button;
+  const rootCSS = css`
+    label: TuiButton-root;
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -216,7 +216,7 @@ export const useButtonStyles = (
   // Return Styles
   return (
     cx(
-      buttonCSS,
+      rootCSS,
       solidCSS,
       softCSS,
       plainCSS,
@@ -245,7 +245,7 @@ export const useLabelStyles = (
 
   // CSS Stylesheet
   const labelCSS = css`
-    label: ButtonLabel;
+    label: TuiButton-label;
     line-height: ${theme?.text?.button?.height || theme?.text?.height};
     font-family: ${theme?.text?.button?.family || theme?.text?.family};
     font-size: ${theme?.text?.button?.size || theme?.text?.size};
@@ -281,7 +281,7 @@ export const useStartIconStyles = (
 
   // CSS Stylesheet
   const startIconCSS = css`
-    label: ButtonStartIcon;
+    label: TuiButton-startIcon;
     margin-left: -4px;
     margin-right: ${getButtonIconMargin(size)}px;
     line-height: 1;
@@ -307,7 +307,7 @@ export const useEndIconStyles = (
 
   // CSS Stylesheet
   const endIconCSS = css`
-    label: ButtonEndIcon;
+    label: TuiButton-endIcon;
     margin-left: ${getButtonIconMargin(size)}px;
     margin-right: -4px;
     & svg {
@@ -331,7 +331,7 @@ export const useCenterIconStyles = (
 
   // CSS Stylesheet
   const centerIconCSS = css`
-    label: ButtonCenterIcon;
+    label: TuiButton-centerIcon;
     position: absolute;
     left: 50%;
     top: 50%;

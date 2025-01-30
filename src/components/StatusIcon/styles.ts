@@ -12,7 +12,7 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useIconStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -37,8 +37,8 @@ export const useIconStyles = (
   `;
 
   // CSS Stylesheet
-  const iconCSS = css`
-    label: StatusIcon;
+  const rootCSS = css`
+    label: TuiStatusIcon-root;
     position: relative;
     display: block;
     width: ${size}px;
@@ -60,5 +60,5 @@ export const useIconStyles = (
     : null;
 
   // Return Styles
-  return cx(iconCSS, animateCSS, overrides) || undefined;
+  return cx(rootCSS, animateCSS, overrides) || undefined;
 };

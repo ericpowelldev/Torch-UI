@@ -5,7 +5,7 @@ import React from "react";
 import { BoolValues, ColorValues, TintValues } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useBaseStyles, useTrackStyles, useBarStyles } from "./styles";
+import { useRootStyles, useTrackStyles, useBarStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -13,12 +13,12 @@ interface ProgressCircleProps {
   // General Properties //
 
   props?: {
-    base?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
     track?: React.HTMLAttributes<HTMLElement>;
     bar?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    base?: string;
+    root?: string;
     track?: string;
     bar?: string;
   };
@@ -69,7 +69,7 @@ const ProgressCircle = ({
   const { theme } = useTui();
 
   // Styles
-  const baseStyles = useBaseStyles(theme, {}, [classes?.base, className]);
+  const rootStyles = useRootStyles(theme, {}, [classes?.root, className]);
   const trackStyles = useTrackStyles(
     theme,
     {
@@ -98,7 +98,7 @@ const ProgressCircle = ({
 
   // Render Component
   return (
-    <div className={baseStyles} {...props?.base} {...rest}>
+    <div className={rootStyles} {...props?.root} {...rest}>
       <div className={trackStyles} {...props?.track} />
       <div className={barStyles} {...props?.bar} />
     </div>

@@ -6,17 +6,13 @@ import { Theme } from "@utils/types";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useOptionStyles = (
-  theme: Theme,
-  props: any,
-  overrides?: (string | undefined)[]
-) => {
+export const useRootStyles = (theme: Theme, props: any, overrides?: (string | undefined)[]) => {
   // Props
   const { disabled } = props;
 
   // CSS Stylesheet
-  const optionCSS = css`
-    label: Option;
+  const rootCSS = css`
+    label: TuiOption-root;
     line-height: ${theme?.text?.input?.height || theme?.text?.height};
     font-family: ${theme?.text?.input?.family || theme?.text?.family};
     font-size: ${theme?.text?.input?.size || theme?.text?.size};
@@ -36,5 +32,5 @@ export const useOptionStyles = (
     : null;
 
   // Return Styles
-  return cx(optionCSS, disabledCSS, overrides) || undefined;
+  return cx(rootCSS, disabledCSS, overrides) || undefined;
 };

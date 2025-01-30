@@ -13,7 +13,7 @@ import {
 
 import { useTui } from "@tui";
 import {
-  useToggleStyles,
+  useRootStyles,
   useTrackStyles,
   useSlideStyles,
   useInputStyles,
@@ -27,7 +27,7 @@ interface ToggleProps {
   // General Properties //
 
   props?: {
-    toggle?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
     track?: React.HTMLAttributes<HTMLElement>;
     slide?: React.HTMLAttributes<HTMLElement>;
     input?: React.InputHTMLAttributes<HTMLInputElement>;
@@ -35,7 +35,7 @@ interface ToggleProps {
     iconUnchecked?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    toggle?: string;
+    root?: string;
     track?: string;
     slide?: string;
     input?: string;
@@ -95,8 +95,8 @@ const Toggle = ({
   const { theme } = useTui();
 
   // Styles
-  const toggleStyles = useToggleStyles(theme, { color, disabled, size, tint }, [
-    classes?.toggle,
+  const rootStyles = useRootStyles(theme, { color, disabled, size, tint }, [
+    classes?.root,
     className,
   ]);
   const trackStyles = useTrackStyles(theme, { color, disabled, shadowTrack, size, tint }, [
@@ -115,7 +115,7 @@ const Toggle = ({
 
   // Return Component
   return (
-    <div className={toggleStyles} {...props?.toggle}>
+    <div className={rootStyles} {...props?.root}>
       <span className={trackStyles} {...props?.track}>
         {iconChecked ? (
           <span className={iconCheckedStyles} {...props?.iconChecked}>

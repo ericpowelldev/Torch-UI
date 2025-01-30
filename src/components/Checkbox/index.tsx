@@ -13,7 +13,7 @@ import {
 
 import { useTui } from "@tui";
 import {
-  useBaseStyles,
+  useRootStyles,
   useInputStyles,
   useIconCheckedStyles,
   useIconUncheckedStyles,
@@ -27,13 +27,13 @@ interface CheckboxProps {
   // General Properties //
 
   props?: {
-    base?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
     input?: React.HTMLAttributes<HTMLElement>;
     iconChecked?: React.HTMLAttributes<HTMLElement>;
     iconUnchecked?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    base?: string;
+    root?: string;
     input?: string;
     iconChecked?: string;
     iconUnchecked?: string;
@@ -87,7 +87,7 @@ const Checkbox = ({
   const { theme } = useTui();
 
   // Styles
-  const baseStyles = useBaseStyles(
+  const rootStyles = useRootStyles(
     theme,
     {
       color,
@@ -96,7 +96,7 @@ const Checkbox = ({
       tint,
       variant,
     },
-    [classes?.base, className]
+    [classes?.root, className]
   );
   const inputStyles = useInputStyles(theme, { size }, [classes?.input]);
   const iconCheckedStyles = useIconCheckedStyles(
@@ -113,7 +113,7 @@ const Checkbox = ({
   // Return Component
   return React.createElement(
     component || `span`,
-    { className: baseStyles, ...props?.base, ...rest },
+    { className: rootStyles, ...props?.root, ...rest },
     <>
       <span className={iconCheckedStyles} {...props?.iconChecked}>
         {iconChecked}

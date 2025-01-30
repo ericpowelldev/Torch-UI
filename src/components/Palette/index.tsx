@@ -3,7 +3,7 @@
 import React from "react";
 
 import { useTui } from "@tui";
-import { usePaletteStyles, useFlexStyles } from "./styles";
+import { useRootStyles, useFlexStyles } from "./styles";
 
 import Box from "@components/Box";
 import Spacer from "@components/Spacer";
@@ -14,11 +14,11 @@ interface PaletteProps {
   // General Properties //
 
   props?: {
-    palette?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
     flex?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    palette?: string;
+    root?: string;
     flex?: string;
   };
   className?: string;
@@ -46,12 +46,12 @@ const Palette = ({
   const { theme } = useTui();
 
   // Styles
-  const paletteStyles = usePaletteStyles(theme, undefined, [classes?.palette, className]);
+  const rootStyles = useRootStyles(theme, undefined, [classes?.root, className]);
   const flexStyles = useFlexStyles(theme, undefined, [classes?.flex]);
 
   // Return Component
   return (
-    <div className={paletteStyles} {...props?.palette} {...rest}>
+    <div className={rootStyles} {...props?.root} {...rest}>
       <div className={flexStyles} {...props?.flex}>
         <Box color="primary" tint={100} width={64} height={64} />
         <Box color="secondary" tint={100} width={64} height={64} />

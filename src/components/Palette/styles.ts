@@ -6,19 +6,19 @@ import { Theme } from "@utils/types";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const usePaletteStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
   // CSS Stylesheet
-  const paletteCSS = css`
-    label: Palette;
+  const rootCSS = css`
+    label: TuiPalette-root;
     position: relative;
   `;
 
   // Return Styles
-  return cx(paletteCSS, overrides) || undefined;
+  return cx(rootCSS, overrides) || undefined;
 };
 
 export const useFlexStyles = (
@@ -28,7 +28,7 @@ export const useFlexStyles = (
 ) => {
   // CSS Stylesheet
   const flexCSS = css`
-    label: PaletteFlex;
+    label: TuiPalette-flex;
     display: flex;
     align-items: center;
     justify-content: center;

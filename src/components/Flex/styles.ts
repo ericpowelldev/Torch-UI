@@ -6,7 +6,7 @@ import { Theme } from "@utils/types";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useFlexStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -16,52 +16,66 @@ export const useFlexStyles = (
     alignContent,
     alignItems,
     alignSelf,
+    basis,
     columnGap,
     container,
     containerInline,
     direction,
     gap,
+    grow,
     justifyContent,
     justifyItems,
     justifySelf,
     rowGap,
+    shrink,
     visualize,
     wrap,
   } = props;
 
   // CSS Stylesheet
-  const flexContainerCSS = container
+  const rootCSS = css`
+    label: TuiFlex-root;
+    min-width: 0;
+  `;
+
+  const containerCSS = container
     ? css`
-        label: FlexContainer;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: flex-start;
-        min-width: 0;
       `
     : undefined;
 
-  const flexContainerInlineCSS = containerInline
+  const containerInlineCSS = containerInline
     ? css`
-        label: FlexContainerInline;
         display: inline-flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: flex-start;
-        min-width: 0;
       `
     : undefined;
 
-  const flexItemCSS =
-    !container && !containerInline
+  const growCSS =
+    grow || grow === 0
       ? css`
-          label: FlexItem;
-          flex-grow: 0;
-          flex-shrink: 0;
-          flex-basis: auto;
-          min-width: 0;
+          flex-grow: ${grow};
+        `
+      : undefined;
+
+  const shrinkCSS =
+    shrink || shrink === 0
+      ? css`
+          flex-shrink: ${shrink};
+        `
+      : undefined;
+
+  const basisCSS =
+    basis || basis === 0
+      ? css`
+          flex-basis: ${typeof basis === `number` ? `${basis}px` : basis};
         `
       : undefined;
 
@@ -113,23 +127,26 @@ export const useFlexStyles = (
       `
     : undefined;
 
-  const gapCSS = gap
-    ? css`
-        gap: ${theme?.space(gap)};
-      `
-    : undefined;
+  const gapCSS =
+    gap || gap === 0
+      ? css`
+          gap: ${theme?.space(gap)};
+        `
+      : undefined;
 
-  const rowGapCSS = rowGap
-    ? css`
-        row-gap: ${theme?.space(rowGap)};
-      `
-    : undefined;
+  const rowGapCSS =
+    rowGap || rowGap === 0
+      ? css`
+          row-gap: ${theme?.space(rowGap)};
+        `
+      : undefined;
 
-  const columnGapCSS = columnGap
-    ? css`
-        column-gap: ${theme?.space(columnGap)};
-      `
-    : undefined;
+  const columnGapCSS =
+    columnGap || columnGap === 0
+      ? css`
+          column-gap: ${theme?.space(columnGap)};
+        `
+      : undefined;
 
   const visualizeCSS = visualize
     ? css`
@@ -141,9 +158,12 @@ export const useFlexStyles = (
   // Return Styles
   return (
     cx(
-      flexContainerCSS,
-      flexContainerInlineCSS,
-      flexItemCSS,
+      rootCSS,
+      containerCSS,
+      containerInlineCSS,
+      growCSS,
+      shrinkCSS,
+      basisCSS,
       directionCSS,
       wrapCSS,
       alignContentCSS,

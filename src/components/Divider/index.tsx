@@ -2,15 +2,11 @@
 
 import React from "react";
 
-import {
-  DividerComponentValues,
-  DividerDirectionValues,
-  PercentValues,
-} from "@utils/types";
+import { DividerComponentValues, DividerDirectionValues, PercentValues } from "@utils/types";
 
 import { useTui } from "@tui";
 import {
-  useDividerStyles,
+  useRootStyles,
   useStretchStyles,
   useLabelStyles,
   useLineStyles,
@@ -25,14 +21,14 @@ interface DividerProps {
   // General Properties //
 
   props?: {
-    divider?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
     stretch?: React.HTMLAttributes<HTMLElement>;
     label?: React.HTMLAttributes<HTMLElement>;
     line?: React.HTMLAttributes<HTMLElement>;
     icon?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    divider?: string;
+    root?: string;
     stretch?: string;
     label?: string;
     line?: string;
@@ -91,7 +87,7 @@ const Divider = ({
   const { theme } = useTui();
 
   // Styles
-  const dividerStyles = useDividerStyles(
+  const rootStyles = useRootStyles(
     theme,
     {
       direction,
@@ -102,7 +98,7 @@ const Divider = ({
       textPosition,
       tip,
     },
-    [classes?.divider, className]
+    [classes?.root, className]
   );
   const stretchStyles = useStretchStyles(theme, { gap }, [classes?.stretch]);
   const labelStyles = useLabelStyles(theme, {}, [classes?.label]);
@@ -112,7 +108,7 @@ const Divider = ({
   // Return Component
   return React.createElement(
     component || `div`,
-    { className: dividerStyles, ...props?.divider, ...rest },
+    { className: rootStyles, ...props?.root, ...rest },
     children ? (
       <>
         <span className={stretchStyles}>

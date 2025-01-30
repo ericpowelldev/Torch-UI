@@ -14,7 +14,7 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useToggleStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -23,8 +23,8 @@ export const useToggleStyles = (
   const { disabled, size } = props;
 
   // CSS Stylesheet
-  const toggleCSS = css`
-    label: Toggle;
+  const rootCSS = css`
+    label: TuiToggle-root;
     position: relative;
     width: ${getToggleSize(size) * 2}px;
     height: ${getToggleSize(size)}px;
@@ -41,7 +41,7 @@ export const useToggleStyles = (
     : null;
 
   // Return Styles
-  return cx(toggleCSS, disabledCSS, overrides) || undefined;
+  return cx(rootCSS, disabledCSS, overrides) || undefined;
 };
 
 export const useTrackStyles = (
@@ -54,7 +54,7 @@ export const useTrackStyles = (
 
   // CSS Stylesheet
   const trackCSS = css`
-    label: ToggleTrack;
+    label: TuiToggle-track;
     position: relative;
     display: inline-flex;
     width: ${getToggleSize(size) * 2}px;
@@ -87,7 +87,7 @@ export const useSlideStyles = (
 
   // CSS Stylesheet
   const slideCSS = css`
-    label: ToggleSlide;
+    label: TuiToggle-slide;
     z-index: 1;
     display: inline-flex;
     align-items: center;
@@ -147,7 +147,7 @@ export const useInputStyles = (
 
   // CSS Stylesheet
   const inputCSS = css`
-    label: ToggleInput;
+    label: TuiToggle-input;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -176,7 +176,7 @@ export const useIconCheckedStyles = (
 
   // CSS Stylesheet
   const iconCheckedCSS = css`
-    label: ToggleIconChecked;
+    label: TuiToggle-iconChecked;
     position: absolute;
     display: inline-flex;
     top: 0;
@@ -215,7 +215,7 @@ export const useIconUncheckedStyles = (
 
   // CSS Stylesheet
   const iconUncheckedCSS = css`
-    label: ToggleIconUnchecked;
+    label: TuiToggle-iconUnchecked;
     position: absolute;
     display: inline-flex;
     top: 0;

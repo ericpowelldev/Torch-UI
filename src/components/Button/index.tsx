@@ -13,7 +13,7 @@ import { getButtonIconSize } from "@utils/helpers";
 
 import { useTui } from "@tui";
 import {
-  useButtonStyles,
+  useRootStyles,
   useLabelStyles,
   useStartIconStyles,
   useEndIconStyles,
@@ -29,7 +29,7 @@ interface ButtonProps {
   // General Properties //
 
   props?: {
-    button?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
     label?: React.HTMLAttributes<HTMLElement>;
     startIcon?: React.HTMLAttributes<HTMLElement>;
     endIcon?: React.HTMLAttributes<HTMLElement>;
@@ -41,7 +41,7 @@ interface ButtonProps {
     iconLoading?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    button?: string;
+    root?: string;
     label?: string;
     startIcon?: string;
     endIcon?: string;
@@ -123,7 +123,7 @@ const Button = ({
   const { theme } = useTui();
 
   // Styles
-  const buttonStyles = useButtonStyles(
+  const rootStyles = useRootStyles(
     theme,
     {
       backdropBlur,
@@ -139,7 +139,7 @@ const Button = ({
       tint,
       variant,
     },
-    [classes?.button, className]
+    [classes?.root, className]
   );
   const labelStyles = useLabelStyles(theme, { size, uppercase }, [classes?.label]);
   const startIconStyles = useStartIconStyles(theme, { size }, [classes?.startIcon]);
@@ -154,9 +154,9 @@ const Button = ({
   // Return Component
   return (
     <button
-      className={buttonStyles}
+      className={rootStyles}
       disabled={disabled ? true : false}
-      {...props?.button}
+      {...props?.root}
       {...rest}
     >
       {icon ? (

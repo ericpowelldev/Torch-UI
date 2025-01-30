@@ -5,7 +5,7 @@ import React from "react";
 import { BoolValues } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useOptionStyles } from "./styles";
+import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -13,10 +13,10 @@ interface OptionProps {
   // General Properties //
 
   props?: {
-    option?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    option?: string;
+    root?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -55,15 +55,15 @@ const Option = ({
   const { theme } = useTui();
 
   // Styles
-  const optionStyles = useOptionStyles(theme, { disabled }, [classes?.option, className]);
+  const rootStyles = useRootStyles(theme, { disabled }, [classes?.root, className]);
 
   // Return Component
   if (hidden) return null;
   return (
     <option
-      className={optionStyles}
+      className={rootStyles}
       disabled={disabled ? true : false}
-      {...props?.option}
+      {...props?.root}
       {...rest}
     >
       {children}

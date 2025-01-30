@@ -6,7 +6,7 @@ import { Theme } from "@utils/types";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useDividerStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -15,8 +15,8 @@ export const useDividerStyles = (
   const { direction, gap, gutter, spaceAfter, spaceBefore, textPosition, tip } = props;
 
   // CSS Stylesheet
-  const dividerCSS = css`
-    label: Divider;
+  const rootCSS = css`
+    label: TuiDivider-root;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -77,7 +77,7 @@ export const useDividerStyles = (
 
   // Return Styles
   return (
-    cx(dividerCSS, directionCSS, gapCSS, gutterCSS, spaceBeforeCSS, spaceAfterCSS, overrides) ||
+    cx(rootCSS, directionCSS, gapCSS, gutterCSS, spaceBeforeCSS, spaceAfterCSS, overrides) ||
     undefined
   );
 };
@@ -92,7 +92,7 @@ export const useStretchStyles = (
 
   // CSS Stylesheet
   const stretchCSS = css`
-    label: DividerStretch;
+    label: TuiDivider-stretch;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -117,7 +117,7 @@ export const useLabelStyles = (
 ) => {
   // CSS Stylesheet
   const labelCSS = css`
-    label: DividerLabel;
+    label: TuiDivider-label;
     line-height: ${theme?.text?.divider?.height};
     font-size: ${theme?.text?.divider?.size};
     font-weight: ${theme?.text?.divider?.weight};
@@ -140,13 +140,13 @@ export const useLineStyles = (
   const lineCSS =
     direction !== "vertical"
       ? css`
-          label: DividerLine;
+          label: TuiDivider-line;
           min-width: 0px;
           width: 100%;
           border-top: ${lineWidth}px ${lineStyle} ${theme?.color?.divider?.medium};
         `
       : css`
-          label: DividerLine;
+          label: TuiDivider-line;
           min-width: 0px;
           height: 100%;
           border-left: ${lineWidth}px ${lineStyle} ${theme?.color?.divider?.medium};
@@ -163,7 +163,7 @@ export const useIconStyles = (
 ) => {
   // CSS Stylesheet
   const iconCSS = css`
-    label: DividerIcon;
+    label: TuiDivider-icon;
     min-width: 20px;
     min-height: 20px;
     max-width: 20px;

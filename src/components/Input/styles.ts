@@ -15,7 +15,7 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBaseStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -24,8 +24,8 @@ export const useBaseStyles = (
   const { fullWidth } = props;
 
   // CSS Stylesheet
-  const baseCSS = css`
-    label: InputBase;
+  const rootCSS = css`
+    label: TuiInput-root;
     position: relative;
     display: block;
     input[type="number"]::-webkit-inner-spin-button,
@@ -44,7 +44,7 @@ export const useBaseStyles = (
     : null;
 
   // Return Styles
-  return cx(baseCSS, fullWidthCSS, overrides) || undefined;
+  return cx(rootCSS, fullWidthCSS, overrides) || undefined;
 };
 
 export const useLabelStyles = (
@@ -57,7 +57,7 @@ export const useLabelStyles = (
 
   // CSS Stylesheet
   const labelCSS = css`
-    label: InputLabel;
+    label: TuiInput-label;
     display: block;
     margin-bottom: 4px;
     line-height: ${theme?.text?.label?.height || theme?.text?.height};
@@ -92,7 +92,7 @@ export const useWrapperStyles = (
 
   // CSS Stylesheet
   const wrapperCSS = css`
-    label: InputWrapper;
+    label: TuiInput-wrapper;
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -238,7 +238,7 @@ export const useInputStyles = (
 
   // CSS Stylesheet
   const inputCSS = css`
-    label: InputInput;
+    label: TuiInput-input;
     position: relative;
     overflow: hidden;
     appearance: none;

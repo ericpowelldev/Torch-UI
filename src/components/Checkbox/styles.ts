@@ -14,7 +14,7 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBaseStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -23,8 +23,8 @@ export const useBaseStyles = (
   const { color, disabled, tint, variant } = props;
 
   // CSS Stylesheet
-  const baseCSS = css`
-    label: CheckboxBase;
+  const rootCSS = css`
+    label: TuiCheckbox-root;
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -280,7 +280,7 @@ export const useBaseStyles = (
 
   // Return Styles
   return (
-    cx(baseCSS, solidCss, softCss, plainCss, outlinedCss, disabledCSS, overrides) || undefined
+    cx(rootCSS, solidCss, softCss, plainCss, outlinedCss, disabledCSS, overrides) || undefined
   );
 };
 
@@ -294,7 +294,7 @@ export const useInputStyles = (
 
   // CSS Stylesheet
   const inputCSS = css`
-    label: CheckboxInput;
+    label: TuiCheckbox-input;
     z-index: 1;
     opacity: 0;
     position: absolute;
@@ -323,7 +323,7 @@ export const useIconCheckedStyles = (
 
   // CSS Stylesheet
   const iconCheckedCSS = css`
-    label: CheckboxIconChecked;
+    label: TuiCheckbox-iconChecked;
     display: none;
     width: ${getCheckboxSize(size)}px;
     height: ${getCheckboxSize(size)}px;
@@ -352,7 +352,7 @@ export const useIconUncheckedStyles = (
 
   // CSS Stylesheet
   const iconUncheckedCSS = css`
-    label: CheckboxIconUnchecked;
+    label: TuiCheckbox-iconUnchecked;
     display: block;
     width: ${getCheckboxSize(size)}px;
     height: ${getCheckboxSize(size)}px;

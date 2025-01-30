@@ -5,7 +5,7 @@ import React from "react";
 import { BoolValues, FlexComponentValues } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useFlexStyles } from "./styles";
+import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -13,10 +13,10 @@ interface FlexProps {
   // General Properties //
 
   props?: {
-    flex?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    flex?: string;
+    root?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -28,15 +28,18 @@ interface FlexProps {
   alignContent?: React.CSSProperties["alignContent"];
   alignItems?: React.CSSProperties["alignItems"];
   alignSelf?: React.CSSProperties["alignSelf"];
+  basis?: number | string;
   columnGap?: number;
   container?: BoolValues;
   containerInline?: BoolValues;
   direction?: React.CSSProperties["flexDirection"];
   gap?: number;
+  grow?: number;
   justifyContent?: React.CSSProperties["justifyContent"];
   justifyItems?: React.CSSProperties["justifyItems"];
   justifySelf?: React.CSSProperties["justifySelf"];
   rowGap?: number;
+  shrink?: number;
   visualize?: BoolValues;
   wrap?: React.CSSProperties["flexWrap"];
 
@@ -61,15 +64,18 @@ const Flex = ({
   alignContent,
   alignItems,
   alignSelf,
-  columnGap = 0,
+  basis,
+  columnGap,
   container,
   containerInline,
   direction,
-  gap = 0,
+  gap,
+  grow,
   justifyContent,
   justifyItems,
   justifySelf,
-  rowGap = 0,
+  rowGap,
+  shrink,
   visualize = false,
   wrap,
 
@@ -81,31 +87,34 @@ const Flex = ({
   const { theme } = useTui();
 
   // Styles
-  const flexStyles = useFlexStyles(
+  const rootStyles = useRootStyles(
     theme,
     {
       alignContent,
       alignItems,
       alignSelf,
+      basis,
       columnGap,
       container,
       containerInline,
       direction,
       gap,
+      grow,
       justifyContent,
       justifyItems,
       justifySelf,
       rowGap,
+      shrink,
       visualize,
       wrap,
     },
-    [classes?.flex, className]
+    [classes?.root, className]
   );
 
   // Return Component
   return React.createElement(
     component || `div`,
-    { className: flexStyles, ...props?.flex, ...rest },
+    { className: rootStyles, ...props?.root, ...rest },
     children
   );
 };

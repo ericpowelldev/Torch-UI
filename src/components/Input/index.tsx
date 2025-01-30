@@ -11,7 +11,7 @@ import {
 } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useBaseStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
+import { useRootStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -19,14 +19,14 @@ interface InputProps {
   // General Properties //
 
   props?: {
-    base?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
     label?: React.HTMLAttributes<HTMLElement>;
     sublabel?: React.HTMLAttributes<HTMLElement>;
     wrapper?: React.HTMLAttributes<HTMLElement>;
     input?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    base?: string;
+    root?: string;
     label?: string;
     sublabel?: string;
     wrapper?: string;
@@ -105,7 +105,7 @@ const Input = ({
   const { theme } = useTui();
 
   // Styles
-  const baseStyles = useBaseStyles(theme, { fullWidth }, [classes?.base, className]);
+  const rootStyles = useRootStyles(theme, { fullWidth }, [classes?.root, className]);
   const labelStyles = useLabelStyles(
     theme,
     { disabled, error, info, inverse, success, warning },
@@ -141,7 +141,7 @@ const Input = ({
 
   // Return Component
   return (
-    <div className={baseStyles} {...props?.base}>
+    <div className={rootStyles} {...props?.root}>
       {label && (
         <label className={labelStyles} {...props?.label}>
           {label}

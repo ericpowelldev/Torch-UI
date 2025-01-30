@@ -14,7 +14,7 @@ import {
 import { getTextComponent } from "@utils/helpers";
 
 import { useTui } from "@tui";
-import { useTextStyles } from "./styles";
+import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -22,10 +22,10 @@ interface TextProps {
   // General Properties //
 
   props?: {
-    text?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    text?: string;
+    root?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -74,15 +74,15 @@ const Text = ({
   const { theme } = useTui();
 
   // Styles
-  const textStyles = useTextStyles(theme, { align, color, shadow, tint, variant }, [
-    classes?.text,
+  const rootStyles = useRootStyles(theme, { align, color, shadow, tint, variant }, [
+    classes?.root,
     className,
   ]);
 
   // Return Component
   return React.createElement(
     getTextComponent(component, variant, href),
-    { className: textStyles, href: href || undefined, ...props?.text, ...rest },
+    { className: rootStyles, href: href || undefined, ...props?.root, ...rest },
     children
   );
 };

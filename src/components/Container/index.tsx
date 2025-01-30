@@ -5,7 +5,7 @@ import React from "react";
 import { BoolValues, ContainerComponentValues, SizeValues } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useContainerStyles } from "./styles";
+import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -13,10 +13,10 @@ interface ContainerProps {
   // General Properties //
 
   props?: {
-    container?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    container?: string;
+    root?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -61,7 +61,7 @@ const Container = ({
   const { theme } = useTui();
 
   // Styles
-  const containerStyles = useContainerStyles(
+  const rootStyles = useRootStyles(
     theme,
     {
       horizontalPadding,
@@ -69,13 +69,13 @@ const Container = ({
       maxWidth,
       visualize,
     },
-    [classes?.container, className]
+    [classes?.root, className]
   );
 
   // Return Component
   return React.createElement(
     component || `div`,
-    { className: containerStyles, ...props?.container, ...rest },
+    { className: rootStyles, ...props?.root, ...rest },
     visualize ? (
       <div
         style={{

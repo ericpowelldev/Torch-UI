@@ -7,7 +7,7 @@ import { getSpacerSize } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useSpacerStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -16,8 +16,8 @@ export const useSpacerStyles = (
   const { direction, size, visualize } = props;
 
   // CSS Stylesheet
-  const spacerCSS = css`
-    label: Spacer;
+  const rootCSS = css`
+    label: TuiSpacer-root;
     display: block;
   `;
 
@@ -40,5 +40,5 @@ export const useSpacerStyles = (
     : null;
 
   // Return Styles
-  return cx(spacerCSS, directionCSS, visualizeCSS, overrides) || undefined;
+  return cx(rootCSS, directionCSS, visualizeCSS, overrides) || undefined;
 };

@@ -5,7 +5,7 @@ import React from "react";
 import { BoolValues, ColorValues, StatusValues, TintValues } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useIconStyles } from "./styles";
+import { useRootStyles } from "./styles";
 
 import { MdCheckCircle, MdInfo, MdReport, MdWarning } from "react-icons/md";
 
@@ -15,10 +15,10 @@ interface StatusIconProps {
   // General Properties //
 
   props?: {
-    icon?: React.HTMLAttributes<SVGElement>;
+    root?: React.HTMLAttributes<SVGElement>;
   };
   classes?: {
-    icon?: string;
+    root?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -69,19 +69,19 @@ const StatusIcon = ({
   const { theme } = useTui();
 
   // Styles
-  const iconStyles = useIconStyles(
+  const rootStyles = useRootStyles(
     theme,
     { animate, animateMs, color, disabled, size, status, tint, variant },
-    [classes?.icon, className]
+    [classes?.root, className]
   );
 
   // Render Component
-  if (status === "error") return <MdReport className={iconStyles} {...props?.icon} {...rest} />;
+  if (status === "error") return <MdReport className={rootStyles} {...props?.root} {...rest} />;
   if (status === "warning")
-    return <MdWarning className={iconStyles} {...props?.icon} {...rest} />;
+    return <MdWarning className={rootStyles} {...props?.root} {...rest} />;
   if (status === "success")
-    return <MdCheckCircle className={iconStyles} {...props?.icon} {...rest} />;
-  return <MdInfo className={iconStyles} {...props?.icon} {...rest} />;
+    return <MdCheckCircle className={rootStyles} {...props?.root} {...rest} />;
+  return <MdInfo className={rootStyles} {...props?.root} {...rest} />;
 };
 
 // EXPORT ---------------------------------------------------------------- //

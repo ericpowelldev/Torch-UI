@@ -7,42 +7,39 @@ import { getBoxColor } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBoxStyles = (theme: Theme, props?: any, overrides?: (string | undefined)[]) => {
+export const useRootStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { backdropBlur, color, height, radius, shadow, tint, visualize, width } = props;
 
   // CSS Stylesheet
-  const boxCSS = css`
-    label: Box;
+  const rootCSS = css`
+    label: TuiBox-root;
   `;
 
   const widthCSS =
     width || width === 0
       ? css`
-          width: ${typeof width === `number`
-            ? `${width}px`
-            : typeof width === `string`
-              ? width
-              : `inherit`};
+          width: ${typeof width === `number` ? `${width}px` : width};
         `
       : null;
 
   const heightCSS =
     height || height === 0
       ? css`
-          height: ${typeof height === `number`
-            ? `${height}px`
-            : typeof height === `string`
-              ? height
-              : `inherit`};
+          height: ${typeof height === `number` ? `${height}px` : height};
         `
       : null;
 
-  const radiusCSS = radius
-    ? css`
-        border-radius: ${typeof radius === `number` ? `${radius}px` : radius};
-      `
-    : null;
+  const radiusCSS =
+    radius || radius === 0
+      ? css`
+          border-radius: ${typeof radius === `number` ? `${radius}px` : radius};
+        `
+      : null;
 
   const colorCSS = color
     ? css`
@@ -72,7 +69,7 @@ export const useBoxStyles = (theme: Theme, props?: any, overrides?: (string | un
   // Return Styles
   return (
     cx(
-      boxCSS,
+      rootCSS,
       widthCSS,
       heightCSS,
       radiusCSS,

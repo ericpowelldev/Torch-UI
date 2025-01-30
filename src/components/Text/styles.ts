@@ -7,7 +7,7 @@ import { getColorText } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useTextStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
@@ -16,8 +16,8 @@ export const useTextStyles = (
   const { align, color, shadow, tint, variant } = props;
 
   // CSS Stylesheet
-  const textCSS = css`
-    label: Text;
+  const rootCSS = css`
+    label: TuiText-root;
     line-height: ${theme?.text?.height};
     font-family: ${theme?.text?.family};
     font-size: ${theme?.text?.size};
@@ -52,5 +52,5 @@ export const useTextStyles = (
     : null;
 
   // Return Styles
-  return cx(textCSS, variantCSS, colorCSS, alignCSS, shadowCSS, overrides) || undefined;
+  return cx(rootCSS, variantCSS, colorCSS, alignCSS, shadowCSS, overrides) || undefined;
 };

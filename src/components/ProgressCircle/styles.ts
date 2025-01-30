@@ -7,14 +7,14 @@ import { getColorFg, getColorBg, getTrackSize } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBaseStyles = (
+export const useRootStyles = (
   theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
   // CSS Stylesheet
-  const baseCSS = css`
-    label: ProgressCircleBase;
+  const rootCSS = css`
+    label: TuiProgressCircle-root;
     position: relative;
     overflow: hidden;
     padding: 0;
@@ -25,7 +25,7 @@ export const useBaseStyles = (
   `;
 
   // Return Styles
-  return cx(baseCSS, overrides) || undefined;
+  return cx(rootCSS, overrides) || undefined;
 };
 
 export const useTrackStyles = (
@@ -38,7 +38,7 @@ export const useTrackStyles = (
 
   // CSS Stylesheet
   const trackCSS = css`
-    label: ProgressCircleTrack;
+    label: TuiProgressCircle-track;
     position: relative;
     width: ${size}px;
     height: ${size}px;
@@ -71,7 +71,7 @@ export const useBarStyles = (theme: Theme, props?: any, overrides?: (string | un
 
   // CSS Stylesheet
   const barCSS = css`
-    label: ProgressCircleBar;
+    label: TuiProgressCircle-bar;
     position: absolute;
     top: 0;
     left: 0;

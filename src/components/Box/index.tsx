@@ -13,7 +13,7 @@ import {
 } from "@utils/types";
 
 import { useTui } from "@tui";
-import { useBoxStyles } from "./styles";
+import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -21,10 +21,10 @@ interface BoxProps {
   // General Properties //
 
   props?: {
-    box?: React.HTMLAttributes<HTMLElement>;
+    root?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
-    box?: string;
+    root?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -63,7 +63,7 @@ const Box = ({
   backdropBlur = false,
   color = "inherit",
   height,
-  radius = 0,
+  radius,
   shadow = false,
   tint = 500,
   visualize,
@@ -77,16 +77,16 @@ const Box = ({
   const { theme } = useTui();
 
   // Styles
-  const boxStyles = useBoxStyles(
+  const rootStyles = useRootStyles(
     theme,
     { backdropBlur, color, height, radius, shadow, tint, visualize, width },
-    [classes?.box, className]
+    [classes?.root, className]
   );
 
   // Return Component
   return React.createElement(
     component || `div`,
-    { className: boxStyles, ...props?.box, ...rest },
+    { className: rootStyles, ...props?.root, ...rest },
     children
   );
 };
