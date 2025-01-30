@@ -2,6 +2,7 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import {
   getButtonPadding,
   getButtonLabelSize,
@@ -17,7 +18,11 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useButtonStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const {
     backdropBlur,
@@ -36,7 +41,7 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
 
   // CSS Stylesheet
   const buttonCSS = css`
-    label: TuiButton;
+    label: Button;
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -230,12 +235,17 @@ export const useButtonStyles = (theme?: any, props?: any, overrides?: (string | 
   );
 };
 
-export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useLabelStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { size, uppercase } = props;
 
   // CSS Stylesheet
   const labelCSS = css`
+    label: ButtonLabel;
     line-height: ${theme?.text?.button?.height || theme?.text?.height};
     font-family: ${theme?.text?.button?.family || theme?.text?.family};
     font-size: ${theme?.text?.button?.size || theme?.text?.size};
@@ -262,7 +272,7 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
 };
 
 export const useStartIconStyles = (
-  theme?: any,
+  theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
@@ -271,6 +281,7 @@ export const useStartIconStyles = (
 
   // CSS Stylesheet
   const startIconCSS = css`
+    label: ButtonStartIcon;
     margin-left: -4px;
     margin-right: ${getButtonIconMargin(size)}px;
     line-height: 1;
@@ -286,12 +297,17 @@ export const useStartIconStyles = (
   return cx(startIconCSS, overrides) || undefined;
 };
 
-export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useEndIconStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { size } = props;
 
   // CSS Stylesheet
   const endIconCSS = css`
+    label: ButtonEndIcon;
     margin-left: ${getButtonIconMargin(size)}px;
     margin-right: -4px;
     & svg {
@@ -306,7 +322,7 @@ export const useEndIconStyles = (theme?: any, props?: any, overrides?: (string |
 };
 
 export const useCenterIconStyles = (
-  theme?: any,
+  theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
@@ -315,6 +331,7 @@ export const useCenterIconStyles = (
 
   // CSS Stylesheet
   const centerIconCSS = css`
+    label: ButtonCenterIcon;
     position: absolute;
     left: 50%;
     top: 50%;

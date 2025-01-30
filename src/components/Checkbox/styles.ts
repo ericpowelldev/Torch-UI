@@ -2,6 +2,7 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import {
   getCheckboxSize,
   getVariantBoxShadow,
@@ -13,12 +14,17 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useBaseStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { color, disabled, tint, variant } = props;
 
   // CSS Stylesheet
   const baseCSS = css`
+    label: CheckboxBase;
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -41,7 +47,14 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
   const solidCss =
     variant === `solid`
       ? css`
-          background-color: ${getVariantColorBg(theme, variant, `grayscale`, tint, disabled, true)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            `grayscale`,
+            tint,
+            disabled,
+            true
+          )};
           color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
             background-color: ${getVariantColorHover(theme, variant, color, tint)};
@@ -86,7 +99,14 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
   const softCss =
     variant === `soft`
       ? css`
-          background-color: ${getVariantColorBg(theme, variant, `grayscale`, tint, disabled, true)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            `grayscale`,
+            tint,
+            disabled,
+            true
+          )};
           color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
             background-color: ${getVariantColorHover(theme, variant, color, tint)};
@@ -131,7 +151,14 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
   const plainCss =
     variant === `plain`
       ? css`
-          background-color: ${getVariantColorBg(theme, variant, `grayscale`, tint, disabled, true)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            `grayscale`,
+            tint,
+            disabled,
+            true
+          )};
           color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
             background-color: ${getVariantColorHover(theme, variant, color, tint)};
@@ -176,9 +203,17 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
   const outlinedCss =
     variant === `outlined`
       ? css`
-          outline: 1px solid ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
+          outline: 1px solid
+            ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           outline-offset: -1px;
-          background-color: ${getVariantColorBg(theme, variant, `grayscale`, tint, disabled, true)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            `grayscale`,
+            tint,
+            disabled,
+            true
+          )};
           color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
             outline: 1px solid ${getVariantColorFg(theme, variant, color, tint, disabled)};
@@ -244,15 +279,22 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
     : null;
 
   // Return Styles
-  return cx(baseCSS, solidCss, softCss, plainCss, outlinedCss, disabledCSS, overrides) || undefined;
+  return (
+    cx(baseCSS, solidCss, softCss, plainCss, outlinedCss, disabledCSS, overrides) || undefined
+  );
 };
 
-export const useInputStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useInputStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { size } = props;
 
   // CSS Stylesheet
   const inputCSS = css`
+    label: CheckboxInput;
     z-index: 1;
     opacity: 0;
     position: absolute;
@@ -272,7 +314,7 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
 };
 
 export const useIconCheckedStyles = (
-  theme?: any,
+  theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
@@ -281,6 +323,7 @@ export const useIconCheckedStyles = (
 
   // CSS Stylesheet
   const iconCheckedCSS = css`
+    label: CheckboxIconChecked;
     display: none;
     width: ${getCheckboxSize(size)}px;
     height: ${getCheckboxSize(size)}px;
@@ -300,7 +343,7 @@ export const useIconCheckedStyles = (
 };
 
 export const useIconUncheckedStyles = (
-  theme?: any,
+  theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
@@ -309,6 +352,7 @@ export const useIconUncheckedStyles = (
 
   // CSS Stylesheet
   const iconUncheckedCSS = css`
+    label: CheckboxIconUnchecked;
     display: block;
     width: ${getCheckboxSize(size)}px;
     height: ${getCheckboxSize(size)}px;

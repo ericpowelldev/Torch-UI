@@ -18,6 +18,7 @@ import {
   StatusValues,
   TextComponentValues,
   TextVariantValues,
+  Theme,
   tintValues,
   TintValues,
   variantValues,
@@ -27,7 +28,7 @@ import {
 // BOX ---------------------------------------------------------------- //
 
 export const getBoxColor = (
-  theme: any,
+  theme: Theme,
   color?: `inherit` | BGColorValues | FGColorValues | ColorValues,
   tint?: TintValues | InverseTintValues | AlphaTintValues
 ) => {
@@ -131,7 +132,7 @@ export const getCheckboxSize = (size: SizeValues) => {
 
 /** Get general foreground color */
 export const getColorFg = (
-  theme: any,
+  theme: Theme,
   color?: ColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues,
@@ -146,7 +147,7 @@ export const getColorFg = (
 
 /** Get general background color */
 export const getColorBg = (
-  theme: any,
+  theme: Theme,
   color?: ColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues,
@@ -161,7 +162,7 @@ export const getColorBg = (
 
 /** Get color text */
 export const getColorText = (
-  theme: any,
+  theme: Theme,
   color?: `inherit` | ColorValues | FGColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues
@@ -184,7 +185,7 @@ export const getColorText = (
 
 /** Get foreground color for a variant */
 export const getVariantColorFg = (
-  theme: any,
+  theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
   tint: TintValues = 500,
@@ -207,7 +208,7 @@ export const getVariantColorFg = (
 
 /** Get background color for a variant */
 export const getVariantColorBg = (
-  theme: any,
+  theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
   tint: TintValues = 500,
@@ -235,7 +236,7 @@ export const getVariantColorBg = (
 
 /** Get placeholder color for a variant */
 export const getVariantColorPlaceholder = (
-  theme: any,
+  theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
   tint: TintValues = 500,
@@ -258,7 +259,7 @@ export const getVariantColorPlaceholder = (
 
 /** Get hover color for a variant */
 export const getVariantColorHover = (
-  theme: any,
+  theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
   tint: TintValues = 500
@@ -278,7 +279,7 @@ export const getVariantColorHover = (
 
 /** Get active color for a variant */
 export const getVariantColorActive = (
-  theme: any,
+  theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
   tint: TintValues = 500
@@ -298,7 +299,7 @@ export const getVariantColorActive = (
 
 /** Get bow shadow for a variant */
 export const getVariantBoxShadow = (
-  theme: any,
+  theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
   tint: TintValues = 500
@@ -308,13 +309,16 @@ export const getVariantBoxShadow = (
       return `0 0 12px ${theme?.color?.[color]?.[tint]}40`;
   }
   if (variant === `soft`) {
-    if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}30`;
+    if (color && colorValues?.includes(color))
+      return `0 0 12px ${theme?.color?.[color]?.[500]}30`;
   }
   if (variant === `plain`) {
-    if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}20`;
+    if (color && colorValues?.includes(color))
+      return `0 0 12px ${theme?.color?.[color]?.[500]}20`;
   }
   if (variant === `outlined`) {
-    if (color && colorValues?.includes(color)) return `0 0 12px ${theme?.color?.[color]?.[500]}40`;
+    if (color && colorValues?.includes(color))
+      return `0 0 12px ${theme?.color?.[color]?.[500]}40`;
   }
   return `none`;
 };
@@ -322,7 +326,7 @@ export const getVariantBoxShadow = (
 // CONTAINER ---------------------------------------------------------------- //
 
 /** Get container max width */
-export const getContainerMaxWidth = (theme: any, size: SizeValues) => {
+export const getContainerMaxWidth = (theme: Theme, size: SizeValues) => {
   if (size) return theme?.container?.[size];
   return `100%`;
 };
@@ -331,7 +335,7 @@ export const getContainerMaxWidth = (theme: any, size: SizeValues) => {
 
 /** Get input component label color */
 export const getInputLabelColor = (
-  theme?: any,
+  theme: Theme,
   error?: BoolValues,
   warning?: BoolValues,
   success?: BoolValues,
@@ -353,7 +357,7 @@ export const getInputPadding = (variant?: InputVariantValues) => {
 
 /** Get input component border */
 export const getInputBorder = (
-  theme?: any,
+  theme: Theme,
   selector?: SelectorValues,
   error?: BoolValues,
   warning?: BoolValues,

@@ -2,16 +2,22 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import { getContainerMaxWidth } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useContainerStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useContainerStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { horizontalPadding, verticalPadding, maxWidth, visualize } = props;
 
   // CSS Stylesheet
   const containerCSS = css`
+    label: Container;
     display: block;
     width: 100%;
     margin-left: auto;
@@ -70,5 +76,14 @@ export const useContainerStyles = (theme?: any, props?: any, overrides?: (string
     : null;
 
   // Return Styles
-  return cx(containerCSS, horizontalPaddingCSS, verticalPaddingCSS, maxWidthCSS, visualizeCSS, overrides) || undefined;
+  return (
+    cx(
+      containerCSS,
+      horizontalPaddingCSS,
+      verticalPaddingCSS,
+      maxWidthCSS,
+      visualizeCSS,
+      overrides
+    ) || undefined
+  );
 };

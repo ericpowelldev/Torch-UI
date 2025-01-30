@@ -1,3 +1,11 @@
+// THEME TYPES ---------------------------------------------------------------- //
+
+/** Extended theme type */
+export type Theme = any;
+
+/** Simple theme type */
+export type SimpleTheme = any;
+
 // GENERAL TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted bools */
@@ -374,7 +382,18 @@ export const textAlignValues = [`left`, `center`, `right`, `justify`];
 export type TextAlignValues = `left` | `center` | `right` | `justify`;
 
 /** Array of accepted text components */
-export const textComponentValues = [`a`, `div`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `span`];
+export const textComponentValues = [
+  `a`,
+  `div`,
+  `h1`,
+  `h2`,
+  `h3`,
+  `h4`,
+  `h5`,
+  `h6`,
+  `p`,
+  `span`,
+];
 export type TextComponentValues =
   | `a`
   | `div`
@@ -389,7 +408,17 @@ export type TextComponentValues =
 
 /** Array of accepted text variants */
 export const textVariantValues = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p1`, `p2`, `p3`, `p4`];
-export type TextVariantValues = `h1` | `h2` | `h3` | `h4` | `h5` | `h6` | `p1` | `p2` | `p3` | `p4`;
+export type TextVariantValues =
+  | `h1`
+  | `h2`
+  | `h3`
+  | `h4`
+  | `h5`
+  | `h6`
+  | `p1`
+  | `p2`
+  | `p3`
+  | `p4`;
 
 // TOGGLE TYPES ---------------------------------------------------------------- //
 

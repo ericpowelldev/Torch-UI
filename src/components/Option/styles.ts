@@ -2,14 +2,21 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
+
 // STYLES ---------------------------------------------------------------- //
 
-export const useOptionStyles = (theme: any, props: any, overrides?: (string | undefined)[]) => {
+export const useOptionStyles = (
+  theme: Theme,
+  props: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { disabled } = props;
 
   // CSS Stylesheet
   const optionCSS = css`
+    label: Option;
     line-height: ${theme?.text?.input?.height || theme?.text?.height};
     font-family: ${theme?.text?.input?.family || theme?.text?.family};
     font-size: ${theme?.text?.input?.size || theme?.text?.size};

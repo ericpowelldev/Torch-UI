@@ -2,13 +2,19 @@
 
 import { css, cx, keyframes } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import { getColorFg, getColorBg, getTrackSize } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useBaseStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // CSS Stylesheet
   const baseCSS = css`
+    label: ProgressCircleBase;
     position: relative;
     overflow: hidden;
     padding: 0;
@@ -22,12 +28,17 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
   return cx(baseCSS, overrides) || undefined;
 };
 
-export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useTrackStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { color, disabled, size, thickness, tint, variant } = props;
 
   // CSS Stylesheet
   const trackCSS = css`
+    label: ProgressCircleTrack;
     position: relative;
     width: ${size}px;
     height: ${size}px;
@@ -44,7 +55,7 @@ export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | u
   return cx(trackCSS, overrides) || undefined;
 };
 
-export const useBarStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useBarStyles = (theme: Theme, props?: any, overrides?: (string | undefined)[]) => {
   // Props
   const { animateMs, color, disabled, size, thickness, tint, variant } = props;
 
@@ -60,6 +71,7 @@ export const useBarStyles = (theme?: any, props?: any, overrides?: (string | und
 
   // CSS Stylesheet
   const barCSS = css`
+    label: ProgressCircleBar;
     position: absolute;
     top: 0;
     left: 0;

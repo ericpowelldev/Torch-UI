@@ -1,6 +1,8 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import deepmerge from "deepmerge";
+import { SimpleTheme } from "../types";
+
 const Color = require("color");
 
 // HELPERS ---------------------------------------------------------------- //
@@ -205,7 +207,7 @@ const buildDividerColors = (color: string, themeMode?: string) => {
 
 // ORCHESTRATION ---------------------------------------------------------------- //
 
-const extendTheme = (theme: any, customThemeName?: string) => {
+const extendTheme = (theme: SimpleTheme, customThemeName?: string) => {
   // Set the initial theme props to use when extending
   // Check the theme object for the custom style props
   let customTheme =

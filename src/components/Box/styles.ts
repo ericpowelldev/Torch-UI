@@ -2,17 +2,18 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import { getBoxColor } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBoxStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useBoxStyles = (theme: Theme, props?: any, overrides?: (string | undefined)[]) => {
   // Props
   const { backdropBlur, color, height, radius, shadow, tint, visualize, width } = props;
 
   // CSS Stylesheet
   const boxCSS = css`
-    label: TuiBox;
+    label: Box;
   `;
 
   const widthCSS =

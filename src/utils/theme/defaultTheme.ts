@@ -223,11 +223,12 @@ const theme = {
 
   // Breakpoint Query Options
   query: {
-    only: (breakpoint: string) => `@media (min-width: ${breakpoint}) and (max-width: ${breakpoint})`,
-    up: (breakpoint: string) => `@media (min-width: ${breakpoint})`,
-    down: (breakpoint: string) => `@media (max-width: ${breakpoint})`,
-    between: (breakpointUp: string, breakpointDown: string) =>
-      `@media (min-width: ${breakpointUp}) and (max-width: ${breakpointDown})`,
+    only: (breakpoint: string) =>
+      `@media (min-width: ${breakpoint}) and (max-width: ${breakpoint})`,
+    up: (minBreakpoint: string) => `@media (min-width: ${minBreakpoint})`,
+    down: (maxBreakpoint: string) => `@media (max-width: ${maxBreakpoint})`,
+    between: (minBreakpoint: string, maxBreakpoint: string) =>
+      `@media (min-width: ${minBreakpoint}) and (max-width: ${maxBreakpoint})`,
   },
 
   // Container Max-Width Options

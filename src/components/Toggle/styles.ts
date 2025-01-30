@@ -2,6 +2,7 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import {
   getColorFg,
   getColorBg,
@@ -13,12 +14,17 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useToggleStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useToggleStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { disabled, size } = props;
 
   // CSS Stylesheet
   const toggleCSS = css`
+    label: Toggle;
     position: relative;
     width: ${getToggleSize(size) * 2}px;
     height: ${getToggleSize(size)}px;
@@ -38,12 +44,17 @@ export const useToggleStyles = (theme?: any, props?: any, overrides?: (string | 
   return cx(toggleCSS, disabledCSS, overrides) || undefined;
 };
 
-export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useTrackStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { color, shadowTrack, size, tint } = props;
 
   // CSS Stylesheet
   const trackCSS = css`
+    label: ToggleTrack;
     position: relative;
     display: inline-flex;
     width: ${getToggleSize(size) * 2}px;
@@ -66,12 +77,17 @@ export const useTrackStyles = (theme?: any, props?: any, overrides?: (string | u
   return cx(trackCSS, shadowCSS, overrides) || undefined;
 };
 
-export const useSlideStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useSlideStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { color, disabled, shadowSlide, size, tint } = props;
 
   // CSS Stylesheet
   const slideCSS = css`
+    label: ToggleSlide;
     z-index: 1;
     display: inline-flex;
     align-items: center;
@@ -121,12 +137,17 @@ export const useSlideStyles = (theme?: any, props?: any, overrides?: (string | u
   return cx(slideCSS, shadowCSS, disabledCSS, overrides) || undefined;
 };
 
-export const useInputStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useInputStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { size } = props;
 
   // CSS Stylesheet
   const inputCSS = css`
+    label: ToggleInput;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -146,7 +167,7 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
 };
 
 export const useIconCheckedStyles = (
-  theme?: any,
+  theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
@@ -155,6 +176,7 @@ export const useIconCheckedStyles = (
 
   // CSS Stylesheet
   const iconCheckedCSS = css`
+    label: ToggleIconChecked;
     position: absolute;
     display: inline-flex;
     top: 0;
@@ -184,7 +206,7 @@ export const useIconCheckedStyles = (
 };
 
 export const useIconUncheckedStyles = (
-  theme?: any,
+  theme: Theme,
   props?: any,
   overrides?: (string | undefined)[]
 ) => {
@@ -193,6 +215,7 @@ export const useIconUncheckedStyles = (
 
   // CSS Stylesheet
   const iconUncheckedCSS = css`
+    label: ToggleIconUnchecked;
     position: absolute;
     display: inline-flex;
     top: 0;

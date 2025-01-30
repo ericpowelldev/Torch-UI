@@ -2,11 +2,18 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
+
 // STYLES ---------------------------------------------------------------- //
 
-export const usePaletteStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const usePaletteStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // CSS Stylesheet
   const paletteCSS = css`
+    label: Palette;
     position: relative;
   `;
 
@@ -14,9 +21,14 @@ export const usePaletteStyles = (theme?: any, props?: any, overrides?: (string |
   return cx(paletteCSS, overrides) || undefined;
 };
 
-export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useFlexStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // CSS Stylesheet
   const flexCSS = css`
+    label: PaletteFlex;
     display: flex;
     align-items: center;
     justify-content: center;

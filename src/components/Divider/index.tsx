@@ -2,7 +2,11 @@
 
 import React from "react";
 
-import { DividerComponentValues, DividerDirectionValues, PercentValues } from "../../utils/types";
+import {
+  DividerComponentValues,
+  DividerDirectionValues,
+  PercentValues,
+} from "../../utils/types";
 
 import { useTUI } from "../../TUI";
 import {

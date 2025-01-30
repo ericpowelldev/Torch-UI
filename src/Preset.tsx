@@ -3,6 +3,8 @@
 import React from "react";
 import { Global } from "@emotion/react";
 
+import { Theme } from "./utils/types";
+
 import "../static/styles/preset.css";
 
 // PROPS ---------------------------------------------------------------- //
@@ -10,7 +12,7 @@ import "../static/styles/preset.css";
 interface PresetProps {
   children?: React.ReactNode;
 
-  theme?: any;
+  theme?: Theme;
 }
 
 // COMPONENT ---------------------------------------------------------------- //

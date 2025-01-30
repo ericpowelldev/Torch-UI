@@ -2,16 +2,22 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import { getSpacerSize } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useSpacerStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useSpacerStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { direction, size, visualize } = props;
 
   // CSS Stylesheet
   const spacerCSS = css`
+    label: Spacer;
     display: block;
   `;
 

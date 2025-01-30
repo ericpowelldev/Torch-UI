@@ -5,7 +5,7 @@ import deepmerge from "deepmerge";
 
 import defaultTheme from "./utils/theme/defaultTheme";
 import extendTheme from "./utils/theme/extendTheme";
-import { BoolValues } from "./utils/types";
+import { BoolValues, Theme } from "./utils/types";
 
 import Preset from "./Preset";
 
@@ -27,15 +27,24 @@ const detectSystemThemeMode = () => {
 interface TUIProviderProps {
   children?: React.ReactNode;
 
-  theme?: any;
+  theme?: Theme;
   customThemeName?: string;
 
   cssPreset?: BoolValues;
 }
 
+// interface TUIContextProps {
+//   theme?: Theme;
+//   customThemeName?: string;
+//   detectSystemThemeMode?: any;
+// }
+
 // CONTEXT/HOOK ---------------------------------------------------------------- //
 
-const TUIContext = React.createContext({ theme: extendedDefaultTheme, customThemeName: undefined });
+const TUIContext = React.createContext({
+  theme: extendedDefaultTheme,
+  customThemeName: undefined,
+});
 const useTUI = () => React.useContext(TUIContext);
 
 // PROVIDER ---------------------------------------------------------------- //

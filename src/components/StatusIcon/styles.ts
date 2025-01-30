@@ -2,6 +2,7 @@
 
 import { css, cx, keyframes } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import {
   getColorFg,
   getColorBg,
@@ -11,7 +12,11 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useIconStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { animate, animateMs, color, disabled, size, status, tint, variant } = props;
 
@@ -33,6 +38,7 @@ export const useIconStyles = (theme?: any, props?: any, overrides?: (string | un
 
   // CSS Stylesheet
   const iconCSS = css`
+    label: StatusIcon;
     position: relative;
     display: block;
     width: ${size}px;

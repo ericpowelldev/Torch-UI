@@ -2,6 +2,7 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import {
   getInputLabelColor,
   getInputPadding,
@@ -14,12 +15,17 @@ import {
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useBaseStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { fullWidth } = props;
 
   // CSS Stylesheet
   const baseCSS = css`
+    label: InputBase;
     position: relative;
     display: block;
     input[type="number"]::-webkit-inner-spin-button,
@@ -41,12 +47,17 @@ export const useBaseStyles = (theme?: any, props?: any, overrides?: (string | un
   return cx(baseCSS, fullWidthCSS, overrides) || undefined;
 };
 
-export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useLabelStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { disabled, error, info, inverse, success, warning } = props;
 
   // CSS Stylesheet
   const labelCSS = css`
+    label: InputLabel;
     display: block;
     margin-bottom: 4px;
     line-height: ${theme?.text?.label?.height || theme?.text?.height};
@@ -71,12 +82,17 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
   return cx(labelCSS, colorCSS, disabledCSS, overrides) || undefined;
 };
 
-export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useWrapperStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { backdropBlur, color, disabled, fullWidth, inverse, tint, variant } = props;
 
   // CSS Stylesheet
   const wrapperCSS = css`
+    label: InputWrapper;
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -208,7 +224,11 @@ export const useWrapperStyles = (theme?: any, props?: any, overrides?: (string |
   );
 };
 
-export const useInputStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useInputStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { color, disabled, fullWidth, inverse, multiline, select, tint, variant } = props;
 
@@ -218,6 +238,7 @@ export const useInputStyles = (theme?: any, props?: any, overrides?: (string | u
 
   // CSS Stylesheet
   const inputCSS = css`
+    label: InputInput;
     position: relative;
     overflow: hidden;
     appearance: none;

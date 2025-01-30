@@ -106,9 +106,11 @@ const Input = ({
 
   // Styles
   const baseStyles = useBaseStyles(theme, { fullWidth }, [classes?.base, className]);
-  const labelStyles = useLabelStyles(theme, { disabled, error, info, inverse, success, warning }, [
-    classes?.label,
-  ]);
+  const labelStyles = useLabelStyles(
+    theme,
+    { disabled, error, info, inverse, success, warning },
+    [classes?.label]
+  );
   const wrapperStyles = useWrapperStyles(
     theme,
     {

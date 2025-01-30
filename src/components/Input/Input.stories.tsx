@@ -192,7 +192,12 @@ export const Inverse: Story = {
     <div style={{ backgroundColor: "#242c40", padding: 16 }}>
       <Flex container direction="column" gap={3}>
         <Flex container gap={2}>
-          <Component inverse color="info" label="Inverse Input" placeholder="Enter some text..." />
+          <Component
+            inverse
+            color="info"
+            label="Inverse Input"
+            placeholder="Enter some text..."
+          />
           <Component inverse select color="info" label="Inverse Select">
             <Option value="option-1">Option 1</Option>
             <Option value="option-2">Option 2</Option>

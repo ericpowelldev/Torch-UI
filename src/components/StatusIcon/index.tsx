@@ -77,7 +77,8 @@ const StatusIcon = ({
 
   // Render Component
   if (status === "error") return <MdReport className={iconStyles} {...props?.icon} {...rest} />;
-  if (status === "warning") return <MdWarning className={iconStyles} {...props?.icon} {...rest} />;
+  if (status === "warning")
+    return <MdWarning className={iconStyles} {...props?.icon} {...rest} />;
   if (status === "success")
     return <MdCheckCircle className={iconStyles} {...props?.icon} {...rest} />;
   return <MdInfo className={iconStyles} {...props?.icon} {...rest} />;

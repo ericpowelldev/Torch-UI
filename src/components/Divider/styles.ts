@@ -2,14 +2,21 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
+
 // STYLES ---------------------------------------------------------------- //
 
-export const useDividerStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useDividerStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { direction, gap, gutter, spaceAfter, spaceBefore, textPosition, tip } = props;
 
   // CSS Stylesheet
   const dividerCSS = css`
+    label: Divider;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -75,12 +82,17 @@ export const useDividerStyles = (theme?: any, props?: any, overrides?: (string |
   );
 };
 
-export const useStretchStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useStretchStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { gap } = props;
 
   // CSS Stylesheet
   const stretchCSS = css`
+    label: DividerStretch;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -98,9 +110,14 @@ export const useStretchStyles = (theme?: any, props?: any, overrides?: (string |
   return cx(stretchCSS, gapCSS, overrides) || undefined;
 };
 
-export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useLabelStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // CSS Stylesheet
   const labelCSS = css`
+    label: DividerLabel;
     line-height: ${theme?.text?.divider?.height};
     font-size: ${theme?.text?.divider?.size};
     font-weight: ${theme?.text?.divider?.weight};
@@ -111,7 +128,11 @@ export const useLabelStyles = (theme?: any, props?: any, overrides?: (string | u
   return cx(labelCSS, overrides) || undefined;
 };
 
-export const useLineStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useLineStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { direction, lineStyle, lineWidth } = props;
 
@@ -119,11 +140,13 @@ export const useLineStyles = (theme?: any, props?: any, overrides?: (string | un
   const lineCSS =
     direction !== "vertical"
       ? css`
+          label: DividerLine;
           min-width: 0px;
           width: 100%;
           border-top: ${lineWidth}px ${lineStyle} ${theme?.color?.divider?.medium};
         `
       : css`
+          label: DividerLine;
           min-width: 0px;
           height: 100%;
           border-left: ${lineWidth}px ${lineStyle} ${theme?.color?.divider?.medium};
@@ -133,9 +156,14 @@ export const useLineStyles = (theme?: any, props?: any, overrides?: (string | un
   return cx(lineCSS, overrides) || undefined;
 };
 
-export const useIconStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useIconStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // CSS Stylesheet
   const iconCSS = css`
+    label: DividerIcon;
     min-width: 20px;
     min-height: 20px;
     max-width: 20px;

@@ -99,9 +99,11 @@ const Checkbox = ({
     [classes?.base, className]
   );
   const inputStyles = useInputStyles(theme, { size }, [classes?.input]);
-  const iconCheckedStyles = useIconCheckedStyles(theme, { color, disabled, size, tint, variant }, [
-    classes?.iconChecked,
-  ]);
+  const iconCheckedStyles = useIconCheckedStyles(
+    theme,
+    { color, disabled, size, tint, variant },
+    [classes?.iconChecked]
+  );
   const iconUncheckedStyles = useIconUncheckedStyles(
     theme,
     { color, disabled, size, tint, variant },

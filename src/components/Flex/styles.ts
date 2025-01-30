@@ -2,9 +2,15 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
+
 // STYLES ---------------------------------------------------------------- //
 
-export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useFlexStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const {
     alignContent,
@@ -26,7 +32,7 @@ export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | un
   // CSS Stylesheet
   const flexContainerCSS = container
     ? css`
-        label: TuiFlexContainer;
+        label: FlexContainer;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -34,11 +40,11 @@ export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | un
         justify-content: flex-start;
         min-width: 0;
       `
-    : null;
+    : undefined;
 
   const flexContainerInlineCSS = containerInline
     ? css`
-        label: TuiFlexContainerInline;
+        label: FlexContainerInline;
         display: inline-flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -46,90 +52,91 @@ export const useFlexStyles = (theme?: any, props?: any, overrides?: (string | un
         justify-content: flex-start;
         min-width: 0;
       `
-    : null;
+    : undefined;
 
   const flexItemCSS =
     !container && !containerInline
       ? css`
-          label: TuiFlexItem;
+          label: FlexItem;
           flex-grow: 0;
+          flex-shrink: 0;
           flex-basis: auto;
           min-width: 0;
         `
-      : null;
+      : undefined;
 
   const directionCSS = direction
     ? css`
         flex-direction: ${direction};
       `
-    : null;
+    : undefined;
 
   const wrapCSS = wrap
     ? css`
         flex-wrap: ${wrap};
       `
-    : null;
+    : undefined;
 
   const alignContentCSS = alignContent
     ? css`
         align-content: ${alignContent};
       `
-    : null;
+    : undefined;
 
   const alignItemsCSS = alignItems
     ? css`
         align-items: ${alignItems};
       `
-    : null;
+    : undefined;
 
   const alignSelfCSS = alignSelf
     ? css`
         align-self: ${alignSelf};
       `
-    : null;
+    : undefined;
 
   const justifyContentCSS = justifyContent
     ? css`
         justify-content: ${justifyContent};
       `
-    : null;
+    : undefined;
 
   const justifyItemsCSS = justifyItems
     ? css`
         justify-items: ${justifyItems};
       `
-    : null;
+    : undefined;
 
   const justifySelfCSS = justifySelf
     ? css`
         justify-self: ${justifySelf};
       `
-    : null;
+    : undefined;
 
   const gapCSS = gap
     ? css`
         gap: ${theme?.space(gap)};
       `
-    : null;
+    : undefined;
 
   const rowGapCSS = rowGap
     ? css`
         row-gap: ${theme?.space(rowGap)};
       `
-    : null;
+    : undefined;
 
   const columnGapCSS = columnGap
     ? css`
         column-gap: ${theme?.space(columnGap)};
       `
-    : null;
+    : undefined;
 
   const visualizeCSS = visualize
     ? css`
         background-color: transparent;
         background-image: ${theme?.visualize};
       `
-    : null;
+    : undefined;
 
   // Return Styles
   return (

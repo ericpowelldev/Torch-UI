@@ -72,7 +72,8 @@ const meta: Meta<typeof Component> = {
       },
     },
     tint: {
-      description: "Color tint of the text (does not apply to foreground or background colors).",
+      description:
+        "Color tint of the text (does not apply to foreground or background colors).",
       control: {
         type: "select",
       },

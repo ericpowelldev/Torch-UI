@@ -2,16 +2,22 @@
 
 import { css, cx } from "../../utils/emotion";
 
+import { Theme } from "../../utils/types";
 import { getColorText } from "../../utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
-export const useTextStyles = (theme?: any, props?: any, overrides?: (string | undefined)[]) => {
+export const useTextStyles = (
+  theme: Theme,
+  props?: any,
+  overrides?: (string | undefined)[]
+) => {
   // Props
   const { align, color, shadow, tint, variant } = props;
 
   // CSS Stylesheet
   const textCSS = css`
+    label: Text;
     line-height: ${theme?.text?.height};
     font-family: ${theme?.text?.family};
     font-size: ${theme?.text?.size};
