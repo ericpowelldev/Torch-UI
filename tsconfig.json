@@ -14,11 +14,11 @@
     "moduleResolution": "node",
     "outDir": "dist",
     "paths": {
-      "components/*": ["./src/components/*"],
-      "src/*": ["./src/*"],
-      "static/*": ["./src/static/*"],
-      "TUI": ["./src/TUI.tsx"],
-      "utils/*": ["./src/utils/*"]
+      "@src/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@static/*": ["./src/static/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@tui": ["./src/Tui.tsx"]
     },
     "removeComments": true,
     "skipLibCheck": true,

@@ -10,7 +10,7 @@ import {
   TintValues,
 } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useBaseStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -102,7 +102,7 @@ const Input = ({
   ...rest
 }: InputProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const baseStyles = useBaseStyles(theme, { fullWidth }, [classes?.base, className]);

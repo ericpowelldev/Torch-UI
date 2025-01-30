@@ -11,7 +11,7 @@ import {
   TintValues,
 } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import {
   useBaseStyles,
   useInputStyles,
@@ -84,7 +84,7 @@ const Checkbox = ({
   ...rest
 }: CheckboxProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const baseStyles = useBaseStyles(

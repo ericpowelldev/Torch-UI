@@ -24,7 +24,7 @@ const detectSystemThemeMode = () => {
 
 // PROPS ---------------------------------------------------------------- //
 
-interface TUIProviderProps {
+interface TuiThemeProviderProps {
   children?: React.ReactNode;
 
   theme?: Theme;
@@ -33,7 +33,7 @@ interface TUIProviderProps {
   cssPreset?: BoolValues;
 }
 
-// interface TUIContextProps {
+// interface TuiThemeContextProps {
 //   theme?: Theme;
 //   customThemeName?: string;
 //   detectSystemThemeMode?: any;
@@ -41,20 +41,20 @@ interface TUIProviderProps {
 
 // CONTEXT/HOOK ---------------------------------------------------------------- //
 
-const TUIContext = React.createContext({
+const TuiThemeContext = React.createContext({
   theme: extendedDefaultTheme,
   customThemeName: undefined,
 });
-const useTUI = () => React.useContext(TUIContext);
+const useTui = () => React.useContext(TuiThemeContext);
 
 // PROVIDER ---------------------------------------------------------------- //
 
-const TUIProvider = ({
+const TuiThemeProvider = ({
   children,
   theme = {},
   customThemeName = undefined,
   cssPreset = true,
-}: TUIProviderProps) => {
+}: TuiThemeProviderProps) => {
   // Merge the override theme and extend the merged theme
   let extendedTheme = deepmerge(defaultTheme, theme) as any;
   extendedTheme = extendTheme(extendedTheme, customThemeName);
@@ -68,13 +68,13 @@ const TUIProvider = ({
   console.log(`Extended Theme (${customThemeName || `default`}):`, extendedTheme);
 
   return (
-    <TUIContext.Provider value={ctx}>
+    <TuiThemeContext.Provider value={ctx}>
       {cssPreset && <Preset theme={extendedTheme} />}
       {children}
-    </TUIContext.Provider>
+    </TuiThemeContext.Provider>
   );
 };
 
 // EXPORT ---------------------------------------------------------------- //
 
-export { TUIProvider, useTUI };
+export { TuiThemeProvider, useTui };

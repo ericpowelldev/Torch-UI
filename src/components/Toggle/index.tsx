@@ -11,7 +11,7 @@ import {
   ToggleVariantValues,
 } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import {
   useToggleStyles,
   useTrackStyles,
@@ -92,7 +92,7 @@ const Toggle = ({
   ...rest
 }: ToggleProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const toggleStyles = useToggleStyles(theme, { color, disabled, size, tint }, [

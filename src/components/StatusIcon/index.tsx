@@ -4,7 +4,7 @@ import React from "react";
 
 import { BoolValues, ColorValues, StatusValues, TintValues } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useIconStyles } from "./styles";
 
 import { MdCheckCircle, MdInfo, MdReport, MdWarning } from "react-icons/md";
@@ -66,7 +66,7 @@ const StatusIcon = ({
   ...rest
 }: StatusIconProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const iconStyles = useIconStyles(

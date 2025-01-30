@@ -13,7 +13,7 @@ import {
 } from "../../utils/types";
 import { getTextComponent } from "../../utils/helpers";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useTextStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -71,7 +71,7 @@ const Text = ({
   ...rest
 }: TextProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const textStyles = useTextStyles(theme, { align, color, shadow, tint, variant }, [

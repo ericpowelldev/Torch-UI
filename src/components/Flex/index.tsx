@@ -4,7 +4,7 @@ import React from "react";
 
 import { BoolValues, FlexComponentValues } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useFlexStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -78,7 +78,7 @@ const Flex = ({
   ...rest
 }: FlexProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const flexStyles = useFlexStyles(

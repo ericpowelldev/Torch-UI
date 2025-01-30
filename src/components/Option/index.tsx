@@ -4,7 +4,7 @@ import React from "react";
 
 import { BoolValues } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useOptionStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -52,7 +52,7 @@ const Option = ({
   ...rest
 }: OptionProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const optionStyles = useOptionStyles(theme, { disabled }, [classes?.option, className]);

@@ -1,7 +1,7 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
 
-import { TUIProvider } from "../src";
+import { TuiThemeProvider } from "../src";
 
 // Theme overrides
 const theme = {};
@@ -9,14 +9,14 @@ const theme = {};
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <TUIProvider
+      <TuiThemeProvider
         theme={theme}
         // customThemeName="dark"
       >
         <div style={{ position: "relative", padding: "16px" }}>
           <Story />
         </div>
-      </TUIProvider>
+      </TuiThemeProvider>
     ),
   ],
   parameters: {

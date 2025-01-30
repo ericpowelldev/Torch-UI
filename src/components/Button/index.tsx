@@ -11,7 +11,7 @@ import {
 } from "../../utils/types";
 import { getButtonIconSize } from "../../utils/helpers";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import {
   useButtonStyles,
   useLabelStyles,
@@ -120,7 +120,7 @@ const Button = ({
   ...rest
 }: ButtonProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const buttonStyles = useButtonStyles(

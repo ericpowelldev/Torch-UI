@@ -12,7 +12,7 @@ import {
   TintValues,
 } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useBoxStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -74,7 +74,7 @@ const Box = ({
   ...rest
 }: BoxProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const boxStyles = useBoxStyles(

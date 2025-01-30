@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { usePaletteStyles, useFlexStyles } from "./styles";
 
 import Box from "../Box";
@@ -43,7 +43,7 @@ const Palette = ({
   ...rest
 }: PaletteProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const paletteStyles = usePaletteStyles(theme, undefined, [classes?.palette, className]);

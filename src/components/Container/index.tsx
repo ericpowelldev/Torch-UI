@@ -4,7 +4,7 @@ import React from "react";
 
 import { BoolValues, ContainerComponentValues, SizeValues } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useContainerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -58,7 +58,7 @@ const Container = ({
   ...rest
 }: ContainerProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const containerStyles = useContainerStyles(

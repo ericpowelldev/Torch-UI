@@ -9,7 +9,7 @@ import {
   SpacerDirectionValues,
 } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useSpacerStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -61,7 +61,7 @@ const Spacer = ({
   ...rest
 }: SpacerProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const spacerStyles = useSpacerStyles(theme, { direction, size, visualize }, [

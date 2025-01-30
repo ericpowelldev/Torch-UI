@@ -4,7 +4,7 @@ import React from "react";
 
 import { BoolValues, ColorValues, TintValues } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import { useBaseStyles, useTrackStyles, useBarStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
@@ -66,7 +66,7 @@ const ProgressCircle = ({
   ...rest
 }: ProgressCircleProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const baseStyles = useBaseStyles(theme, {}, [classes?.base, className]);

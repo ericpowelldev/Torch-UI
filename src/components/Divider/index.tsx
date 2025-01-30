@@ -8,7 +8,7 @@ import {
   PercentValues,
 } from "../../utils/types";
 
-import { useTUI } from "../../TUI";
+import { useTui } from "../../Tui";
 import {
   useDividerStyles,
   useStretchStyles,
@@ -88,7 +88,7 @@ const Divider = ({
   ...rest
 }: DividerProps) => {
   // Hooks
-  const { theme } = useTUI();
+  const { theme } = useTui();
 
   // Styles
   const dividerStyles = useDividerStyles(

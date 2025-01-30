@@ -1,3 +1,6 @@
+import path from "path";
+
+import alias from "@rollup/plugin-alias";
 import commonjs from "@rollup/plugin-commonjs";
 import css from "rollup-plugin-import-css";
 import dts from "rollup-plugin-dts";
@@ -6,30 +9,45 @@ import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 
-const packageJson = require("./package.json");
+const pkg = require("./package.json");
 
-export default [
+const aliasConfig = {
+  entries: [
+    { find: "@src", replacement: path.resolve(__dirname, "./src") },
+    { find: "@components", replacement: path.resolve(__dirname, "./src/components") },
+    { find: "@static", replacement: path.resolve(__dirname, "./src/static") },
+    { find: "@utils", replacement: path.resolve(__dirname, "./src/utils") },
+    { find: "@tui", replacement: path.resolve(__dirname, "./src/Tui.tsx") },
+  ],
+};
+
+const typescriptConfig = {
+  tsconfig: "./tsconfig.json",
+};
+
+const config = [
   {
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
+        file: pkg.main,
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        file: pkg.module,
         format: "esm",
         sourcemap: true,
       },
     ],
     plugins: [
+      alias(aliasConfig),
       commonjs(),
       css(),
       peerDepsExternal(),
       resolve(),
       terser(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript(typescriptConfig),
     ],
     external: ["react", "react-dom", "@emotion/css", "@emotion/react"],
   },
@@ -39,3 +57,5 @@ export default [
     plugins: [css(), dts.default()],
   },
 ];
+
+export default config;
