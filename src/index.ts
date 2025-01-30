@@ -1,5 +1,5 @@
 import { TUIProvider, useTUI } from "./TUI";
-import { Theme } from "./utils/types";
+import { SimpleTheme, Theme } from "./utils/types";
 
 import Box from "./components/Box";
 import Button from "./components/Button";
@@ -19,6 +19,7 @@ import Toggle from "./components/Toggle";
 export {
   TUIProvider,
   useTUI,
+  SimpleTheme,
   Theme,
   Box,
   Button,

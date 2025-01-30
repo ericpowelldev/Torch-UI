@@ -10,7 +10,7 @@ import {
   FGColorValues,
   InverseTintValues,
   TintValues,
-} from "utils/types";
+} from "../../utils/types";
 
 import { useTUI } from "../../TUI";
 import { useBoxStyles } from "./styles";

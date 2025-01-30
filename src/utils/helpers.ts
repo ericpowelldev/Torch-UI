@@ -30,7 +30,7 @@ import {
 export const getBoxColor = (
   theme: Theme,
   color?: `inherit` | BGColorValues | FGColorValues | ColorValues,
-  tint?: TintValues | InverseTintValues | AlphaTintValues
+  tint: TintValues | InverseTintValues | AlphaTintValues = 500
 ) => {
   if (color === `bg1`) return theme.color.bg[0];
   if (color === `bg2`) return theme.color.bg[1];
@@ -48,7 +48,8 @@ export const getBoxColor = (
   if (color === `fgInverse2`) return theme.color.fgInverse[1];
   if (color === `fgInverse3`) return theme.color.fgInverse[2];
   if (color === `fgInverse4`) return theme.color.fgInverse[3];
-  if (colorValues.includes(color) && tintValues.includes(tint)) return theme.color[color][tint];
+  if (color && tint && colorValues.includes(color) && tintValues.includes(tint))
+    return theme.color[color][tint];
   return `inherit`;
 };
 
@@ -140,7 +141,7 @@ export const getColorFg = (
 ) => {
   if (disabled && override === `bg`) return theme?.color?.bgDisabled;
   if (disabled) return theme?.color?.fgDisabled;
-  if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+  if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
     return theme?.color?.[color]?.[`i${tint}`];
   return `inherit`;
 };
@@ -155,7 +156,7 @@ export const getColorBg = (
 ) => {
   if (disabled && override === `fg`) return theme?.color?.fgDisabled;
   if (disabled) return theme?.color?.bgDisabled;
-  if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+  if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
     return theme?.color?.[color]?.[tint];
   return `inherit`;
 };
@@ -178,7 +179,7 @@ export const getColorText = (
     if (color === `fgInverse3`) return theme?.color?.fgInverse?.[2];
     if (color === `fgInverse4`) return theme?.color?.fgInverse?.[3];
   }
-  if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+  if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
     return theme?.color?.[color]?.[tint];
   return `inherit`;
 };
@@ -195,7 +196,7 @@ export const getVariantColorFg = (
   if (variant === `solid`) {
     if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
     if (grayscale) return theme?.color?.grayscale?.[500] + `c8`;
-    if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[`i${tint}`];
   }
   if (variant === `soft` || variant === `plain` || variant === `outlined`) {
@@ -218,7 +219,7 @@ export const getVariantColorBg = (
   if (variant === `solid`) {
     if (disabled) return theme?.color?.grayscale?.[500] + `50`;
     if (grayscale) return theme?.color?.grayscale?.[500] + `50`;
-    if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint];
   }
   if (variant === `soft`) {
@@ -246,7 +247,7 @@ export const getVariantColorPlaceholder = (
   if (variant === `solid`) {
     if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
     if (grayscale) return theme?.color?.grayscale?.[500] + `c8`;
-    if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return `${theme?.color?.[color]?.[`i${tint}`]}90`;
   }
   if (variant === `soft` || variant === `plain` || variant === `outlined`) {
@@ -265,7 +266,7 @@ export const getVariantColorHover = (
   tint: TintValues = 500
 ) => {
   if (variant === `solid`) {
-    if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint] + `d4`;
   }
   if (variant === `soft`) {
@@ -285,7 +286,7 @@ export const getVariantColorActive = (
   tint: TintValues = 500
 ) => {
   if (variant === `solid`) {
-    if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint] + `a0`;
   }
   if (variant === `soft`) {
@@ -305,7 +306,7 @@ export const getVariantBoxShadow = (
   tint: TintValues = 500
 ) => {
   if (variant === `solid`) {
-    if (color && colorValues?.includes(color) && tint && tintValues?.includes(tint))
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return `0 0 12px ${theme?.color?.[color]?.[tint]}40`;
   }
   if (variant === `soft`) {
