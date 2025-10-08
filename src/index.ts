@@ -15,6 +15,7 @@ import Spacer from "./components/Spacer";
 import StatusIcon from "./components/StatusIcon";
 import Text from "./components/Text";
 import Toggle from "./components/Toggle";
+import Tooltip from "./components/Tooltip";
 
 export {
   TuiThemeProvider,
@@ -35,4 +36,5 @@ export {
   StatusIcon,
   Text,
   Toggle,
+  Tooltip,
 };

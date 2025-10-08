@@ -429,3 +429,34 @@ export type ToggleComponentValues = `div` | `span`;
 /** Array of accepted toggle variants */
 export const toggleVariantValues = [`solid`, `soft`, `plain`, `outlined`];
 export type ToggleVariantValues = `solid` | `soft` | `plain` | `outlined`;
+
+// TOOLTIP TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted tooltip placements */
+export const tooltipPlacementValues = [
+  `top`,
+  `top-start`,
+  `top-end`,
+  `bottom`,
+  `bottom-start`,
+  `bottom-end`,
+  `left`,
+  `left-start`,
+  `left-end`,
+  `right`,
+  `right-start`,
+  `right-end`,
+];
+export type TooltipPlacementValues =
+  | `top`
+  | `top-start`
+  | `top-end`
+  | `bottom`
+  | `bottom-start`
+  | `bottom-end`
+  | `left`
+  | `left-start`
+  | `left-end`
+  | `right`
+  | `right-start`
+  | `right-end`;

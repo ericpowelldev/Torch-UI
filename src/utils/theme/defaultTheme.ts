@@ -136,6 +136,11 @@ const theme = {
       weight: 400,
       height: 1,
     },
+    tooltip: {
+      size: `12px`,
+      weight: 400,
+      height: 1.333,
+    },
   },
 
   // Pixel Spacing Options
@@ -153,27 +158,32 @@ const theme = {
   // Padding Options
   padding: {
     none: 0,
+
     input: `6px 8px`,
+    tooltip: `4px 8px`,
   },
 
   // Radius Options
   radius: {
     none: 0,
+
     button: `6px`,
     card: `10px`,
-    input: `6px`,
     checkbox: `4px`,
+    input: `6px`,
     pill: `10000px`,
+    tooltip: `6px`,
   },
 
   // Transition Options
   transition: {
     none: `none`,
     standard: `all 0.15s ease-in-out`,
+
     button: `all 0.15s ease-in-out`,
+    checkbox: `outline-color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out`,
     input: `all 0.15s ease-in-out`,
     inputWithOutline: `all 0.15s ease-in-out, outline-color 0.0s, outline-offset 0.0s, outline-width 0.0s`,
-    checkbox: `outline-color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out`,
   },
 
   // Shadow Options
@@ -185,8 +195,9 @@ const theme = {
 
     button: `0px 4px 12px #00000048`,
     text: `1px 1px 2px #00000048`,
-    toggleTrack: `1px 1px 2px #00000048`,
     toggleSlide: `1px 1px 2px #00000048`,
+    toggleTrack: `1px 1px 2px #00000048`,
+    tooltip: `1px 1px 2px #00000048`,
   },
 
   // Blur Options

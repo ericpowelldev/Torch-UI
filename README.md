@@ -13,7 +13,7 @@ Torch UI - A dynamic & lightweight React component library.
   - [ ] StatusAlert
   - [ ] StatusIcon
   - [x] Text
-  - [ ] Tooltip
+  - [x] Tooltip
 
 - Feedback
   - Dialog
