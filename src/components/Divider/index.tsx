@@ -15,6 +15,8 @@ import {
 
 import { MdInfo } from "react-icons/md";
 
+import Tooltip from "../Tooltip";
+
 // PROPS ---------------------------------------------------------------- //
 
 interface DividerProps {
@@ -120,7 +122,11 @@ const Divider = ({
         <span className={stretchStyles}>
           <span className={lineStyles} />
 
-          {tip && direction !== `vertical` ? <MdInfo className={iconStyles} /> : null}
+          {tip && direction !== `vertical` ? (
+            <Tooltip content={tip} placement="top-end">
+              <MdInfo className={iconStyles} />
+            </Tooltip>
+          ) : null}
         </span>
       </>
     ) : (

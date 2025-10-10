@@ -1,4 +1,5 @@
 import { TuiThemeProvider, useTui } from "./Tui";
+import { css, cx, keyframes } from "@utils/emotion";
 import { SimpleTheme, Theme } from "@utils/types";
 
 import Box from "./components/Box";
@@ -20,6 +21,9 @@ import Tooltip from "./components/Tooltip";
 export {
   TuiThemeProvider,
   useTui,
+  css,
+  cx,
+  keyframes,
   SimpleTheme,
   Theme,
   Box,
