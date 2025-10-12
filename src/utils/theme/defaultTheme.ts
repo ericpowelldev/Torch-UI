@@ -123,7 +123,7 @@ const theme = {
     },
     label: {
       size: `12px`,
-      weight: 600,
+      weight: 500,
       height: 1,
     },
     sublabel: {

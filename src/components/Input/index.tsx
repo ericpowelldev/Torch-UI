@@ -13,6 +13,8 @@ import {
 import { useTui } from "@tui";
 import { useRootStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
 
+import Label from "../Label";
+
 // PROPS ---------------------------------------------------------------- //
 
 interface InputProps {
@@ -143,10 +145,19 @@ const Input = ({
   return (
     <div className={rootStyles} {...props?.root}>
       {label && (
-        <label className={labelStyles} {...props?.label}>
+        <Label
+          className={labelStyles}
+          disabled={disabled}
+          error={error}
+          info={info}
+          inverse={inverse}
+          required={required}
+          success={success}
+          warning={warning}
+          {...props?.label}
+        >
           {label}
-          {required && <span style={{ color: theme.color.error[500] }}> *</span>}
-        </label>
+        </Label>
       )}
 
       <div className={wrapperStyles}>
