@@ -197,7 +197,7 @@ const theme = {
     text: `1px 1px 2px #00000048`,
     toggleSlide: `1px 1px 2px #00000048`,
     toggleTrack: `1px 1px 2px #00000048`,
-    tooltip: `1px 1px 2px #00000048`,
+    tooltip: `1px 1px 2px #00000060`,
   },
 
   // Blur Options

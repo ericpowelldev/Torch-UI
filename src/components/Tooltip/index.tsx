@@ -59,7 +59,7 @@ const Tooltip = ({
 
   // Specialized Properties //
 
-  arrow = true,
+  arrow = false,
   background = "dark",
   content,
   disabled = false,

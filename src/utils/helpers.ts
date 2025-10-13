@@ -503,10 +503,10 @@ export const getToggleIconSize = (size: SizeValues) => {
 
 /** Get tooltip background color */
 export const getTooltipBackgroundColor = (theme: Theme, background: "dark" | "light") => {
-  if (theme.mode === "dark" && background === "dark") return theme?.color?.bg?.[1];
-  if (theme.mode === "dark" && background === "light") return theme?.color?.bgInverse?.[1];
-  if (theme.mode === "light" && background === "dark") return theme?.color?.bgInverse?.[1];
-  if (theme.mode === "light" && background === "light") return theme?.color?.bg?.[1];
+  if (theme.mode === "dark" && background === "dark") return theme?.color?.grayscale?.[0];
+  if (theme.mode === "dark" && background === "light") return theme?.color?.grayscale?.[750];
+  if (theme.mode === "light" && background === "dark") return theme?.color?.grayscale?.[750];
+  if (theme.mode === "light" && background === "light") return theme?.color?.grayscale?.[0];
   return theme?.color?.grayscale?.[500];
 };
 

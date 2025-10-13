@@ -123,7 +123,7 @@ const Divider = ({
           <span className={lineStyles} />
 
           {tip && direction !== `vertical` ? (
-            <Tooltip content={tip} placement="top-end">
+            <Tooltip arrow content={tip} placement="top-end">
               <MdInfo className={iconStyles} />
             </Tooltip>
           ) : null}
