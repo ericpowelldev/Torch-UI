@@ -503,18 +503,18 @@ export const getToggleIconSize = (size: SizeValues) => {
 
 /** Get tooltip background color */
 export const getTooltipBackgroundColor = (theme: Theme, background: "dark" | "light") => {
-  if (theme.mode === "dark" && background === "dark") return theme?.color?.grayscale?.[0];
-  if (theme.mode === "dark" && background === "light") return theme?.color?.grayscale?.[750];
+  if (theme.mode === "dark" && background === "dark") return theme?.color?.grayscale?.[250];
   if (theme.mode === "light" && background === "dark") return theme?.color?.grayscale?.[750];
-  if (theme.mode === "light" && background === "light") return theme?.color?.grayscale?.[0];
+  if (theme.mode === "dark" && background === "light") return theme?.color?.grayscale?.[750];
+  if (theme.mode === "light" && background === "light") return theme?.color?.grayscale?.[250];
   return theme?.color?.grayscale?.[500];
 };
 
 /** Get tooltip foreground color */
 export const getTooltipForegroundColor = (theme: Theme, background: "dark" | "light") => {
   if (theme.mode === "dark" && background === "dark") return theme?.color?.fg?.[0];
-  if (theme.mode === "dark" && background === "light") return theme?.color?.fgInverse?.[0];
   if (theme.mode === "light" && background === "dark") return theme?.color?.fgInverse?.[0];
+  if (theme.mode === "dark" && background === "light") return theme?.color?.fgInverse?.[0];
   if (theme.mode === "light" && background === "light") return theme?.color?.fg?.[0];
   return theme?.color?.fg?.[0];
 };
