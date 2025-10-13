@@ -9,6 +9,7 @@ import Container from "./components/Container";
 import Divider from "./components/Divider";
 import Flex from "./components/Flex";
 import Input from "./components/Input";
+import Label from "./components/Label";
 import Option from "./components/Option";
 import Palette from "./components/Palette";
 import ProgressCircle from "./components/ProgressCircle";
@@ -33,6 +34,7 @@ export {
   Divider,
   Flex,
   Input,
+  Label,
   Option,
   Palette,
   ProgressCircle,

@@ -143,13 +143,13 @@ export const useLineStyles = (
           label: TuiDivider-line;
           min-width: 0px;
           width: 100%;
-          border-top: ${lineWidth}px ${lineStyle} ${theme?.color?.divider[1]};
+          border-top: ${lineWidth}px ${lineStyle} ${theme?.color?.divider[0]};
         `
       : css`
           label: TuiDivider-line;
           min-width: 0px;
           height: 100%;
-          border-left: ${lineWidth}px ${lineStyle} ${theme?.color?.divider[1]};
+          border-left: ${lineWidth}px ${lineStyle} ${theme?.color?.divider[0]};
         `;
 
   // Return Styles

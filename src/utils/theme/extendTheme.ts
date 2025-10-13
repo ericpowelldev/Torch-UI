@@ -189,32 +189,19 @@ const buildBackgroundDisabledColor = (color: string, themeMode?: string) => {
 /** Build interaction colors */
 const buildInteractionColors = (color: string, themeMode?: string) => {
   return {
-    hover: Color(color).fade(0.96).hexa(),
-    focus: Color(color).fade(0.92).hexa(),
-    active: Color(color).fade(0.88).hexa(),
-    selected: Color(color).fade(0.84).hexa(),
+    hover: Color(color).fade(0.95).hexa(),
+    focus: Color(color).fade(0.9).hexa(),
+    active: Color(color).fade(0.85).hexa(),
+    selected: Color(color).fade(0.8).hexa(),
   };
 };
 
 /** Build divider colors */
 const buildDividerColors = (color: string, themeMode?: string) => {
   const shades = [
-    Color(color).fade(0.88).hexa(),
     Color(color).fade(0.82).hexa(),
     Color(color).fade(0.76).hexa(),
     Color(color).fade(0.7).hexa(),
-  ];
-
-  return shades;
-};
-
-/** Build divider inverse colors */
-const buildDividerInverseColors = (color: string, themeMode?: string) => {
-  const shades = [
-    Color(color).fade(0.12).hexa(),
-    Color(color).fade(0.18).hexa(),
-    Color(color).fade(0.24).hexa(),
-    Color(color).fade(0.3).hexa(),
   ];
 
   return shades;
@@ -272,7 +259,7 @@ const extendTheme = (theme: SimpleTheme, customThemeName?: string) => {
       bgDisabled: buildBackgroundDisabledColor(customTheme?.color?.grayscale),
 
       divider: buildDividerColors(customTheme?.color?.fg, themeMode),
-      dividerInverse: buildDividerInverseColors(customTheme?.color?.bg, themeMode),
+      dividerInverse: buildDividerColors(customTheme?.color?.bg, themeMode),
 
       interaction: buildInteractionColors(customTheme?.color?.fg, themeMode),
     },

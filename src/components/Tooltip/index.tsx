@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { BoolValues, ColorValues, TintValues, TooltipPlacementValues } from "@utils/types";
+import { BoolValues, TooltipPlacementValues } from "@utils/types";
 
 import { useTui } from "@tui";
 import { useRootStyles, useContentStyles, useArrowStyles } from "./styles";
@@ -29,7 +29,7 @@ interface TooltipProps {
   // Specialized Properties //
 
   arrow?: BoolValues;
-  color?: ColorValues;
+  background?: "dark" | "light";
   content: React.ReactNode;
   disabled?: BoolValues;
   disableInteractive?: BoolValues;
@@ -41,7 +41,6 @@ interface TooltipProps {
   onOpen?: () => void;
   open?: boolean;
   placement?: TooltipPlacementValues;
-  tint?: TintValues;
 
   // HTML Properties //
 
@@ -61,7 +60,7 @@ const Tooltip = ({
   // Specialized Properties //
 
   arrow = true,
-  color = "utility",
+  background = "dark",
   content,
   disabled = false,
   disableInteractive = false,
@@ -73,7 +72,6 @@ const Tooltip = ({
   onOpen,
   open: controlledOpen,
   placement = "top",
-  tint = 700,
 
   // HTML Properties //
 
@@ -87,12 +85,8 @@ const Tooltip = ({
     classes?.root,
     className,
   ]);
-  const contentStyles = useContentStyles(theme, { color, disabled, maxWidth, tint }, [
-    classes?.content,
-  ]);
-  const arrowStyles = useArrowStyles(theme, { color, disabled, placement, tint }, [
-    classes?.arrow,
-  ]);
+  const contentStyles = useContentStyles(theme, { background, maxWidth }, [classes?.content]);
+  const arrowStyles = useArrowStyles(theme, { background, placement }, [classes?.arrow]);
 
   // State
   const [internalOpen, setInternalOpen] = React.useState(false);
@@ -301,36 +295,36 @@ const Tooltip = ({
   }
 
   // Return Component
+  if (!isOpen) return child;
   return (
     <>
       {child}
-      {isOpen && (
-        <div
-          ref={tooltipRef}
-          id="torch-ui-tooltip"
-          role="tooltip"
-          className={rootStyles}
-          style={{
-            top: position.top,
-            left: position.left,
-          }}
-          onMouseEnter={
-            !disableInteractive
-              ? () => {
-                  clearTimeout(leaveTimeoutRef.current);
-                }
-              : undefined
-          }
-          onMouseLeave={!disableInteractive ? handleClose : undefined}
-          {...props?.root}
-          {...rest}
-        >
-          <div className={contentStyles} {...props?.content}>
-            {content}
-          </div>
-          {arrow ? <div className={arrowStyles} {...props?.arrow} /> : null}
+
+      <div
+        ref={tooltipRef}
+        id="torch-ui-tooltip"
+        role="tooltip"
+        className={rootStyles}
+        style={{
+          top: position.top,
+          left: position.left,
+        }}
+        onMouseEnter={
+          !disableInteractive
+            ? () => {
+                clearTimeout(leaveTimeoutRef.current);
+              }
+            : undefined
+        }
+        onMouseLeave={!disableInteractive ? handleClose : undefined}
+        {...props?.root}
+        {...rest}
+      >
+        <div className={contentStyles} {...props?.content}>
+          {content}
         </div>
-      )}
+        {arrow ? <div className={arrowStyles} {...props?.arrow} /> : null}
+      </div>
     </>
   );
 };

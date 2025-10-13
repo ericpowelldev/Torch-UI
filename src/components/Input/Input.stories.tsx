@@ -431,3 +431,259 @@ export const VariantsAndColors: Story = {
     </Flex>
   ),
 };
+
+export const InverseVariantsAndColors: Story = {
+  render: () => (
+    <Flex
+      style={{ backgroundColor: "#242c40", padding: 16 }}
+      container
+      direction="column"
+      gap={3}
+    >
+      <Flex container gap={2}>
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="solid"
+          color="primary"
+          label="Primary Solid"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="soft"
+          color="primary"
+          label="Primary Soft"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="plain"
+          color="primary"
+          label="Primary Plain"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="outlined"
+          color="primary"
+          label="Primary Outlined"
+          placeholder="Enter some text..."
+        />
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="solid"
+          color="secondary"
+          label="Secondary Solid"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="soft"
+          color="secondary"
+          label="Secondary Soft"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="plain"
+          color="secondary"
+          label="Secondary Plain"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="outlined"
+          color="secondary"
+          label="Secondary Outlined"
+          placeholder="Enter some text..."
+        />
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="solid"
+          color="utility"
+          label="Utility Solid"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="soft"
+          color="utility"
+          label="Utility Soft"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="plain"
+          color="utility"
+          label="Utility Plain"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="outlined"
+          color="utility"
+          label="Utility Outlined"
+          placeholder="Enter some text..."
+        />
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="solid"
+          color="error"
+          label="Error Solid"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="soft"
+          color="error"
+          label="Error Soft"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="plain"
+          color="error"
+          label="Error Plain"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="outlined"
+          color="error"
+          label="Error Outlined"
+          placeholder="Enter some text..."
+        />
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="solid"
+          color="warning"
+          label="Warning Solid"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="soft"
+          color="warning"
+          label="Warning Soft"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="plain"
+          color="warning"
+          label="Warning Plain"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="outlined"
+          color="warning"
+          label="Warning Outlined"
+          placeholder="Enter some text..."
+        />
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="solid"
+          color="success"
+          label="Success Solid"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="soft"
+          color="success"
+          label="Success Soft"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="plain"
+          color="success"
+          label="Success Plain"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="outlined"
+          color="success"
+          label="Success Outlined"
+          placeholder="Enter some text..."
+        />
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="solid"
+          color="info"
+          label="Info Solid"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="soft"
+          color="info"
+          label="Info Soft"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="plain"
+          color="info"
+          label="Info Plain"
+          placeholder="Enter some text..."
+        />
+        <Component
+          inverse
+          style={{ width: 180 }}
+          variant="outlined"
+          color="info"
+          label="Info Outlined"
+          placeholder="Enter some text..."
+        />
+      </Flex>
+    </Flex>
+  ),
+};

@@ -205,7 +205,7 @@ const theme = {
     none: `none`,
     soft: `blur(3px)`,
     medium: `blur(6px)`,
-    harsh: `blue(9px)`,
+    harsh: `blur(9px)`,
   },
 
   // Z-Index Options
@@ -256,7 +256,7 @@ const theme = {
   // Visualize Options
   visualize: `repeating-linear-gradient(135deg, #00000010, #00000010 8px, #00000008 8px, #00000008 16px)`,
 
-  // Custom theme overrides
+  // Custom Theme Overrides
   custom: {
     dark: {
       mode: `dark`,

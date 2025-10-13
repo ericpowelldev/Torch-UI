@@ -69,7 +69,7 @@ const TuiThemeProvider = ({
 
   return (
     <TuiThemeContext.Provider value={ctx}>
-      {cssPreset && <Preset theme={extendedTheme} />}
+      {cssPreset ? <Preset theme={extendedTheme} /> : null}
       {children}
     </TuiThemeContext.Provider>
   );

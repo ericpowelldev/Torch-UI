@@ -55,7 +55,7 @@ export const useRootStyles = (
 
   const backdropBlurCSS = backdropBlur
     ? css`
-        backdrop-filter: ${theme?.blur?.medium};
+        backdrop-filter: ${theme?.blur?.medium || theme?.blur?.none};
       `
     : null;
 

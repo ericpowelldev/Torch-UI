@@ -77,7 +77,7 @@ const Toggle = ({
 
   // Specialized Properties //
 
-  color = "success",
+  color = "primary",
   disabled = false,
   iconChecked,
   iconUnchecked,

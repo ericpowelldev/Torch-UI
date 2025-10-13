@@ -1,9 +1,9 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import { css, cx, keyframes } from "@utils/emotion";
+import { getTooltipBackgroundColor, getTooltipForegroundColor } from "@utils/helpers";
 
 import { Theme } from "@utils/types";
-import { getColorBg } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
 
@@ -39,8 +39,8 @@ export const useRootStyles = (
   // CSS Stylesheet
   const rootCSS = css`
     label: TuiTooltip-root;
-    position: fixed;
     z-index: ${theme?.zIndex?.tooltip || theme?.zIndex?.base};
+    position: fixed;
     animation: ${followCursor ? `${fadeIn} 0.25s ease-out` : `${fadeInMove} 0.25s ease-out`};
     user-select: none;
     pointer-events: none;
@@ -56,27 +56,26 @@ export const useContentStyles = (
   overrides?: (string | undefined)[]
 ) => {
   // Props
-  const { color, disabled, maxWidth, tint } = props;
+  const { background, maxWidth } = props;
 
   // CSS Stylesheet
   const contentCSS = css`
     label: TuiTooltip-content;
-    word-wrap: break-word;
-    padding: ${theme?.padding?.tooltip || theme?.padding?.none};
-    border-radius: ${theme?.radius?.tooltip || theme?.radius?.none};
-    line-height: ${theme?.text?.tooltip?.height || theme?.text?.height};
-    font-family: ${theme?.text?.tooltip?.family || theme?.text?.family};
-    font-size: ${theme?.text?.tooltip?.size || theme?.text?.size};
-    font-weight: ${theme?.text?.tooltip?.weight || theme?.text?.weight};
-    background-color: ${getColorBg(theme, color, tint)};
-    color: ${theme?.color?.white || "#ffffff"};
-    box-shadow: ${theme?.shadow?.tooltip || theme?.shadow?.none};
-    opacity: ${disabled ? 0.5 : 1};
     max-width: ${typeof maxWidth === "number"
       ? `${maxWidth}px`
       : typeof maxWidth === "string"
         ? maxWidth
         : "256px"};
+    padding: ${theme?.padding?.tooltip || theme?.padding?.none};
+    border-radius: ${theme?.radius?.tooltip || theme?.radius?.none};
+    line-height: ${theme?.text?.tooltip?.height || theme?.text?.height};
+    word-wrap: break-word;
+    font-family: ${theme?.text?.tooltip?.family || theme?.text?.family};
+    font-size: ${theme?.text?.tooltip?.size || theme?.text?.size};
+    font-weight: ${theme?.text?.tooltip?.weight || theme?.text?.weight};
+    background-color: ${getTooltipBackgroundColor(theme, background)};
+    color: ${getTooltipForegroundColor(theme, background)};
+    box-shadow: ${theme?.shadow?.tooltip || theme?.shadow?.none};
   `;
 
   // Return Styles
@@ -89,7 +88,7 @@ export const useArrowStyles = (
   overrides?: (string | undefined)[]
 ) => {
   // Props
-  const { color, disabled, placement, tint } = props;
+  const { background, placement } = props;
 
   // CSS Stylesheet
   const arrowCSS = css`
@@ -98,8 +97,7 @@ export const useArrowStyles = (
     width: 8px;
     height: 8px;
     transform: rotate(45deg);
-    background-color: ${getColorBg(theme, color, tint)};
-    opacity: ${disabled ? 0.5 : 1};
+    background-color: ${getTooltipBackgroundColor(theme, background)};
   `;
 
   let positionCSS = undefined;

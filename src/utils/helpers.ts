@@ -498,3 +498,23 @@ export const getToggleIconSize = (size: SizeValues) => {
   if (size === `xl` || size === `max`) return 26;
   return 18;
 };
+
+// TOOLTIP ---------------------------------------------------------------- //
+
+/** Get tooltip background color */
+export const getTooltipBackgroundColor = (theme: Theme, background: "dark" | "light") => {
+  if (theme.mode === "dark" && background === "dark") return theme?.color?.bg?.[1];
+  if (theme.mode === "dark" && background === "light") return theme?.color?.bgInverse?.[1];
+  if (theme.mode === "light" && background === "dark") return theme?.color?.bgInverse?.[1];
+  if (theme.mode === "light" && background === "light") return theme?.color?.bg?.[1];
+  return theme?.color?.grayscale?.[500];
+};
+
+/** Get tooltip foreground color */
+export const getTooltipForegroundColor = (theme: Theme, background: "dark" | "light") => {
+  if (theme.mode === "dark" && background === "dark") return theme?.color?.fg?.[0];
+  if (theme.mode === "dark" && background === "light") return theme?.color?.fgInverse?.[0];
+  if (theme.mode === "light" && background === "dark") return theme?.color?.fgInverse?.[0];
+  if (theme.mode === "light" && background === "light") return theme?.color?.fg?.[0];
+  return theme?.color?.fg?.[0];
+};

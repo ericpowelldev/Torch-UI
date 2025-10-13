@@ -171,7 +171,7 @@ export const useWrapperStyles = (
   const outlinedCSS =
     variant === `outlined`
       ? css`
-          outline: 1px solid ${inverse ? theme?.color?.fgInverse?.[3] : theme?.color?.fg?.[3]};
+          outline: 1px solid ${inverse ? theme?.color?.dividerInverse?.[0] : theme?.color?.divider?.[0]};
           outline-offset: -1px;
           background-color: transparent;
           transition: ${theme?.transition?.inputWithOutline || theme?.transition?.none};
