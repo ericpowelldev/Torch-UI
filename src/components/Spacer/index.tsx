@@ -14,7 +14,7 @@ import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface SpacerProps {
+export interface SpacerProps {
   // General Properties //
 
   props?: {

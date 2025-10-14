@@ -2,14 +2,14 @@
 
 import React from "react";
 
-import { BoolValues } from "@utils/types";
-
 import { useTui } from "@tui";
 import { useRootStyles } from "./styles";
 
+import TableRow, { TableRowProps } from "@components/TableRow";
+
 // PROPS ---------------------------------------------------------------- //
 
-export interface OptionProps {
+export interface TableFooterProps {
   // General Properties //
 
   props?: {
@@ -24,8 +24,9 @@ export interface OptionProps {
 
   // Specialized Properties //
 
-  disabled?: BoolValues;
-  hidden?: BoolValues;
+  paddingHorizontal?: number;
+  paddingVertical?: number;
+  zIndex?: number;
 
   // HTML Properties //
 
@@ -34,7 +35,7 @@ export interface OptionProps {
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const Option = ({
+const TableFooter = ({
   // General Properties //
 
   props,
@@ -44,33 +45,38 @@ const Option = ({
 
   // Specialized Properties //
 
-  disabled = false,
-  hidden = false,
+  paddingHorizontal = 3,
+  paddingVertical = 2,
+  zIndex = 0,
 
   // HTML Properties //
 
   ...rest
-}: OptionProps) => {
+}: TableFooterProps) => {
   // Hooks
   const { theme } = useTui();
 
   // Styles
-  const rootStyles = useRootStyles(theme, { disabled }, [classes?.root, className]);
+  const rootStyles = useRootStyles(theme, { zIndex }, [classes?.root, className]);
 
   // Return Component
-  if (hidden) return null;
   return (
-    <option
-      className={rootStyles}
-      disabled={disabled ? true : false}
-      {...props?.root}
-      {...rest}
-    >
-      {children}
-    </option>
+    <tfoot className={rootStyles} {...props?.root} {...rest}>
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && child.type === TableRow) {
+          return React.cloneElement(child as React.ReactElement<TableRowProps>, {
+            paddingHorizontal,
+            paddingVertical,
+            variant: `footer`,
+            zIndex: zIndex + 1,
+          });
+        }
+        return child;
+      })}
+    </tfoot>
   );
 };
 
 // EXPORT ---------------------------------------------------------------- //
 
-export default Option;
+export default TableFooter;

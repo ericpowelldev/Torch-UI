@@ -9,7 +9,7 @@ import { useRootStyles, useTrackStyles, useBarStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface ProgressCircleProps {
+export interface ProgressCircleProps {
   // General Properties //
 
   props?: {
@@ -54,7 +54,7 @@ const ProgressCircle = ({
   // Specialized Properties //
 
   animateMs = 500,
-  color = "utility",
+  color = "primary",
   disabled,
   size = 40,
   thickness = 0,

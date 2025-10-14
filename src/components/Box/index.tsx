@@ -17,7 +17,7 @@ import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface BoxProps {
+export interface BoxProps {
   // General Properties //
 
   props?: {

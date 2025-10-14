@@ -18,7 +18,7 @@ import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface TextProps {
+export interface TextProps {
   // General Properties //
 
   props?: {

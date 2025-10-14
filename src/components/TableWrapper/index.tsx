@@ -2,14 +2,14 @@
 
 import React from "react";
 
-import { BoolValues } from "@utils/types";
+import { TableWrapperComponentValues } from "@utils/types";
 
 import { useTui } from "@tui";
 import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-export interface OptionProps {
+export interface TableWrapperProps {
   // General Properties //
 
   props?: {
@@ -21,11 +21,7 @@ export interface OptionProps {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
-
-  // Specialized Properties //
-
-  disabled?: BoolValues;
-  hidden?: BoolValues;
+  component?: TableWrapperComponentValues;
 
   // HTML Properties //
 
@@ -34,43 +30,33 @@ export interface OptionProps {
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const Option = ({
+const TableWrapper = ({
   // General Properties //
 
   props,
   classes,
   className,
   children,
-
-  // Specialized Properties //
-
-  disabled = false,
-  hidden = false,
+  component,
 
   // HTML Properties //
 
   ...rest
-}: OptionProps) => {
+}: TableWrapperProps) => {
   // Hooks
   const { theme } = useTui();
 
   // Styles
-  const rootStyles = useRootStyles(theme, { disabled }, [classes?.root, className]);
+  const rootStyles = useRootStyles(theme, {}, [classes?.root, className]);
 
   // Return Component
-  if (hidden) return null;
-  return (
-    <option
-      className={rootStyles}
-      disabled={disabled ? true : false}
-      {...props?.root}
-      {...rest}
-    >
-      {children}
-    </option>
+  return React.createElement(
+    component || `div`,
+    { className: rootStyles, ...props?.root, ...rest },
+    children
   );
 };
 
 // EXPORT ---------------------------------------------------------------- //
 
-export default Option;
+export default TableWrapper;

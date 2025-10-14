@@ -25,7 +25,7 @@ import StatusIcon from "@components/StatusIcon";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface ButtonProps {
+export interface ButtonProps {
   // General Properties //
 
   props?: {
@@ -55,7 +55,6 @@ interface ButtonProps {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
-  tooltip?: React.ReactNode;
 
   // Specialized Properties //
 
@@ -92,12 +91,11 @@ const Button = ({
   classes,
   className,
   children,
-  tooltip,
 
   // Specialized Properties //
 
   backdropBlur = false,
-  color = "utility",
+  color = "primary",
   disabled = false,
   error = false,
   fullWidth = false,

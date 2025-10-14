@@ -11,7 +11,7 @@ import { MdCheckCircle, MdInfo, MdReport, MdWarning } from "react-icons/md";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface StatusIconProps {
+export interface StatusIconProps {
   // General Properties //
 
   props?: {

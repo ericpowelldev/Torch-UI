@@ -9,7 +9,7 @@ import { useRootStyles, useContentStyles, useArrowStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface TooltipProps {
+export interface TooltipProps {
   // General Properties //
 
   props?: {

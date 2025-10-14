@@ -23,7 +23,7 @@ import { FaCheck } from "react-icons/fa6";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface CheckboxProps {
+export interface CheckboxProps {
   // General Properties //
 
   props?: {

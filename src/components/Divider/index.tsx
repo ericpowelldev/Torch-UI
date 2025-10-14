@@ -15,11 +15,11 @@ import {
 
 import { MdInfo } from "react-icons/md";
 
-import Tooltip from "../Tooltip";
+import Tooltip from "@components/Tooltip";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface DividerProps {
+export interface DividerProps {
   // General Properties //
 
   props?: {
@@ -27,7 +27,7 @@ interface DividerProps {
     stretch?: React.HTMLAttributes<HTMLElement>;
     label?: React.HTMLAttributes<HTMLElement>;
     line?: React.HTMLAttributes<HTMLElement>;
-    icon?: React.HTMLAttributes<HTMLElement>;
+    icon?: React.SVGProps<SVGSVGElement>;
   };
   classes?: {
     root?: string;
@@ -113,25 +113,27 @@ const Divider = ({
     { className: rootStyles, ...props?.root, ...rest },
     children ? (
       <>
-        <span className={stretchStyles}>
-          <span className={lineStyles} />
+        <span className={stretchStyles} {...props?.stretch}>
+          <span className={lineStyles} {...props?.line} />
         </span>
 
-        <span className={labelStyles}>{children}</span>
+        <span className={labelStyles} {...props?.label}>
+          {children}
+        </span>
 
-        <span className={stretchStyles}>
-          <span className={lineStyles} />
+        <span className={stretchStyles} {...props?.stretch}>
+          <span className={lineStyles} {...props?.line} />
 
           {tip && direction !== `vertical` ? (
             <Tooltip arrow content={tip} placement="top-end">
-              <MdInfo className={iconStyles} />
+              <MdInfo className={iconStyles} {...props?.icon} />
             </Tooltip>
           ) : null}
         </span>
       </>
     ) : (
       <>
-        <span className={lineStyles} />
+        <span className={lineStyles} {...props?.line} />
       </>
     )
   );

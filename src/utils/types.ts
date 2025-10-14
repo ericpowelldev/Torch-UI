@@ -365,6 +365,12 @@ export type InputComponentValues = `div` | `span`;
 export const inputVariantValues = [`solid`, `soft`, `plain`, `outlined`];
 export type InputVariantValues = `solid` | `soft` | `plain` | `outlined`;
 
+// SORT TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted sort directions */
+export const sortDirectionValues = [`asc`, `desc`];
+export type SortDirectionValues = `asc` | `desc`;
+
 // SPACER TYPES ---------------------------------------------------------------- //
 
 /** Array of accepted spacer components */
@@ -374,6 +380,24 @@ export type SpacerComponentValues = `div` | `span`;
 /** Array of accepted spacer directions */
 export const spacerDirectionValues = [`horizontal`, `vertical`];
 export type SpacerDirectionValues = `horizontal` | `vertical`;
+
+// TABLE TYPES ---------------------------------------------------------------- //
+
+/** Array of accepted table alignments */
+export const tableAlignmentValues = [`left`, `center`, `right`, `justify`];
+export type TableAlignmentValues = `left` | `center` | `right` | `justify`;
+
+/** Array of accepted table cell sort components */
+export const tableCellSortComponentValues = [`div`, `span`];
+export type TableCellSortComponentValues = `div` | `span`;
+
+/** Array of accepted table section variants */
+export const tableSectionVariantValues = [`header`, `body`, `footer`];
+export type TableSectionVariantValues = `header` | `body` | `footer`;
+
+/** Array of accepted table components */
+export const tableWrapperComponentValues = [`div`, `span`];
+export type TableWrapperComponentValues = `div` | `span`;
 
 // TEXT TYPES ---------------------------------------------------------------- //
 

@@ -169,6 +169,7 @@ export const useIconStyles = (
     max-width: 20px;
     max-height: 20px;
     color: ${theme?.color?.fg?.[2]};
+    cursor: pointer;
   `;
 
   // Return Styles

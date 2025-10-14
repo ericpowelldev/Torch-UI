@@ -9,7 +9,7 @@ import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface LabelProps {
+export interface LabelProps {
   // General Properties //
 
   props?: {

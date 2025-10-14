@@ -23,7 +23,7 @@ import {
 
 // PROPS ---------------------------------------------------------------- //
 
-interface ToggleProps {
+export interface ToggleProps {
   // General Properties //
 
   props?: {

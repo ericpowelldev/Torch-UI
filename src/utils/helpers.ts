@@ -15,6 +15,7 @@ import {
   SelectorValues,
   SizeValues,
   SizeValuesExtended,
+  SortDirectionValues,
   StatusValues,
   TextComponentValues,
   TextVariantValues,
@@ -24,6 +25,30 @@ import {
   variantValues,
   VariantValues,
 } from "./types";
+
+// GENERAL ---------------------------------------------------------------- //
+
+export const sortTableRows = (
+  rows: any[],
+  orderBy: string,
+  orderDirection: SortDirectionValues,
+  options?: {
+    nullsFirst?: true | false;
+  }
+) => {
+  const { nullsFirst = false } = options || {};
+
+  return [...rows].sort((a, b) => {
+    const aValue = a[orderBy];
+    const bValue = b[orderBy];
+
+    if (aValue && bValue && aValue > bValue) return orderDirection === `asc` ? 1 : -1;
+    if (aValue && bValue && aValue < bValue) return orderDirection === `asc` ? -1 : 1;
+    if (!aValue) return nullsFirst ? -1 : 1;
+    if (!bValue) return nullsFirst ? 1 : -1;
+    return 0;
+  });
+};
 
 // BOX ---------------------------------------------------------------- //
 
@@ -486,7 +511,7 @@ export const getToggleSlideGradientSize = (size: SizeValues) => {
   if (size === `md`) return 1.667;
   if (size === `lg`) return 2;
   if (size === `xl` || size === `max`) return 2.333;
-  return 1.5;
+  return 1.667;
 };
 
 /** Get toggle icon size */

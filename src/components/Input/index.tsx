@@ -13,11 +13,11 @@ import {
 import { useTui } from "@tui";
 import { useRootStyles, useLabelStyles, useWrapperStyles, useInputStyles } from "./styles";
 
-import Label from "../Label";
+import Label from "@components/Label";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface InputProps {
+export interface InputProps {
   // General Properties //
 
   props?: {

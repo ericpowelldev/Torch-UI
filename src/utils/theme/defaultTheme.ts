@@ -136,6 +136,21 @@ const theme = {
       weight: 400,
       height: 1,
     },
+    tableBodyCell: {
+      size: `14px`,
+      weight: 400,
+      height: 1.333,
+    },
+    tableFooterCell: {
+      size: `16px`,
+      weight: 400,
+      height: 1.333,
+    },
+    tableHeaderCell: {
+      size: `12px`,
+      weight: 600,
+      height: 1.333,
+    },
     tooltip: {
       size: `12px`,
       weight: 400,
@@ -172,6 +187,7 @@ const theme = {
     checkbox: `4px`,
     input: `6px`,
     pill: `10000px`,
+    table: `10px`,
     tooltip: `6px`,
   },
 
@@ -184,6 +200,7 @@ const theme = {
     checkbox: `outline-color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out`,
     input: `all 0.15s ease-in-out`,
     inputWithOutline: `all 0.15s ease-in-out, outline-color 0.0s, outline-offset 0.0s, outline-width 0.0s`,
+    table: `all 0.15s ease-in-out`,
   },
 
   // Shadow Options

@@ -1,46 +1,92 @@
 import { TuiThemeProvider, useTui } from "./Tui";
-import { css, cx, keyframes } from "@utils/emotion";
 import { SimpleTheme, Theme } from "@utils/types";
 
-import Box from "./components/Box";
-import Button from "./components/Button";
-import Checkbox from "./components/Checkbox";
-import Container from "./components/Container";
-import Divider from "./components/Divider";
-import Flex from "./components/Flex";
-import Input from "./components/Input";
-import Label from "./components/Label";
-import Option from "./components/Option";
-import Palette from "./components/Palette";
-import ProgressCircle from "./components/ProgressCircle";
-import Spacer from "./components/Spacer";
-import StatusIcon from "./components/StatusIcon";
-import Text from "./components/Text";
-import Toggle from "./components/Toggle";
-import Tooltip from "./components/Tooltip";
+import { css, cx, keyframes } from "@utils/emotion";
+
+import Box, { BoxProps } from "./components/Box";
+import Button, { ButtonProps } from "./components/Button";
+import Checkbox, { CheckboxProps } from "./components/Checkbox";
+import Container, { ContainerProps } from "./components/Container";
+import Divider, { DividerProps } from "./components/Divider";
+import Flex, { FlexProps } from "./components/Flex";
+import Input, { InputProps } from "./components/Input";
+import Label, { LabelProps } from "./components/Label";
+import Option, { OptionProps } from "./components/Option";
+import Palette, { PaletteProps } from "./components/Palette";
+import ProgressCircle, { ProgressCircleProps } from "./components/ProgressCircle";
+import Spacer, { SpacerProps } from "./components/Spacer";
+import StatusIcon, { StatusIconProps } from "./components/StatusIcon";
+import Table, { TableProps } from "./components/Table";
+import TableBody, { TableBodyProps } from "./components/TableBody";
+import TableCell, { TableCellProps } from "./components/TableCell";
+import TableFooter, { TableFooterProps } from "./components/TableFooter";
+import TableHead, { TableHeadProps } from "./components/TableHead";
+import TablePagination, { TablePaginationProps } from "./components/TablePagination";
+import TableRow, { TableRowProps } from "./components/TableRow";
+import TableWrapper, { TableWrapperProps } from "./components/TableWrapper";
+import Text, { TextProps } from "./components/Text";
+import Toggle, { ToggleProps } from "./components/Toggle";
+import Tooltip, { TooltipProps } from "./components/Tooltip";
 
 export {
+  // TUI //
   TuiThemeProvider,
   useTui,
+  SimpleTheme,
+  Theme,
+
+  // Utils //
   css,
   cx,
   keyframes,
-  SimpleTheme,
-  Theme,
+
+  // Components //
   Box,
+  BoxProps,
   Button,
+  ButtonProps,
   Checkbox,
+  CheckboxProps,
   Container,
+  ContainerProps,
   Divider,
+  DividerProps,
   Flex,
+  FlexProps,
   Input,
+  InputProps,
   Label,
+  LabelProps,
   Option,
+  OptionProps,
   Palette,
+  PaletteProps,
   ProgressCircle,
+  ProgressCircleProps,
   Spacer,
+  SpacerProps,
   StatusIcon,
+  StatusIconProps,
+  Table,
+  TableProps,
+  TableBody,
+  TableBodyProps,
+  TableCell,
+  TableCellProps,
+  TableFooter,
+  TableFooterProps,
+  TableHead,
+  TableHeadProps,
+  TablePagination,
+  TablePaginationProps,
+  TableRow,
+  TableRowProps,
+  TableWrapper,
+  TableWrapperProps,
   Text,
+  TextProps,
   Toggle,
+  ToggleProps,
   Tooltip,
+  TooltipProps,
 };

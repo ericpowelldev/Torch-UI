@@ -6,7 +6,7 @@
 
 /* Scrollbar */
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 16px;
 }
 ::-webkit-scrollbar-thumb {
@@ -22,7 +22,7 @@
 ::-webkit-scrollbar-thumb:active {
   background: #aaa;
   background-clip: padding-box;
-} */
+}
 
 /* Scroll to Top */
 

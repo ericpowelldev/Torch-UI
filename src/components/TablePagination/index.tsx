@@ -2,14 +2,12 @@
 
 import React from "react";
 
-import { BoolValues } from "@utils/types";
-
 import { useTui } from "@tui";
 import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-export interface OptionProps {
+export interface TablePaginationProps {
   // General Properties //
 
   props?: {
@@ -24,9 +22,6 @@ export interface OptionProps {
 
   // Specialized Properties //
 
-  disabled?: BoolValues;
-  hidden?: BoolValues;
-
   // HTML Properties //
 
   [x: string]: any;
@@ -34,7 +29,7 @@ export interface OptionProps {
 
 // COMPONENT ---------------------------------------------------------------- //
 
-const Option = ({
+const TablePagination = ({
   // General Properties //
 
   props,
@@ -44,33 +39,24 @@ const Option = ({
 
   // Specialized Properties //
 
-  disabled = false,
-  hidden = false,
-
   // HTML Properties //
 
   ...rest
-}: OptionProps) => {
+}: TablePaginationProps) => {
   // Hooks
   const { theme } = useTui();
 
   // Styles
-  const rootStyles = useRootStyles(theme, { disabled }, [classes?.root, className]);
+  const rootStyles = useRootStyles(theme, {}, [classes?.root, className]);
 
   // Return Component
-  if (hidden) return null;
   return (
-    <option
-      className={rootStyles}
-      disabled={disabled ? true : false}
-      {...props?.root}
-      {...rest}
-    >
+    <tfoot className={rootStyles} {...props?.root} {...rest}>
       {children}
-    </option>
+    </tfoot>
   );
 };
 
 // EXPORT ---------------------------------------------------------------- //
 
-export default Option;
+export default TablePagination;

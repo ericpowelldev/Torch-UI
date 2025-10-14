@@ -10,7 +10,7 @@ import Spacer from "@components/Spacer";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface PaletteProps {
+export interface PaletteProps {
   // General Properties //
 
   props?: {

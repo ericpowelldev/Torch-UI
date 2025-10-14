@@ -9,7 +9,7 @@ import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface ContainerProps {
+export interface ContainerProps {
   // General Properties //
 
   props?: {

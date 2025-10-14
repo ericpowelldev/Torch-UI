@@ -9,7 +9,7 @@ import { useRootStyles } from "./styles";
 
 // PROPS ---------------------------------------------------------------- //
 
-interface FlexProps {
+export interface FlexProps {
   // General Properties //
 
   props?: {

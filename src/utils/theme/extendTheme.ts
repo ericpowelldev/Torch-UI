@@ -120,6 +120,11 @@ const buildForegroundInverseColors = (color: string, themeMode?: string) => {
   return foregroundColors;
 };
 
+/** Build foreground disabled color */
+const buildForegroundDisabledColor = (color: string, themeMode?: string) => {
+  return Color(color).fade(0.2).hexa();
+};
+
 /** Build background colors */
 const buildBackgroundColors = (color: string, themeMode?: string) => {
   // Normalize the main color
@@ -176,24 +181,9 @@ const buildBackgroundInverseColors = (color: string, themeMode?: string) => {
   return shades;
 };
 
-/** Build foreground disabled color */
-const buildForegroundDisabledColor = (color: string, themeMode?: string) => {
-  return Color(color).fade(0.2).hexa();
-};
-
 /** Build background disabled color */
 const buildBackgroundDisabledColor = (color: string, themeMode?: string) => {
   return Color(color).fade(0.6).hexa();
-};
-
-/** Build interaction colors */
-const buildInteractionColors = (color: string, themeMode?: string) => {
-  return {
-    hover: Color(color).fade(0.95).hexa(),
-    focus: Color(color).fade(0.9).hexa(),
-    active: Color(color).fade(0.85).hexa(),
-    selected: Color(color).fade(0.8).hexa(),
-  };
 };
 
 /** Build divider colors */
@@ -205,6 +195,16 @@ const buildDividerColors = (color: string, themeMode?: string) => {
   ];
 
   return shades;
+};
+
+/** Build action colors */
+const buildActionColors = (color: string, themeMode?: string) => {
+  return {
+    hover: Color(color).fade(0.95).hexa(),
+    focus: Color(color).fade(0.9).hexa(),
+    active: Color(color).fade(0.85).hexa(),
+    selected: Color(color).fade(0.8).hexa(),
+  };
 };
 
 // ORCHESTRATION ---------------------------------------------------------------- //
@@ -261,7 +261,8 @@ const extendTheme = (theme: SimpleTheme, customThemeName?: string) => {
       divider: buildDividerColors(customTheme?.color?.fg, themeMode),
       dividerInverse: buildDividerColors(customTheme?.color?.bg, themeMode),
 
-      interaction: buildInteractionColors(customTheme?.color?.fg, themeMode),
+      action: buildActionColors(customTheme?.color?.fg, themeMode),
+      actionInverse: buildActionColors(customTheme?.color?.bg, themeMode),
     },
   };
 

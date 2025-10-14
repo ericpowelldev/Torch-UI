@@ -5,6 +5,7 @@ Torch UI - A dynamic & lightweight React component library.
 ## Component Checklist
 
 - Display
+
   - [ ] Avatar
   - [ ] Badge
   - [x] Divider
@@ -16,6 +17,7 @@ Torch UI - A dynamic & lightweight React component library.
   - [x] Tooltip
 
 - Feedback
+
   - Dialog
     - [ ] Dialog
     - [ ] DialogAction
@@ -33,6 +35,7 @@ Torch UI - A dynamic & lightweight React component library.
   - [ ] Overlay
 
 - Inputs
+
   - Button
     - [x] Button
     - [ ] CompoundButton
@@ -44,18 +47,20 @@ Torch UI - A dynamic & lightweight React component library.
     - [x] Input
     - [ ] Select
     - [ ] TimePicker
-  - [ ] Checkbox
+  - [x] Checkbox
   - [ ] Radio
   - [ ] Slider
   - [x] Toggle
 
 - Layout
+
   - [x] Box
   - [x] Container
   - [x] Flex
   - [x] Spacer
 
 - Lists & Items
+
   - Menu
     - [ ] Menu
     - [ ] MenuList
@@ -68,16 +73,17 @@ Torch UI - A dynamic & lightweight React component library.
     - [ ] Table
     - [ ] TableBody
     - [ ] TableHead
-    - [ ] TableHeadText
+    - [ ] TableKeyText
     - [ ] TablePagination
     - [ ] TableRow
-    - [ ] TableRowText
+    - [ ] TableValueText
     - [ ] TableWrapper
   - Tabs
     - [ ] Tabs
     - [ ] Tab
 
 - Surfaces
+
   - [ ] Fold
   - [ ] Riser
 
