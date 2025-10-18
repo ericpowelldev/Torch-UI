@@ -134,12 +134,10 @@ export const useIconStyles = (
   const marginCSS =
     align === `right`
       ? css`
-          margin-left: -15px;
           margin-right: ${theme.space(1)};
         `
       : css`
           margin-left: ${theme.space(1)};
-          margin-right: -15px;
         `;
 
   // Return Styles
