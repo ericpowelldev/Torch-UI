@@ -7,9 +7,9 @@ Torch UI - A dynamic & lightweight React component library.
 - Display
 
   - [ ] Avatar
-  - [ ] Badge
+  - [ ] Chip
   - [x] Divider
-  - [ ] Pill
+  - [ ] Dot
   - [ ] Popover
   - [ ] StatusAlert
   - [ ] StatusIcon
@@ -39,7 +39,7 @@ Torch UI - A dynamic & lightweight React component library.
   - Button
     - [x] Button
     - [ ] CompoundButton
-    - [ ] IconButton
+    - [x] IconButton
   - Field
     - [ ] Autocomplete
     - [ ] DatePicker

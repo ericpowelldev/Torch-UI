@@ -140,6 +140,23 @@ export const getButtonIconMargin = (size: SizeValues) => {
   return 10;
 };
 
+/** Get icon button padding (one side, px). Matches Button vertical padding for consistent scale. */
+export const getIconButtonPadding = (size: SizeValues) => {
+  if (size === `min`) return 2;
+  if (size === `xs`) return 4;
+  if (size === `sm`) return 6;
+  if (size === `md`) return 8;
+  if (size === `lg`) return 10;
+  if (size === `xl`) return 12;
+  if (size === `max`) return 14;
+  return 8;
+};
+
+/** Get icon button total size (width/height in px). total = 2 * padding + iconSize. */
+export const getIconButtonTotalSize = (size: SizeValues) => {
+  return 2 * getIconButtonPadding(size) + getButtonIconSize(size);
+};
+
 // CHECKBOX ---------------------------------------------------------------- //
 
 /** Get checkbox size */

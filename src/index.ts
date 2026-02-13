@@ -9,6 +9,7 @@ import Checkbox, { CheckboxProps } from "./components/Checkbox";
 import Container, { ContainerProps } from "./components/Container";
 import Divider, { DividerProps } from "./components/Divider";
 import Flex, { FlexProps } from "./components/Flex";
+import IconButton, { IconButtonProps } from "./components/IconButton";
 import Input, { InputProps } from "./components/Input";
 import Label, { LabelProps } from "./components/Label";
 import Option, { OptionProps } from "./components/Option";
@@ -53,6 +54,8 @@ export {
   DividerProps,
   Flex,
   FlexProps,
+  IconButton,
+  IconButtonProps,
   Input,
   InputProps,
   Label,
