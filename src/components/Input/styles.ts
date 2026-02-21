@@ -9,8 +9,8 @@ import {
   getVariantBoxShadow,
   getVariantColorFg,
   getVariantColorBg,
-  getVariantColorHover,
-  getVariantColorPlaceholder,
+  getVariantColorBgHover,
+  getVariantColorFgPlaceholder,
 } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
@@ -115,7 +115,7 @@ export const useWrapperStyles = (
           outline-offset: -2px;
           background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
             box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
               background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
@@ -135,7 +135,7 @@ export const useWrapperStyles = (
           outline-offset: -2px;
           background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
             box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
               background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
@@ -155,7 +155,7 @@ export const useWrapperStyles = (
           outline-offset: -2px;
           background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
             box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
               background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
@@ -268,7 +268,7 @@ export const useInputStyles = (
       ? css`
           color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           &::placeholder {
-            color: ${getVariantColorPlaceholder(theme, variant, color, tint, disabled)};
+            color: ${getVariantColorFgPlaceholder(theme, variant, color, tint, disabled)};
           }
         `
       : null;
@@ -278,7 +278,7 @@ export const useInputStyles = (
       ? css`
           color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           &::placeholder {
-            color: ${getVariantColorPlaceholder(theme, variant, color, tint, disabled)};
+            color: ${getVariantColorFgPlaceholder(theme, variant, color, tint, disabled)};
           }
         `
       : null;
@@ -288,7 +288,7 @@ export const useInputStyles = (
       ? css`
           color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           &::placeholder {
-            color: ${getVariantColorPlaceholder(theme, variant, color, tint, disabled)};
+            color: ${getVariantColorFgPlaceholder(theme, variant, color, tint, disabled)};
           }
         `
       : null;

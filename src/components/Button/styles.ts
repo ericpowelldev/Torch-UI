@@ -4,16 +4,17 @@ import { css, cx } from "@utils/emotion";
 
 import { Theme } from "@utils/types";
 import {
-  getButtonPadding,
-  getButtonLabelSize,
-  getButtonLabelHeight,
-  getButtonIconSize,
   getButtonIconMargin,
+  getButtonIconSize,
+  getButtonLabelHeight,
+  getButtonLabelSize,
+  getButtonPadding,
   getVariantBoxShadow,
-  getVariantColorFg,
   getVariantColorBg,
-  getVariantColorHover,
-  getVariantColorActive,
+  getVariantColorBgActive,
+  getVariantColorBgHover,
+  getVariantColorFg,
+  getVariantColorOutline,
 } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
@@ -27,14 +28,15 @@ export const useRootStyles = (
   const {
     backdropBlur,
     color,
+    colorOverride,
     disabled,
+    elevation,
     fullWidth,
     loading,
-    pill,
-    placeholder,
-    shadowButton,
+    rounded,
     shadowLabel,
     size,
+    suspended,
     tint,
     variant,
   } = props;
@@ -70,18 +72,44 @@ export const useRootStyles = (
   const solidCSS =
     variant === `solid`
       ? css`
-          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
-          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            color,
+            tint,
+            disabled,
+            colorOverride,
+          )};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled, colorOverride)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
-            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint, colorOverride)};
             @media (hover: none) {
-              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+              background-color: ${getVariantColorBg(
+                theme,
+                variant,
+                color,
+                tint,
+                disabled,
+                colorOverride,
+              )};
               box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
           }
         `
       : null;
@@ -89,18 +117,44 @@ export const useRootStyles = (
   const softCSS =
     variant === `soft`
       ? css`
-          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
-          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            color,
+            tint,
+            disabled,
+            colorOverride,
+          )};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled, colorOverride)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
-            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint, colorOverride)};
             @media (hover: none) {
-              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+              background-color: ${getVariantColorBg(
+                theme,
+                variant,
+                color,
+                tint,
+                disabled,
+                colorOverride,
+              )};
               box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
           }
         `
       : null;
@@ -108,18 +162,44 @@ export const useRootStyles = (
   const plainCSS =
     variant === `plain`
       ? css`
-          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
-          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            color,
+            tint,
+            disabled,
+            colorOverride,
+          )};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled, colorOverride)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
-            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint, colorOverride)};
             @media (hover: none) {
-              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+              background-color: ${getVariantColorBg(
+                theme,
+                variant,
+                color,
+                tint,
+                disabled,
+                colorOverride,
+              )};
               box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
           }
         `
       : null;
@@ -127,20 +207,95 @@ export const useRootStyles = (
   const outlinedCSS =
     variant === `outlined`
       ? css`
-          outline: 1px solid ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          outline: 1px solid
+            ${getVariantColorOutline(theme, variant, color, tint, disabled, colorOverride)};
           outline-offset: -1px;
-          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
-          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            color,
+            tint,
+            disabled,
+            colorOverride,
+          )};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled, colorOverride)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
-            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint, colorOverride)};
             @media (hover: none) {
-              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+              background-color: ${getVariantColorBg(
+                theme,
+                variant,
+                color,
+                tint,
+                disabled,
+                colorOverride,
+              )};
               box-shadow: ${theme?.shadow?.none};
             }
           }
           &:active {
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
+          }
+        `
+      : null;
+
+  const glassCSS =
+    variant === `glass`
+      ? css`
+          outline: 1px solid
+            ${getVariantColorOutline(theme, variant, color, tint, disabled, colorOverride)};
+          outline-offset: -1px;
+          background-color: ${getVariantColorBg(
+            theme,
+            variant,
+            color,
+            tint,
+            disabled,
+            colorOverride,
+          )};
+          color: ${getVariantColorFg(theme, variant, color, tint, disabled, colorOverride)};
+          &:hover {
+            background-color: ${getVariantColorBgHover(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
+            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint, colorOverride)};
+            @media (hover: none) {
+              background-color: ${getVariantColorBg(
+                theme,
+                variant,
+                color,
+                tint,
+                disabled,
+                colorOverride,
+              )};
+              box-shadow: ${theme?.shadow?.none};
+            }
+          }
+          &:active {
+            background-color: ${getVariantColorBgActive(
+              theme,
+              variant,
+              color,
+              tint,
+              colorOverride,
+            )};
           }
         `
       : null;
@@ -157,18 +312,18 @@ export const useRootStyles = (
       `
     : null;
 
-  const pillCSS = pill
+  const roundedCSS = rounded
     ? css`
-        border-radius: ${theme?.radius?.pill ||
+        border-radius: ${theme?.radius?.rounded ||
         theme?.radius?.button ||
         theme?.radius?.none} !important;
       `
     : null;
 
-  const shadowButtonCSS =
-    shadowButton && variant === `solid` && !disabled
+  const elevationCSS =
+    elevation && !disabled
       ? css`
-          box-shadow: ${theme?.shadow?.button || theme?.shadow?.none};
+          box-shadow: ${theme?.elevation?.[elevation] || theme?.shadow?.none};
         `
       : null;
 
@@ -195,7 +350,7 @@ export const useRootStyles = (
       `
     : null;
 
-  const placeholderCSS = placeholder
+  const suspendedCSS = suspended
     ? css`
         cursor: wait;
         pointer-events: none;
@@ -221,14 +376,15 @@ export const useRootStyles = (
       softCSS,
       plainCSS,
       outlinedCSS,
+      glassCSS,
       sizeCSS,
       fullWidthCSS,
-      pillCSS,
-      shadowButtonCSS,
+      roundedCSS,
+      elevationCSS,
       shadowLabelCSS,
       backdropBlurCSS,
       loadingCSS,
-      placeholderCSS,
+      suspendedCSS,
       disabledCSS,
       overrides,
     ) || undefined

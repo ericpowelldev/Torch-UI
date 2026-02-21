@@ -15,7 +15,7 @@ import {
 export const useRootStyles = (
   theme: Theme,
   props?: any,
-  overrides?: (string | undefined)[]
+  overrides?: (string | undefined)[],
 ) => {
   // Props
   const { animate, animateMs, color, disabled, size, status, tint, variant } = props;

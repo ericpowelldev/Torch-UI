@@ -8,6 +8,7 @@ import {
   ButtonVariantValues,
   colorValues,
   ColorValues,
+  ColorOverrideValues,
   fgColorValues,
   FGColorValues,
   InputVariantValues,
@@ -34,7 +35,7 @@ export const sortTableRows = (
   orderDirection: SortDirectionValues,
   options?: {
     nullsFirst?: true | false;
-  }
+  },
 ) => {
   const { nullsFirst = false } = options || {};
 
@@ -55,7 +56,7 @@ export const sortTableRows = (
 export const getBoxColor = (
   theme: Theme,
   color?: `inherit` | BGColorValues | FGColorValues | ColorValues,
-  tint: TintValues | InverseTintValues | AlphaTintValues = 500
+  tint: TintValues | InverseTintValues | AlphaTintValues = 500,
 ) => {
   if (color === `bg1`) return theme.color.bg[0];
   if (color === `bg2`) return theme.color.bg[1];
@@ -73,7 +74,12 @@ export const getBoxColor = (
   if (color === `fgInverse2`) return theme.color.fgInverse[1];
   if (color === `fgInverse3`) return theme.color.fgInverse[2];
   if (color === `fgInverse4`) return theme.color.fgInverse[3];
-  if (color && tint && colorValues.includes(color) && tintValues.includes(tint))
+  if (
+    color &&
+    tint &&
+    colorValues.includes(color as ColorValues) &&
+    tintValues.includes(tint as TintValues)
+  )
     return theme.color[color][tint];
   return `inherit`;
 };
@@ -140,21 +146,30 @@ export const getButtonIconMargin = (size: SizeValues) => {
   return 10;
 };
 
+// ICON BUTTON ---------------------------------------------------------------- //
+
 /** Get icon button padding (one side, px). Matches Button vertical padding for consistent scale. */
 export const getIconButtonPadding = (size: SizeValues) => {
-  if (size === `min`) return 2;
-  if (size === `xs`) return 4;
-  if (size === `sm`) return 6;
-  if (size === `md`) return 8;
-  if (size === `lg`) return 10;
-  if (size === `xl`) return 12;
-  if (size === `max`) return 14;
-  return 8;
+  if (size === `min`) return `3px`;
+  if (size === `xs`) return `5px`;
+  if (size === `sm`) return `7px`;
+  if (size === `md`) return `9px`;
+  if (size === `lg`) return `11px`;
+  if (size === `xl`) return `13px`;
+  if (size === `max`) return `15px`;
+  return `9px`;
 };
 
 /** Get icon button total size (width/height in px). total = 2 * padding + iconSize. */
-export const getIconButtonTotalSize = (size: SizeValues) => {
-  return 2 * getIconButtonPadding(size) + getButtonIconSize(size);
+export const getIconButtonIconSize = (size: SizeValues) => {
+  if (size === `min`) return `12px`;
+  if (size === `xs`) return `14px`;
+  if (size === `sm`) return `16px`;
+  if (size === `md`) return `18px`;
+  if (size === `lg`) return `20px`;
+  if (size === `xl`) return `22px`;
+  if (size === `max`) return `24px`;
+  return `18px`;
 };
 
 // CHECKBOX ---------------------------------------------------------------- //
@@ -179,7 +194,7 @@ export const getColorFg = (
   color?: ColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues,
-  override?: string
+  override?: string,
 ) => {
   if (disabled && override === `bg`) return theme?.color?.bgDisabled;
   if (disabled) return theme?.color?.fgDisabled;
@@ -194,7 +209,7 @@ export const getColorBg = (
   color?: ColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues,
-  override?: string
+  override?: string,
 ) => {
   if (disabled && override === `fg`) return theme?.color?.fgDisabled;
   if (disabled) return theme?.color?.bgDisabled;
@@ -208,10 +223,10 @@ export const getColorText = (
   theme: Theme,
   color?: `inherit` | ColorValues | FGColorValues,
   tint: TintValues = 500,
-  disabled?: BoolValues
+  disabled?: BoolValues,
 ) => {
   if (disabled) return theme?.color?.grayscale?.[500] + `a0`;
-  if (color && fgColorValues?.includes(color)) {
+  if (color && fgColorValues?.includes(color as FGColorValues)) {
     if (color === `fg1`) return theme?.color?.fg?.[0];
     if (color === `fg2`) return theme?.color?.fg?.[1];
     if (color === `fg3`) return theme?.color?.fg?.[2];
@@ -221,7 +236,12 @@ export const getColorText = (
     if (color === `fgInverse3`) return theme?.color?.fgInverse?.[2];
     if (color === `fgInverse4`) return theme?.color?.fgInverse?.[3];
   }
-  if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+  if (
+    color &&
+    tint &&
+    colorValues?.includes(color as ColorValues) &&
+    tintValues?.includes(tint)
+  )
     return theme?.color?.[color]?.[tint];
   return `inherit`;
 };
@@ -233,18 +253,57 @@ export const getVariantColorFg = (
   color?: ColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues,
-  grayscale?: BoolValues
+  colorOverride?: ColorOverrideValues,
 ) => {
   if (variant === `solid`) {
     if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
-    if (grayscale) return theme?.color?.grayscale?.[500] + `c8`;
+    if (colorOverride === `default`) return theme?.color?.fgInverse?.[0];
+    if (colorOverride === `inverse`) return theme?.color?.fg?.[0];
     if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[`i${tint}`];
   }
-  if (variant === `soft` || variant === `plain` || variant === `outlined`) {
+  if (
+    variant === `soft` ||
+    variant === `plain` ||
+    variant === `outlined` ||
+    variant === `glass`
+  ) {
+    if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
+    if (colorOverride === `default`) return theme?.color?.fg?.[0];
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0];
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint];
+  }
+  return `inherit`;
+};
+
+/** Get foreground placeholder color for a variant */
+export const getVariantColorFgPlaceholder = (
+  theme: Theme,
+  variant?: VariantValues,
+  color?: ColorValues,
+  tint: TintValues = 500,
+  disabled?: BoolValues,
+  colorOverride?: ColorOverrideValues,
+) => {
+  if (variant === `solid`) {
+    if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
+    if (colorOverride === `default`) return theme?.color?.fgInverse?.[2];
+    if (colorOverride === `inverse`) return theme?.color?.fg?.[2];
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return `${theme?.color?.[color]?.[`i${tint}`]}90`;
+  }
+  if (
+    variant === `soft` ||
+    variant === `plain` ||
+    variant === `outlined` ||
+    variant === `glass`
+  ) {
     if (disabled) return theme?.color?.grayscale?.[500] + `a0`;
-    if (grayscale) return theme?.color?.grayscale?.[500] + `a0`;
-    if (color && colorValues?.includes(color)) return theme?.color?.[color]?.[500];
+    if (colorOverride === `default`) return theme?.color?.fg?.[2];
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[2];
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return `${theme?.color?.[color]?.[tint]}90`;
   }
   return `inherit`;
 };
@@ -256,86 +315,130 @@ export const getVariantColorBg = (
   color?: ColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues,
-  grayscale?: BoolValues
+  colorOverride?: ColorOverrideValues,
 ) => {
   if (variant === `solid`) {
     if (disabled) return theme?.color?.grayscale?.[500] + `50`;
-    if (grayscale) return theme?.color?.grayscale?.[500] + `50`;
+    if (colorOverride === `default`) return theme?.color?.fg?.[0];
+    if (colorOverride === `inverse`) return theme?.color?.bg?.[0];
     if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint];
   }
   if (variant === `soft`) {
-    if (disabled) return theme?.color?.grayscale?.[500] + `20`;
-    if (grayscale) return theme?.color?.grayscale?.[500] + `20`;
-    if (color && colorValues?.includes(color)) return theme?.color?.[color]?.[500] + `30`;
+    if (disabled) return theme?.color?.grayscale?.[500] + `18`;
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `20`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `20`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `20`;
   }
-  if (variant === `plain` || variant === `outlined`) {
+  if (variant === `plain`) {
+    if (disabled) return theme?.color?.grayscale?.[500] + `00`;
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `00`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `00`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `00`;
+  }
+  if (variant === `outlined`) {
     if (disabled) return theme?.color?.grayscale?.[500] + `06`;
-    if (grayscale) return theme?.color?.grayscale?.[500] + `06`;
-    if (color && colorValues?.includes(color)) return theme?.color?.[color]?.[500] + `08`;
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `08`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `08`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `08`;
+  }
+  if (variant === `glass`) {
+    return theme?.color?.glass?.[0];
   }
   return `inherit`;
 };
 
-/** Get placeholder color for a variant */
-export const getVariantColorPlaceholder = (
+/** Get background hover color for a variant */
+export const getVariantColorBgHover = (
+  theme: Theme,
+  variant?: VariantValues,
+  color?: ColorValues,
+  tint: TintValues = 500,
+  colorOverride?: ColorOverrideValues,
+) => {
+  if (variant === `solid`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `d4`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `d4`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `d4`;
+  }
+  if (variant === `soft`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `40`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `40`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `40`;
+  }
+  if (variant === `plain` || variant === `glass`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `20`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `20`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `20`;
+  }
+  if (variant === `outlined`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `30`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `30`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `30`;
+  }
+  return `inherit`;
+};
+
+/** Get background active color for a variant */
+export const getVariantColorBgActive = (
+  theme: Theme,
+  variant?: VariantValues,
+  color?: ColorValues,
+  tint: TintValues = 500,
+  colorOverride?: ColorOverrideValues,
+) => {
+  if (variant === `solid`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `a0`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `a0`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `a0`;
+  }
+  if (variant === `soft`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `50`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `50`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `50`;
+  }
+  if (variant === `plain` || variant === `glass`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `30`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `30`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `30`;
+  }
+  if (variant === `outlined`) {
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `40`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `40`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return theme?.color?.[color]?.[tint] + `40`;
+  }
+  return `inherit`;
+};
+
+/** Get outline color for a variant */
+export const getVariantColorOutline = (
   theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
   tint: TintValues = 500,
   disabled?: BoolValues,
-  grayscale?: BoolValues
+  colorOverride?: ColorOverrideValues,
 ) => {
-  if (variant === `solid`) {
-    if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
-    if (grayscale) return theme?.color?.grayscale?.[500] + `c8`;
-    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
-      return `${theme?.color?.[color]?.[`i${tint}`]}90`;
-  }
-  if (variant === `soft` || variant === `plain` || variant === `outlined`) {
-    if (disabled) return theme?.color?.grayscale?.[500] + `a0`;
-    if (grayscale) return theme?.color?.grayscale?.[500] + `a0`;
-    if (color && colorValues?.includes(color)) return `${theme?.color?.[color]?.[500]}90`;
-  }
-  return `inherit`;
-};
-
-/** Get hover color for a variant */
-export const getVariantColorHover = (
-  theme: Theme,
-  variant?: VariantValues,
-  color?: ColorValues,
-  tint: TintValues = 500
-) => {
-  if (variant === `solid`) {
-    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
-      return theme?.color?.[color]?.[tint] + `d4`;
-  }
-  if (variant === `soft`) {
-    if (color && colorValues?.includes(color)) return theme?.color?.[color]?.[500] + `48`;
-  }
-  if (variant === `plain` || variant === `outlined`) {
-    if (color && colorValues?.includes(color)) return theme?.color?.[color]?.[500] + `30`;
-  }
-  return `inherit`;
-};
-
-/** Get active color for a variant */
-export const getVariantColorActive = (
-  theme: Theme,
-  variant?: VariantValues,
-  color?: ColorValues,
-  tint: TintValues = 500
-) => {
-  if (variant === `solid`) {
+  if (variant === `outlined`) {
+    if (disabled) return theme?.color?.grayscale?.[500] + `80`;
+    if (colorOverride === `default`) return theme?.color?.fg?.[0] + `a0`;
+    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[0] + `a0`;
     if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint] + `a0`;
   }
-  if (variant === `soft`) {
-    if (color && colorValues?.includes(color)) return theme?.color?.[color]?.[500] + `60`;
-  }
-  if (variant === `plain` || variant === `outlined`) {
-    if (color && colorValues?.includes(color)) return theme?.color?.[color]?.[500] + `48`;
+  if (variant === `glass`) {
+    return theme?.color?.glass?.[1];
   }
   return `inherit`;
 };
@@ -345,23 +448,32 @@ export const getVariantBoxShadow = (
   theme: Theme,
   variant?: VariantValues,
   color?: ColorValues,
-  tint: TintValues = 500
+  tint: TintValues = 500,
+  colorOverride?: ColorOverrideValues,
 ) => {
   if (variant === `solid`) {
+    if (colorOverride === `default`) return `0 0 12px ${theme?.color?.fg?.[0]}40`;
+    if (colorOverride === `inverse`) return `0 0 12px ${theme?.color?.fgInverse?.[0]}40`;
     if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return `0 0 12px ${theme?.color?.[color]?.[tint]}40`;
   }
   if (variant === `soft`) {
-    if (color && colorValues?.includes(color))
-      return `0 0 12px ${theme?.color?.[color]?.[500]}30`;
+    if (colorOverride === `default`) return `0 0 12px ${theme?.color?.fg?.[0]}20`;
+    if (colorOverride === `inverse`) return `0 0 12px ${theme?.color?.fgInverse?.[0]}20`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return `0 0 12px ${theme?.color?.[color]?.[tint]}20`;
   }
-  if (variant === `plain`) {
-    if (color && colorValues?.includes(color))
-      return `0 0 12px ${theme?.color?.[color]?.[500]}20`;
+  if (variant === `plain` || variant === `glass`) {
+    if (colorOverride === `default`) return `0 0 12px ${theme?.color?.fg?.[0]}10`;
+    if (colorOverride === `inverse`) return `0 0 12px ${theme?.color?.fgInverse?.[0]}10`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return `0 0 12px ${theme?.color?.[color]?.[tint]}10`;
   }
   if (variant === `outlined`) {
-    if (color && colorValues?.includes(color))
-      return `0 0 12px ${theme?.color?.[color]?.[500]}40`;
+    if (colorOverride === `default`) return `0 0 12px ${theme?.color?.fg?.[0]}30`;
+    if (colorOverride === `inverse`) return `0 0 12px ${theme?.color?.fgInverse?.[0]}30`;
+    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+      return `0 0 12px ${theme?.color?.[color]?.[tint]}30`;
   }
   return `none`;
 };
@@ -383,7 +495,7 @@ export const getInputLabelColor = (
   warning?: BoolValues,
   success?: BoolValues,
   info?: BoolValues,
-  inverse?: BoolValues
+  inverse?: BoolValues,
 ) => {
   if (error) return theme?.color?.error?.[500];
   if (warning) return theme?.color?.warning?.[500];
@@ -406,7 +518,7 @@ export const getInputBorder = (
   warning?: BoolValues,
   success?: BoolValues,
   info?: BoolValues,
-  disabled?: BoolValues
+  disabled?: BoolValues,
 ) => {
   let thickness = `1px`;
   let style = `solid`;
@@ -486,7 +598,7 @@ export const getStatusIconAnimationSpeed = (status?: StatusValues, override?: nu
 export const getTextComponent = (
   component?: `inherit` | TextComponentValues,
   variant?: `inherit` | TextVariantValues,
-  href?: string
+  href?: string,
 ) => {
   if (href) return `a`;
   if (component && component !== `inherit`) return component;

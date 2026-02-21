@@ -83,7 +83,7 @@ export const useSlideStyles = (
   overrides?: (string | undefined)[]
 ) => {
   // Props
-  const { color, disabled, shadowSlide, size, tint } = props;
+  const { color, shadowSlide, size, tint } = props;
 
   // CSS Stylesheet
   const slideCSS = css`
@@ -110,31 +110,8 @@ export const useSlideStyles = (
       `
     : null;
 
-  const disabledCSS = disabled
-    ? css`
-        background-color: transparent;
-        background-image: repeating-linear-gradient(
-          135deg,
-          ${theme?.color?.white}80,
-          ${theme?.color?.white}80 ${getToggleSlideGradientSize(size)}px,
-          ${theme?.color?.white} ${getToggleSlideGradientSize(size)}px,
-          ${theme?.color?.white} ${getToggleSlideGradientSize(size) * 2}px
-        );
-        &:has(~ input[type="checkbox"]:checked) {
-          background-color: transparent;
-          background-image: repeating-linear-gradient(
-            135deg,
-            ${theme?.color?.white}80,
-            ${theme?.color?.white}80 ${getToggleSlideGradientSize(size)}px,
-            ${theme?.color?.white} ${getToggleSlideGradientSize(size)}px,
-            ${theme?.color?.white} ${getToggleSlideGradientSize(size) * 2}px
-          );
-        }
-      `
-    : null;
-
   // Return Styles
-  return cx(slideCSS, shadowCSS, disabledCSS, overrides) || undefined;
+  return cx(slideCSS, shadowCSS, overrides) || undefined;
 };
 
 export const useInputStyles = (

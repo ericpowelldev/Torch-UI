@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Component from "./index";
 
 import React from "react";
-import { MdPower, MdPowerOff } from "react-icons/md";
+import { BiCheck, BiX } from "react-icons/bi";
 
 const meta: Meta<typeof Component> = {
   title: "Inputs/Toggle",
@@ -171,8 +171,8 @@ export const ExtraLarge: Story = {
 
 export const WithIcons: Story = {
   args: {
-    iconChecked: <MdPower />,
-    iconUnchecked: <MdPowerOff />,
+    iconChecked: <BiCheck />,
+    iconUnchecked: <BiX />,
   },
 };
 

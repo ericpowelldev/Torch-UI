@@ -1,6 +1,10 @@
+// DEPENDENCIES ---------------------------------------------------------------- //
+
+import { lightenColor, darkenColor } from "./themeUtils";
+
 // THEME ---------------------------------------------------------------- //
 
-const theme = {
+const baseTheme = {
   // Theme Mode Options
   mode: `light`,
 
@@ -186,7 +190,7 @@ const theme = {
     card: `10px`,
     checkbox: `4px`,
     input: `6px`,
-    pill: `10000px`,
+    rounded: `10000px`,
     table: `10px`,
     tooltip: `6px`,
   },
@@ -203,6 +207,16 @@ const theme = {
     table: `all 0.15s ease-in-out`,
   },
 
+  // Elevation Options
+  elevation: {
+    0: `none`,
+    1: `0px 2px 4px #00000030, 0px 1px 2px #00000018`,
+    2: `1px 4px 8px #00000034, -1px 2px 4px #0000001a`,
+    3: `2px 6px 12px #00000038, -2px 3px 6px #0000001c`,
+    4: `3px 8px 16px #0000003c, -3px 4px 8px #0000001e`,
+    5: `4px 10px 20px #00000040, -4px 5px 10px #00000020`,
+  },
+
   // Shadow Options
   shadow: {
     none: `none`,
@@ -210,10 +224,9 @@ const theme = {
     medium: `0 0 12px #00000024`,
     harsh: `0 0 12px #00000048`,
 
-    button: `0px 4px 12px #00000048`,
-    text: `1px 1px 2px #00000048`,
-    toggleSlide: `1px 1px 2px #00000048`,
-    toggleTrack: `1px 1px 2px #00000048`,
+    text: `1px 1px 2px #00000040`,
+    toggleSlide: `1px 1px 2px #00000040`,
+    toggleTrack: `1px 1px 2px #00000040`,
     tooltip: `1px 1px 2px #00000060`,
   },
 
@@ -272,18 +285,42 @@ const theme = {
 
   // Visualize Options
   visualize: `repeating-linear-gradient(135deg, #00000010, #00000010 8px, #00000008 8px, #00000008 16px)`,
+};
 
+const customTheme = {
   // Custom Theme Overrides
   custom: {
     dark: {
       mode: `dark`,
       color: {
-        fg: `#ffffff`,
-        bg: `#242c40`,
+        // Brand colors
+        primary: lightenColor(baseTheme?.color?.primary, 0.2),
+        secondary: lightenColor(baseTheme?.color?.secondary, 0.2),
+
+        // Utility colors
+        utility: lightenColor(baseTheme?.color?.utility, 0.2),
+        error: lightenColor(baseTheme?.color?.error, 0.2),
+        warning: lightenColor(baseTheme?.color?.warning, 0.2),
+        success: lightenColor(baseTheme?.color?.success, 0.2),
+        info: lightenColor(baseTheme?.color?.info, 0.2),
+
+        // General colors
+        grayscale: lightenColor(baseTheme?.color?.grayscale, 0.2),
+
+        // Foreground/Text colors
+        fg: baseTheme?.color?.bg,
+
+        // Background/Wall colors
+        bg: baseTheme?.color?.fg,
       },
       visualize: `repeating-linear-gradient(135deg, #ffffff10, #ffffff10 8px, #ffffff08 8px, #ffffff08 16px)`,
     },
   },
+};
+
+const theme = {
+  ...baseTheme,
+  ...customTheme,
 };
 
 // EXPORT ---------------------------------------------------------------- //

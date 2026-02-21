@@ -6,6 +6,8 @@ import {
   BoolValues,
   ButtonVariantValues,
   ColorValues,
+  ColorOverrideValues,
+  ElevationValues,
   SizeValues,
   TintValues,
 } from "@utils/types";
@@ -60,18 +62,18 @@ export interface ButtonProps {
 
   backdropBlur?: BoolValues;
   color?: ColorValues;
+  colorOverride?: ColorOverrideValues;
   disabled?: BoolValues;
+  elevation?: ElevationValues;
   error?: BoolValues;
   fullWidth?: BoolValues;
   icon?: React.ReactNode;
   info?: BoolValues;
   loading?: BoolValues;
-  pill?: BoolValues;
-  placeholder?: BoolValues;
-  shadowButton?: BoolValues;
-  shadowLabel?: BoolValues;
+  rounded?: BoolValues;
   size?: SizeValues;
   success?: BoolValues;
+  suspended?: BoolValues;
   tint?: TintValues;
   uppercase?: BoolValues;
   variant?: ButtonVariantValues;
@@ -96,18 +98,19 @@ const Button = ({
 
   backdropBlur = false,
   color = "primary",
+  colorOverride = "none",
   disabled = false,
+  elevation = 0,
   error = false,
   fullWidth = false,
   icon,
   info = false,
   loading = false,
-  pill = false,
-  placeholder = false,
-  shadowButton = false,
+  rounded = false,
   shadowLabel = false,
   size = "md",
   success = false,
+  suspended = false,
   tint = 500,
   uppercase = false,
   variant = "solid",
@@ -126,18 +129,19 @@ const Button = ({
     {
       backdropBlur,
       color,
+      colorOverride,
       disabled,
+      elevation,
       fullWidth,
       loading,
-      pill,
-      placeholder,
-      shadowButton,
+      rounded,
       shadowLabel,
       size,
+      suspended,
       tint,
       variant,
     },
-    [classes?.root, className]
+    [classes?.root, className],
   );
   const labelStyles = useLabelStyles(theme, { size, uppercase }, [classes?.label]);
   const startIconStyles = useStartIconStyles(theme, { size }, [classes?.startIcon]);
@@ -175,6 +179,7 @@ const Button = ({
             variant={variant === `solid` ? `fg` : `bg`}
             color={color as any}
             tint={tint}
+            colorOverride={colorOverride}
             size={getButtonIconSize(size)}
             disabled={disabled}
             {...props?.iconError}
@@ -188,6 +193,7 @@ const Button = ({
             variant={variant === `solid` ? `fg` : `bg`}
             color={color as any}
             tint={tint}
+            colorOverride={colorOverride}
             size={getButtonIconSize(size)}
             disabled={disabled}
             {...props?.iconWarning}
@@ -201,6 +207,7 @@ const Button = ({
             variant={variant === `solid` ? `fg` : `bg`}
             color={color as any}
             tint={tint}
+            colorOverride={colorOverride}
             size={getButtonIconSize(size)}
             disabled={disabled}
             {...props?.iconSuccess}
@@ -214,6 +221,7 @@ const Button = ({
             variant={variant === `solid` ? `fg` : `bg`}
             color={color as any}
             tint={tint}
+            colorOverride={colorOverride}
             size={getButtonIconSize(size)}
             disabled={disabled}
             {...props?.iconInfo}
@@ -228,6 +236,7 @@ const Button = ({
             variant={variant === `solid` ? `fg` : `bg`}
             color={color as any}
             tint={tint}
+            colorOverride={colorOverride}
             size={getButtonIconSize(size)}
             disabled={disabled}
             {...props?.iconLoading}

@@ -6,6 +6,8 @@ import {
   BoolValues,
   ButtonVariantValues,
   ColorValues,
+  ColorOverrideValues,
+  ElevationValues,
   SizeValues,
   TintValues,
 } from "@utils/types";
@@ -39,13 +41,13 @@ export interface IconButtonProps {
 
   backdropBlur?: BoolValues;
   color?: ColorValues;
+  colorOverride?: ColorOverrideValues;
   disabled?: BoolValues;
+  elevation?: ElevationValues;
   loading?: BoolValues;
-  pill?: BoolValues;
-  placeholder?: BoolValues;
-  shadowButton?: BoolValues;
-  shadowIcon?: BoolValues;
+  rounded?: BoolValues;
   size?: SizeValues;
+  suspended?: BoolValues;
   tint?: TintValues;
   variant?: ButtonVariantValues;
 
@@ -68,13 +70,13 @@ const IconButton = ({
 
   backdropBlur = false,
   color = "primary",
+  colorOverride = "none",
   disabled = false,
+  elevation = 0,
   loading = false,
-  pill = false,
-  placeholder = false,
-  shadowButton = false,
-  shadowIcon = false,
+  rounded = false,
   size = "md",
+  suspended = false,
   tint = 500,
   variant = "solid",
 
@@ -91,19 +93,19 @@ const IconButton = ({
     {
       backdropBlur,
       color,
+      colorOverride,
       disabled,
+      elevation,
       loading,
-      pill,
-      placeholder,
-      shadowButton,
-      shadowIcon,
+      rounded,
       size,
+      suspended,
       tint,
       variant,
     },
     [classes?.root, className],
   );
-  const iconStyles = useIconStyles(theme, { disabled, shadowIcon, size }, [classes?.icon]);
+  const iconStyles = useIconStyles(theme, { disabled, size }, [classes?.icon]);
   const centerIconStyles = useCenterIconStyles(theme, {}, []);
   const iconLoadingStyles = classes?.iconLoading || undefined;
 
@@ -125,6 +127,7 @@ const IconButton = ({
             className={iconLoadingStyles}
             variant={variant === "solid" ? "fg" : "bg"}
             color={color as any}
+            colorOverride={colorOverride}
             tint={tint}
             size={getButtonIconSize(size)}
             disabled={disabled}

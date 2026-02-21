@@ -3,10 +3,20 @@
 import React from "react";
 
 import { useTui } from "@tui";
-import { useRootStyles, useFlexStyles } from "./styles";
+import { colorValues, ColorValues, tintValues, TintValues } from "@utils/types";
+import { getColorBg } from "@utils/helpers";
+import {
+  useRootStyles,
+  useColorColumnStyles,
+  useColorNameStyles,
+  useSwatchStyles,
+  useSwatchTextStyles,
+} from "./styles";
 
-import Box from "@components/Box";
-import Spacer from "@components/Spacer";
+// CONSTANTS ---------------------------------------------------------------- //
+
+// Use the string slice of tintValues so tint "0" is truthy in getColorBg's guard
+const MAIN_TINTS = tintValues.filter((t): t is string => typeof t === `string`);
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -15,11 +25,9 @@ export interface PaletteProps {
 
   props?: {
     root?: React.HTMLAttributes<HTMLElement>;
-    flex?: React.HTMLAttributes<HTMLElement>;
   };
   classes?: {
     root?: string;
-    flex?: string;
   };
   className?: string;
   style?: React.CSSProperties;
@@ -47,75 +55,30 @@ const Palette = ({
 
   // Styles
   const rootStyles = useRootStyles(theme, undefined, [classes?.root, className]);
-  const flexStyles = useFlexStyles(theme, undefined, [classes?.flex]);
+  const colorColumnStyles = useColorColumnStyles(theme);
+  const colorNameStyles = useColorNameStyles(theme);
 
   // Return Component
   return (
     <div className={rootStyles} {...props?.root} {...rest}>
-      <div className={flexStyles} {...props?.flex}>
-        <Box color="primary" tint={100} width={64} height={64} />
-        <Box color="secondary" tint={100} width={64} height={64} />
+      {colorValues.map((colorName) => (
+        <div key={colorName} className={colorColumnStyles}>
+          <div className={colorNameStyles}>{colorName}</div>
 
-        <Spacer direction="vertical" size={8} />
+          {MAIN_TINTS.map((tint) => {
+            const hex = getColorBg(theme, colorName as ColorValues, tint as TintValues) as string;
+            const textColor =
+              parseInt(tint) < 500 ? theme?.color?.fg?.[0] : theme?.color?.fgInverse?.[0];
 
-        <Box color="utility" tint={100} width={64} height={64} />
-        <Box color="error" tint={100} width={64} height={64} />
-        <Box color="warning" tint={100} width={64} height={64} />
-        <Box color="success" tint={100} width={64} height={64} />
-        <Box color="info" tint={100} width={64} height={64} />
-      </div>
-
-      <div className={flexStyles} {...props?.flex}>
-        <Box color="primary" tint={300} width={64} height={64} />
-        <Box color="secondary" tint={300} width={64} height={64} />
-
-        <Spacer direction="vertical" size={8} />
-
-        <Box color="utility" tint={300} width={64} height={64} />
-        <Box color="error" tint={300} width={64} height={64} />
-        <Box color="warning" tint={300} width={64} height={64} />
-        <Box color="success" tint={300} width={64} height={64} />
-        <Box color="info" tint={300} width={64} height={64} />
-      </div>
-
-      <div className={flexStyles} {...props?.flex}>
-        <Box color="primary" tint={500} width={64} height={64} />
-        <Box color="secondary" tint={500} width={64} height={64} />
-
-        <Spacer direction="vertical" size={8} />
-
-        <Box color="utility" tint={500} width={64} height={64} />
-        <Box color="error" tint={500} width={64} height={64} />
-        <Box color="warning" tint={500} width={64} height={64} />
-        <Box color="success" tint={500} width={64} height={64} />
-        <Box color="info" tint={500} width={64} height={64} />
-      </div>
-
-      <div className={flexStyles} {...props?.flex}>
-        <Box color="primary" tint={700} width={64} height={64} />
-        <Box color="secondary" tint={700} width={64} height={64} />
-
-        <Spacer direction="vertical" size={8} />
-
-        <Box color="utility" tint={700} width={64} height={64} />
-        <Box color="error" tint={700} width={64} height={64} />
-        <Box color="warning" tint={700} width={64} height={64} />
-        <Box color="success" tint={700} width={64} height={64} />
-        <Box color="info" tint={700} width={64} height={64} />
-      </div>
-
-      <div className={flexStyles} {...props?.flex}>
-        <Box color="primary" tint={900} width={64} height={64} />
-        <Box color="secondary" tint={900} width={64} height={64} />
-
-        <Spacer direction="vertical" size={8} />
-
-        <Box color="utility" tint={900} width={64} height={64} />
-        <Box color="error" tint={900} width={64} height={64} />
-        <Box color="warning" tint={900} width={64} height={64} />
-        <Box color="success" tint={900} width={64} height={64} />
-        <Box color="info" tint={900} width={64} height={64} />
-      </div>
+            return (
+              <div key={tint} className={useSwatchStyles(hex)}>
+                <span className={useSwatchTextStyles(textColor)}>{tint}</span>
+                <span className={useSwatchTextStyles(textColor)}>{hex.toUpperCase()}</span>
+              </div>
+            );
+          })}
+        </div>
+      ))}
     </div>
   );
 };

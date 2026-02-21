@@ -8,8 +8,8 @@ import {
   getVariantBoxShadow,
   getVariantColorFg,
   getVariantColorBg,
-  getVariantColorHover,
-  getVariantColorActive,
+  getVariantColorBgHover,
+  getVariantColorBgActive,
 } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
@@ -57,7 +57,7 @@ export const useRootStyles = (
           )};
           color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
             box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
@@ -74,7 +74,7 @@ export const useRootStyles = (
             }
           }
           &:active {
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           }
 
@@ -82,7 +82,7 @@ export const useRootStyles = (
             background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
             &:hover {
-              background-color: ${getVariantColorHover(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
               box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
               @media (hover: none) {
                 background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
@@ -90,7 +90,7 @@ export const useRootStyles = (
               }
             }
             &:active {
-              background-color: ${getVariantColorActive(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             }
           }
         `
@@ -109,7 +109,7 @@ export const useRootStyles = (
           )};
           color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
             box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
@@ -126,7 +126,7 @@ export const useRootStyles = (
             }
           }
           &:active {
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           }
 
@@ -134,7 +134,7 @@ export const useRootStyles = (
             background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
             &:hover {
-              background-color: ${getVariantColorHover(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
               box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
               @media (hover: none) {
                 background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
@@ -142,7 +142,7 @@ export const useRootStyles = (
               }
             }
             &:active {
-              background-color: ${getVariantColorActive(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             }
           }
         `
@@ -161,7 +161,7 @@ export const useRootStyles = (
           )};
           color: ${getVariantColorFg(theme, variant, `grayscale`, tint, disabled, true)};
           &:hover {
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
             box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
@@ -178,7 +178,7 @@ export const useRootStyles = (
             }
           }
           &:active {
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
           }
 
@@ -186,7 +186,7 @@ export const useRootStyles = (
             background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
             &:hover {
-              background-color: ${getVariantColorHover(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
               box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
               @media (hover: none) {
                 background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
@@ -194,7 +194,7 @@ export const useRootStyles = (
               }
             }
             &:active {
-              background-color: ${getVariantColorActive(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             }
           }
         `
@@ -218,7 +218,7 @@ export const useRootStyles = (
           &:hover {
             outline: 1px solid ${getVariantColorFg(theme, variant, color, tint, disabled)};
             outline-offset: -1px;
-            background-color: ${getVariantColorHover(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
             box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
             @media (hover: none) {
@@ -240,7 +240,7 @@ export const useRootStyles = (
           &:active {
             outline: 2px solid ${getVariantColorFg(theme, variant, color, tint)};
             outline-offset: -2px;
-            background-color: ${getVariantColorActive(theme, variant, color, tint)};
+            background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             color: ${getVariantColorFg(theme, variant, color, tint)};
           }
 
@@ -252,7 +252,7 @@ export const useRootStyles = (
             &:hover {
               outline: 1px solid ${getVariantColorFg(theme, variant, color, tint)};
               outline-offset: -1px;
-              background-color: ${getVariantColorHover(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
               box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
               @media (hover: none) {
                 outline: 1px solid ${getVariantColorFg(theme, variant, color, tint)};
@@ -264,7 +264,7 @@ export const useRootStyles = (
             &:active {
               outline: 2px solid ${getVariantColorFg(theme, variant, color, tint)};
               outline-offset: -2px;
-              background-color: ${getVariantColorActive(theme, variant, color, tint)};
+              background-color: ${getVariantColorBgActive(theme, variant, color, tint)};
             }
           }
         `

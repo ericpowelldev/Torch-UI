@@ -64,10 +64,22 @@ const meta: Meta<typeof Component> = {
         type: "select",
       },
     },
+    colorOverride: {
+      description: "Override the color with the default color or the inverse color.",
+      control: {
+        type: "radio",
+      },
+    },
     disabled: {
       description: "Should the button be in a disabled state?",
       control: {
         type: "boolean",
+      },
+    },
+    elevation: {
+      description: "Elevation level of the button.",
+      control: {
+        type: "select",
       },
     },
     loading: {
@@ -76,26 +88,8 @@ const meta: Meta<typeof Component> = {
         type: "boolean",
       },
     },
-    pill: {
-      description: "Should the button be pill shaped?",
-      control: {
-        type: "boolean",
-      },
-    },
-    placeholder: {
-      description: "Should the button be in a placeholder state?",
-      control: {
-        type: "boolean",
-      },
-    },
-    shadowButton: {
-      description: "Should the button have a shadow?",
-      control: {
-        type: "boolean",
-      },
-    },
-    shadowIcon: {
-      description: "Should the icon have a drop shadow? (solid variant only)",
+    rounded: {
+      description: "Should the button be rounded?",
       control: {
         type: "boolean",
       },
@@ -103,7 +97,13 @@ const meta: Meta<typeof Component> = {
     size: {
       description: "Size of the icon button.",
       control: {
-        type: "radio",
+        type: "select",
+      },
+    },
+    suspended: {
+      description: "Should the button be in a suspended state?",
+      control: {
+        type: "boolean",
       },
     },
     tint: {
@@ -115,7 +115,7 @@ const meta: Meta<typeof Component> = {
     variant: {
       description: "Variation of the button.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
   },
@@ -131,109 +131,130 @@ export const Default: Story = {
 };
 
 export const VariantsAndColors: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container direction="column" gap={3}>
       <Flex container gap={2}>
-        <Component variant="solid" color="primary">
+        <Component variant="solid" color="primary" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="soft" color="primary">
+        <Component variant="soft" color="primary" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="plain" color="primary">
+        <Component variant="plain" color="primary" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="outlined" color="primary">
+        <Component variant="outlined" color="primary" {...args}>
           <MdRocketLaunch />
         </Component>
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component variant="solid" color="secondary">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="soft" color="secondary">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="plain" color="secondary">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="outlined" color="secondary">
+        <Component variant="glass" color="primary" {...args}>
           <MdRocketLaunch />
         </Component>
       </Flex>
 
       <Flex container gap={2}>
-        <Component variant="solid" color="utility">
+        <Component variant="solid" color="secondary" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="soft" color="utility">
+        <Component variant="soft" color="secondary" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="plain" color="utility">
+        <Component variant="plain" color="secondary" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="outlined" color="utility">
+        <Component variant="outlined" color="secondary" {...args}>
           <MdRocketLaunch />
         </Component>
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component variant="solid" color="error">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="soft" color="error">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="plain" color="error">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="outlined" color="error">
+        <Component variant="glass" color="secondary" {...args}>
           <MdRocketLaunch />
         </Component>
       </Flex>
 
       <Flex container gap={2}>
-        <Component variant="solid" color="warning">
+        <Component variant="solid" color="utility" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="soft" color="warning">
+        <Component variant="soft" color="utility" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="plain" color="warning">
+        <Component variant="plain" color="utility" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="outlined" color="warning">
+        <Component variant="outlined" color="utility" {...args}>
           <MdRocketLaunch />
         </Component>
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component variant="solid" color="success">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="soft" color="success">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="plain" color="success">
-          <MdRocketLaunch />
-        </Component>
-        <Component variant="outlined" color="success">
+        <Component variant="glass" color="utility" {...args}>
           <MdRocketLaunch />
         </Component>
       </Flex>
 
       <Flex container gap={2}>
-        <Component variant="solid" color="info">
+        <Component variant="solid" color="error" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="soft" color="info">
+        <Component variant="soft" color="error" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="plain" color="info">
+        <Component variant="plain" color="error" {...args}>
           <MdRocketLaunch />
         </Component>
-        <Component variant="outlined" color="info">
+        <Component variant="outlined" color="error" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="glass" color="error" {...args}>
+          <MdRocketLaunch />
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component variant="solid" color="warning" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="soft" color="warning" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="plain" color="warning" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="outlined" color="warning" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="glass" color="warning" {...args}>
+          <MdRocketLaunch />
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component variant="solid" color="success" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="soft" color="success" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="plain" color="success" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="outlined" color="success" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="glass" color="success" {...args}>
+          <MdRocketLaunch />
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component variant="solid" color="info" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="soft" color="info" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="plain" color="info" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="outlined" color="info" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="glass" color="info" {...args}>
           <MdRocketLaunch />
         </Component>
       </Flex>
@@ -242,27 +263,27 @@ export const VariantsAndColors: Story = {
 };
 
 export const Sizes: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2} alignItems="center">
-      <Component size="min" variant="solid" color="primary">
+      <Component size="min" variant="solid" color="primary" {...args}>
         <MdSettings />
       </Component>
-      <Component size="xs" variant="solid" color="primary">
+      <Component size="xs" variant="solid" color="primary" {...args}>
         <MdSettings />
       </Component>
-      <Component size="sm" variant="solid" color="primary">
+      <Component size="sm" variant="solid" color="primary" {...args}>
         <MdSettings />
       </Component>
-      <Component size="md" variant="solid" color="primary">
+      <Component size="md" variant="solid" color="primary" {...args}>
         <MdSettings />
       </Component>
-      <Component size="lg" variant="solid" color="primary">
+      <Component size="lg" variant="solid" color="primary" {...args}>
         <MdSettings />
       </Component>
-      <Component size="xl" variant="solid" color="primary">
+      <Component size="xl" variant="solid" color="primary" {...args}>
         <MdSettings />
       </Component>
-      <Component size="max" variant="solid" color="primary">
+      <Component size="max" variant="solid" color="primary" {...args}>
         <MdSettings />
       </Component>
     </Flex>
@@ -270,48 +291,65 @@ export const Sizes: Story = {
 };
 
 export const WithEmoji: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component variant="solid">🚀</Component>
-      <Component variant="soft">🚀</Component>
-      <Component variant="plain">🚀</Component>
-      <Component variant="outlined">🚀</Component>
+      <Component variant="solid" {...args}>
+        🚀
+      </Component>
+      <Component variant="soft" {...args}>
+        🚀
+      </Component>
+      <Component variant="plain" {...args}>
+        🚀
+      </Component>
+      <Component variant="outlined" {...args}>
+        🚀
+      </Component>
+      <Component variant="glass" {...args}>
+        🚀
+      </Component>
     </Flex>
   ),
 };
 
 export const LoadingState: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component loading variant="solid">
+      <Component loading variant="solid" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component loading variant="soft">
+      <Component loading variant="soft" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component loading variant="plain">
+      <Component loading variant="plain" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component loading variant="outlined">
+      <Component loading variant="outlined" {...args}>
+        <MdRocketLaunch />
+      </Component>
+      <Component loading variant="glass" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
   ),
 };
 
-export const PlaceholderState: Story = {
-  render: () => (
+export const SuspendedState: Story = {
+  render: (args) => (
     <Flex container gap={2}>
-      <Component placeholder variant="solid">
+      <Component suspended variant="solid" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component placeholder variant="soft">
+      <Component suspended variant="soft" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component placeholder variant="plain">
+      <Component suspended variant="plain" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component placeholder variant="outlined">
+      <Component suspended variant="outlined" {...args}>
+        <MdRocketLaunch />
+      </Component>
+      <Component suspended variant="glass" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
@@ -319,37 +357,21 @@ export const PlaceholderState: Story = {
 };
 
 export const DisabledState: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component disabled variant="solid">
+      <Component disabled variant="solid" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component disabled variant="soft">
+      <Component disabled variant="soft" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component disabled variant="plain">
+      <Component disabled variant="plain" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component disabled variant="outlined">
+      <Component disabled variant="outlined" {...args}>
         <MdRocketLaunch />
       </Component>
-    </Flex>
-  ),
-};
-
-export const Pill: Story = {
-  render: () => (
-    <Flex container gap={2}>
-      <Component pill variant="solid" color="primary">
-        <MdRocketLaunch />
-      </Component>
-      <Component pill variant="soft" color="primary">
-        <MdRocketLaunch />
-      </Component>
-      <Component pill variant="plain" color="primary">
-        <MdRocketLaunch />
-      </Component>
-      <Component pill variant="outlined" color="primary">
+      <Component disabled variant="glass" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
@@ -357,27 +379,27 @@ export const Pill: Story = {
 };
 
 export const Tint100: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component color="primary" tint="100">
+      <Component color="primary" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="secondary" tint="100">
+      <Component color="secondary" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="utility" tint="100">
+      <Component color="utility" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="error" tint="100">
+      <Component color="error" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="warning" tint="100">
+      <Component color="warning" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="success" tint="100">
+      <Component color="success" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="info" tint="100">
+      <Component color="info" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
@@ -385,27 +407,27 @@ export const Tint100: Story = {
 };
 
 export const Tint300: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component color="primary" tint="300">
+      <Component color="primary" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="secondary" tint="300">
+      <Component color="secondary" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="utility" tint="300">
+      <Component color="utility" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="error" tint="300">
+      <Component color="error" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="warning" tint="300">
+      <Component color="warning" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="success" tint="300">
+      <Component color="success" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="info" tint="300">
+      <Component color="info" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
@@ -413,27 +435,27 @@ export const Tint300: Story = {
 };
 
 export const Tint500: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component color="primary">
+      <Component color="primary" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="secondary">
+      <Component color="secondary" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="utility">
+      <Component color="utility" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="error">
+      <Component color="error" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="warning">
+      <Component color="warning" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="success">
+      <Component color="success" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="info">
+      <Component color="info" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
@@ -441,27 +463,27 @@ export const Tint500: Story = {
 };
 
 export const Tint700: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component color="primary" tint="700">
+      <Component color="primary" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="secondary" tint="700">
+      <Component color="secondary" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="utility" tint="700">
+      <Component color="utility" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="error" tint="700">
+      <Component color="error" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="warning" tint="700">
+      <Component color="warning" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="success" tint="700">
+      <Component color="success" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="info" tint="700">
+      <Component color="info" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
@@ -469,27 +491,27 @@ export const Tint700: Story = {
 };
 
 export const Tint900: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component color="primary" tint="900">
+      <Component color="primary" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="secondary" tint="900">
+      <Component color="secondary" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="utility" tint="900">
+      <Component color="utility" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="error" tint="900">
+      <Component color="error" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="warning" tint="900">
+      <Component color="warning" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="success" tint="900">
+      <Component color="success" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
-      <Component color="info" tint="900">
+      <Component color="info" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
@@ -497,15 +519,15 @@ export const Tint900: Story = {
 };
 
 export const CommonActions: Story = {
-  render: () => (
+  render: (args) => (
     <Flex container gap={2}>
-      <Component variant="solid" color="primary" title="Settings">
+      <Component variant="solid" color="primary" title="Settings" {...args}>
         <MdSettings />
       </Component>
-      <Component variant="outlined" color="primary" title="Delete">
+      <Component variant="outlined" color="primary" title="Delete" {...args}>
         <MdDelete />
       </Component>
-      <Component variant="plain" color="primary" title="Launch">
+      <Component variant="plain" color="primary" title="Launch" {...args}>
         <MdRocketLaunch />
       </Component>
     </Flex>
