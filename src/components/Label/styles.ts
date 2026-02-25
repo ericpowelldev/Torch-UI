@@ -10,7 +10,7 @@ import { getInputLabelColor } from "@utils/helpers";
 export const useRootStyles = (
   theme: Theme,
   props?: any,
-  overrides?: (string | undefined)[]
+  overrides?: (string | undefined)[],
 ) => {
   // Props
   const { disabled, error, info, inverse, success, warning } = props;
@@ -19,7 +19,8 @@ export const useRootStyles = (
   const rootCSS = css`
     label: TuiInput-label;
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    margin-left: 6px;
     line-height: ${theme?.text?.label?.height || theme?.text?.height};
     font-family: ${theme?.text?.label?.family || theme?.text?.family};
     font-size: ${theme?.text?.label?.size || theme?.text?.size};
@@ -27,7 +28,15 @@ export const useRootStyles = (
   `;
 
   const colorCSS = css`
-    color: ${getInputLabelColor(theme, error, warning, success, info, inverse)};
+    color: ${getInputLabelColor({
+      disabled,
+      error,
+      info,
+      inverse,
+      success,
+      theme,
+      warning,
+    })};
   `;
 
   const disabledCSS = disabled

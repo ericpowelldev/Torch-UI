@@ -84,6 +84,7 @@ export type CheckboxVariantValues = (typeof checkboxVariantValues)[number];
 export const colorValues = [
   `primary`,
   `secondary`,
+  `tertiary`,
   `utility`,
   `info`,
   `error`,
@@ -92,6 +93,10 @@ export const colorValues = [
   `grayscale`,
 ] as const;
 export type ColorValues = (typeof colorValues)[number];
+
+/** Array of accepted alternate colors */
+export const alternateColorValues = [`fg`, `fgInverse`, `bg`, `bgInverse`] as const;
+export type AlternateColorValues = (typeof alternateColorValues)[number];
 
 /** Array of accepted background colors */
 export const bgColorValues = [
@@ -191,32 +196,6 @@ export const inverseTintValues = [
   `i1000`,
 ] as const;
 export type InverseTintValues = (typeof inverseTintValues)[number];
-
-/** Array of accepted alpha color tints */
-export const alphaTintValues = [
-  `a0`,
-  `a50`,
-  `a100`,
-  `a150`,
-  `a200`,
-  `a250`,
-  `a300`,
-  `a350`,
-  `a400`,
-  `a450`,
-  `a500`,
-  `a550`,
-  `a600`,
-  `a650`,
-  `a700`,
-  `a750`,
-  `a800`,
-  `a850`,
-  `a900`,
-  `a950`,
-  `a1000`,
-] as const;
-export type AlphaTintValues = (typeof alphaTintValues)[number];
 
 /** Array of accepted color overrides */
 export const colorOverrideValues = [`none`, `default`, `inverse`] as const;

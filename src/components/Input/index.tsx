@@ -3,8 +3,10 @@
 import React from "react";
 
 import {
+  BGColorValues,
   BoolValues,
   ColorValues,
+  ElevationValues,
   InputComponentValues,
   InputVariantValues,
   TintValues,
@@ -44,7 +46,9 @@ export interface InputProps {
 
   backdropBlur?: BoolValues;
   color?: ColorValues;
+  colorBg?: BGColorValues;
   disabled?: BoolValues;
+  elevation?: ElevationValues;
   error?: BoolValues;
   fullWidth?: BoolValues;
   icon?: React.ReactNode;
@@ -54,9 +58,11 @@ export interface InputProps {
   loading?: BoolValues;
   multiline?: BoolValues;
   required?: BoolValues;
+  rounded?: BoolValues;
   select?: BoolValues;
   sublabel?: React.ReactNode;
   success?: BoolValues;
+  suspended?: BoolValues;
   tint?: TintValues;
   variant?: InputVariantValues;
   warning?: BoolValues;
@@ -82,7 +88,9 @@ const Input = ({
 
   backdropBlur = false,
   color = "primary",
+  colorBg = "bgInverse4",
   disabled = false,
+  elevation = 0,
   error = false,
   fullWidth = false,
   icon,
@@ -92,9 +100,11 @@ const Input = ({
   loading = false,
   multiline = false,
   required = false,
+  rounded = false,
   select = false,
   sublabel,
   success = false,
+  suspended = false,
   tint = 500,
   variant = "outlined",
   warning = false,
@@ -110,26 +120,34 @@ const Input = ({
   const rootStyles = useRootStyles(theme, { fullWidth }, [classes?.root, className]);
   const labelStyles = useLabelStyles(
     theme,
-    { disabled, error, info, inverse, success, warning },
-    [classes?.label]
+    { disabled, error, info, inverse, success, variant, warning },
+    [classes?.label],
   );
   const wrapperStyles = useWrapperStyles(
     theme,
     {
       backdropBlur,
       color,
+      colorBg,
       disabled,
+      elevation,
+      error,
       fullWidth,
+      info,
       inverse,
+      rounded,
+      success,
+      suspended,
       tint,
       variant,
+      warning,
     },
-    [classes?.wrapper]
+    [classes?.wrapper],
   );
   const inputStyles = useInputStyles(
     theme,
     {
-      color,
+      colorBg,
       disabled,
       fullWidth,
       inverse,
@@ -138,7 +156,7 @@ const Input = ({
       tint,
       variant,
     },
-    [classes?.input]
+    [classes?.input],
   );
 
   // Return Component

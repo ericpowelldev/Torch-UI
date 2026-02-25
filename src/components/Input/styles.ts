@@ -6,11 +6,11 @@ import { Theme } from "@utils/types";
 import {
   getInputLabelColor,
   getInputPadding,
-  getVariantBoxShadow,
-  getVariantColorFg,
-  getVariantColorBg,
-  getVariantColorBgHover,
-  getVariantColorFgPlaceholder,
+  getInputVariantColorBg,
+  getInputVariantColorFg,
+  getInputVariantColorOutline,
+  getInputVariantColorOutlineFocus,
+  getInputVariantColorPlaceholder,
 } from "@utils/helpers";
 
 // STYLES ---------------------------------------------------------------- //
@@ -18,7 +18,7 @@ import {
 export const useRootStyles = (
   theme: Theme,
   props?: any,
-  overrides?: (string | undefined)[]
+  overrides?: (string | undefined)[],
 ) => {
   // Props
   const { fullWidth } = props;
@@ -50,7 +50,7 @@ export const useRootStyles = (
 export const useLabelStyles = (
   theme: Theme,
   props?: any,
-  overrides?: (string | undefined)[]
+  overrides?: (string | undefined)[],
 ) => {
   // Props
   const { disabled, error, info, inverse, success, warning } = props;
@@ -59,7 +59,8 @@ export const useLabelStyles = (
   const labelCSS = css`
     label: TuiInput-label;
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    margin-left: 6px;
     line-height: ${theme?.text?.label?.height || theme?.text?.height};
     font-family: ${theme?.text?.label?.family || theme?.text?.family};
     font-size: ${theme?.text?.label?.size || theme?.text?.size};
@@ -67,7 +68,15 @@ export const useLabelStyles = (
   `;
 
   const colorCSS = css`
-    color: ${getInputLabelColor(theme, error, warning, success, info, inverse)};
+    color: ${getInputLabelColor({
+      disabled,
+      error,
+      info,
+      inverse,
+      success,
+      theme,
+      warning,
+    })};
   `;
 
   const disabledCSS = disabled
@@ -85,10 +94,26 @@ export const useLabelStyles = (
 export const useWrapperStyles = (
   theme: Theme,
   props?: any,
-  overrides?: (string | undefined)[]
+  overrides?: (string | undefined)[],
 ) => {
   // Props
-  const { backdropBlur, color, disabled, fullWidth, inverse, tint, variant } = props;
+  const {
+    backdropBlur,
+    color,
+    colorBg,
+    disabled,
+    elevation,
+    error,
+    fullWidth,
+    info,
+    inverse,
+    rounded,
+    success,
+    suspended,
+    tint,
+    variant,
+    warning,
+  } = props;
 
   // CSS Stylesheet
   const wrapperCSS = css`
@@ -100,7 +125,9 @@ export const useWrapperStyles = (
     justify-content: space-between;
     padding: 0;
     border: 0;
-    border-radius: ${theme?.radius?.input || theme?.radius?.none};
+    border-radius: ${rounded
+      ? theme?.radius?.rounded || theme?.radius?.input || theme?.radius?.none
+      : theme?.radius?.input || theme?.radius?.none};
     margin: 0;
     background-color: transparent;
     color: ${inverse ? theme?.color?.fgInverse?.[0] : theme?.color?.fg?.[0]};
@@ -111,19 +138,52 @@ export const useWrapperStyles = (
   const solidCSS =
     variant === `solid`
       ? css`
-          outline: 2px solid ${inverse ? theme?.color?.fgInverse?.[0] : theme?.color?.fg?.[0]}00;
-          outline-offset: -2px;
-          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+          outline: 1px solid
+            ${getInputVariantColorOutline({
+              disabled,
+              error,
+              info,
+              inverse,
+              success,
+              theme,
+              variant,
+              warning,
+            })};
+          outline-offset: -1px;
+          background-color: ${getInputVariantColorBg({
+            colorBg,
+            disabled,
+            inverse,
+            theme,
+            variant,
+          })};
           &:hover {
-            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
-            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
+            outline-color: ${getInputVariantColorOutlineFocus({
+              color,
+              theme,
+              tint,
+            })};
             @media (hover: none) {
-              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
-              box-shadow: ${theme?.shadow?.none};
+              outline-color: ${getInputVariantColorOutline({
+                disabled,
+                error,
+                info,
+                inverse,
+                success,
+                theme,
+                variant,
+                warning,
+              })};
             }
           }
           &:focus-within {
-            outline-color: ${inverse ? theme?.color?.fgInverse?.[3] : theme?.color?.fg?.[3]};
+            outline: 2px solid
+              ${getInputVariantColorOutlineFocus({
+                color,
+                theme,
+                tint,
+              })};
+            outline-offset: -2px;
           }
         `
       : null;
@@ -131,19 +191,52 @@ export const useWrapperStyles = (
   const softCSS =
     variant === `soft`
       ? css`
-          outline: 2px solid ${getVariantColorFg(theme, variant, color, tint, disabled)}00;
-          outline-offset: -2px;
-          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+          outline: 1px solid
+            ${getInputVariantColorOutline({
+              disabled,
+              error,
+              info,
+              inverse,
+              success,
+              theme,
+              variant,
+              warning,
+            })};
+          outline-offset: -1px;
+          background-color: ${getInputVariantColorBg({
+            colorBg,
+            disabled,
+            inverse,
+            theme,
+            variant,
+          })};
           &:hover {
-            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
-            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
+            outline-color: ${getInputVariantColorOutlineFocus({
+              color,
+              theme,
+              tint,
+            })};
             @media (hover: none) {
-              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
-              box-shadow: ${theme?.shadow?.none};
+              outline-color: ${getInputVariantColorOutline({
+                disabled,
+                error,
+                info,
+                inverse,
+                success,
+                theme,
+                variant,
+                warning,
+              })};
             }
           }
           &:focus-within {
-            outline-color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+            outline: 2px solid
+              ${getInputVariantColorOutlineFocus({
+                color,
+                theme,
+                tint,
+              })};
+            outline-offset: -2px;
           }
         `
       : null;
@@ -151,19 +244,52 @@ export const useWrapperStyles = (
   const plainCSS =
     variant === `plain`
       ? css`
-          outline: 2px solid ${getVariantColorFg(theme, variant, color, tint, disabled)}00;
-          outline-offset: -2px;
-          background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
+          outline: 1px solid
+            ${getInputVariantColorOutline({
+              disabled,
+              error,
+              info,
+              inverse,
+              success,
+              theme,
+              variant,
+              warning,
+            })};
+          outline-offset: -1px;
+          background-color: ${getInputVariantColorBg({
+            colorBg,
+            disabled,
+            inverse,
+            theme,
+            variant,
+          })};
           &:hover {
-            background-color: ${getVariantColorBgHover(theme, variant, color, tint)};
-            box-shadow: ${getVariantBoxShadow(theme, variant, color, tint)};
+            outline-color: ${getInputVariantColorOutlineFocus({
+              color,
+              theme,
+              tint,
+            })};
             @media (hover: none) {
-              background-color: ${getVariantColorBg(theme, variant, color, tint, disabled)};
-              box-shadow: ${theme?.shadow?.none};
+              outline-color: ${getInputVariantColorOutline({
+                disabled,
+                error,
+                info,
+                inverse,
+                success,
+                theme,
+                variant,
+                warning,
+              })};
             }
           }
           &:focus-within {
-            outline-color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+            outline: 2px solid
+              ${getInputVariantColorOutlineFocus({
+                color,
+                theme,
+                tint,
+              })};
+            outline-offset: -2px;
           }
         `
       : null;
@@ -171,18 +297,104 @@ export const useWrapperStyles = (
   const outlinedCSS =
     variant === `outlined`
       ? css`
-          outline: 1px solid ${inverse ? theme?.color?.dividerInverse?.[0] : theme?.color?.divider?.[0]};
+          outline: 1px solid
+            ${getInputVariantColorOutline({
+              disabled,
+              error,
+              info,
+              inverse,
+              success,
+              theme,
+              variant,
+              warning,
+            })};
           outline-offset: -1px;
-          background-color: transparent;
-          transition: ${theme?.transition?.inputWithOutline || theme?.transition?.none};
+          background-color: ${getInputVariantColorBg({
+            colorBg,
+            disabled,
+            inverse,
+            theme,
+            variant,
+          })};
           &:hover {
-            outline-color: ${inverse ? theme?.color?.fgInverse?.[1] : theme?.color?.fg?.[1]};
+            outline-color: ${getInputVariantColorOutlineFocus({
+              color,
+              theme,
+              tint,
+            })};
             @media (hover: none) {
-              outline-color: ${inverse ? theme?.color?.fgInverse?.[3] : theme?.color?.fg?.[3]};
+              outline-color: ${getInputVariantColorOutline({
+                disabled,
+                error,
+                info,
+                inverse,
+                success,
+                theme,
+                variant,
+                warning,
+              })};
             }
           }
           &:focus-within {
-            outline: 2px solid ${getVariantColorFg(theme, variant, color, tint, disabled)};
+            outline: 2px solid
+              ${getInputVariantColorOutlineFocus({
+                color,
+                theme,
+                tint,
+              })};
+            outline-offset: -2px;
+          }
+        `
+      : null;
+
+  const glassCSS =
+    variant === `glass`
+      ? css`
+          outline: 1px solid
+            ${getInputVariantColorOutline({
+              disabled,
+              error,
+              info,
+              inverse,
+              success,
+              theme,
+              variant,
+              warning,
+            })};
+          outline-offset: -1px;
+          background-color: ${getInputVariantColorBg({
+            colorBg,
+            disabled,
+            inverse,
+            theme,
+            variant,
+          })};
+          &:hover {
+            outline-color: ${getInputVariantColorOutlineFocus({
+              color,
+              theme,
+              tint,
+            })};
+            @media (hover: none) {
+              outline-color: ${getInputVariantColorOutline({
+                disabled,
+                error,
+                info,
+                inverse,
+                success,
+                theme,
+                variant,
+                warning,
+              })};
+            }
+          }
+          &:focus-within {
+            outline: 2px solid
+              ${getInputVariantColorOutlineFocus({
+                color,
+                theme,
+                tint,
+              })};
             outline-offset: -2px;
           }
         `
@@ -216,10 +428,11 @@ export const useWrapperStyles = (
       softCSS,
       plainCSS,
       outlinedCSS,
+      glassCSS,
       fullWidthCSS,
       backdropBlurCSS,
       disabledCSS,
-      overrides
+      overrides,
     ) || undefined
   );
 };
@@ -227,13 +440,13 @@ export const useWrapperStyles = (
 export const useInputStyles = (
   theme: Theme,
   props?: any,
-  overrides?: (string | undefined)[]
+  overrides?: (string | undefined)[],
 ) => {
   // Props
-  const { color, disabled, fullWidth, inverse, multiline, select, tint, variant } = props;
+  const { colorBg, disabled, fullWidth, inverse, multiline, select, variant } = props;
 
   const urlEncodedFill = encodeURIComponent(
-    inverse ? theme?.color?.fgInverse?.[1] : theme?.color?.fg?.[1]
+    inverse ? theme?.color?.fgInverse?.[1] : theme?.color?.fg?.[1],
   );
 
   // CSS Stylesheet
@@ -266,9 +479,15 @@ export const useInputStyles = (
   const solidCSS =
     variant === `solid`
       ? css`
-          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          color: ${getInputVariantColorFg({ colorBg, disabled, inverse, theme, variant })};
           &::placeholder {
-            color: ${getVariantColorFgPlaceholder(theme, variant, color, tint, disabled)};
+            color: ${getInputVariantColorPlaceholder({
+              colorBg,
+              disabled,
+              inverse,
+              theme,
+              variant,
+            })};
           }
         `
       : null;
@@ -276,9 +495,15 @@ export const useInputStyles = (
   const softCSS =
     variant === `soft`
       ? css`
-          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          color: ${getInputVariantColorFg({ colorBg, disabled, inverse, theme, variant })};
           &::placeholder {
-            color: ${getVariantColorFgPlaceholder(theme, variant, color, tint, disabled)};
+            color: ${getInputVariantColorPlaceholder({
+              colorBg,
+              disabled,
+              inverse,
+              theme,
+              variant,
+            })};
           }
         `
       : null;
@@ -286,9 +511,15 @@ export const useInputStyles = (
   const plainCSS =
     variant === `plain`
       ? css`
-          color: ${getVariantColorFg(theme, variant, color, tint, disabled)};
+          color: ${getInputVariantColorFg({ colorBg, disabled, inverse, theme, variant })};
           &::placeholder {
-            color: ${getVariantColorFgPlaceholder(theme, variant, color, tint, disabled)};
+            color: ${getInputVariantColorPlaceholder({
+              colorBg,
+              disabled,
+              inverse,
+              theme,
+              variant,
+            })};
           }
         `
       : null;
@@ -296,9 +527,31 @@ export const useInputStyles = (
   const outlinedCSS =
     variant === `outlined`
       ? css`
-          color: ${inverse ? theme?.color?.fgInverse?.[0] : theme?.color?.fg?.[0]};
+          color: ${getInputVariantColorFg({ colorBg, disabled, inverse, theme, variant })};
           &::placeholder {
-            color: ${inverse ? theme?.color?.fgInverse?.[2] : theme?.color?.fg?.[2]};
+            color: ${getInputVariantColorPlaceholder({
+              colorBg,
+              disabled,
+              inverse,
+              theme,
+              variant,
+            })};
+          }
+        `
+      : null;
+
+  const glassCSS =
+    variant === `glass`
+      ? css`
+          color: ${getInputVariantColorFg({ colorBg, disabled, inverse, theme, variant })};
+          &::placeholder {
+            color: ${getInputVariantColorPlaceholder({
+              colorBg,
+              disabled,
+              inverse,
+              theme,
+              variant,
+            })};
           }
         `
       : null;
@@ -344,11 +597,12 @@ export const useInputStyles = (
       softCSS,
       plainCSS,
       outlinedCSS,
+      glassCSS,
       multilineCSS,
       selectCss,
       fullWidthCSS,
       disabledCSS,
-      overrides
+      overrides,
     ) || undefined
   );
 };

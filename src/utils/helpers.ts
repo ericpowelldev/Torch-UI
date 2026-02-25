@@ -1,7 +1,8 @@
 // DEPENDENCIES ---------------------------------------------------------------- //
 
 import {
-  AlphaTintValues,
+  alternateColorValues,
+  AlternateColorValues,
   bgColorValues,
   BGColorValues,
   BoolValues,
@@ -51,12 +52,131 @@ export const sortTableRows = (
   });
 };
 
+/** Color prop types */
+export type GetColorProps = {
+  color?: ColorValues;
+  tint?: TintValues;
+  alpha?: string;
+};
+export type GetColorAlternateProps = {
+  color?: AlternateColorValues;
+  alpha?: string;
+};
+export type GetColorFgProps = {
+  color?: FGColorValues;
+};
+export type GetColorBgProps = {
+  color?: BGColorValues;
+};
+export type GetColorFullProps = {
+  color?: ColorValues | AlternateColorValues | FGColorValues | BGColorValues;
+  tint?: TintValues;
+  alpha?: string;
+  inverse?: BoolValues;
+};
+
+/** Get color (with alpha option) */
+export const getColor = (theme: Theme, { color, tint = 500, alpha }: GetColorProps) => {
+  if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+    return theme?.color?.[color]?.[tint] + (alpha ? alpha : ``);
+  return undefined;
+};
+
+/** Get color inverse (with alpha option) */
+export const getColorInverse = (theme: Theme, { color, tint = 500, alpha }: GetColorProps) => {
+  if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
+    return theme?.color?.[color]?.[`i${tint}`] + (alpha ? alpha : ``);
+  return undefined;
+};
+
+/** Get color alternate (with alpha option) */
+export const getColorAlternate = (theme: Theme, { color, alpha }: GetColorAlternateProps) => {
+  if (color === `fg`) return theme?.color?.fg?.[0] + (alpha ? alpha : ``);
+  if (color === `fgInverse`) return theme?.color?.fgInverse?.[0] + (alpha ? alpha : ``);
+  if (color === `bg`) return theme?.color?.bg?.[0] + (alpha ? alpha : ``);
+  if (color === `bgInverse`) return theme?.color?.bgInverse?.[0] + (alpha ? alpha : ``);
+  return undefined;
+};
+
+/** Get color alternate inverse (with alpha option) */
+export const getColorAlternateInverse = (
+  theme: Theme,
+  { color, alpha }: GetColorAlternateProps,
+) => {
+  if (color === `fg`) return theme?.color?.fgInverse?.[0] + (alpha ? alpha : ``);
+  if (color === `fgInverse`) return theme?.color?.fg?.[0] + (alpha ? alpha : ``);
+  if (color === `bg`) return theme?.color?.bgInverse?.[0] + (alpha ? alpha : ``);
+  if (color === `bgInverse`) return theme?.color?.bg?.[0] + (alpha ? alpha : ``);
+  return undefined;
+};
+
+// /** Get color foreground */
+// export const getColorFg = (theme: Theme, { color }: GetColorFgProps) => {
+//   if (color === `fg1`) return theme?.color?.fg?.[0];
+//   if (color === `fg2`) return theme?.color?.fg?.[1];
+//   if (color === `fg3`) return theme?.color?.fg?.[2];
+//   if (color === `fg4`) return theme?.color?.fg?.[3];
+//   if (color === `fgInverse1`) return theme?.color?.fgInverse?.[0];
+//   if (color === `fgInverse2`) return theme?.color?.fgInverse?.[1];
+//   if (color === `fgInverse3`) return theme?.color?.fgInverse?.[2];
+//   if (color === `fgInverse4`) return theme?.color?.fgInverse?.[3];
+//   return undefined;
+// };
+
+// /** Get color background */
+// export const getColorBg = (theme: Theme, { color }: GetColorBgProps) => {
+//   if (color === `bg1`) return theme?.color?.bg?.[0];
+//   if (color === `bg2`) return theme?.color?.bg?.[1];
+//   if (color === `bg3`) return theme?.color?.bg?.[2];
+//   if (color === `bg4`) return theme?.color?.bg?.[3];
+//   if (color === `bgInverse1`) return theme?.color?.bgInverse?.[0];
+//   if (color === `bgInverse2`) return theme?.color?.bgInverse?.[1];
+//   if (color === `bgInverse3`) return theme?.color?.bgInverse?.[2];
+//   if (color === `bgInverse4`) return theme?.color?.bgInverse?.[3];
+//   return undefined;
+// };
+
+// /** Get color full (foreground, background & color with inverse and alpha options) */
+// export const getColorFull = (
+//   theme: Theme,
+//   { color, tint = 500, alpha, inverse = false }: GetColorFullProps,
+// ) => {
+//   if (color) {
+//     if (fgColorValues.includes(color as FGColorValues)) {
+//       return getColorFg(theme, { color: color as FGColorValues });
+//     }
+//     if (bgColorValues.includes(color as BGColorValues)) {
+//       return getColorBg(theme, { color: color as BGColorValues });
+//     }
+//     if (alternateColorValues.includes(color as AlternateColorValues)) {
+//       if (inverse) {
+//         return getColorAlternateInverse(theme, { color: color as AlternateColorValues, alpha });
+//       }
+//       return getColorAlternate(theme, { color: color as AlternateColorValues, alpha });
+//     }
+//     if (tint) {
+//       if (colorValues?.includes(color as ColorValues) && tintValues?.includes(tint)) {
+//         if (inverse) {
+//           return getColorInverse(theme, { color: color as ColorValues, tint, alpha });
+//         }
+//         return getColor(theme, { color: color as ColorValues, tint, alpha });
+//       }
+//     }
+//   }
+//   return undefined;
+// };
+
+/** Get color disabled (with alpha option) */
+export const getColorDisabled = (theme: Theme, { color, tint = 500, alpha }: GetColorProps) => {
+  return theme?.color?.grayscale?.[500] + (alpha ? alpha : ``);
+};
+
 // BOX ---------------------------------------------------------------- //
 
 export const getBoxColor = (
   theme: Theme,
   color?: `inherit` | BGColorValues | FGColorValues | ColorValues,
-  tint: TintValues | InverseTintValues | AlphaTintValues = 500,
+  tint: TintValues | InverseTintValues = 500,
 ) => {
   if (color === `bg1`) return theme.color.bg[0];
   if (color === `bg2`) return theme.color.bg[1];
@@ -191,41 +311,51 @@ export const getCheckboxSize = (size: SizeValues) => {
 /** Get general foreground color */
 export const getColorFg = (
   theme: Theme,
-  color?: ColorValues,
+  color: ColorValues | AlternateColorValues = `primary`,
   tint: TintValues = 500,
   disabled?: BoolValues,
   override?: string,
 ) => {
   if (disabled && override === `bg`) return theme?.color?.bgDisabled;
   if (disabled) return theme?.color?.fgDisabled;
+  if (color === `fg`) return theme?.color?.fgInverse?.[0];
+  if (color === `fgInverse`) return theme?.color?.fg?.[0];
+  if (color === `bg`) return theme?.color?.bgInverse?.[0];
+  if (color === `bgInverse`) return theme?.color?.bg?.[0];
   if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
     return theme?.color?.[color]?.[`i${tint}`];
-  return `inherit`;
+  return undefined;
 };
 
 /** Get general background color */
 export const getColorBg = (
   theme: Theme,
-  color?: ColorValues,
+  color: ColorValues | AlternateColorValues = `primary`,
   tint: TintValues = 500,
   disabled?: BoolValues,
   override?: string,
 ) => {
   if (disabled && override === `fg`) return theme?.color?.fgDisabled;
   if (disabled) return theme?.color?.bgDisabled;
+  if (color === `fg`) return theme?.color?.fg?.[0];
+  if (color === `fgInverse`) return theme?.color?.fgInverse?.[0];
+  if (color === `bg`) return theme?.color?.bg?.[0];
+  if (color === `bgInverse`) return theme?.color?.bgInverse?.[0];
   if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
     return theme?.color?.[color]?.[tint];
-  return `inherit`;
+  return undefined;
 };
 
 /** Get color text */
 export const getColorText = (
   theme: Theme,
-  color?: `inherit` | ColorValues | FGColorValues,
+  color: `inherit` | ColorValues | AlternateColorValues | FGColorValues = `primary`,
   tint: TintValues = 500,
   disabled?: BoolValues,
 ) => {
   if (disabled) return theme?.color?.grayscale?.[500] + `a0`;
+  if (color === `fg`) return theme?.color?.fg?.[0];
+  if (color === `fgInverse`) return theme?.color?.fgInverse?.[0];
   if (color && fgColorValues?.includes(color as FGColorValues)) {
     if (color === `fg1`) return theme?.color?.fg?.[0];
     if (color === `fg2`) return theme?.color?.fg?.[1];
@@ -243,7 +373,7 @@ export const getColorText = (
     tintValues?.includes(tint)
   )
     return theme?.color?.[color]?.[tint];
-  return `inherit`;
+  return undefined;
 };
 
 /** Get foreground color for a variant */
@@ -274,38 +404,7 @@ export const getVariantColorFg = (
     if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint];
   }
-  return `inherit`;
-};
-
-/** Get foreground placeholder color for a variant */
-export const getVariantColorFgPlaceholder = (
-  theme: Theme,
-  variant?: VariantValues,
-  color?: ColorValues,
-  tint: TintValues = 500,
-  disabled?: BoolValues,
-  colorOverride?: ColorOverrideValues,
-) => {
-  if (variant === `solid`) {
-    if (disabled) return theme?.color?.grayscale?.[500] + `c8`;
-    if (colorOverride === `default`) return theme?.color?.fgInverse?.[2];
-    if (colorOverride === `inverse`) return theme?.color?.fg?.[2];
-    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
-      return `${theme?.color?.[color]?.[`i${tint}`]}90`;
-  }
-  if (
-    variant === `soft` ||
-    variant === `plain` ||
-    variant === `outlined` ||
-    variant === `glass`
-  ) {
-    if (disabled) return theme?.color?.grayscale?.[500] + `a0`;
-    if (colorOverride === `default`) return theme?.color?.fg?.[2];
-    if (colorOverride === `inverse`) return theme?.color?.fgInverse?.[2];
-    if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
-      return `${theme?.color?.[color]?.[tint]}90`;
-  }
-  return `inherit`;
+  return undefined;
 };
 
 /** Get background color for a variant */
@@ -348,7 +447,7 @@ export const getVariantColorBg = (
   if (variant === `glass`) {
     return theme?.color?.glass?.[0];
   }
-  return `inherit`;
+  return undefined;
 };
 
 /** Get background hover color for a variant */
@@ -383,7 +482,7 @@ export const getVariantColorBgHover = (
     if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint] + `30`;
   }
-  return `inherit`;
+  return undefined;
 };
 
 /** Get background active color for a variant */
@@ -418,7 +517,7 @@ export const getVariantColorBgActive = (
     if (color && tint && colorValues?.includes(color) && tintValues?.includes(tint))
       return theme?.color?.[color]?.[tint] + `40`;
   }
-  return `inherit`;
+  return undefined;
 };
 
 /** Get outline color for a variant */
@@ -440,7 +539,7 @@ export const getVariantColorOutline = (
   if (variant === `glass`) {
     return theme?.color?.glass?.[1];
   }
-  return `inherit`;
+  return undefined;
 };
 
 /** Get bow shadow for a variant */
@@ -488,15 +587,161 @@ export const getContainerMaxWidth = (theme: Theme, size: SizeValues) => {
 
 // INPUT ---------------------------------------------------------------- //
 
-/** Get input component label color */
-export const getInputLabelColor = (
-  theme: Theme,
-  error?: BoolValues,
-  warning?: BoolValues,
-  success?: BoolValues,
-  info?: BoolValues,
-  inverse?: BoolValues,
-) => {
+/** Get input variant color foreground */
+export const getInputVariantColorFg = ({
+  colorBg,
+  disabled,
+  inverse,
+  theme,
+  variant,
+}: {
+  colorBg?: BGColorValues;
+  disabled?: BoolValues;
+  inverse?: BoolValues;
+  theme: Theme;
+  variant?: InputVariantValues;
+}) => {
+  if (disabled) return getColorDisabled(theme, { alpha: `a0` });
+  if (variant === `solid`) {
+    if (colorBg?.includes(`bgInverse`)) return theme?.color?.fgInverse?.[0];
+    return theme?.color?.fg?.[0];
+  }
+  if (inverse) return theme?.color?.fgInverse?.[0];
+  return theme?.color?.fg?.[0];
+};
+
+/** Get input variant color background */
+export const getInputVariantColorBg = ({
+  colorBg,
+  disabled,
+  inverse,
+  theme,
+  variant,
+}: {
+  colorBg?: BGColorValues;
+  disabled?: BoolValues;
+  inverse?: BoolValues;
+  theme: Theme;
+  variant?: InputVariantValues;
+}) => {
+  if (variant === `solid`) {
+    if (disabled) return getColorDisabled(theme, { alpha: `40` });
+    if (colorBg === `bg1`) return theme?.color?.bg?.[0];
+    if (colorBg === `bg2`) return theme?.color?.bg?.[1];
+    if (colorBg === `bg3`) return theme?.color?.bg?.[2];
+    if (colorBg === `bg4`) return theme?.color?.bg?.[3];
+    if (colorBg === `bgInverse1`) return theme?.color?.bgInverse?.[0];
+    if (colorBg === `bgInverse2`) return theme?.color?.bgInverse?.[1];
+    if (colorBg === `bgInverse3`) return theme?.color?.bgInverse?.[2];
+    if (colorBg === `bgInverse4`) return theme?.color?.bgInverse?.[3];
+  }
+  if (variant === `soft`) {
+    if (inverse) return theme?.color?.actionInverse?.focus;
+    return theme?.color?.action?.focus;
+  }
+  if (variant === `plain` || variant === `outlined`) {
+    return `transparent`;
+  }
+  if (variant === `glass`) {
+    if (inverse) return theme?.color?.glassInverse?.[0];
+    return theme?.color?.glass?.[0];
+  }
+  return `transparent`;
+};
+
+/** Get input variant color outline */
+export const getInputVariantColorOutline = ({
+  disabled,
+  error,
+  info,
+  inverse,
+  success,
+  theme,
+  variant,
+  warning,
+}: {
+  disabled?: BoolValues;
+  error?: BoolValues;
+  info?: BoolValues;
+  inverse?: BoolValues;
+  success?: BoolValues;
+  theme: Theme;
+  variant?: InputVariantValues;
+  warning?: BoolValues;
+}) => {
+  if (error) return theme?.color?.error?.[500] + `a0`;
+  if (warning) return theme?.color?.warning?.[500] + `a0`;
+  if (success) return theme?.color?.success?.[500] + `a0`;
+  if (info) return theme?.color?.info?.[500] + `a0`;
+
+  if (variant === `outlined`) {
+    if (disabled) return getColorDisabled(theme, { alpha: `40` });
+    if (inverse) return theme?.color?.dividerInverse?.[0];
+    return theme?.color?.divider?.[0];
+  }
+  if (variant === `glass`) {
+    if (inverse) return theme?.color?.glassInverse?.[1];
+    return theme?.color?.glass?.[1];
+  }
+  if (inverse) return theme?.color?.fgInverse?.[0] + `00`;
+  return theme?.color?.fg?.[0] + `00`;
+};
+
+/** Get input variant color outline focus */
+export const getInputVariantColorOutlineFocus = ({
+  theme,
+  color = `primary`,
+  tint = 500,
+}: {
+  theme: Theme;
+  color?: ColorValues;
+  tint?: TintValues;
+}) => {
+  return getColor(theme, { color, tint });
+};
+
+/** Get input variant color placeholder */
+export const getInputVariantColorPlaceholder = ({
+  colorBg,
+  disabled,
+  inverse,
+  theme,
+  variant,
+}: {
+  colorBg?: BGColorValues;
+  disabled?: BoolValues;
+  inverse?: BoolValues;
+  theme: Theme;
+  variant?: InputVariantValues;
+}) => {
+  if (disabled) return getColorDisabled(theme, { alpha: `80` });
+  if (variant === `solid`) {
+    if (colorBg?.includes(`bgInverse`)) return theme?.color?.fgInverse?.[2];
+    return theme?.color?.fg?.[2];
+  }
+  if (inverse) return theme?.color?.fgInverse?.[2];
+  return theme?.color?.fg?.[2];
+};
+
+/** Get input label color */
+export const getInputLabelColor = ({
+  disabled,
+  error,
+  info,
+  inverse,
+  success,
+  theme,
+  warning,
+}: {
+  disabled?: BoolValues;
+  error?: BoolValues;
+  info?: BoolValues;
+  inverse?: BoolValues;
+  success?: BoolValues;
+  theme: Theme;
+  warning?: BoolValues;
+}) => {
+  if (disabled) return getColorDisabled(theme, { alpha: `c8` });
   if (error) return theme?.color?.error?.[500];
   if (warning) return theme?.color?.warning?.[500];
   if (success) return theme?.color?.success?.[500];
@@ -505,37 +750,9 @@ export const getInputLabelColor = (
   return theme?.color?.fg?.[1];
 };
 
-/** Get input component padding */
+/** Get input padding */
 export const getInputPadding = (variant?: InputVariantValues) => {
   return `8px 12px`;
-};
-
-/** Get input component border */
-export const getInputBorder = (
-  theme: Theme,
-  selector?: SelectorValues,
-  error?: BoolValues,
-  warning?: BoolValues,
-  success?: BoolValues,
-  info?: BoolValues,
-  disabled?: BoolValues,
-) => {
-  let thickness = `1px`;
-  let style = `solid`;
-  let color = `soft`;
-
-  if (disabled) style = `dashed`;
-
-  if (!selector || selector === `base`) color = theme?.color?.fg?.[2];
-  if (selector === `hover`) color = theme?.color?.fg?.[0];
-  if (selector === `active` || selector === `focus`) color = theme?.color?.primary?.[500];
-
-  if (info) color = theme?.color?.info?.[500];
-  if (success) color = theme?.color?.success?.[500];
-  if (warning) color = theme?.color?.warning?.[500];
-  if (error) color = theme?.color?.error?.[500];
-
-  return `${thickness} ${style} ${color}`;
 };
 
 // LOADING ---------------------------------------------------------------- //

@@ -16,7 +16,7 @@ import {
 // CONSTANTS ---------------------------------------------------------------- //
 
 // Use the string slice of tintValues so tint "0" is truthy in getColorBg's guard
-const MAIN_TINTS = tintValues.filter((t): t is string => typeof t === `string`);
+const MAIN_TINTS = tintValues.filter((t): t is TintValues => typeof t === `string`);
 
 // PROPS ---------------------------------------------------------------- //
 
@@ -66,9 +66,8 @@ const Palette = ({
           <div className={colorNameStyles}>{colorName}</div>
 
           {MAIN_TINTS.map((tint) => {
-            const hex = getColorBg(theme, colorName as ColorValues, tint as TintValues) as string;
-            const textColor =
-              parseInt(tint) < 500 ? theme?.color?.fg?.[0] : theme?.color?.fgInverse?.[0];
+            const hex = getColorBg(theme, colorName as ColorValues, tint) as string;
+            const textColor = theme?.color?.[colorName]?.[`i${tint}`];
 
             return (
               <div key={tint} className={useSwatchStyles(hex)}>

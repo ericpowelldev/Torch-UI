@@ -22,8 +22,8 @@ export const darkenColor = (color: string, amount: number) => {
   return Color.rgb(newRGB).hex();
 };
 
-/** Build standard colors */
-export const buildColors = (color: string, themeMode?: string) => {
+/** Build color tints */
+export const buildColorTints = (color: string, themeMode?: string) => {
   // Generate the main hexes
   const main = {
     [`0`]: themeMode === `dark` ? darkenColor(color, 1) : lightenColor(color, 1),
@@ -60,9 +60,9 @@ export const buildColors = (color: string, themeMode?: string) => {
     [`i300`]: main[`800`],
     [`i350`]: main[`850`],
     [`i400`]: main[`900`],
-    [`i450`]: main[`900`],
-    [`i500`]: themeMode === `dark` ? main[`100`] : `#ffffff`,
-    [`i550`]: main[`100`],
+    [`i450`]: main[`950`],
+    [`i500`]: `#ffffff`,
+    [`i550`]: main[`50`],
     [`i600`]: main[`100`],
     [`i650`]: main[`150`],
     [`i700`]: main[`200`],
@@ -74,33 +74,8 @@ export const buildColors = (color: string, themeMode?: string) => {
     [`i1000`]: main[`500`],
   };
 
-  // Generate the alpha hexes
-  const alpha = {
-    [`a0`]: Color(color).fade(1).hexa(),
-    [`a50`]: Color(color).fade(0.95).hexa(),
-    [`a100`]: Color(color).fade(0.9).hexa(),
-    [`a150`]: Color(color).fade(0.85).hexa(),
-    [`a200`]: Color(color).fade(0.8).hexa(),
-    [`a250`]: Color(color).fade(0.75).hexa(),
-    [`a300`]: Color(color).fade(0.7).hexa(),
-    [`a350`]: Color(color).fade(0.65).hexa(),
-    [`a400`]: Color(color).fade(0.6).hexa(),
-    [`a450`]: Color(color).fade(0.55).hexa(),
-    [`a500`]: Color(color).fade(0.5).hexa(),
-    [`a550`]: Color(color).fade(0.45).hexa(),
-    [`a600`]: Color(color).fade(0.4).hexa(),
-    [`a650`]: Color(color).fade(0.35).hexa(),
-    [`a700`]: Color(color).fade(0.3).hexa(),
-    [`a750`]: Color(color).fade(0.25).hexa(),
-    [`a800`]: Color(color).fade(0.2).hexa(),
-    [`a850`]: Color(color).fade(0.15).hexa(),
-    [`a900`]: Color(color).fade(0.1).hexa(),
-    [`a950`]: Color(color).fade(0.05).hexa(),
-    [`a1000`]: color,
-  };
-
   // Return all the hexes
-  return { ...main, ...inverse, ...alpha };
+  return { ...main, ...inverse };
 };
 
 /** Build foreground colors */

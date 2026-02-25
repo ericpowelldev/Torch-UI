@@ -251,6 +251,9 @@ export const Colors: Story = {
       <Component content="Secondary tooltip" color="secondary" tint={500}>
         <Button color="secondary">Secondary</Button>
       </Component>
+      <Component content="Tertiary tooltip" color="tertiary" tint={500}>
+        <Button color="tertiary">Tertiary</Button>
+      </Component>
       <Component content="Error tooltip" color="error" tint={500}>
         <Button color="error">Error</Button>
       </Component>

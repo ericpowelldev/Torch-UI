@@ -13,6 +13,7 @@ const baseTheme = {
     // Brand colors
     primary: `#6068f8`,
     secondary: `#f85090`,
+    tertiary: `#50c890`,
 
     // Utility colors
     utility: `#687890`,
@@ -202,8 +203,7 @@ const baseTheme = {
 
     button: `all 0.15s ease-in-out`,
     checkbox: `outline-color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out`,
-    input: `all 0.15s ease-in-out`,
-    inputWithOutline: `all 0.15s ease-in-out, outline-color 0.0s, outline-offset 0.0s, outline-width 0.0s`,
+    input: `all 0.15s ease-in-out, outline-color 0.0s, outline-offset 0.0s, outline-width 0.0s`,
     table: `all 0.15s ease-in-out`,
   },
 
@@ -294,18 +294,19 @@ const customTheme = {
       mode: `dark`,
       color: {
         // Brand colors
-        primary: lightenColor(baseTheme?.color?.primary, 0.2),
-        secondary: lightenColor(baseTheme?.color?.secondary, 0.2),
+        primary: lightenColor(baseTheme?.color?.primary, 0.1),
+        secondary: lightenColor(baseTheme?.color?.secondary, 0.1),
+        tertiary: lightenColor(baseTheme?.color?.tertiary, 0.1),
 
         // Utility colors
-        utility: lightenColor(baseTheme?.color?.utility, 0.2),
-        error: lightenColor(baseTheme?.color?.error, 0.2),
-        warning: lightenColor(baseTheme?.color?.warning, 0.2),
-        success: lightenColor(baseTheme?.color?.success, 0.2),
-        info: lightenColor(baseTheme?.color?.info, 0.2),
+        utility: lightenColor(baseTheme?.color?.utility, 0.1),
+        error: lightenColor(baseTheme?.color?.error, 0.1),
+        warning: lightenColor(baseTheme?.color?.warning, 0.1),
+        success: lightenColor(baseTheme?.color?.success, 0.1),
+        info: lightenColor(baseTheme?.color?.info, 0.1),
 
         // General colors
-        grayscale: lightenColor(baseTheme?.color?.grayscale, 0.2),
+        grayscale: lightenColor(baseTheme?.color?.grayscale, 0.1),
 
         // Foreground/Text colors
         fg: baseTheme?.color?.bg,

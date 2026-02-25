@@ -122,6 +122,13 @@ export const VariantsAndColors: Story = {
       </Flex>
 
       <Flex container gap={2}>
+        <Component defaultChecked variant="solid" color="tertiary" />
+        <Component defaultChecked variant="soft" color="tertiary" />
+        <Component defaultChecked variant="plain" color="tertiary" />
+        <Component defaultChecked variant="outlined" color="tertiary" />
+      </Flex>
+
+      <Flex container gap={2}>
         <Component defaultChecked variant="solid" color="utility" />
         <Component defaultChecked variant="soft" color="utility" />
         <Component defaultChecked variant="plain" color="utility" />
@@ -274,6 +281,7 @@ export const Tint100: Story = {
     <Flex container gap={2}>
       <Component defaultChecked color="primary" tint={100} />
       <Component defaultChecked color="secondary" tint={100} />
+      <Component defaultChecked color="tertiary" tint={100} />
       <Component defaultChecked color="utility" tint={100} />
       <Component defaultChecked color="error" tint={100} />
       <Component defaultChecked color="warning" tint={100} />
@@ -288,6 +296,7 @@ export const Tint300: Story = {
     <Flex container gap={2}>
       <Component defaultChecked color="primary" tint={300} />
       <Component defaultChecked color="secondary" tint={300} />
+      <Component defaultChecked color="tertiary" tint={300} />
       <Component defaultChecked color="utility" tint={300} />
       <Component defaultChecked color="error" tint={300} />
       <Component defaultChecked color="warning" tint={300} />
@@ -302,6 +311,7 @@ export const Tint500: Story = {
     <Flex container gap={2}>
       <Component defaultChecked color="primary" />
       <Component defaultChecked color="secondary" />
+      <Component defaultChecked color="tertiary" />
       <Component defaultChecked color="utility" />
       <Component defaultChecked color="error" />
       <Component defaultChecked color="warning" />
@@ -316,6 +326,7 @@ export const Tint700: Story = {
     <Flex container gap={2}>
       <Component defaultChecked color="primary" tint={700} />
       <Component defaultChecked color="secondary" tint={700} />
+      <Component defaultChecked color="tertiary" tint={700} />
       <Component defaultChecked color="utility" tint={700} />
       <Component defaultChecked color="error" tint={700} />
       <Component defaultChecked color="warning" tint={700} />
@@ -330,6 +341,7 @@ export const Tint900: Story = {
     <Flex container gap={2}>
       <Component defaultChecked color="primary" tint={900} />
       <Component defaultChecked color="secondary" tint={900} />
+      <Component defaultChecked color="tertiary" tint={900} />
       <Component defaultChecked color="utility" tint={900} />
       <Component defaultChecked color="error" tint={900} />
       <Component defaultChecked color="warning" tint={900} />

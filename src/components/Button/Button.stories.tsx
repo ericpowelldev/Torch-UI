@@ -52,13 +52,13 @@ const meta: Meta<typeof Component> = {
     // Specialized Properties //
 
     backdropBlur: {
-      description: "Should the button have a backdrop blur?",
+      description: "Should the component have a backdrop blur?",
       control: {
         type: "boolean",
       },
     },
     color: {
-      description: "Color of the button.",
+      description: "Color of the component.",
       control: {
         type: "select",
       },
@@ -70,93 +70,93 @@ const meta: Meta<typeof Component> = {
       },
     },
     disabled: {
-      description: "Should the button be in a disabled state?",
+      description: "Should the component be in a disabled state?",
       control: {
         type: "boolean",
       },
     },
     elevation: {
-      description: "Elevation level of the button.",
+      description: "Elevation level of the component.",
       control: {
         type: "select",
       },
     },
     error: {
-      description: "Should the button be in an error state?",
+      description: "Should the component be in an error state?",
       control: {
         type: "boolean",
       },
     },
     fullWidth: {
-      description: "Should the button be the full width of its container?",
+      description: "Should the component be the full width of its container?",
       control: {
         type: "boolean",
       },
     },
     icon: {
-      description: "Icon to render at the start of the button.",
+      description: "Icon to render at the start of the component.",
       table: {
         disable: true,
       },
     },
     info: {
-      description: "Should the button be in an info state?",
+      description: "Should the component be in an info state?",
       control: {
         type: "boolean",
       },
     },
     loading: {
-      description: "Should the button be in a loading state?",
+      description: "Should the component be in a loading state?",
       control: {
         type: "boolean",
       },
     },
     rounded: {
-      description: "Should the button be rounded?",
+      description: "Should the component be rounded?",
       control: {
         type: "boolean",
       },
     },
     size: {
-      description: "Size of the button.",
+      description: "Size of the component.",
       control: {
         type: "select",
       },
     },
+    success: {
+      description: "Should the component be in a success state?",
+      control: {
+        type: "boolean",
+      },
+    },
     suspended: {
-      description: "Should the button be in a suspended state?",
+      description: "Should the component be in a suspended state?",
       control: {
         type: "boolean",
       },
     },
     tint: {
-      description: "Color tint of the button.",
+      description: "Color tint of the component.",
       control: {
         type: "select",
       },
     },
     uppercase: {
-      description: "Should the button text be uppercase?",
-      control: {
-        type: "boolean",
-      },
-    },
-    warning: {
-      description: "Should the button be in a warning state?",
-      control: {
-        type: "boolean",
-      },
-    },
-    success: {
-      description: "Should the button be in a success state?",
+      description: "Should the component text be uppercase?",
       control: {
         type: "boolean",
       },
     },
     variant: {
-      description: "Variation of the button.",
+      description: "Variation of the component.",
       control: {
         type: "select",
+      },
+    },
+    warning: {
+      description: "Should the component be in a warning state?",
+      control: {
+        type: "boolean",
       },
     },
   },
@@ -207,6 +207,24 @@ export const VariantsAndColors: Story = {
         </Component>
         <Component style={{ width: 160 }} variant="glass" color="secondary" {...args}>
           Secondary Glass
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
+        <Component style={{ width: 160 }} variant="solid" color="tertiary" {...args}>
+          Tertiary Solid
+        </Component>
+        <Component style={{ width: 160 }} variant="soft" color="tertiary" {...args}>
+          Tertiary Soft
+        </Component>
+        <Component style={{ width: 160 }} variant="plain" color="tertiary" {...args}>
+          Tertiary Plain
+        </Component>
+        <Component style={{ width: 160 }} variant="outlined" color="tertiary" {...args}>
+          Tertiary Outlined
+        </Component>
+        <Component style={{ width: 160 }} variant="glass" color="tertiary" {...args}>
+          Tertiary Glass
         </Component>
       </Flex>
 
@@ -510,6 +528,9 @@ export const Tint100: Story = {
       <Component color="secondary" tint="100" {...args}>
         Secondary
       </Component>
+      <Component color="tertiary" tint="100" {...args}>
+        Tertiary
+      </Component>
       <Component color="utility" tint="100" {...args}>
         Utility
       </Component>
@@ -537,6 +558,9 @@ export const Tint300: Story = {
       </Component>
       <Component color="secondary" tint="300" {...args}>
         Secondary
+      </Component>
+      <Component color="tertiary" tint="300" {...args}>
+        Tertiary
       </Component>
       <Component color="utility" tint="300" {...args}>
         Utility
@@ -566,6 +590,9 @@ export const Tint500: Story = {
       <Component color="secondary" {...args}>
         Secondary
       </Component>
+      <Component color="tertiary" {...args}>
+        Tertiary
+      </Component>
       <Component color="utility" {...args}>
         Utility
       </Component>
@@ -594,6 +621,9 @@ export const Tint700: Story = {
       <Component color="secondary" tint="700" {...args}>
         Secondary
       </Component>
+      <Component color="tertiary" tint="700" {...args}>
+        Tertiary
+      </Component>
       <Component color="utility" tint="700" {...args}>
         Utility
       </Component>
@@ -621,6 +651,9 @@ export const Tint900: Story = {
       </Component>
       <Component color="secondary" tint="900" {...args}>
         Secondary
+      </Component>
+      <Component color="tertiary" tint="900" {...args}>
+        Tertiary
       </Component>
       <Component color="utility" tint="900" {...args}>
         Utility

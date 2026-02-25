@@ -34,7 +34,6 @@ export const useRootStyles = (
     fullWidth,
     loading,
     rounded,
-    shadowLabel,
     size,
     suspended,
     tint,
@@ -327,13 +326,6 @@ export const useRootStyles = (
         `
       : null;
 
-  const shadowLabelCSS =
-    shadowLabel && !disabled
-      ? css`
-          text-shadow: ${theme?.shadow?.text || theme?.shadow?.none};
-        `
-      : null;
-
   const backdropBlurCSS = backdropBlur
     ? css`
         backdrop-filter: ${theme?.blur?.medium || theme?.blur?.none};
@@ -381,7 +373,6 @@ export const useRootStyles = (
       fullWidthCSS,
       roundedCSS,
       elevationCSS,
-      shadowLabelCSS,
       backdropBlurCSS,
       loadingCSS,
       suspendedCSS,

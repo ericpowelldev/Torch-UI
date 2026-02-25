@@ -170,6 +170,24 @@ export const VariantsAndColors: Story = {
       </Flex>
 
       <Flex container gap={2}>
+        <Component variant="solid" color="tertiary" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="soft" color="tertiary" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="plain" color="tertiary" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="outlined" color="tertiary" {...args}>
+          <MdRocketLaunch />
+        </Component>
+        <Component variant="glass" color="tertiary" {...args}>
+          <MdRocketLaunch />
+        </Component>
+      </Flex>
+
+      <Flex container gap={2}>
         <Component variant="solid" color="utility" {...args}>
           <MdRocketLaunch />
         </Component>
@@ -387,6 +405,9 @@ export const Tint100: Story = {
       <Component color="secondary" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
+      <Component color="tertiary" tint="100" {...args}>
+        <MdRocketLaunch />
+      </Component>
       <Component color="utility" tint="100" {...args}>
         <MdRocketLaunch />
       </Component>
@@ -413,6 +434,9 @@ export const Tint300: Story = {
         <MdRocketLaunch />
       </Component>
       <Component color="secondary" tint="300" {...args}>
+        <MdRocketLaunch />
+      </Component>
+      <Component color="tertiary" tint="300" {...args}>
         <MdRocketLaunch />
       </Component>
       <Component color="utility" tint="300" {...args}>
@@ -443,6 +467,9 @@ export const Tint500: Story = {
       <Component color="secondary" {...args}>
         <MdRocketLaunch />
       </Component>
+      <Component color="tertiary" {...args}>
+        <MdRocketLaunch />
+      </Component>
       <Component color="utility" {...args}>
         <MdRocketLaunch />
       </Component>
@@ -471,6 +498,9 @@ export const Tint700: Story = {
       <Component color="secondary" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
+      <Component color="tertiary" tint="700" {...args}>
+        <MdRocketLaunch />
+      </Component>
       <Component color="utility" tint="700" {...args}>
         <MdRocketLaunch />
       </Component>
@@ -497,6 +527,9 @@ export const Tint900: Story = {
         <MdRocketLaunch />
       </Component>
       <Component color="secondary" tint="900" {...args}>
+        <MdRocketLaunch />
+      </Component>
+      <Component color="tertiary" tint="900" {...args}>
         <MdRocketLaunch />
       </Component>
       <Component color="utility" tint="900" {...args}>

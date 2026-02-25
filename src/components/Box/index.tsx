@@ -3,7 +3,6 @@
 import React from "react";
 
 import {
-  AlphaTintValues,
   BGColorValues,
   BoxComponentValues,
   ColorValues,
@@ -38,7 +37,7 @@ export interface BoxProps {
   height?: number | string;
   radius?: number | string;
   shadow?: boolean;
-  tint?: TintValues | InverseTintValues | AlphaTintValues;
+  tint?: TintValues | InverseTintValues;
   visualize?: boolean;
   width?: number | string;
 
@@ -80,14 +79,14 @@ const Box = ({
   const rootStyles = useRootStyles(
     theme,
     { backdropBlur, color, height, radius, shadow, tint, visualize, width },
-    [classes?.root, className]
+    [classes?.root, className],
   );
 
   // Return Component
   return React.createElement(
     component || `div`,
     { className: rootStyles, ...props?.root, ...rest },
-    children
+    children,
   );
 };
 

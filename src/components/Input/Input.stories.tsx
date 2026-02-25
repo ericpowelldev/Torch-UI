@@ -3,7 +3,9 @@ import Component from "./index";
 
 import React from "react";
 import Flex from "../Flex";
+import Box from "../Box";
 import Option from "../Option";
+import Spacer from "../Spacer";
 
 const meta: Meta<typeof Component> = {
   title: "Inputs/Input",
@@ -52,31 +54,43 @@ const meta: Meta<typeof Component> = {
     // Specialized Properties //
 
     backdropBlur: {
-      description: "Should the input have a backdrop blur?",
+      description: "Should the component have a backdrop blur?",
       control: {
         type: "boolean",
       },
     },
     color: {
-      description: "Color of the input (when focused).",
+      description: "Color of the component (when focused).",
+      control: {
+        type: "select",
+      },
+    },
+    colorBg: {
+      description: "Background color of the component (solid variant only).",
       control: {
         type: "select",
       },
     },
     disabled: {
-      description: "Should the input be in a disabled state?",
+      description: "Should the component be in a disabled state?",
       control: {
         type: "boolean",
       },
     },
+    elevation: {
+      description: "Elevation level of the component.",
+      control: {
+        type: "select",
+      },
+    },
     error: {
-      description: "Should the input be in an error state?",
+      description: "Should the component be in an error state?",
       control: {
         type: "boolean",
       },
     },
     fullWidth: {
-      description: "Should the input be the full width of its container?",
+      description: "Should the component be the full width of its container?",
       control: {
         type: "boolean",
       },
@@ -87,79 +101,91 @@ const meta: Meta<typeof Component> = {
       },
     },
     info: {
-      description: "Should the input be in an info state?",
+      description: "Should the component be in an info state?",
       control: {
         type: "boolean",
       },
     },
     inverse: {
-      description: "Should the input be in an inverse state?",
+      description: "Should the component use inverse colors?",
       control: {
         type: "boolean",
       },
     },
     label: {
-      description: "Label content for the input.",
+      description: "Label content for the component.",
       control: {
         type: "text",
       },
     },
     loading: {
-      description: "Should the input be in a loading state?",
+      description: "Should the component be in a loading state?",
       control: {
         type: "boolean",
       },
     },
     multiline: {
-      description: "Should the input be multiline?",
+      description: "Should the component be multiline?",
       control: {
         type: "boolean",
       },
     },
     placeholder: {
-      description: "Placeholder content for the input.",
+      description: "Placeholder content for the component.",
       control: {
         type: "text",
       },
     },
     required: {
-      description: "Should the input be required?",
+      description: "Should the component be required?",
+      control: {
+        type: "boolean",
+      },
+    },
+    rounded: {
+      description: "Should the component be rounded?",
       control: {
         type: "boolean",
       },
     },
     select: {
-      description: "Should the input be a selec?",
+      description: "Should the component be a select?",
       control: {
         type: "boolean",
       },
     },
     sublabel: {
-      description: "Sublabel content for the input.",
+      description: "Sublabel content for the component.",
       control: {
         type: "text",
       },
     },
     success: {
-      description: "Should the input be in a success state?",
+      description: "Should the component be in a success state?",
+      control: {
+        type: "boolean",
+      },
+    },
+    suspended: {
+      description: "Should the component be in a suspended state?",
       control: {
         type: "boolean",
       },
     },
     tint: {
-      description: "Color tint of the input (when focused).",
+      description: "Color tint of the component (when focused).",
       control: {
         type: "select",
       },
     },
     variant: {
-      description: "Variation of the input.",
+      description: "Variation of the component.",
       control: {
-        type: "radio",
+        type: "select",
       },
     },
     warning: {
-      description: "Should the input be in a warning state?",
+      description: "Should the component be in a warning state?",
       control: {
         type: "boolean",
       },
@@ -178,8 +204,8 @@ export const Default: Story = {
 };
 
 export const Select: Story = {
-  render: () => (
-    <Component select color="info" label="Select" placeholder="Select something...">
+  render: (args) => (
+    <Component select color="info" label="Select" placeholder="Select something..." {...args}>
       <Option value="option-1">Option 1</Option>
       <Option value="option-2">Option 2</Option>
       <Option value="option-3">Option 3</Option>
@@ -187,502 +213,255 @@ export const Select: Story = {
   ),
 };
 
-export const Inverse: Story = {
-  render: () => (
-    <div style={{ backgroundColor: "#242c40", padding: 16 }}>
-      <Flex container direction="column" gap={3}>
-        <Flex container gap={2}>
+export const VariantsAndBGColors: Story = {
+  render: (args) => (
+    <Flex container direction="column" gap={4}>
+      <Box radius={10} color="bg4" style={{ padding: 16 }}>
+        <Flex container alignItems="center" gap={4}>
           <Component
-            inverse
-            color="info"
-            label="Inverse Input"
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bg1"
+            label="BG1 Solid"
             placeholder="Enter some text..."
+            {...args}
           />
-          <Component inverse select color="info" label="Inverse Select">
-            <Option value="option-1">Option 1</Option>
-            <Option value="option-2">Option 2</Option>
-            <Option value="option-3">Option 3</Option>
-          </Component>
+          <Component
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bg2"
+            label="BG2 Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bg3"
+            label="BG3 Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bg4"
+            label="BG4 Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
         </Flex>
-      </Flex>
-    </div>
-  ),
-};
 
-export const VariantsAndColors: Story = {
-  render: () => (
-    <Flex container direction="column" gap={3}>
-      <Flex container gap={2}>
-        <Component
-          style={{ width: 180 }}
-          variant="solid"
-          color="primary"
-          label="Primary Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="soft"
-          color="primary"
-          label="Primary Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="plain"
-          color="primary"
-          label="Primary Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="outlined"
-          color="primary"
-          label="Primary Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
+        <Spacer size={4} />
 
-      <Flex container gap={2}>
-        <Component
-          style={{ width: 180 }}
-          variant="solid"
-          color="secondary"
-          label="Secondary Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="soft"
-          color="secondary"
-          label="Secondary Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="plain"
-          color="secondary"
-          label="Secondary Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="outlined"
-          color="secondary"
-          label="Secondary Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
+        <Flex container alignItems="center" gap={4}>
+          <Component
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bgInverse1"
+            label="BG1 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bgInverse2"
+            label="BG2 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bgInverse3"
+            label="BG3 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            variant="solid"
+            colorBg="bgInverse4"
+            label="BG4 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Flex>
+      </Box>
 
-      <Flex container gap={2}>
-        <Component
-          style={{ width: 180 }}
-          variant="solid"
-          color="utility"
-          label="Utility Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="soft"
-          color="utility"
-          label="Utility Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="plain"
-          color="utility"
-          label="Utility Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="outlined"
-          color="utility"
-          label="Utility Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
+      <Box radius={10} color="bgInverse4" style={{ padding: 16 }}>
+        <Flex container alignItems="center" gap={4}>
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bg1"
+            label="BG1 Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bg2"
+            label="BG2 Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bg3"
+            label="BG3 Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bg4"
+            label="BG4 Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Flex>
 
-      <Flex container gap={2}>
-        <Component
-          style={{ width: 180 }}
-          variant="solid"
-          color="error"
-          label="Error Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="soft"
-          color="error"
-          label="Error Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="plain"
-          color="error"
-          label="Error Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="outlined"
-          color="error"
-          label="Error Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
+        <Spacer size={4} />
 
-      <Flex container gap={2}>
-        <Component
-          style={{ width: 180 }}
-          variant="solid"
-          color="warning"
-          label="Warning Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="soft"
-          color="warning"
-          label="Warning Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="plain"
-          color="warning"
-          label="Warning Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="outlined"
-          color="warning"
-          label="Warning Outlined"
-          placeholder="Enter some text..."
-        />
+        <Flex container alignItems="center" gap={4}>
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bgInverse1"
+            label="BG1 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bgInverse2"
+            label="BG2 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bgInverse3"
+            label="BG3 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="solid"
+            colorBg="bgInverse4"
+            label="BG4 Inverse Solid"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Flex>
+      </Box>
+
+      <Flex container alignItems="center" gap={4}>
+        <Box radius={10} color="bg4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            variant="soft"
+            colorBg="bg1"
+            label="Input Soft"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
+        <Box radius={10} color="bgInverse4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="soft"
+            label="Input Inverse Soft"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
       </Flex>
 
-      <Flex container gap={2}>
-        <Component
-          style={{ width: 180 }}
-          variant="solid"
-          color="success"
-          label="Success Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="soft"
-          color="success"
-          label="Success Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="plain"
-          color="success"
-          label="Success Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="outlined"
-          color="success"
-          label="Success Outlined"
-          placeholder="Enter some text..."
-        />
+      <Flex container alignItems="center" gap={4}>
+        <Box radius={10} color="bg4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            variant="plain"
+            colorBg="bg1"
+            label="Input Plain"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
+        <Box radius={10} color="bgInverse4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="plain"
+            label="Input Inverse Plain"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
       </Flex>
 
-      <Flex container gap={2}>
-        <Component
-          style={{ width: 180 }}
-          variant="solid"
-          color="info"
-          label="Info Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="soft"
-          color="info"
-          label="Info Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="plain"
-          color="info"
-          label="Info Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          style={{ width: 180 }}
-          variant="outlined"
-          color="info"
-          label="Info Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
-    </Flex>
-  ),
-};
-
-export const InverseVariantsAndColors: Story = {
-  render: () => (
-    <Flex
-      style={{ backgroundColor: "#242c40", padding: 16 }}
-      container
-      direction="column"
-      gap={3}
-    >
-      <Flex container gap={2}>
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="solid"
-          color="primary"
-          label="Primary Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="soft"
-          color="primary"
-          label="Primary Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="plain"
-          color="primary"
-          label="Primary Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="outlined"
-          color="primary"
-          label="Primary Outlined"
-          placeholder="Enter some text..."
-        />
+      <Flex container alignItems="center" gap={4}>
+        <Box radius={10} color="bg4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            variant="outlined"
+            colorBg="bg1"
+            label="Input Outlined"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
+        <Box radius={10} color="bgInverse4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="outlined"
+            label="Input Inverse Outlined"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
       </Flex>
 
-      <Flex container gap={2}>
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="solid"
-          color="secondary"
-          label="Secondary Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="soft"
-          color="secondary"
-          label="Secondary Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="plain"
-          color="secondary"
-          label="Secondary Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="outlined"
-          color="secondary"
-          label="Secondary Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="solid"
-          color="utility"
-          label="Utility Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="soft"
-          color="utility"
-          label="Utility Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="plain"
-          color="utility"
-          label="Utility Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="outlined"
-          color="utility"
-          label="Utility Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="solid"
-          color="error"
-          label="Error Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="soft"
-          color="error"
-          label="Error Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="plain"
-          color="error"
-          label="Error Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="outlined"
-          color="error"
-          label="Error Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="solid"
-          color="warning"
-          label="Warning Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="soft"
-          color="warning"
-          label="Warning Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="plain"
-          color="warning"
-          label="Warning Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="outlined"
-          color="warning"
-          label="Warning Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="solid"
-          color="success"
-          label="Success Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="soft"
-          color="success"
-          label="Success Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="plain"
-          color="success"
-          label="Success Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="outlined"
-          color="success"
-          label="Success Outlined"
-          placeholder="Enter some text..."
-        />
-      </Flex>
-
-      <Flex container gap={2}>
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="solid"
-          color="info"
-          label="Info Solid"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="soft"
-          color="info"
-          label="Info Soft"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="plain"
-          color="info"
-          label="Info Plain"
-          placeholder="Enter some text..."
-        />
-        <Component
-          inverse
-          style={{ width: 180 }}
-          variant="outlined"
-          color="info"
-          label="Info Outlined"
-          placeholder="Enter some text..."
-        />
+      <Flex container alignItems="center" gap={4}>
+        <Box radius={10} color="bg4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            variant="glass"
+            colorBg="bg1"
+            label="Input Glass"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
+        <Box radius={10} color="bgInverse4" style={{ padding: 16 }}>
+          <Component
+            style={{ width: 180 }}
+            inverse
+            variant="glass"
+            label="Input Inverse Glass"
+            placeholder="Enter some text..."
+            {...args}
+          />
+        </Box>
       </Flex>
     </Flex>
   ),

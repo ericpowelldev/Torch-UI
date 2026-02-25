@@ -4,7 +4,7 @@ import deepmerge from "deepmerge";
 import { SimpleTheme } from "@utils/types";
 
 import {
-  buildColors,
+  buildColorTints,
   buildForegroundColors,
   buildForegroundInverseColors,
   buildForegroundDisabledColor,
@@ -33,30 +33,33 @@ const extendTheme = (theme: SimpleTheme, customThemeName?: string) => {
   let themeEdit = {
     color: {
       primary: {
-        ...buildColors(customTheme?.color?.primary, themeMode),
+        ...buildColorTints(customTheme?.color?.primary, themeMode),
       },
       secondary: {
-        ...buildColors(customTheme?.color?.secondary, themeMode),
+        ...buildColorTints(customTheme?.color?.secondary, themeMode),
+      },
+      tertiary: {
+        ...buildColorTints(customTheme?.color?.tertiary, themeMode),
       },
 
       utility: {
-        ...buildColors(customTheme?.color?.utility, themeMode),
+        ...buildColorTints(customTheme?.color?.utility, themeMode),
       },
       error: {
-        ...buildColors(customTheme?.color?.error, themeMode),
+        ...buildColorTints(customTheme?.color?.error, themeMode),
       },
       warning: {
-        ...buildColors(customTheme?.color?.warning, themeMode),
+        ...buildColorTints(customTheme?.color?.warning, themeMode),
       },
       success: {
-        ...buildColors(customTheme?.color?.success, themeMode),
+        ...buildColorTints(customTheme?.color?.success, themeMode),
       },
       info: {
-        ...buildColors(customTheme?.color?.info, themeMode),
+        ...buildColorTints(customTheme?.color?.info, themeMode),
       },
 
       grayscale: {
-        ...buildColors(customTheme?.color?.grayscale, themeMode),
+        ...buildColorTints(customTheme?.color?.grayscale, themeMode),
       },
 
       fg: buildForegroundColors(customTheme?.color?.fg, themeMode),
