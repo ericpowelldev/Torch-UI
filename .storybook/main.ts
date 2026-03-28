@@ -6,15 +6,9 @@ const config: StorybookConfig = {
   addons: [
     "@chromatic-com/storybook",
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
-    "@storybook/addon-interactions",
     "@storybook/addon-webpack5-compiler-swc",
+    "@storybook/addon-docs"
   ],
-
-  docs: {
-    autodocs: "tag",
-  },
 
   framework: {
     name: "@storybook/react-webpack5",
@@ -24,7 +18,6 @@ const config: StorybookConfig = {
   },
 
   staticDirs: ["../static"],
-
   stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
   typescript: {
@@ -32,15 +25,16 @@ const config: StorybookConfig = {
   },
 
   webpackFinal: async (config: any) => {
+    const rootDir = process.cwd();
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@src": path.resolve(__dirname, "../src"),
-      "@components": path.resolve(__dirname, "../src/components"),
-      "@utils": path.resolve(__dirname, "../src/utils"),
-      "@tui": path.resolve(__dirname, "../src/Tui.tsx"),
+      "@src": path.resolve(rootDir, "src"),
+      "@components": path.resolve(rootDir, "src/components"),
+      "@utils": path.resolve(rootDir, "src/utils"),
+      "@tui": path.resolve(rootDir, "src/Tui.tsx"),
     };
     return config;
-  },
+  }
 };
 
 export default config;

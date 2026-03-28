@@ -1,4 +1,6 @@
 import path from "path";
+import { fileURLToPath } from "url";
+import { createRequire } from "module";
 
 import alias from "@rollup/plugin-alias";
 import commonjs from "@rollup/plugin-commonjs";
@@ -9,6 +11,8 @@ import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 
+const require = createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const pkg = require("./package.json");
 
 const aliasConfig = {
@@ -55,7 +59,7 @@ const config = [
   {
     input: "src/index.ts",
     output: [{ file: "dist/types.d.ts", format: "es" }],
-    plugins: [alias(aliasConfig), css(), dts.default()],
+    plugins: [alias(aliasConfig), css(), dts()],
   },
 ];
 

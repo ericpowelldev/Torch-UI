@@ -1,11 +1,11 @@
 import React from "react";
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-webpack5";
 
 import { TuiThemeProvider, Box } from "../src";
 
 // Theme overrides
 const theme = {};
-const mode = "dark";
+const mode = "light";
 
 const preview: Preview = {
   decorators: [
