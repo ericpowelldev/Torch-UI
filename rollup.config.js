@@ -22,6 +22,8 @@ const aliasConfig = {
 
 const typescriptConfig = {
   tsconfig: "./tsconfig.json",
+  declaration: false,
+  declarationDir: undefined,
 };
 
 const config = [
@@ -48,7 +50,7 @@ const config = [
       terser(),
       typescript(typescriptConfig),
     ],
-    external: ["react", "react-dom", "@emotion/css", "@emotion/react"],
+    external: ["react", "react-dom", "@emotion/css", "@emotion/react", "color", "deepmerge"],
   },
   {
     input: "src/index.ts",
